@@ -7,9 +7,8 @@
 create_gcae_options(gcae_version = "1.0")
 }
 \arguments{
-\item{gcae_version}{version of GCAE, e.g. \code{"1.7"}
-Use \link{get_gcae_version} to get the \code{GCAE} version.
-Use \link{get_gcae_versions} to get all the supported \code{GCAE} versions.}
+\item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
+Use \link{get_gcae_version} to get the \code{GCAE} version.}
 }
 \value{
 the GCAE options,

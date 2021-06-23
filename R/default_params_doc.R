@@ -1,50 +1,13 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
 #'
-#' @param add_noweb add the \code{--noweb} option, which prevents
-#' that \code{GCAE} will check if it is in its latest version.
-#' By default, this value is set to true,
-#' hence \link{gcaer} will skip this check.
-#' Use \link{get_gcae_version} to get the current \code{GCAE} version.
 #' @param args arguments for the \code{GCAE} executable
-#' @param assoc_adjusted_filename name of a \code{GCAE}
-#' \code{.assoc.adjusted} file.
-#' Use \link{read_gcae_assoc_adjusted_file}
-#' to read a \code{GCAE} \code{.assoc.adjusted} file.
-#' @param assoc_filename name of a \code{GCAE} \code{.assoc} file.
-#' Use \link{read_gcae_assoc_file} to read a \code{GCAE} \code{.assoc} file.
-#' @param assoc_params parameters to do an association analysis
-#' for a quantitative trait (i.e. using \link{assoc}),
-#' as can be created by \link{create_assoc_params}
-#' @param assoc_qt_params parameters to do an association analysis
-#' for a quantitative trait (i.e. using \link{assoc_qt}),
-#' as can be created by \link{create_assoc_qt_params}
 #' @param base_input_filename the base of the filenames that are
 #' used as input for \code{GCAE}/\code{GCAE2}
 #' @param base_output_filename the base of the filenames that are
 #' used as output for \code{GCAE}/\code{GCAE2}
 #' @param base_phenotype_value the base phenotypic value for an additive trait,
 #' i.e. the phenotypic value for homozygotes of the common allele
-#' @param bed_filename name of a \code{GCAE} \code{.bed} file
-#' Use \link{read_gcae_bed_file} to read a \code{GCAE} \code{.bed} file.
-#' @param bfile the base filename of the binary files (i.e.
-#' a \code{.bed}, \code{.bim} and \code{.fam} file).
-#' This parameter is named after the \code{GCAE}
-#' \code{--bfile} flag
-#' @param bim_filename name of a \code{GCAE} \code{.bim} file
-#' Use \link{read_gcae_bim_file} to read a \code{GCAE} \code{.bim} file.
-#' @param calc_phenotype_function a function that calculate the phenotypes
-#' from genotypes. The input is the genetic data as a \link[tibble]{tibble},
-#' in which each row is an individual and the columns are the SNVs.
-#' The first two columns are named \code{snv_1a}, \code{snv_1b} and
-#' hold the genetic data for the first SNV of a diploid organism.
-#' If there are more SNVs, columns continue with names,
-#' \code{snv_2a}, \code{snv_2b}, \code{snv_3a}, \code{snv_3b}, etc.
-#' Nucleotides are in uppercase.
-#' The output must be the phenotypic values, as a numeric vector,
-#' which has the same length as the number of individuals.
-#' Use \link{check_calc_phenotype_function}
-#' to check a \code{calc_phenotype_function}.
 #' @param confidence_interval confidence interval, a value between (and
 #' excluding both) 0.0 and 1.0. The confidence interval helps assess
 #' the certainty of an estimation: you can be 99 percent sure
@@ -52,17 +15,6 @@
 #' @param epistatic_phenotype_value the phenotypic value when the
 #' epistatic phenotype is expressed
 #' @param example_filename name of the example file
-#' @param fam_filename name of a \code{GCAE} \code{.fam} file
-#' Use \link{read_gcae_fam_file} to read a \code{GCAE} \code{.fam} file.
-#' @param frq_filename name of a \code{GCAE} \code{.frq} file
-#' Use \link{read_gcae_frq_file} to read a \code{GCAE} \code{.frq} file.
-#' @param frq_strat_filename name of a \code{GCAE} \code{.frq.strat} file
-#' Use \link{read_gcae_frq_strat_file}
-#' to read a \code{GCAE} \code{.frq.strat} file.
-#' @param imiss_filename name of a \code{GCAE} \code{.imiss} file
-#' Use \link{read_gcae_imiss_file} to read a \code{GCAE} \code{.imiss} file.
-#' @param lmiss_filename name of a \code{GCAE} \code{.lmiss} file
-#' Use \link{read_gcae_lmiss_file} to read a \code{GCAE} \code{.lmiss} file.
 #' @param log_filename name of a \code{GCAE} \code{.log} file
 #' @param maf minor allele frequency threshold.
 #' Alleles that have a frequency lower than the MAF
@@ -71,21 +23,6 @@
 #' (i.e. excluding zero and excluding 0.5).
 #' By default, \code{maf} is set to the lowest
 #' representable non-zero floating-point value,
-#' as obtained by \link{get_lowest_maf}
-#'
-#' The parameter name \code{maf} is named after the
-#' \code{GCAE} \code{--maf} flag. This was chosen over
-#' more specific names such as \code{min_allele_frequency}).
-#' @param mafs one or more minor allele frequencies.
-#' These allele frequencies must be ordered decreasingly,
-#' i.e. the MAF is at the first position, where the
-#' even rarer alleles are at the second and third positions.
-#'
-#' Note that \code{GCAE} cannot handle triallelic nor
-#' quadallelic SNPs: \code{GCAE} will give a warning that it
-#' is setting the rarest alleles to missing.
-#' @param map_filename name of a \code{GCAE} \code{.map} file
-#' Use \link{read_gcae_map_file} to read a \code{GCAE} \code{.map} file.
 #' @param map_table a genetic mapping table.
 #'
 #' A \code{map_table} is a \link[tibble]{tibble} with the following columns:
@@ -96,19 +33,11 @@
 #'  * \code{position_cm}: Position in morgans or centimorgans.
 #'      This value is optional. Zeroes denote it is unused
 #'  * \code{BP}: Base-pair coordinat
-#'
-#' Use \link{read_gcae_map_file} to read a \code{GCAE} \code{.map} file.
-#' Use \link{check_map_table} to test if a genetic mapping table is valid.
-#' @param n_individuals the number of individuals.
-#' Use \link{check_n_individuals} to check if this is a valid value
-#' @param n_snps the number of SNPs
 #' @param os name of the operating system,
 #' as returned by \link[rappdirs]{app_dir}
 #' @param out the base filename of the output files.
 #' This parameter is named after the \code{GCAE}
 #' \code{--out} flag
-#' @param ped_filename name of a \code{GCAE} \code{.ped} file.
-#' Use \link{read_gcae_ped_file} to read a \code{GCAE} \code{.ped} file.
 #' @param ped_table a 'pedigree' table.
 #'
 #' A \code{ped_table} is a \link[tibble]{tibble} with these columns:
@@ -130,8 +59,6 @@
 #' The \code{FID} and \code{IID} column names match the GCAE names, see
 #' \url{https://www.cog-genomics.org/gcae/1.9/input#pheno}.
 #'
-#' Use \link{read_gcae_ped_file} to read a \code{GCAE} \code{.ped} file.
-#' Use \link{check_ped_table} to test if a pedigree table is valid.
 #' @param phenotype one phenotype, named after its genetic background:
 #'
 #'  * \code{random} the phenotype is a random value,
@@ -159,66 +86,15 @@
 #' names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).
 #' Use \link{read_gcae_phe_file} to read a phenotype file.
 #' Use \link{check_phe_table} to test if a phenotype table is valid.
-#' @param phenotypes one ore more phenotypes,
-#' named after their genetic background:
-#'
-#'  * \code{random} the phenotype is a random value,
-#'    i.e. there is no association between the genetics and
-#'    this phenotype
-#'  * \code{additive} the phenotype is perfectly additive,
-#'    see \link{calc_additive_phenotype_values} for the exact calculation
-#'  * \code{epistatic} the phenotype is epistatic,
-#'    see \link{calc_epistatic_phenotype_values} for the exact calculation
-#' @param phenotype_value_dominant phenotypic value
-#' for the dominant variant, i.e. that genotype that has at least one
-#' version of the common common allele
-#' @param phenotype_value_recessive phenotypic value
-#' for the recessive variant, i.e. that genotype that is homozygous for the
-#' rare allele
 #' @param gcae_exe_path path to
 #'   the \code{GCAE} or \code{GCAE2} executable file.
 #' @param gcae_folder folder where \code{GCAE} is installed
 #' @param gcae_options options to run GCAE,
 #' as created by \link{create_gcae_options}
-#' @param gcae_optionses a list of one or more options to run GCAE,
-#' as created by \link{create_gcae_optionses}.
-#' The reduplicated plural was used to express this is a list
-#' of \code{gcae_options}, instead of one set of \code{gcae_options}
-#' @param gcae_version version of GCAE, e.g. \code{"1.7"}
+#' @param gcae_version version of GCAE, e.g. \code{"1.0"}
 #' Use \link{get_gcae_version} to get the \code{GCAE} version.
-#' Use \link{get_gcae_versions} to get all the supported \code{GCAE} versions.
-#' @param gcae_versions one or more versions of GCAE,
-#' e.g. as can be obtained using \link{get_gcae_versions}
 #' @param gcaer_folder name of the folder where \link{gcaer}
 #' stores its temporary files
-#' @param qassoc_filename name of a \code{GCAE} \code{.qassoc} file
-#' Use \link{read_gcae_qassoc_file} to read a \code{GCAE} \code{.qassoc} file.
-#' @param qassoc_filenames name of one or more
-#' \code{GCAE} \code{.qassoc} files.
-#' Use \link{read_gcae_qassoc_files} to read one or more
-#' \code{GCAE} \code{.qassoc} files.
-#' @param qassoc_table the table that hold the result of an association
-#' with a quantitative trait, as created by \code{GCAE}
-#' and stored as a \code{.qassoc} file.
-#' @param regular_phenotype_value the regular phenotypic value
-#' @param sim_filename name of a \code{GCAE} \code{.sim} file
-#' @param simfreq_filename name of a \code{GCAE} \code{.simfreq} file
-#' @param simulate_qt_params the parameters for a quantitative
-#'   traits simulation, as can be created by
-#'   \link{create_simulate_qt_params}
-#' @param snvs a \link[tibble]{tibble} that contains the
-#' two nucleotide calls for multiple individuals.
-#' Each column is a haplotype, hence, for a diploid organism,
-#' there are two columns.
-#' Each individual is represented by a row.
-#' Nucleotides are in uppercase.
-#' Per SNV table, there can be only two different nucleotides,
-#' as this is how a SNP works; a SNP from A to C is a different one (and
-#' has a different SNP ID) than a SNP that encodes a mutation
-#' for A to G.
-#' Use \link{create_snvs} to create a \code{snvs}.
-#' @param temp_sim_filename temporary file to store simulation
-#'   parameters, which is a \code{GCAE} \code{.sim} file
 #' @param trait one trait with a clear genetic architecture and a known
 #' minor allele frequency, as created by \link{create_trait}.
 #' Use \link{is_one_trait} to detect if something is one trait
@@ -234,61 +110,27 @@
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
 default_params_doc <- function(
-  add_noweb,
   args,
-  assoc_adjusted_filename,
-  assoc_filename,
-  assoc_params,
-  assoc_qt_params,
   base_input_filename,
   base_output_filename,
   base_phenotype_value,
-  bed_filename,
-  bfile,
-  bim_filename,
-  calc_phenotype_function,
   confidence_interval,
   epistatic_phenotype_value,
   example_filename,
-  fam_filename,
-  frq_filename,
-  frq_strat_filename,
-  imiss_filename,
-  lmiss_filename,
   log_filename,
   maf,
-  mafs,
-  map_filename,
   map_table,
-  n_individuals,
-  n_snps,
   os,
   out,
-  ped_filename,
   ped_table,
-  phenotype,
   phe_filename,
   phenotype_increase,
   phe_table,
   phenotypes,
-  phenotype_value_dominant,
-  phenotype_value_recessive,
   gcae_exe_path,
   gcae_folder,
-  gcae_options,
-  gcae_optionses,
   gcae_version,
-  gcae_versions,
   gcaer_folder,
-  qassoc_filename,
-  qassoc_filenames,
-  qassoc_table,
-  regular_phenotype_value,
-  sim_filename,
-  simfreq_filename,
-  simulate_qt_params,
-  snvs,
-  temp_sim_filename,
   trait,
   traits,
   url,

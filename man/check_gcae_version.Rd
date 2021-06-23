@@ -7,9 +7,8 @@
 check_gcae_version(gcae_version)
 }
 \arguments{
-\item{gcae_version}{version of GCAE, e.g. \code{"1.7"}
-Use \link{get_gcae_version} to get the \code{GCAE} version.
-Use \link{get_gcae_versions} to get all the supported \code{GCAE} versions.}
+\item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
+Use \link{get_gcae_version} to get the \code{GCAE} version.}
 }
 \description{
 Check if the GCAE version is valid, will stop if not
