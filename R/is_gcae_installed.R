@@ -5,5 +5,5 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 is_gcae_installed <- function() {
-
+  FALSE
 }
