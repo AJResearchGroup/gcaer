@@ -19,12 +19,10 @@ default_params_doc(
   os,
   out,
   ped_table,
-  phe_filename,
-  phenotype_increase,
   phe_table,
-  phenotypes,
   gcae_exe_path,
   gcae_folder,
+  gcae_options,
   gcae_version,
   gcaer_folder,
   trait,
@@ -108,12 +106,6 @@ in the \code{.map file} (\code{0} = no call)
 The \code{FID} and \code{IID} column names match the GCAE names, see
 \url{https://www.cog-genomics.org/gcae/1.9/input#pheno}.}
 
-\item{phe_filename}{name of a raw phenotype file.
-Use \link{read_gcae_phe_file} to read a raw phenotype file.}
-
-\item{phenotype_increase}{the phenotypic value increase per rare allele,
-for an additive trait.}
-
 \item{phe_table}{a table of phenotypes.
 
 A \code{phe_table} is a \link[tibble]{tibble} with these columns:
@@ -127,13 +119,15 @@ columns can have any name
 
 Thes names match the GCAE column
 names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).
-Use \link{read_gcae_phe_file} to read a phenotype file.
 Use \link{check_phe_table} to test if a phenotype table is valid.}
 
 \item{gcae_exe_path}{path to
 the \code{GCAE} or \code{GCAE2} executable file.}
 
 \item{gcae_folder}{folder where \code{GCAE} is installed}
+
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
 
 \item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
 Use \link{get_gcae_version} to get the \code{GCAE} version.}
@@ -154,23 +148,6 @@ as, for example, created by \link{create_demo_traits}.}
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link{check_verbose} to detect if this argument is valid.}
-
-\item{phenotype}{one phenotype, named after its genetic background:
-\itemize{
-\item \code{random} the phenotype is a random value,
-i.e. there is no association between the genetics and
-this phenotype
-\item \code{additive} the phenotype is perfectly additive
-(the nucleotides used are A and T as these are in the word 'additive'):
-\itemize{
-\item \code{AA} 11.0
-\item \code{AT} 10.5
-\item \code{TT} 10.0
-}
-}}
-
-\item{gcae_options}{options to run GCAE,
-as created by \link{create_gcae_options}}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

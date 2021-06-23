@@ -59,20 +59,6 @@
 #' The \code{FID} and \code{IID} column names match the GCAE names, see
 #' \url{https://www.cog-genomics.org/gcae/1.9/input#pheno}.
 #'
-#' @param phenotype one phenotype, named after its genetic background:
-#'
-#'  * \code{random} the phenotype is a random value,
-#'    i.e. there is no association between the genetics and
-#'    this phenotype
-#'  * \code{additive} the phenotype is perfectly additive
-#'    (the nucleotides used are A and T as these are in the word 'additive'):
-#'    * \code{AA} 11.0
-#'    * \code{AT} 10.5
-#'    * \code{TT} 10.0
-#' @param phe_filename name of a raw phenotype file.
-#' Use \link{read_gcae_phe_file} to read a raw phenotype file.
-#' @param phenotype_increase the phenotypic value increase per rare allele,
-#' for an additive trait.
 #' @param phe_table a table of phenotypes.
 #'
 #' A \code{phe_table} is a \link[tibble]{tibble} with these columns:
@@ -84,7 +70,6 @@
 #'
 #' Thes names match the GCAE column
 #' names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).
-#' Use \link{read_gcae_phe_file} to read a phenotype file.
 #' Use \link{check_phe_table} to test if a phenotype table is valid.
 #' @param gcae_exe_path path to
 #'   the \code{GCAE} or \code{GCAE2} executable file.
@@ -123,12 +108,10 @@ default_params_doc <- function(
   os,
   out,
   ped_table,
-  phe_filename,
-  phenotype_increase,
   phe_table,
-  phenotypes,
   gcae_exe_path,
   gcae_folder,
+  gcae_options,
   gcae_version,
   gcaer_folder,
   trait,

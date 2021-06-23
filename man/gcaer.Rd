@@ -21,17 +21,13 @@ check if \code{GCAE} is installed, stop if not
 determine if \code{GCAE} is installed, yes/no
 \item \link{get_gcae_version}: get the version of \code{GCAE}
 \item \link{install_gcae}: install \code{GCAE}
-\item \link{uninstall_gcaes}: uninstall \code{GCAE}
+\item \link{uninstall_gcae}: uninstall \code{GCAE}
 }
 
 This is a list of functions to run or with with
 (multiple versions of) \code{GCAE}:
 \itemize{
 \item \link{run_gcae}: run \code{GCAE}
-\item \link{get_gcae_example_filename}:
-get the path to an example file as supplied by \code{GCAE}
-\item \link{get_gcae_example_filenames}:
-get a list of example filenames supplied by \code{GCAE}
 }
 }
 \examples{

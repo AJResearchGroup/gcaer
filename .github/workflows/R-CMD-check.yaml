@@ -40,7 +40,7 @@ jobs:
           remotes::install_github("MangoTheCat/goodpractice")
         shell: Rscript {0}
 
-      - name: Install PLINKs
+      - name: Install GCAE
         env:
           install_gcae: ${{ matrix.install_gcae }}
         run: if [[ "$install_gcae" == true ]]; then ./scripts/install_gcae.sh; fi
@@ -58,7 +58,7 @@ jobs:
         run: lintr::lint_package()
         shell: Rscript {0}
 
-#      - name: Install plinkr
+#      - name: Install GCAE
 #        run: remotes::install_github("richelbilderbeek/gcaer")
 #        shell: Rscript {0}
 
