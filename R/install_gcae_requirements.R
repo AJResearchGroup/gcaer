@@ -1,12 +1,10 @@
 #' Install the GCAE requirements
+#' @inheritParams default_params_doc
 #' @export
 install_gcae_requirements <- function(
   gcae_options = create_gcae_options()
 ) {
-  gcae_subfolder <- file.path(
-    gcae_options$gcae_folder, "gcae_v",
-    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
-  )
+  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   gcae_requirements_txt_path <- file.path(gcae_subfolder, "requirements.txt")
   testthat::expect_true(file.exists(gcae_requirements_txt_path))
 

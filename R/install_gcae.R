@@ -11,10 +11,7 @@ install_gcae <- function(
     gcaer::is_gcae_installed(gcae_options)
   )
 
-  gcae_subfolder <- file.path(
-    gcae_options$gcae_folder, "gcae_v",
-    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
-  )
+  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
 
   if (!dir.exists(gcae_subfolder)) {
     # Clone repo
@@ -26,6 +23,9 @@ install_gcae <- function(
     )
   }
   testthat::expect_true(dir.exists(gcae_subfolder))
+
+  gcaer::install_gcae_requirements(gcae_options = gcae_options)
+
   testthat::expect_true(
     gcaer::is_gcae_installed(gcae_options)
   )

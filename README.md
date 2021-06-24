@@ -31,6 +31,13 @@ install_gcae()
 
 ## Examples
 
+Get the GCAE help text:
+
+```
+library(gcaer)
+get_gcae_help_text()
+```
+
 ### Running GCAE
 
 Run GCAE:

@@ -16,7 +16,6 @@ Depends:
 Imports:
     devtools,
     gert,
-    mhcnuggetsr,
     plinkr,
     rappdirs,
     readr,

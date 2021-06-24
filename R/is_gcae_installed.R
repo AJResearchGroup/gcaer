@@ -9,9 +9,6 @@ is_gcae_installed <- function(
   gcae_options = create_gcae_options()
 ) {
   gcaer::check_gcae_options(gcae_options)
-  gcae_subfolder <- file.path(
-    gcae_options$gcae_folder, "gcae_v",
-    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
-  )
+  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   dir.exists(gcae_subfolder)
 }

@@ -10,10 +10,8 @@ check_gcae_is_installed <- function(
 ) {
   gcaer::check_gcae_options(gcae_options)
 
-  gcae_subfolder <- file.path(
-    gcae_options$gcae_folder, "gcae_v",
-    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
-  )
+  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
+
   if (!dir.exists(gcae_subfolder)) {
     stop(
       "GCAE is not installed. \n",

@@ -16,10 +16,7 @@ run_gcae <- function(
   gcaer::check_gcae_options(gcae_options)
   gcaer::check_gcae_is_installed(gcae_options)
 
-  gcae_subfolder <- file.path(
-    gcae_options$gcae_folder, "gcae_v",
-    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
-  )
+  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   gcae_run_gcae_py_path <- file.path(gcae_subfolder, "run_gcae.py")
   testthat::expect_true(file.exists(gcae_run_gcae_py_path))
 

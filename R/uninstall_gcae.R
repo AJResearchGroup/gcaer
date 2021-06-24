@@ -19,10 +19,7 @@ uninstall_gcae <- function(
       "a seperate GCAE version"
     )
   }
-  gcae_subfolder <- file.path(
-    gcae_options$gcae_folder, "gcae_v",
-    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
-  )
+  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   unlink(gcae_subfolder, recursive = TRUE)
   testthat::expect_false(
     gcaer::is_gcae_installed(gcae_options)
