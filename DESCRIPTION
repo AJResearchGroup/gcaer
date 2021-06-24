@@ -15,7 +15,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     devtools,
-    genio,
+    gert,
     plinkr,
     rappdirs,
     readr,

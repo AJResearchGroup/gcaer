@@ -4,9 +4,14 @@
 \alias{create_gcae_options}
 \title{Create the options to run GCAE}
 \usage{
-create_gcae_options(gcae_version = "1.0")
+create_gcae_options(
+  gcae_folder = gcaer::get_gcae_folder(),
+  gcae_version = "1.0"
+)
 }
 \arguments{
+\item{gcae_folder}{folder where \code{GCAE} is installed}
+
 \item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
 Use \link{get_gcae_version} to get the \code{GCAE} version.}
 }

@@ -4,7 +4,11 @@
 \alias{is_gcae_installed}
 \title{Determine if \code{GCAE} is installed}
 \usage{
-is_gcae_installed()
+is_gcae_installed(gcae_options = create_gcae_options())
+}
+\arguments{
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
 }
 \value{
 \code{TRUE} if \code{GCAE} is installed
