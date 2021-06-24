@@ -9,14 +9,19 @@ check_gcae_is_installed <- function(
   gcae_options = create_gcae_options()
 ) {
   gcaer::check_gcae_options(gcae_options)
-  gcae_exe_path <- gcae_options$gcae_exe_path
-  if (!file.exists(gcae_exe_path)) {
+
+  gcae_subfolder <- file.path(
+    gcae_options$gcae_folder, "gcae_v",
+    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
+  )
+  if (!dir.exists(gcae_subfolder)) {
     stop(
       "GCAE is not installed. \n",
-      "Executable is not found \n",
+      "GCAE subfolder is not found \n",
       "GCAE folder: ", gcae_options$gcae_folder, " \n",
-      "GCAE executable: ", gcae_exe_path, " \n",
+      "GCAE subfolder: ", gcae_subfolder, " \n",
       "Tip: run 'gcaer::install_gcae()'"
     )
   }
+
 }

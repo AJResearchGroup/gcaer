@@ -16,37 +16,29 @@ run_gcae <- function(
   gcaer::check_gcae_options(gcae_options)
   gcaer::check_gcae_is_installed(gcae_options)
 
-  # Will freeze otherwise
-  if (gcae_options$gcae_version == "1.7" && sum(args == "--noweb") == 0) {
-    args <- c(args, "--noweb")
-  }
-  gcae_exe_path <- gcae_options$gcae_exe_path
+  gcae_subfolder <- file.path(
+    gcae_options$gcae_folder, "gcae_v",
+    stringr::str_replace_all(gcae_options$gcae_version, "\\.", "_")
+  )
+  gcae_run_gcae_py_path <- file.path(gcae_subfolder, "run_gcae.py")
+  testthat::expect_true(file.exists(gcae_run_gcae_py_path))
+
+  all_args <- c("python3", gcae_run_gcae_py_path, args)
   if (verbose) {
     message(
-      "Running: '", gcae_exe_path, " ", paste(args, collapse = " "), "'. \n",
+      "Running: '", gcae_run_gcae_py_path, " ",
+        paste(all_args, collapse = " "), "'. \n",
       "Tip: you should be able to copy paste this :-)"
     )
   }
+
   suppressWarnings(
     text <- system2(
-      command = normalizePath(gcae_exe_path),
-      args = args,
+      command = all_args[1],
+      args = all_args[-1],
       stdout = TRUE,
       stderr = TRUE
     )
   )
-  error_line_index <- stringr::str_which(text, "Error:")
-  if (length(error_line_index) != 0) {
-    error_text <- text[seq(from = error_line_index, to = length(text))]
-    stop(
-      paste0(error_text, collapse = " \n"),
-      " \n",
-      "Called GCAE with commands: \n",
-      normalizePath(gcae_exe_path), " ", paste0(args, collapse = " "), "\n",
-      "Tip: you should be able to copy-paste this"
-    )
-  }
-  warnings <- stringr::str_subset(text, "Warning")
-  if (length(warnings) != 0) warning(warnings)
   text
 }

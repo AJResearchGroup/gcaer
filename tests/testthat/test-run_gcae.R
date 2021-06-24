@@ -3,7 +3,7 @@ test_that("show help", {
   if (!is_gcae_installed()) return()
   expect_silent(
     run_gcae(
-      args = "--help",
+      args = "--help"
     )
   )
 })
