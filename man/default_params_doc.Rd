@@ -118,8 +118,7 @@ columns can have any name
 }
 
 Thes names match the GCAE column
-names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).
-Use \link{check_phe_table} to test if a phenotype table is valid.}
+names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).}
 
 \item{gcae_exe_path}{path to
 the \code{GCAE} or \code{GCAE2} executable file.}
