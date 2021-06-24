@@ -6,6 +6,10 @@
 \usage{
 get_gcae_subfolder(gcae_options = create_gcae_options())
 }
+\arguments{
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
+}
 \description{
 Get the GCAE subfolder
 }

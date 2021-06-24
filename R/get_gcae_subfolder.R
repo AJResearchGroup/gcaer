@@ -1,4 +1,5 @@
 #' Get the GCAE subfolder
+#' @inheritParams default_params_doc
 #' @export
 get_gcae_subfolder <- function(gcae_options = create_gcae_options()) {
   gcaer::check_gcae_options(gcae_options)

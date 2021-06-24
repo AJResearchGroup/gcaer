@@ -7,6 +7,6 @@ test_that("un- or install in temp gcae folder", {
   expect_false(is_gcae_installed(gcae_options))
   expect_silent(install_gcae(gcae_options))
   expect_true(is_gcae_installed(gcae_options))
-  expect_silent(uninstall_gcae(gcae_optionses))
+  expect_silent(uninstall_gcae(gcae_options))
   expect_false(is_gcae_installed(gcae_options))
 })
