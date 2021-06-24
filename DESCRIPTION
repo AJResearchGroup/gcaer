@@ -16,9 +16,11 @@ Depends:
 Imports:
     devtools,
     gert,
+    mhcnuggetsr,
     plinkr,
     rappdirs,
     readr,
+    reticulate,
     stringr,
     tibble,
     tidyr

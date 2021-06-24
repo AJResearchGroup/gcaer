@@ -23,7 +23,7 @@ run_gcae <- function(
   gcae_run_gcae_py_path <- file.path(gcae_subfolder, "run_gcae.py")
   testthat::expect_true(file.exists(gcae_run_gcae_py_path))
 
-  all_args <- c("python3", gcae_run_gcae_py_path, args)
+  all_args <- c(reticulate::py_config()$python, gcae_run_gcae_py_path, args)
   if (verbose) {
     message(
       "Running: '", gcae_run_gcae_py_path, " ",
@@ -40,5 +40,17 @@ run_gcae <- function(
       stderr = TRUE
     )
   )
+  if (any(stringr::str_detect(text, "(Import|ModuleNotFound)Error"))) {
+    stop(
+      "Running: '", paste(all_args, collapse = " "), "' failed, \n",
+      "with message: \n",
+      "\n",
+      paste(text, collapse = "\n"),
+      "\n",
+      "\n",
+      "Tip 1: run 'gcaer::install_gcae_requirements' \n",
+      "Tip 2: you should be able to copy paste this :-)"
+    )
+  }
   text
 }
