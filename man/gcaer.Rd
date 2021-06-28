@@ -27,7 +27,7 @@ determine if \code{GCAE} is installed, yes/no
 This is a list of functions to run or with with \code{GCAE}:
 \itemize{
 \item \link{run_gcae}: run \code{GCAE}
-\item \link{train}: run \code{GCAE} \code{train}
+\item \link{gcae_train}: run \code{GCAE} \code{train}
 \item \link{project}: run \code{GCAE} \code{project}
 \item \link{gcae_plot}: run \code{GCAE} \code{plot}
 \item \link{gcae_animate}: run \code{GCAE} \code{animate}

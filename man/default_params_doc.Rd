@@ -11,20 +11,27 @@ default_params_doc(
   base_output_filename,
   base_phenotype_value,
   confidence_interval,
+  data,
+  datadir,
+  data_opts_id,
   epistatic_phenotype_value,
+  epochs,
   example_filename,
-  log_filename,
-  maf,
-  map_table,
-  os,
-  out,
-  ped_table,
-  phe_table,
   gcae_exe_path,
   gcae_folder,
   gcae_options,
   gcae_version,
   gcaer_folder,
+  log_filename,
+  maf,
+  map_table,
+  model_id,
+  os,
+  out,
+  ped_table,
+  phe_table,
+  save_interval,
+  train_opts_id,
   trait,
   traits,
   url,
@@ -48,10 +55,34 @@ excluding both) 0.0 and 1.0. The confidence interval helps assess
 the certainty of an estimation: you can be 99 percent sure
 a value is within the range of the 0.99 confidence interval}
 
+\item{data}{file prefix, not including path, of the data files
+(EIGENSTRAT of PLINK format)}
+
+\item{datadir}{directory where sample data is stored}
+
+\item{data_opts_id}{data options id,
+corresponding to a file data_opts/data_opts_id.json}
+
 \item{epistatic_phenotype_value}{the phenotypic value when the
 epistatic phenotype is expressed}
 
+\item{epochs}{number of epochs to train}
+
 \item{example_filename}{name of the example file}
+
+\item{gcae_exe_path}{path to
+the \code{GCAE} or \code{GCAE2} executable file.}
+
+\item{gcae_folder}{folder where \code{GCAE} is installed}
+
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
+
+\item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
+Use \link{get_gcae_version} to get the \code{GCAE} version.}
+
+\item{gcaer_folder}{name of the folder where \link{gcaer}
+stores its temporary files}
 
 \item{log_filename}{name of a \code{GCAE} \code{.log} file}
 
@@ -75,6 +106,8 @@ The chromosome number cannot exceed 95
 This value is optional. Zeroes denote it is unused
 \item \code{BP}: Base-pair coordinat
 }}
+
+\item{model_id}{model id, corresponding to a file models/model_id.json}
 
 \item{os}{name of the operating system,
 as returned by \link[rappdirs]{app_dir}}
@@ -120,19 +153,11 @@ columns can have any name
 Thes names match the GCAE column
 names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).}
 
-\item{gcae_exe_path}{path to
-the \code{GCAE} or \code{GCAE2} executable file.}
+\item{save_interval}{epoch intervals at which to save state of model,
+and at which to calculate the valid loss}
 
-\item{gcae_folder}{folder where \code{GCAE} is installed}
-
-\item{gcae_options}{options to run GCAE,
-as created by \link{create_gcae_options}}
-
-\item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
-Use \link{get_gcae_version} to get the \code{GCAE} version.}
-
-\item{gcaer_folder}{name of the folder where \link{gcaer}
-stores its temporary files}
+\item{train_opts_id}{train options id, corresponding to a file
+train_opts/train_opts_id.json}
 
 \item{trait}{one trait with a clear genetic architecture and a known
 minor allele frequency, as created by \link{create_trait}.

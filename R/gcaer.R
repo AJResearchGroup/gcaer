@@ -20,7 +20,7 @@
 #' This is a list of functions to run or with with \code{GCAE}:
 #'
 #' * \link{run_gcae}: run \code{GCAE}
-#' * \link{train}: run \code{GCAE} \code{train}
+#' * \link{gcae_train}: run \code{GCAE} \code{train}
 #' * \link{project}: run \code{GCAE} \code{project}
 #' * \link{gcae_plot}: run \code{GCAE} \code{plot}
 #' * \link{gcae_animate}: run \code{GCAE} \code{animate}

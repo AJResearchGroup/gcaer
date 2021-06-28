@@ -1,4 +1,0 @@
-#' Train
-train <- function() {
-
-}

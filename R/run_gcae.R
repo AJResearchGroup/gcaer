@@ -49,5 +49,16 @@ run_gcae <- function(
       "Tip 2: you should be able to copy paste this :-)"
     )
   }
+  if (any(stringr::str_detect(text, "Error"))) {
+    stop(
+      "Running: '", paste(all_args, collapse = " "), "' failed, \n",
+      "with message: \n",
+      "\n",
+      paste(text, collapse = "\n"),
+      "\n",
+      "\n",
+      "Tip: you should be able to copy paste this :-)"
+    )
+  }
   text
 }

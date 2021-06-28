@@ -12,9 +12,24 @@
 #' excluding both) 0.0 and 1.0. The confidence interval helps assess
 #' the certainty of an estimation: you can be 99 percent sure
 #' a value is within the range of the 0.99 confidence interval
+#' @param data file prefix, not including path, of the data files
+#' (EIGENSTRAT of PLINK format)
+#' @param datadir directory where sample data is stored
+#' @param data_opts_id data options id,
+#' corresponding to a file data_opts/data_opts_id.json
 #' @param epistatic_phenotype_value the phenotypic value when the
 #' epistatic phenotype is expressed
+#' @param epochs number of epochs to train
 #' @param example_filename name of the example file
+#' @param gcae_exe_path path to
+#'   the \code{GCAE} or \code{GCAE2} executable file.
+#' @param gcae_folder folder where \code{GCAE} is installed
+#' @param gcae_options options to run GCAE,
+#' as created by \link{create_gcae_options}
+#' @param gcae_version version of GCAE, e.g. \code{"1.0"}
+#' Use \link{get_gcae_version} to get the \code{GCAE} version.
+#' @param gcaer_folder name of the folder where \link{gcaer}
+#' stores its temporary files
 #' @param log_filename name of a \code{GCAE} \code{.log} file
 #' @param maf minor allele frequency threshold.
 #' Alleles that have a frequency lower than the MAF
@@ -33,6 +48,7 @@
 #'  * \code{position_cm}: Position in morgans or centimorgans.
 #'      This value is optional. Zeroes denote it is unused
 #'  * \code{BP}: Base-pair coordinat
+#' @param model_id model id, corresponding to a file models/model_id.json
 #' @param os name of the operating system,
 #' as returned by \link[rappdirs]{app_dir}
 #' @param out the base filename of the output files.
@@ -70,18 +86,13 @@
 #'
 #' Thes names match the GCAE column
 #' names (\url{https://www.cog-genomics.org/gcae/1.9/input#pheno}).
-#' @param gcae_exe_path path to
-#'   the \code{GCAE} or \code{GCAE2} executable file.
-#' @param gcae_folder folder where \code{GCAE} is installed
-#' @param gcae_options options to run GCAE,
-#' as created by \link{create_gcae_options}
-#' @param gcae_version version of GCAE, e.g. \code{"1.0"}
-#' Use \link{get_gcae_version} to get the \code{GCAE} version.
-#' @param gcaer_folder name of the folder where \link{gcaer}
-#' stores its temporary files
 #' @param trait one trait with a clear genetic architecture and a known
 #' minor allele frequency, as created by \link{create_trait}.
 #' Use \link{is_one_trait} to detect if something is one trait
+#' @param save_interval epoch intervals at which to save state of model,
+#' and at which to calculate the valid loss
+#' @param train_opts_id train options id, corresponding to a file
+#' train_opts/train_opts_id.json
 #' @param traits one or more traits
 #' with a clear genetic architecture and a known minor allele frequency,
 #' as, for example, created by \link{create_demo_traits}.
@@ -99,20 +110,27 @@ default_params_doc <- function(
   base_output_filename,
   base_phenotype_value,
   confidence_interval,
+  data,
+  datadir,
+  data_opts_id,
   epistatic_phenotype_value,
+  epochs,
   example_filename,
-  log_filename,
-  maf,
-  map_table,
-  os,
-  out,
-  ped_table,
-  phe_table,
   gcae_exe_path,
   gcae_folder,
   gcae_options,
   gcae_version,
   gcaer_folder,
+  log_filename,
+  maf,
+  map_table,
+  model_id,
+  os,
+  out,
+  ped_table,
+  phe_table,
+  save_interval,
+  train_opts_id,
   trait,
   traits,
   url,
