@@ -4,3 +4,4 @@
 ^LICENSE$
 ^scripts$
 ^NEWS\.md$
+^appveyor\.yml$
