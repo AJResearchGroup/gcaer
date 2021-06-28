@@ -11,6 +11,7 @@ install_gcae <- function(
     gcaer::is_gcae_installed(gcae_options)
   )
 
+  dir.create(gcae_options$gcae_folder, showWarnings = FALSE, recursive = TRUE)
   gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
 
   if (!dir.exists(gcae_subfolder)) {
