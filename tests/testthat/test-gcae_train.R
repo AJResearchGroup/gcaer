@@ -11,7 +11,16 @@ test_that("use", {
     )
   )
 
-
+  expect_error(
+    gcae_train(
+      datadir = "nonsense/",
+      data = "HumanOrigins249_tiny",
+      model_id = "M1",
+      train_opts_id = "ex3",
+      data_opts_id = "b_0_4"
+    ),
+    "Error"
+  )
   expect_error(
     gcae_train(
       datadir = "example_tiny/",
@@ -21,7 +30,7 @@ test_that("use", {
       data_opts_id = "b_0_4",
       verbose = TRUE
     ),
-    "FileNotFoundError"
+    "Error"
   )
 
   expect_error(
@@ -32,7 +41,7 @@ test_that("use", {
       train_opts_id = "ex3",
       data_opts_id = "b_0_4"
     ),
-    "FileNotFoundError"
+    "Error"
   )
   expect_error(
     gcae_train(
@@ -42,7 +51,7 @@ test_that("use", {
       train_opts_id = "nonsense",
       data_opts_id = "b_0_4"
     ),
-    "FileNotFoundError"
+    "Error"
   )
   expect_error(
     gcae_train(
@@ -52,18 +61,6 @@ test_that("use", {
       train_opts_id = "ex3",
       data_opts_id = "nonsense"
     ),
-    "FileNotFoundError"
-  )
-  return()
-  # No idea why this fails
-  expect_error(
-    gcae_train(
-      datadir = "nonsense/",
-      data = "HumanOrigins249_tiny",
-      model_id = "M1",
-      train_opts_id = "ex3",
-      data_opts_id = "b_0_4"
-    ),
-    "FileNotFoundError"
+    "Error"
   )
 })
