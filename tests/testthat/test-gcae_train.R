@@ -6,8 +6,6 @@ test_that("use", {
       datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
       data = "HumanOrigins249_tiny",
       model_id = "M1",
-      epochs = 1,
-      save_interval = 1,
       train_opts_id = "ex3",
       data_opts_id = "b_0_4"
     )
@@ -17,8 +15,6 @@ test_that("use", {
       datadir = "example_tiny/",
       data = "HumanOrigins249_tiny",
       model_id = "M1",
-      epochs = 20,
-      save_interval = 2,
       train_opts_id = "ex3",
       data_opts_id = "b_0_4"
     ),

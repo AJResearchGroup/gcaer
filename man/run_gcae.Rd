@@ -20,7 +20,11 @@ Use \link{check_verbose} to detect if this argument is valid.}
 the text that GCAE returns
 }
 \description{
-Run GCAE from arguments
+Run GCAE from arguments.
+In some contexts, e.g. \link{gcae_train},
+the working directory must be the same as the folder the
+\code{run_gcae.py} scipt is in (see
+\url{https://github.com/kausmees/GenoCAE/issues/10})
 }
 \examples{
 if (is_gcae_installed()) {
