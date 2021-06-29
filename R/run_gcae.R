@@ -1,4 +1,10 @@
 #' Run GCAE from arguments
+#'
+#' Run GCAE from arguments.
+#' In some contexts, e.g. \link{gcae_train},
+#' the working directory must be the same as the folder the
+#' `run_gcae.py` scipt is in (see
+#' \url{https://github.com/kausmees/GenoCAE/issues/10})
 #' @inheritParams default_params_doc
 #' @param args arguments for the GCAE executable
 #' @return the text that GCAE returns
@@ -29,6 +35,9 @@ run_gcae <- function(
     )
   }
 
+  user_work_dir <- getwd()
+  setwd(dirname(gcae_run_gcae_py_path))
+
   suppressWarnings(
     text <- system2(
       command = all_args[1],
@@ -37,6 +46,10 @@ run_gcae <- function(
       stderr = TRUE
     )
   )
+
+  setwd(user_work_dir)
+
+
   if (any(stringr::str_detect(text, "(Import|ModuleNotFound)Error"))) {
     stop(
       "Running: '", paste(all_args, collapse = " "), "' failed, \n",
