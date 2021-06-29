@@ -48,6 +48,7 @@ run_gcae <- function(
   )
 
   setwd(user_work_dir)
+  text
 
 
   if (any(stringr::str_detect(text, "(Import|ModuleNotFound)Error"))) {
