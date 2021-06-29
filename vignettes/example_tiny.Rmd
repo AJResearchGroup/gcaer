@@ -1,0 +1,102 @@
+---
+title: "example_tiny"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{example_tiny}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we'll use GCAE and its `example_tiny` example data, to train and use a GCAE neural network.
+
+Here are the steps:
+
+ * Setup GCAE
+ * See the genetic data
+ * See the GCAE model
+ * Use GCAE for training
+
+# Setup GCAE
+
+First we determine if GCAE is installed.
+
+To determine if GCAE is installed, we'll first load `gcaer`:
+
+```{r setup}
+library(gcaer)
+```
+
+Now `gcaer` can detect if GCAE is installed:
+
+```{r is_gcae_installed}
+good_to_go <- is_gcae_installed()
+if (!good_to_go) {
+  message("GCAE is not installed")
+  message("Tip: use 'gcaer::install_gcae()'")
+}
+```
+
+## See the genetic data
+
+These are the `example_tiny` files supplied with GCAE:
+
+```{r data_dir}
+if (good_to_go) {
+  data_dir <- file.path(get_gcae_subfolder(), "example_tiny/")
+  list.files(data_dir)
+}
+```
+
+We will be using the PLINK binary files, which are the `.fam` and `.snp` files.
+
+This is the `.fam` file:
+
+```{r read_fam_file}
+n_individuals <- "[unknown]"
+if (good_to_go) {
+  fam_filename <- list.files(data_dir, full.names = TRUE, pattern = "\\.fam$")
+  fam_table <- plinkr::read_plink_fam_file(fam_filename)
+  n_individuals <- nrow(fam_table)
+  knitr::kable(head(fam_table))
+}
+```
+
+This table shows us the `r n_individuals` individuals.
+
+This is the `.snp` file (which is actually a `.bim` file, see [the PLINK2 doc](https://www.cog-genomics.org/plink2/formats#bim)):
+
+```{r read_bim_file}
+if (good_to_go) {
+  snp_filename <- list.files(data_dir, full.names = TRUE, pattern = "\\.snp$")
+  bim_table <- plinkr::read_plink_bim_file(snp_filename)
+  knitr::kable(head(bim_table))
+}
+```
+
+```{r read_bed_file}
+if (good_to_go) {
+  bed_filename <- list.files(
+    data_dir, 
+    full.names = TRUE, 
+    pattern = "\\.eigenstratgeno$"
+  )
+  bed_table <- plinkr::read_plink_bed_file(
+    normalizePath(bed_filename),
+    names_loci = bim_table$id,
+    names_ind = fam_table$id
+  )
+  knitr::kable(head(bim_table))
+}
+```
+
+## See the GCAE model
+
+
+## Use GCAE for training
