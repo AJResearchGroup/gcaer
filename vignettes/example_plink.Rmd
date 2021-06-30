@@ -1,0 +1,164 @@
+---
+title: "example_plink"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{example_plink}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette, we'll use GCAE on the PLINK tutorial's example data, to train and use a GCAE neural network.
+
+Here are the steps:
+
+ * Setup GCAE
+ * See the genetic data
+ * See the GCAE model
+ * Use GCAE for training
+
+# Setup GCAE
+
+First we determine if GCAE is installed 
+and if the PLINK tutorial data is installed.
+
+To determine if GCAE is installed, we'll first load `gcaer`:
+
+```{r setup}
+library(gcaer)
+```
+
+Now, `gcaer` detects if GCAE is installed:
+
+```{r is_gcae_installed}
+if (!is_gcae_installed()) {
+  message("GCAE is not installed")
+  message("Tip: use 'gcaer::install_gcae()'")
+}
+```
+
+Here we use `plinkr` to detect if the PLINK tutorial data is installed:
+
+```{r is_plink_tutorial_data_installed}
+if (!plinkr::is_plink_tutorial_data_installed()) {
+  message("PLINK tutorial data is not installed")
+  message("Tip: use 'plinkr::install_plink_tutorial_data'")
+}
+```
+
+If both requirements are met, we are good to go:
+
+```{r good_to_go}
+good_to_go <- is_gcae_installed() && plinkr::is_plink_tutorial_data_installed()
+```
+
+Without these requirements met, this vignette will be rather dull :-)
+
+## See the genetic data
+
+These are the PLINK tutorial files:
+
+```{r all_plink_tutorial_data_filenames}
+if (good_to_go) {
+  plink_tutorial_data_filenames <- plinkr::get_plink_tutorial_data_filenames()
+  plink_tutorial_data_filenames
+}
+```
+
+
+We will be using `hapmap1` files, 
+that are in the non-binary/plain-text PLINK file format:
+
+```{r hapmap1_tutorial_data_filenames}
+if (good_to_go) {
+  plain_text_plink_filenames <- stringr::str_subset(
+    string = plink_tutorial_data_filenames, 
+    pattern = "hapmap1"
+  )
+  plain_text_plink_filenames
+}
+```
+
+As GCAE needs these files to be in binary PLINK format, we convert the
+text files to binary files and store these in a temporary folder:
+
+```{r make_bed}
+if (good_to_go) {
+  temp_folder <- plinkr::get_plinkr_tempfilename()
+  binary_plink_filenames <- plinkr::make_bed(
+    base_input_filename = tools::file_path_sans_ext(
+      plain_text_plink_filenames[1]
+    ),
+    base_output_filename = file.path(temp_folder, "hapmap1_binary")
+  )
+  binary_plink_filenames
+}
+```
+
+The three PLINK binary files are the `.fam` and `.bim`, `.bed` files.
+
+This is the `.fam` file:
+
+```{r read_fam_file}
+n_individuals <- "[unknown]"
+if (good_to_go) {
+  fam_filename <- stringr::str_subset(
+    binary_plink_filenames, 
+    pattern = "\\.fam$"
+  )
+  fam_table <- plinkr::read_plink_fam_file(fam_filename)
+  n_individuals <- nrow(fam_table)
+  knitr::kable(head(fam_table))
+}
+```
+
+This table shows us the `r n_individuals` individuals.
+
+This is the `.bim` file:
+
+```{r read_bim_file}
+n_snps <- "[unknown]"
+if (good_to_go) {
+  bim_filename <- stringr::str_subset(
+    binary_plink_filenames, 
+    pattern = "\\.bim$"
+  )
+  bim_table <- plinkr::read_plink_bim_file(bim_filename)
+  n_snps <- nrow(bim_table)
+  knitr::kable(head(bim_table))
+}
+```
+
+The `.bim` file shows the information of the `r n_snps` SNPs.
+
+The `.bed` file connects the individuals and the SNPs:
+
+```{r read_bed_file}
+if (good_to_go) {
+  bed_filename <- stringr::str_subset(
+    binary_plink_filenames, 
+    pattern = "\\.bed$"
+  )
+  bed_table <- plinkr::read_plink_bed_file(
+    bed_filename,
+    names_loci = bim_table$id,
+    names_ind = fam_table$fam
+  )
+  testthat::expect_equal(ncol(bed_table), n_individuals)
+  testthat::expect_equal(nrow(bed_table), n_snps)
+  knitr::kable(head(bed_table[, 1:10]))
+}
+```
+
+
+
+## See the GCAE model
+
+
+## Use GCAE for training

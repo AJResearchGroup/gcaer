@@ -70,29 +70,41 @@ if (good_to_go) {
 
 This table shows us the `r n_individuals` individuals.
 
-This is the `.snp` file (which is actually a `.bim` file, see [the PLINK2 doc](https://www.cog-genomics.org/plink2/formats#bim)):
+This is the `.bim` file:
 
 ```{r read_bim_file}
 if (good_to_go) {
-  snp_filename <- list.files(data_dir, full.names = TRUE, pattern = "\\.snp$")
-  bim_table <- plinkr::read_plink_bim_file(snp_filename)
+  bim_filename <- list.files(data_dir, full.names = TRUE, pattern = "\\.bim$")
+  bim_table <- plinkr::read_plink_bim_file(bim_filename)
   knitr::kable(head(bim_table))
 }
 ```
+
+This is the `.bed` file:
 
 ```{r read_bed_file}
 if (good_to_go) {
   bed_filename <- list.files(
     data_dir, 
     full.names = TRUE, 
-    pattern = "\\.eigenstratgeno$"
+    pattern = "\\.bed$"
   )
-  bed_table <- plinkr::read_plink_bed_file(
-    normalizePath(bed_filename),
-    names_loci = bim_table$id,
-    names_ind = fam_table$id
+  # genio::read_bed(
+  #   bed_filename,
+  #   names_loci = bim_table$id,
+  #   names_ind = fam_table$id
+  # )
+  bed_table <- ARTP2::read.bed(
+    bed = bed_filename, 
+    bim = bim_filename, 
+    fam = fam_filename
   )
-  knitr::kable(head(bim_table))
+  # bed_table <- plinkr::read_plink_bed_file(
+  #   bed_filename,
+  #   names_loci = bim_table$id,
+  #   names_ind = fam_table$id
+  # )
+  knitr::kable(head(bed_table[, 1:10]))
 }
 ```
 
