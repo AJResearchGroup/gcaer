@@ -53,8 +53,17 @@ if (good_to_go) {
   list.files(data_dir)
 }
 ```
+Of these files, we will use `HumanOrigins249_tiny` as the base file name:
 
-We will be using the PLINK binary files, which are the `.fam` and `.snp` files.
+```{r base_filename}
+if (good_to_go) {
+  base_filename <- "HumanOrigins249_tiny"
+  list.files(data_dir, pattern = base_filename)
+}
+```
+
+We will be using the PLINK binary files, which are the `.bed`, `.bim` 
+and `.fam` files.
 
 This is the `.fam` file:
 
@@ -89,26 +98,66 @@ if (good_to_go) {
     full.names = TRUE, 
     pattern = "\\.bed$"
   )
-  # genio::read_bed(
-  #   bed_filename,
-  #   names_loci = bim_table$id,
-  #   names_ind = fam_table$id
-  # )
-  bed_table <- ARTP2::read.bed(
-    bed = bed_filename, 
-    bim = bim_filename, 
-    fam = fam_filename
+  bed_table <- plinkr::read_plink_bed_file_from_files(
+    bed_filename = bed_filename,
+    bim_filename = bim_filename,
+    fam_filename = fam_filename
   )
-  # bed_table <- plinkr::read_plink_bed_file(
-  #   bed_filename,
-  #   names_loci = bim_table$id,
-  #   names_ind = fam_table$id
-  # )
   knitr::kable(head(bed_table[, 1:10]))
 }
 ```
 
 ## See the GCAE model
 
+### The model ID
 
+```{r}
+model_id <- "M1"
+if (good_to_go) {
+  model_filename <- file.path(get_gcae_subfolder(), "models", paste0(model_id, ".json"))
+  testthat::expect_true(file.exists(model_filename))
+  readr::read_lines(model_filename)
+}
+```
+
+### train_opts_id
+
+```{r}
+train_opts_id <- "ex3"
+if (good_to_go) {
+  train_opts_filename <- file.path(get_gcae_subfolder(), "train_opts", paste0(train_opts_id, ".json"))
+  testthat::expect_true(file.exists(train_opts_filename))
+  readr::read_lines(train_opts_filename)
+}
+```
+
+###
+
+### train_opts_id
+
+```{r}
+data_opts_id <- "b_0_4"
+if (good_to_go) {
+  data_opts_filename <- file.path(get_gcae_subfolder(), "data_opts", paste0(data_opts_id, ".json"))
+  testthat::expect_true(file.exists(data_opts_filename))
+  readr::read_lines(data_opts_filename)
+}
+```
 ## Use GCAE for training
+
+```{r}
+gcae_train(
+  datadir = data_dir,
+  data = base_filename,
+  model_id = model_id,
+  epochs = 1,
+  save_interval = 1,
+  train_opts_id = train_opts_id,
+  data_opts_id = data_opts_id,
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
+)
+```
+
+
+

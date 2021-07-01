@@ -42,7 +42,13 @@ as created by \link{create_gcae_options}}
 Set to \link{TRUE} for more output.
 Use \link{check_verbose} to detect if this argument is valid.}
 }
+\value{
+full paths to the created files
+}
 \description{
 Train model, and save its state at certain epochs to disk,
 use the GCAE command-line interface
+}
+\author{
+Richèl J.C. Bilderbeek
 }

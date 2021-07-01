@@ -3,6 +3,9 @@
 #' Train model, and save its state at certain epochs to disk,
 #' use the GCAE command-line interface
 #' @inheritParams default_params_doc
+#' @return full paths to the created files
+#' @author Richèl J.C. Bilderbeek
+#' @export
 gcae_train <- function(
   datadir = "example_tiny/",
   data = "HumanOrigins249_tiny",
@@ -29,5 +32,17 @@ gcae_train <- function(
     gcae_options = gcae_options,
     verbose = verbose
   )
+  ae_out_folder <- file.path(
+    get_gcae_subfolder(gcae_options = gcae_options),
+    "ae_out"
+  )
+  testthat::expect_true(dir.exists(ae_out_folder))
+  ae_out_subfolder <- file.path(
+    ae_out_folder,
+    paste0("ae.", model_id, ".", train_opts_id, ".", data_opts_id, ".", data)
+  )
+  testthat::expect_true(dir.exists(ae_out_subfolder))
+  list.files(path = ae_out_subfolder, full.names = TRUE, recursive = TRUE)
+
 
 }

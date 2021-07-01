@@ -20,6 +20,7 @@ Imports:
     reticulate,
     stringr
 Suggests:
+    ARTP2,
     ggplot2,
     markdown,
     rmarkdown,

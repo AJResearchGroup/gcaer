@@ -1,13 +1,18 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!is_gcae_installed()) return()
+  datadir <- file.path(get_gcae_subfolder(), "example_tiny/")
+  data <- "HumanOrigins249_tiny"
+  model_id <- "M1"
+  train_opts_id <- "ex3"
+  data_opts_id <- "b_0_4"
   expect_silent(
     gcae_train(
-      datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
-      data = "HumanOrigins249_tiny",
-      model_id = "M1",
-      train_opts_id = "ex3",
-      data_opts_id = "b_0_4"
+      datadir = datadir,
+      data = data,
+      model_id = model_id,
+      train_opts_id = train_opts_id,
+      data_opts_id = data_opts_id
     )
   )
 
