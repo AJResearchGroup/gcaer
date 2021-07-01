@@ -2,12 +2,13 @@
 
 Newest versions at top.
 
-## gcaer 0.1 (unreleased)
+## gcaer v0.1 (2021-07-01)
 
 ### NEW FEATURES
 
  * Can install and uninstall GCAE
- * Can run GCAE
+ * Can run GCAE using `run_gcae`
+ * Can train GCAE using `gcae_train`
 
 ### MINOR IMPROVEMENTS
 
