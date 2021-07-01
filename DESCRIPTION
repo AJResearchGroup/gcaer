@@ -23,6 +23,7 @@ Suggests:
     ARTP2,
     ggplot2,
     markdown,
+    readr,
     rmarkdown,
     knitr,
     testthat (>= 3.0.0)
