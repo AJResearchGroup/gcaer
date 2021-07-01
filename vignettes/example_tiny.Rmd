@@ -82,12 +82,16 @@ This table shows us the `r n_individuals` individuals.
 This is the `.bim` file:
 
 ```{r read_bim_file}
+n_snps <- "[unknown]"
 if (good_to_go) {
   bim_filename <- list.files(data_dir, full.names = TRUE, pattern = "\\.bim$")
   bim_table <- plinkr::read_plink_bim_file(bim_filename)
+  n_snps <- nrow(bim_table)
   knitr::kable(head(bim_table))
 }
 ```
+
+This table shows us the `r n_snps` SNPs.
 
 This is the `.bed` file:
 
@@ -103,6 +107,8 @@ if (good_to_go) {
     bim_filename = bim_filename,
     fam_filename = fam_filename
   )
+  testthat::expect_equal(n_individuals, nrow(bed_table))
+  testthat::expect_equal(n_snps, ncol(bed_table))
   knitr::kable(head(bed_table[, 1:10]))
 }
 ```
