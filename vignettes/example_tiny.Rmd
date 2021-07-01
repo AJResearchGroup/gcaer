@@ -146,17 +146,19 @@ if (good_to_go) {
 ## Use GCAE for training
 
 ```{r}
-gcae_train(
-  datadir = data_dir,
-  data = base_filename,
-  model_id = model_id,
-  epochs = 1,
-  save_interval = 1,
-  train_opts_id = train_opts_id,
-  data_opts_id = data_opts_id,
-  gcae_options = create_gcae_options(),
-  verbose = FALSE
-)
+if (good_to_go) {
+  gcae_train(
+    datadir = data_dir,
+    data = base_filename,
+    model_id = model_id,
+    epochs = 1,
+    save_interval = 1,
+    train_opts_id = train_opts_id,
+    data_opts_id = data_opts_id,
+    gcae_options = create_gcae_options(),
+    verbose = FALSE
+  )
+}
 ```
 
 
