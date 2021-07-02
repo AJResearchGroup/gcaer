@@ -15,6 +15,14 @@ gcae_train <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
+  gcaer::check_datadir(datadir)
+  gcaer::check_data(datadir)
+  gcaer::check_gcae_setup(gcae_setup)
+  gcaer::check_epochs(epochs)
+  gcaer::check_save_interval(save_interval)
+  gcaer::check_gcae_options(gcae_options)
+  plinkr::check_verbose(verbose)
+
   args <- c(
     "train",
     "--datadir", datadir,

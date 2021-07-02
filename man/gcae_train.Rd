@@ -20,6 +20,9 @@ gcae_train(
 \item{data}{file prefix, not including path, of the data files
 (EIGENSTRAT of PLINK format)}
 
+\item{gcae_setup}{GCAE model setup,
+as created by \link{create_gcae_setup}}
+
 \item{epochs}{number of epochs to train}
 
 \item{save_interval}{epoch intervals at which to save state of model,

@@ -1,0 +1,13 @@
+test_that("use", {
+  expect_silent(check_data("my_data"))
+  expect_error(check_data(c(1, 1)))
+  expect_error(check_data(0))
+  expect_error(check_data(-1))
+  expect_error(check_data(""))
+  expect_error(check_data(c()))
+  expect_error(check_data(NA))
+  expect_error(check_data(NULL))
+  expect_error(check_data(Inf))
+  expect_error(check_data(42))
+  expect_error(check_data(3.14))
+})

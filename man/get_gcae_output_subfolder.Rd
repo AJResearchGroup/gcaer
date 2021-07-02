@@ -14,6 +14,9 @@ get_gcae_output_subfolder(
 \item{data}{file prefix, not including path, of the data files
 (EIGENSTRAT of PLINK format)}
 
+\item{gcae_setup}{GCAE model setup,
+as created by \link{create_gcae_setup}}
+
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
 }

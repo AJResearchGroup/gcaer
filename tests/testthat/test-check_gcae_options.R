@@ -8,4 +8,12 @@ test_that("use", {
   expect_error(check_gcae_options(Inf))
   expect_error(check_gcae_options(42))
   expect_error(check_gcae_options(3.14))
+  skip("Not protect against Machiavelli yet")
+  expect_error(
+    check_gcae_options(
+      c(create_gcae_options(),
+        create_gcae_options()
+      )
+    )
+  )
 })

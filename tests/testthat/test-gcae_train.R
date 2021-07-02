@@ -35,6 +35,6 @@ test_that("use", {
       data = "HumanOrigins249_tiny",
       gcae_setup = "nonsense"
     ),
-    "Error"
+    "'gcae_setup' must be a list"
   )
 })
