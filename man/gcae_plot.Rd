@@ -4,10 +4,32 @@
 \alias{gcae_plot}
 \title{Plot}
 \usage{
-gcae_plot()
+gcae_plot(
+  datadir = "example_tiny/",
+  data = "HumanOrigins249_tiny",
+  gcae_setup = create_gcae_setup(),
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
+)
+}
+\arguments{
+\item{datadir}{directory where sample data is stored}
+
+\item{data}{file prefix, not including path, of the data files
+(EIGENSTRAT of PLINK format)}
+
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link{check_verbose} to detect if this argument is valid.}
+}
+\value{
+full paths to the created files
 }
 \description{
-Plot
+Plot, using the GCAE command-line interface
 }
 \author{
 Richèl J.C. Bilderbeek

@@ -29,8 +29,7 @@ run_gcae <- function(
   all_args <- c(reticulate::py_config()$python, gcae_run_gcae_py_path, args)
   if (verbose) {
     message(
-      "Running: '", gcae_run_gcae_py_path, " ",
-        paste(all_args, collapse = " "), "'. \n",
+      "Running: '", paste(all_args, collapse = " "), "'. \n",
       "Tip: you should be able to copy paste this :-)"
     )
   }

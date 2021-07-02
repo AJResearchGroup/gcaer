@@ -7,11 +7,9 @@
 gcae_train(
   datadir = "example_tiny/",
   data = "HumanOrigins249_tiny",
-  model_id = "M1",
+  gcae_setup = create_gcae_setup(),
   epochs = 1,
   save_interval = 1,
-  train_opts_id = "ex3",
-  data_opts_id = "b_0_4",
   gcae_options = create_gcae_options(),
   verbose = FALSE
 )
@@ -22,18 +20,10 @@ gcae_train(
 \item{data}{file prefix, not including path, of the data files
 (EIGENSTRAT of PLINK format)}
 
-\item{model_id}{model id, corresponding to a file models/model_id.json}
-
 \item{epochs}{number of epochs to train}
 
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}
-
-\item{train_opts_id}{train options id, corresponding to a file
-train_opts/train_opts_id.json}
-
-\item{data_opts_id}{data options id,
-corresponding to a file data_opts/data_opts_id.json}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}

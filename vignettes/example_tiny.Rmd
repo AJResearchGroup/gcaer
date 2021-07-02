@@ -43,13 +43,25 @@ if (!good_to_go) {
 }
 ```
 
+These are the GCAE options:
+
+```{r gcae_options}
+gcae_options <- create_gcae_options()
+gcae_options
+```
+
+The GCAE options allow a user to select a GCAE version at a custom location.
+
 ## See the genetic data
 
 These are the `example_tiny` files supplied with GCAE:
 
 ```{r data_dir}
 if (good_to_go) {
-  data_dir <- file.path(get_gcae_subfolder(), "example_tiny/")
+  data_dir <- file.path(
+    get_gcae_subfolder(gcae_options = gcae_options), 
+    "example_tiny/"
+  )
   list.files(data_dir)
 }
 ```
@@ -57,8 +69,8 @@ Of these files, we will use `HumanOrigins249_tiny` as the base file name:
 
 ```{r base_filename}
 if (good_to_go) {
-  base_filename <- "HumanOrigins249_tiny"
-  list.files(data_dir, pattern = base_filename)
+  data <- "HumanOrigins249_tiny"
+  list.files(data_dir, pattern = data)
 }
 ```
 
@@ -113,14 +125,29 @@ if (good_to_go) {
 }
 ```
 
-## See the GCAE model
+## See the GCAE setup
+
+In this tutorial, we'll be using a standard GCAE setup.
+
+```{r}
+gcae_setup <- create_gcae_setup()
+names(gcae_setup)
+```
+
+The GCAE setup contains the GCAE setup, such as the auto-encoder's
+specification, training options and data options:
+
+ * `model_id`: the setup of the auto-encoder
+ * `train_opts_id`: the setup of the training of the auto-encoder
+ * `data_opts_id`: the setup of the ?file storage? of the auto-encoder
+
+Here we take a look at how each of these is set up.
 
 ### The model ID
 
 ```{r}
-model_id <- "M1"
 if (good_to_go) {
-  model_filename <- file.path(get_gcae_subfolder(), "models", paste0(model_id, ".json"))
+  model_filename <- get_gcae_model_filename(gcae_setup$model_id)
   testthat::expect_true(file.exists(model_filename))
   readr::read_lines(model_filename)
 }
@@ -129,43 +156,51 @@ if (good_to_go) {
 ### train_opts_id
 
 ```{r}
-train_opts_id <- "ex3"
 if (good_to_go) {
-  train_opts_filename <- file.path(get_gcae_subfolder(), "train_opts", paste0(train_opts_id, ".json"))
+  train_opts_filename <- get_gcae_train_opts_filename(gcae_setup$train_opts_id)
   testthat::expect_true(file.exists(train_opts_filename))
   readr::read_lines(train_opts_filename)
 }
 ```
 
-###
-
-### train_opts_id
+### data_opts_id
 
 ```{r}
-data_opts_id <- "b_0_4"
 if (good_to_go) {
-  data_opts_filename <- file.path(get_gcae_subfolder(), "data_opts", paste0(data_opts_id, ".json"))
+  data_opts_filename <- get_gcae_data_opts_filename(gcae_setup$data_opts_id)
   testthat::expect_true(file.exists(data_opts_filename))
   readr::read_lines(data_opts_filename)
 }
 ```
+
 ## Use GCAE for training
 
 ```{r}
 if (good_to_go) {
   gcae_train(
     datadir = data_dir,
-    data = base_filename,
-    model_id = model_id,
-    epochs = 1,
+    data = data,
+    gcae_setup = gcae_setup,
+    epochs = 3,
     save_interval = 1,
-    train_opts_id = train_opts_id,
-    data_opts_id = data_opts_id,
-    gcae_options = create_gcae_options(),
     verbose = FALSE
   )
 }
 ```
 
 
+## Show neural network
 
+```{r}
+if (good_to_go) {
+  gcae_output_subfolder <- get_gcae_output_subfolder(
+    data = data,
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options
+  )
+  list.files(gcae_output_subfolder)
+}
+```
+
+
+![](example_tiny_ae_output.png)
