@@ -11,7 +11,8 @@ get_gcae_data_opts_filename(
 }
 \arguments{
 \item{data_opts_id}{data options id,
-corresponding to a file data_opts/data_opts_id.json}
+corresponding to a file data_opts/data_opts_id.json
+The data options affect how data is input to the model.}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}

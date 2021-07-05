@@ -13,6 +13,7 @@
 #' @param datadir directory where sample data is stored
 #' @param data_opts_id data options id,
 #' corresponding to a file data_opts/data_opts_id.json
+#' The data options affect how data is input to the model.
 #' @param epochs number of epochs to train
 #' @param example_filename name of the example file
 #' @param gcae_exe_path path to

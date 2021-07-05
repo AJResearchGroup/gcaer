@@ -17,7 +17,8 @@ create_gcae_setup(
 train_opts/train_opts_id.json}
 
 \item{data_opts_id}{data options id,
-corresponding to a file data_opts/data_opts_id.json}
+corresponding to a file data_opts/data_opts_id.json
+The data options affect how data is input to the model.}
 }
 \value{
 full paths to the created files

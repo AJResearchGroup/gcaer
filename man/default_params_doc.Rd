@@ -49,7 +49,8 @@ i.e. the phenotypic value for homozygotes of the common allele}
 \item{datadir}{directory where sample data is stored}
 
 \item{data_opts_id}{data options id,
-corresponding to a file data_opts/data_opts_id.json}
+corresponding to a file data_opts/data_opts_id.json
+The data options affect how data is input to the model.}
 
 \item{epochs}{number of epochs to train}
 
