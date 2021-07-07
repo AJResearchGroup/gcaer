@@ -7,6 +7,7 @@ test_that("use", {
     get_gcae_subfolder(gcae_options = gcae_options),
     "example_tiny/"
   )
+  superpops <- file.path(datadir, "HO_superpopulations")
   gcae_train(
     datadir = datadir,
     data = data,
@@ -15,20 +16,13 @@ test_that("use", {
     epochs = 3,
     save_interval = 1
   )
-  superpops <- file.path(datadir, "HO_superpopulations")
-  gcae_project(
-    datadir = datadir,
-    data = data,
-    superpops = superpops,
-    gcae_setup = gcae_setup,
-    gcae_options = gcae_options
-  )
-  gcae_plot(
-    datadir = datadir,
-    data = data,
-    superpops = superpops,
-    gcae_setup = gcae_setup,
-    gcae_options = gcae_options,
-    verbose = TRUE
+  expect_silent(
+    gcae_project(
+      datadir = datadir,
+      data = data,
+      superpops = superpops,
+      gcae_setup = gcae_setup,
+      gcae_options = gcae_options
+    )
   )
 })
