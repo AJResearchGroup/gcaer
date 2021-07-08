@@ -16,7 +16,6 @@ gcae_project <- function(
   verbose = FALSE
 ) {
   testthat::expect_true(file.exists(superpops))
-  # python3 run_gcae.py project --datadir example_tiny/ --data HumanOrigins249_tiny --model_id M1 --train_opts_id ex3  --data_opts_id b_0_4 --superpops example_tiny/HO_superpopulations
   args <- c(
     "project",
     "--datadir", datadir,
@@ -31,4 +30,18 @@ gcae_project <- function(
     gcae_options = gcae_options,
     verbose = verbose
   )
+  gcae_output_subfolder <- gcaer::get_gcae_output_subfolder(
+    data = data,
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options
+  )
+  testthat::expect_true(dir.exists(gcae_output_subfolder))
+  gcae_plot_subfolder <- file.path(gcae_output_subfolder, data)
+  testthat::expect_true(dir.exists(gcae_plot_subfolder))
+  project_filenames <- list.files(
+    gcae_plot_subfolder,
+    full.names = TRUE,
+    recursive = TRUE
+  )
+  project_filenames
 }

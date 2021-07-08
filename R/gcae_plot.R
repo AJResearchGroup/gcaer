@@ -16,9 +16,9 @@ gcae_plot <- function(
   verbose = FALSE
 ) {
   testthat::expect_true(file.exists(superpops))
-  trainedmodelname <- paste0(
-    "ae.", gcae_setup$model_id, ".", gcae_setup$train_opts_id, ".",
-           gcae_setup$data_opts_id, ".", "HumanOrigins249_tiny"
+  trainedmodelname <- gcaer::get_gcae_trainedmodelname(
+    data = data,
+    gcae_setup = gcae_setup
   )
   args <- c(
     "plot",
@@ -31,5 +31,18 @@ gcae_plot <- function(
     gcae_options = gcae_options,
     verbose = verbose
   )
-
+  gcae_output_subfolder <- gcaer::get_gcae_output_subfolder(
+    data = data,
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options
+  )
+  testthat::expect_true(dir.exists(gcae_output_subfolder))
+  gcae_plot_subfolder <- file.path(gcae_output_subfolder, data)
+  testthat::expect_true(dir.exists(gcae_plot_subfolder))
+  plot_filenames <- list.files(
+    gcae_plot_subfolder,
+    full.names = TRUE,
+    recursive = TRUE
+  )
+  plot_filenames
 }

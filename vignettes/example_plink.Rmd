@@ -78,7 +78,7 @@ that are in the non-binary/plain-text PLINK file format:
 ```{r hapmap1_tutorial_data_filenames}
 if (good_to_go) {
   plain_text_plink_filenames <- stringr::str_subset(
-    string = plink_tutorial_data_filenames, 
+    string = plink_tutorial_data_filenames,
     pattern = "hapmap1"
   )
   plain_text_plink_filenames
@@ -109,7 +109,7 @@ This is the `.fam` file:
 n_individuals <- "[unknown]"
 if (good_to_go) {
   fam_filename <- stringr::str_subset(
-    binary_plink_filenames, 
+    binary_plink_filenames,
     pattern = "\\.fam$"
   )
   fam_table <- plinkr::read_plink_fam_file(fam_filename)
@@ -126,7 +126,7 @@ This is the `.bim` file:
 n_snps <- "[unknown]"
 if (good_to_go) {
   bim_filename <- stringr::str_subset(
-    binary_plink_filenames, 
+    binary_plink_filenames,
     pattern = "\\.bim$"
   )
   bim_table <- plinkr::read_plink_bim_file(bim_filename)
@@ -142,7 +142,7 @@ The `.bed` file connects the individuals and the SNPs:
 ```{r read_bed_file}
 if (good_to_go) {
   bed_filename <- stringr::str_subset(
-    binary_plink_filenames, 
+    binary_plink_filenames,
     pattern = "\\.bed$"
   )
   bed_table <- plinkr::read_plink_bed_file(

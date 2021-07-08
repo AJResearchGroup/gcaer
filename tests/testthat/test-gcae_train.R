@@ -4,14 +4,17 @@ test_that("use", {
   datadir <- file.path(get_gcae_subfolder(), "example_tiny/")
   data <- "HumanOrigins249_tiny"
   gcae_setup <- create_gcae_setup()
-  expect_silent(
-    gcae_train(
-      datadir = datadir,
-      data = data,
-      gcae_setup = gcae_setup
-    )
+  train_filenames <- gcae_train(
+    datadir = datadir,
+    data = data,
+    gcae_setup = gcae_setup,
+    epochs = 1,
+    save_interval = 1
   )
+  expect_true(all(file.exists(train_filenames)))
+})
 
+test_that("abuse", {
   expect_error(
     gcae_train(
       datadir = "nonsense/",
@@ -37,4 +40,5 @@ test_that("use", {
     ),
     "'gcae_setup' must be a list"
   )
+
 })

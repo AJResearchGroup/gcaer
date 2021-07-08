@@ -44,5 +44,10 @@ gcae_train <- function(
     gcae_options = gcae_options
   )
   testthat::expect_true(dir.exists(ae_out_subfolder))
-  list.files(path = ae_out_subfolder, full.names = TRUE, recursive = TRUE)
+  train_filenames <- list.files(
+    path = ae_out_subfolder,
+    full.names = TRUE,
+    recursive = TRUE
+  )
+  train_filenames
 }

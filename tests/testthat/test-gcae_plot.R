@@ -23,7 +23,7 @@ test_that("use", {
     gcae_setup = gcae_setup,
     gcae_options = gcae_options
   )
-  gcae_plot(
+  plot_filenames <- gcae_plot(
     datadir = datadir,
     data = data,
     superpops = superpops,
@@ -31,4 +31,5 @@ test_that("use", {
     gcae_options = gcae_options,
     verbose = TRUE
   )
+  plot_filenames
 })
