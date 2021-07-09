@@ -29,6 +29,9 @@ jobs:
       - name: Install libcurl4-openssl-dev
         run: sudo apt install -qq libcurl4-openssl-dev
 
+      - name: Install libpoppler-cpp-dev
+        run: sudo apt install -qq libpoppler-cpp-dev
+
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
