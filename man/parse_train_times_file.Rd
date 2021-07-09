@@ -6,6 +6,9 @@
 \usage{
 parse_train_times_file(train_times_filename)
 }
+\arguments{
+\item{train_times_filename}{path to the \code{train_times.csv} file}
+}
 \value{
 a tibble with columns:
 \itemize{

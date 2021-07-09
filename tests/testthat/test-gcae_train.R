@@ -15,6 +15,11 @@ test_that("use", {
 })
 
 test_that("abuse", {
+  gcae_setup <- create_gcae_setup(
+    model_id = "M1",
+    train_opts_id = "ex3",
+    data_opts_id = "b_0_4"
+  )
   expect_error(
     gcae_train(
       datadir = "nonsense/",

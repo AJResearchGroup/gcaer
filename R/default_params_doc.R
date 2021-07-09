@@ -27,17 +27,30 @@
 #' Use \link{get_gcae_version} to get the \code{GCAE} version.
 #' @param gcaer_folder name of the folder where \link{gcaer}
 #' stores its temporary files
+#' @param genotype_concordances_filename path to the
+#' `genotype_concordances.csv` file
 #' @param log_filename name of a \code{GCAE} \code{.log} file
+#' @param losses_from_project_filename path to the
+#' `losses_from_project.csv` file
+#' @param losses_from_train_t_filename path to the
+#' `losses_from_train_t.csv` file
+#' @param losses_from_train_v_filename path to the
+#' `losses_from_train_v.csv` file
 #' @param model_id model id, corresponding to a file models/model_id.json
 #' @param os name of the operating system,
 #' as returned by \link[rappdirs]{app_dir}
 #' @param out the base filename of the output files.
 #' This parameter is named after the \code{GCAE}
 #' \code{--out} flag
+#' @param project_filenames path to the files
+#' as created (and returned) by \link{gcae_project}
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
+#' @param train_filenames path to the files
+#' as created (and returned) by \link{gcae_train}
 #' @param train_opts_id train options id, corresponding to a file
 #' train_opts/train_opts_id.json
+#' @param train_times_filename path to the `train_times.csv` file
 #' @param url \code{GCAE} download URL
 #' @param verbose the verbosity of a function.
 #' Set to \link{TRUE} for more output.
@@ -62,12 +75,19 @@ default_params_doc <- function(
   gcae_setup,
   gcae_version,
   gcaer_folder,
+  genotype_concordances_filename,
   log_filename,
+  losses_from_project_filename,
+  losses_from_train_t_filename,
+  losses_from_train_v_filename,
   model_id,
   os,
   out,
+  project_filenames,
   save_interval,
+  train_filenames,
   train_opts_id,
+  train_times_filename,
   url,
   verbose
 ) {

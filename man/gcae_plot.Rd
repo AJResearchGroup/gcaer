@@ -5,10 +5,10 @@
 \title{Plot}
 \usage{
 gcae_plot(
-  datadir = "example_tiny/",
-  data = "HumanOrigins249_tiny",
+  datadir,
+  data,
   superpops = file.path(datadir, "HO_superpopulations"),
-  gcae_setup = create_gcae_setup(),
+  gcae_setup,
   gcae_options = create_gcae_options(),
   verbose = FALSE
 )

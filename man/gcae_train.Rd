@@ -5,9 +5,9 @@
 \title{Train model, and save its state at certain epochs to disk.}
 \usage{
 gcae_train(
-  datadir = "example_tiny/",
-  data = "HumanOrigins249_tiny",
-  gcae_setup = create_gcae_setup(),
+  datadir,
+  data,
+  gcae_setup,
   epochs = 1,
   save_interval = 1,
   gcae_options = create_gcae_options(),

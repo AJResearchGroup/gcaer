@@ -21,12 +21,19 @@ default_params_doc(
   gcae_setup,
   gcae_version,
   gcaer_folder,
+  genotype_concordances_filename,
   log_filename,
+  losses_from_project_filename,
+  losses_from_train_t_filename,
+  losses_from_train_v_filename,
   model_id,
   os,
   out,
+  project_filenames,
   save_interval,
+  train_filenames,
   train_opts_id,
+  train_times_filename,
   url,
   verbose
 )
@@ -73,7 +80,19 @@ Use \link{get_gcae_version} to get the \code{GCAE} version.}
 \item{gcaer_folder}{name of the folder where \link{gcaer}
 stores its temporary files}
 
+\item{genotype_concordances_filename}{path to the
+\code{genotype_concordances.csv} file}
+
 \item{log_filename}{name of a \code{GCAE} \code{.log} file}
+
+\item{losses_from_project_filename}{path to the
+\code{losses_from_project.csv} file}
+
+\item{losses_from_train_t_filename}{path to the
+\code{losses_from_train_t.csv} file}
+
+\item{losses_from_train_v_filename}{path to the
+\code{losses_from_train_v.csv} file}
 
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 
@@ -84,11 +103,19 @@ as returned by \link[rappdirs]{app_dir}}
 This parameter is named after the \code{GCAE}
 \code{--out} flag}
 
+\item{project_filenames}{path to the files
+as created (and returned) by \link{gcae_project}}
+
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}
 
+\item{train_filenames}{path to the files
+as created (and returned) by \link{gcae_train}}
+
 \item{train_opts_id}{train options id, corresponding to a file
 train_opts/train_opts_id.json}
+
+\item{train_times_filename}{path to the \code{train_times.csv} file}
 
 \item{url}{\code{GCAE} download URL}
 

@@ -6,6 +6,10 @@
 \usage{
 parse_train_filenames(train_filenames)
 }
+\arguments{
+\item{train_filenames}{path to the files
+as created (and returned) by \link{gcae_train}}
+}
 \value{
 a list of tibbles
 \itemize{

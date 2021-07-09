@@ -4,14 +4,32 @@
 #' @inheritParams default_params_doc
 #' @param superpops path to the superpops file.
 #' This argument is named after the GCAE `--superpops` CLI flag.
-#' @return full paths to the created files
+#' @return full paths to the created files. These are:
+#'  * `losses_from_project.csv` and `losses_from_project.pdf`
+#'    show the loss function value of the model per epoch.
+#'    Note that this is the loss for the entire data set.
+#'  * `genotype_concordances.csv` and `genotype_concordances.pdf`
+#'    the genotype concordances of the model per epoch
+#'    (this is the rate that the model output is equal to the model input).
+#'    the black line shows the baseline genotype concordance,
+#'    given by guessing the most frequently occurring genotype per marker.
+#'  * A file called `encoded_data.h5` containing the projected data
+#'    (= the encoded data) for all samples at each epoch.
+#'    This file is used by the plot, evaluate and animate commands.
+#'  * for each saved epoch: a plot of the projected samples colored
+#'    according to population, and if specified, superpopulation.
+#'    A legend is written to a separate file.
+#'  * A plot `true_genotypes.pdf` showing a histogram of the true (input)
+#'    genotypes that the model is trained on
+#'  * A plot output_as_genotypes.pdf showing a histogram of the model output
+#'    interpreted as genotypes, for the last epoch
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_project <- function(
-  datadir = "example_tiny/",
-  data = "HumanOrigins249_tiny",
-  superpops = file.path(datadir, "HO_superpopulations"),
+  datadir,
+  data,
   gcae_setup = create_gcae_setup(),
+  superpops = file.path(datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {

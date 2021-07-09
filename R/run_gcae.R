@@ -50,7 +50,9 @@ run_gcae <- function(
   text
 
 
-  if (any(stringr::str_detect(text, "(Import|ModuleNotFound)Error"))) {
+  if (any(
+    stringr::str_detect(text, "(Import|ModuleNotFound)?Error|Invalid command"))
+  ) {
     stop(
       "Running: '", paste(all_args, collapse = " "), "' failed, \n",
       "with message: \n",

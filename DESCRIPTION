@@ -25,7 +25,10 @@ Suggests:
     readr,
     rmarkdown,
     knitr,
-    testthat (>= 3.0.0)
+    pdftools,
+    png,
+    testthat (>= 3.0.0),
+    tibble
 URL: https://github.com/richelbilderbeek/gcaer/
 BugReports: https://github.com/richelbilderbeek/gcaer/
 Config/testthat/edition: 3

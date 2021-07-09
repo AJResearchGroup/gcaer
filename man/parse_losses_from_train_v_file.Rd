@@ -6,6 +6,10 @@
 \usage{
 parse_losses_from_train_v_file(losses_from_train_v_filename)
 }
+\arguments{
+\item{losses_from_train_v_filename}{path to the
+\code{losses_from_train_v.csv} file}
+}
 \value{
 a tibble with columns:
 \itemize{

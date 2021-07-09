@@ -5,10 +5,10 @@
 \title{Project}
 \usage{
 gcae_project(
-  datadir = "example_tiny/",
-  data = "HumanOrigins249_tiny",
-  superpops = file.path(datadir, "HO_superpopulations"),
+  datadir,
+  data,
   gcae_setup = create_gcae_setup(),
+  superpops = file.path(datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 )
@@ -19,11 +19,11 @@ gcae_project(
 \item{data}{file prefix, not including path, of the data files
 (EIGENSTRAT of PLINK format)}
 
-\item{superpops}{path to the superpops file.
-This argument is named after the GCAE \code{--superpops} CLI flag.}
-
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
+
+\item{superpops}{path to the superpops file.
+This argument is named after the GCAE \code{--superpops} CLI flag.}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
@@ -33,7 +33,27 @@ Set to \link{TRUE} for more output.
 Use \link{check_verbose} to detect if this argument is valid.}
 }
 \value{
-full paths to the created files
+full paths to the created files. These are:
+\itemize{
+\item \code{losses_from_project.csv} and \code{losses_from_project.pdf}
+show the loss function value of the model per epoch.
+Note that this is the loss for the entire data set.
+\item \code{genotype_concordances.csv} and \code{genotype_concordances.pdf}
+the genotype concordances of the model per epoch
+(this is the rate that the model output is equal to the model input).
+the black line shows the baseline genotype concordance,
+given by guessing the most frequently occurring genotype per marker.
+\item A file called \code{encoded_data.h5} containing the projected data
+(= the encoded data) for all samples at each epoch.
+This file is used by the plot, evaluate and animate commands.
+\item for each saved epoch: a plot of the projected samples colored
+according to population, and if specified, superpopulation.
+A legend is written to a separate file.
+\item A plot \code{true_genotypes.pdf} showing a histogram of the true (input)
+genotypes that the model is trained on
+\item A plot output_as_genotypes.pdf showing a histogram of the model output
+interpreted as genotypes, for the last epoch
+}
 }
 \description{
 Project, using the GCAE command-line interface

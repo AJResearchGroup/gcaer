@@ -3,6 +3,6 @@ test_that("use", {
   t <- parse_train_times_file(train_times_filename)
   expect_equal(
     names(t),
-    c("n", "t")
+    c("epoch", "train_times_sec")
   )
 })

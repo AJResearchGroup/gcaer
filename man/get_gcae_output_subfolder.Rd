@@ -5,8 +5,8 @@
 \title{Get the path to the GCAE output subfolder}
 \usage{
 get_gcae_output_subfolder(
-  data = "HumanOrigins249_tiny",
-  gcae_setup = create_gcae_setup(),
+  data,
+  gcae_setup,
   gcae_options = create_gcae_options()
 )
 }
@@ -28,10 +28,10 @@ Get the path to the GCAE output subfolder.
 This subfolder contains the output of one model
 }
 \examples{
-get_gcae_output_subfolder()
-get_gcae_output_subfolder(data = "HumanOrigins249_tiny")
-get_gcae_output_subfolder(gcae_setup = create_gcae_setup())
-get_gcae_output_subfolder(gcae_options = create_gcae_options())
+get_gcae_output_subfolder(
+  data = "HumanOrigins249_tiny",
+  gcae_setup = create_gcae_setup()
+)
 }
 \author{
 Richèl J.C. Bilderbeek

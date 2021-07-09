@@ -24,5 +24,9 @@ check_gcae_options <- function(
     )
   }
   testthat::expect_true("gcae_version" %in% names(gcae_options))
+  testthat::expect_equal(
+    length(names(gcae_options)),
+    length(unique(names(gcae_options)))
+  )
   gcaer::check_gcae_version(gcae_options$gcae_version)
 }

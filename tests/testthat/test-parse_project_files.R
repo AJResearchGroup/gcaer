@@ -1,35 +1,31 @@
 test_that("use", {
   if (!is_gcae_installed()) return()
+  gcae_setup <- create_gcae_setup()
   gcae_options <- create_gcae_options()
   data <- "HumanOrigins249_tiny"
   datadir <- file.path(
     get_gcae_subfolder(gcae_options = gcae_options),
     "example_tiny/"
   )
-  gcae_setup <- create_gcae_setup()
+  superpops <- file.path(datadir, "HO_superpopulations")
   gcae_train(
     datadir = datadir,
     data = data,
     gcae_setup = gcae_setup,
-    epochs = 3,
-    save_interval = 1,
-    gcae_options = gcae_options
-  )
-  superpops <- file.path(datadir, "HO_superpopulations")
-  gcae_project(
-    datadir = datadir,
-    data = data,
-    superpops = superpops,
-    gcae_setup = gcae_setup,
-    gcae_options = gcae_options
-  )
-  plot_filenames <- gcae_plot(
-    datadir = datadir,
-    data = data,
-    superpops = superpops,
-    gcae_setup = gcae_setup,
     gcae_options = gcae_options,
-    verbose = TRUE
+    epochs = 3,
+    save_interval = 1
   )
-  plot_filenames
+  project_filenames <- gcae_project(
+    datadir = datadir,
+    data = data,
+    superpops = superpops,
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options
+  )
+  project_results <- parse_project_files(project_filenames)
+  expect_equal(
+    names(project_results),
+    c("losses_from_project_table", "genotype_concordances_table")
+  )
 })
