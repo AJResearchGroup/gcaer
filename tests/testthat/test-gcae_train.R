@@ -15,6 +15,8 @@ test_that("use", {
 })
 
 test_that("abuse", {
+  expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!is_gcae_installed()) return()
   gcae_setup <- create_gcae_setup(
     model_id = "M1",
     train_opts_id = "ex3",
