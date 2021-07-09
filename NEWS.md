@@ -6,7 +6,8 @@ Newest versions at top.
 
 ### NEW FEATURES
 
- * None
+ * Can project GCAE using `gcae_project`
+ * Can plot the results of the GCAE using `gcae_plot`
 
 ### MINOR IMPROVEMENTS
 
