@@ -13,7 +13,7 @@
 #' @export
 get_gcae_trainedmodelname <- function(
   data,
-  gcae_setup
+  gcae_setup = create_gcae_setup()
 ) {
   gcaer::check_data(data)
   gcaer::check_gcae_setup(gcae_setup)

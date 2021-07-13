@@ -8,7 +8,7 @@ gcae_plot(
   datadir,
   data,
   superpops = file.path(datadir, "HO_superpopulations"),
-  gcae_setup,
+  gcae_setup = create_gcae_setup(),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 )

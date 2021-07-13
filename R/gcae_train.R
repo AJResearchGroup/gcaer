@@ -9,7 +9,7 @@
 gcae_train <- function(
   datadir,
   data,
-  gcae_setup,
+  gcae_setup = create_gcae_setup(),
   epochs = 1,
   save_interval = 1,
   gcae_options = create_gcae_options(),

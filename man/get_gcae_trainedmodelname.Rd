@@ -4,7 +4,7 @@
 \alias{get_gcae_trainedmodelname}
 \title{Get the GCAE \code{trainedmodelname}}
 \usage{
-get_gcae_trainedmodelname(data, gcae_setup)
+get_gcae_trainedmodelname(data, gcae_setup = create_gcae_setup())
 }
 \arguments{
 \item{data}{file prefix, not including path, of the data files
