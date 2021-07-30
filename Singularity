@@ -1,16 +1,20 @@
-Bootstrap: docker
-From: library://richelbilderbeek/default/plinkr:v0.15.2 
+Bootstrap: library
+From: richelbilderbeek/default/plinkr:v0.15.2 
 
 %post
+    sed -i 's/$/ universe/' /etc/apt/sources.list
+    apt-get update
+    apt-get -y install python3
+    apt-get clean
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-
-    Rscript -e 'gcaer::install_gcae(gcae_options = create_gcae_options(gcae_folder = "/opt/gcaer"))'
+    Rscript -e 'reticulate::install_miniconda()'
+    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
 
 %test
-    Rscript -e 'gcaer::is_gcae_installed(gcae_options = create_gcae_options(gcae_folder = "/opt/gcaer"))'
+    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
 
 %help
 
