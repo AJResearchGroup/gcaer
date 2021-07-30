@@ -25,20 +25,21 @@ jobs:
       - name: Show singularity version
         run: singularity version
 
+#      - name: Show present working directory
+#        run: echo $PWD
+
       - name: Build Container
-        env:
-          SINGULARITY_RECIPE: Singularity
-          OUTPUT_CONTAINER: plinkr.sif
-        run: |
-         ls 
-         if [ -f "${SINGULARITY_RECIPE}" ]; then
-              sudo -E singularity build ${OUTPUT_CONTAINER} ${SINGULARITY_RECIPE}
-         else
-             echo "${SINGULARITY_RECIPE} is not found."
-             echo "Present working directory: $PWD"
-             ls
-         fi
+        run: ./scripts/build_singularity_container.sh
+
+      - name: Test container, must detect GCAE
+        run: singularity test gcaer.sif
+
+      - name: Show help of container
+        run: singularity run-help gcaer.sif
+
+      - name: Show script
+        run: cat scripts/demo_container.R
 
       - name: Run container
-        run: singularity run plinkr.sif
+        run: cat scripts/demo_container.R | ./gcaer.sif
 
