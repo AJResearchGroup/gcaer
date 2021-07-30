@@ -3,12 +3,22 @@ From: richelbilderbeek/default/plinkr:v0.15.2
 
 %post
     sed -i 's/$/ universe/' /etc/apt/sources.list
-    apt-get update
-    apt-get -y install python3
-    apt-get clean
+    apt-get -y update
+    apt-get -y install python3 wget
+    apt-get -y clean
+
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
+    export PATH=/miniconda/bin:$PATH
+    rm Miniconda3-latest-Linux-x86_64.sh
+    conda update conda
+
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    Rscript -e 'reticulate::install_miniconda()'
+    # Rscript -e 'reticulate::install_miniconda()'
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
+
+%environment
+    export PATH=/miniconda/bin:$PATH
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
