@@ -56,5 +56,5 @@ run_gcae(args = "--help", gcae_options = gcae_options)
 
     URL https://github.com/richelbilderbeek/plinkr
 
-    VERSION 0.15.2
+    VERSION 0.3
 

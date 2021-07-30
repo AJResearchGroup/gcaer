@@ -2,6 +2,24 @@
 
 Newest versions at top.
 
+## gcaer v0.3 (2021-07-30)
+
+### NEW FEATURES
+
+ * Added Singularity container
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## gcaer v0.2 (2021-07-09)
 
 ### NEW FEATURES
