@@ -51,7 +51,7 @@ run_gcae <- function(
 
 
   if (any(
-    stringr::str_detect(text, "(Import|ModuleNotFound)?Error|Invalid command"))
+    stringr::str_detect(text, "Error|Invalid command"))
   ) {
     stop(
       "Running: '", paste(all_args, collapse = " "), "' failed, \n",
@@ -62,17 +62,6 @@ run_gcae <- function(
       "\n",
       "Tip 1: run 'gcaer::install_gcae_requirements' \n",
       "Tip 2: you should be able to copy paste this :-)"
-    )
-  }
-  if (any(stringr::str_detect(text, "Error"))) {
-    stop(
-      "Running: '", paste(all_args, collapse = " "), "' failed, \n",
-      "with message: \n",
-      "\n",
-      paste(text, collapse = "\n"),
-      "\n",
-      "\n",
-      "Tip: you should be able to copy paste this :-)"
     )
   }
   text
