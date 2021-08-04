@@ -53,7 +53,9 @@ i.e. the phenotypic value for homozygotes of the common allele}
 \item{data}{file prefix, not including path, of the data files
 (EIGENSTRAT of PLINK format)}
 
-\item{datadir}{directory where sample data is stored}
+\item{datadir}{directory where sample data is stored.
+A valid \code{datadir} ends with a slash (\code{/})
+and does not start with a full stop (\code{.})}
 
 \item{data_opts_id}{data options id,
 corresponding to a file data_opts/data_opts_id.json

@@ -1,5 +1,8 @@
 test_that("use", {
-  expect_silent(check_datadir("my_datadir"))
+  expect_silent(check_datadir(datadir = "my_datadir/"))
+  expect_error(check_datadir("."))
+  expect_error(check_datadir("./"))
+  expect_error(check_datadir(datadir = "my_datadir"))
   expect_error(check_datadir(1))
   expect_error(check_datadir(c(1, 1)))
   expect_error(check_datadir(0))

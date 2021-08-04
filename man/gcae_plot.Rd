@@ -14,7 +14,9 @@ gcae_plot(
 )
 }
 \arguments{
-\item{datadir}{directory where sample data is stored}
+\item{datadir}{directory where sample data is stored.
+A valid \code{datadir} ends with a slash (\code{/})
+and does not start with a full stop (\code{.})}
 
 \item{data}{file prefix, not including path, of the data files
 (EIGENSTRAT of PLINK format)}

@@ -10,7 +10,9 @@
 #' i.e. the phenotypic value for homozygotes of the common allele
 #' @param data file prefix, not including path, of the data files
 #' (EIGENSTRAT of PLINK format)
-#' @param datadir directory where sample data is stored
+#' @param datadir directory where sample data is stored.
+#' A valid `datadir` ends with a slash (`/`)
+#' and does not start with a full stop (`.`)
 #' @param data_opts_id data options id,
 #' corresponding to a file data_opts/data_opts_id.json
 #' The data options affect how data is input to the model.

@@ -11,5 +11,21 @@ check_datadir <- function(
 ) {
   testthat::expect_equal(1, length(datadir))
   testthat::expect_true(is.character(datadir))
-  testthat::expect_true(nchar(datadir) > 0)
+  if (stringr::str_sub(datadir, start = 1, end = 1) == ".") {
+    stop(
+      "'datadir' cannot be or start with a full stop ('.') to specify ",
+        "the current working directory. \n",
+      "datadir: ", datadir, " \n",
+      "Tip 1: In R, use 'paste0(getwd(), \"/\")' instead \n",
+      "Tip 2: In bash, use '\"$PWD/\"' instead"
+    )
+  }
+  testthat::expect_true(nchar(datadir) > 1)
+  if (stringr::str_sub(datadir, start = -1) != "/") {
+    stop(
+      "'datadir' must end with a slash ('/'). \n",
+      "datadir: ", datadir
+    )
+  }
+
 }
