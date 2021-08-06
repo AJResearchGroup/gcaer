@@ -8,9 +8,11 @@
 #' used as output for \code{GCAE}/\code{GCAE2}
 #' @param base_phenotype_value the base phenotypic value for an additive trait,
 #' i.e. the phenotypic value for homozygotes of the common allele
-#' @param data file prefix, not including path, of the data files
-#' (EIGENSTRAT of PLINK format)
+#' @param data file prefix, not including path, of the data files.
+#' The data files must be in EIGENSTRAT
+#' or PLINK binary (`.bed`, `.bim`, `.fam`) format)
 #' @param datadir directory where sample data is stored.
+#' If not absolute: assumed relative to `GenoCAE/` directory.
 #' A valid `datadir` ends with a slash (`/`)
 #' and does not start with a full stop (`.`)
 #' @param data_opts_id data options id,
