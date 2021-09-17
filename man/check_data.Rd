@@ -7,8 +7,9 @@
 check_data(data)
 }
 \arguments{
-\item{data}{file prefix, not including path, of the data files
-(EIGENSTRAT of PLINK format)}
+\item{data}{file prefix, not including path, of the data files.
+The data files must be in EIGENSTRAT
+or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 }
 \value{
 Nothing. Will \link{stop} if \code{data} is invalid.

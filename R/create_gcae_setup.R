@@ -15,7 +15,7 @@ create_gcae_setup <- function(
 ) {
   list(
     datadir = datadir,
-    data = datadir,
+    data = data,
     model_id = model_id,
     train_opts_id = train_opts_id,
     data_opts_id = data_opts_id,

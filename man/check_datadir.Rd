@@ -8,6 +8,7 @@ check_datadir(datadir)
 }
 \arguments{
 \item{datadir}{directory where sample data is stored.
+If not absolute: assumed relative to \verb{GenoCAE/} directory.
 A valid \code{datadir} ends with a slash (\code{/})
 and does not start with a full stop (\code{.})}
 }

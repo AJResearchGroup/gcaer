@@ -7,8 +7,9 @@
 get_gcae_trainedmodelname(data, gcae_setup = create_gcae_setup())
 }
 \arguments{
-\item{data}{file prefix, not including path, of the data files
-(EIGENSTRAT of PLINK format)}
+\item{data}{file prefix, not including path, of the data files.
+The data files must be in EIGENSTRAT
+or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}

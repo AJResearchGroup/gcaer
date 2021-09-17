@@ -5,12 +5,24 @@
 \title{Create the GCAE setup}
 \usage{
 create_gcae_setup(
+  datadir,
+  data,
   model_id = "M1",
   train_opts_id = "ex3",
-  data_opts_id = "b_0_4"
+  data_opts_id = "b_0_4",
+  trainedmodelname = "ae_out"
 )
 }
 \arguments{
+\item{datadir}{directory where sample data is stored.
+If not absolute: assumed relative to \verb{GenoCAE/} directory.
+A valid \code{datadir} ends with a slash (\code{/})
+and does not start with a full stop (\code{.})}
+
+\item{data}{file prefix, not including path, of the data files.
+The data files must be in EIGENSTRAT
+or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
+
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 
 \item{train_opts_id}{train options id, corresponding to a file
@@ -24,12 +36,7 @@ The data options affect how data is input to the model.}
 full paths to the created files
 }
 \description{
-Create the GCAE setup, which is:
-\itemize{
-\item \code{model} setup of the autoencoder
-\item \code{train_options} setup of the training
-\item \code{data_opts_id} setup of ?
-}
+Create the GCAE setup
 }
 \author{
 Richèl J.C. Bilderbeek

@@ -1,8 +1,10 @@
 test_that("use", {
   expect_silent(
     get_gcae_output_subfolder(
-      data = "something",
-      gcae_setup = create_gcae_setup()
+      gcae_setup = create_gcae_setup(
+        datadir = "my_datadir/",
+        data = "HumanOrigins249_tiny"
+      )
     )
   )
 })

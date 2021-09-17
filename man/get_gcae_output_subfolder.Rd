@@ -4,16 +4,9 @@
 \alias{get_gcae_output_subfolder}
 \title{Get the path to the GCAE output subfolder}
 \usage{
-get_gcae_output_subfolder(
-  data,
-  gcae_setup,
-  gcae_options = create_gcae_options()
-)
+get_gcae_output_subfolder(gcae_setup, gcae_options = create_gcae_options())
 }
 \arguments{
-\item{data}{file prefix, not including path, of the data files
-(EIGENSTRAT of PLINK format)}
-
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
 
@@ -29,8 +22,10 @@ This subfolder contains the output of one model
 }
 \examples{
 get_gcae_output_subfolder(
-  data = "HumanOrigins249_tiny",
-  gcae_setup = create_gcae_setup()
+  gcae_setup = create_gcae_setup(
+    datadir = "my_datadir/",
+    data = "HumanOrigins249_tiny"
+  )
 )
 }
 \author{

@@ -12,16 +12,14 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcae_trainedmodelname <- function(
-  data,
   gcae_setup = create_gcae_setup()
 ) {
-  gcaer::check_data(data)
   gcaer::check_gcae_setup(gcae_setup)
   trainedmodelname <- paste0(
     "ae.", gcae_setup$model_id, ".",
     gcae_setup$train_opts_id, ".",
     gcae_setup$data_opts_id, ".",
-    data
+    gcae_setup$data
   )
   trainedmodelname
 }

@@ -50,10 +50,12 @@ used as output for \code{GCAE}/\code{GCAE2}}
 \item{base_phenotype_value}{the base phenotypic value for an additive trait,
 i.e. the phenotypic value for homozygotes of the common allele}
 
-\item{data}{file prefix, not including path, of the data files
-(EIGENSTRAT of PLINK format)}
+\item{data}{file prefix, not including path, of the data files.
+The data files must be in EIGENSTRAT
+or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 
 \item{datadir}{directory where sample data is stored.
+If not absolute: assumed relative to \verb{GenoCAE/} directory.
 A valid \code{datadir} ends with a slash (\code{/})
 and does not start with a full stop (\code{.})}
 

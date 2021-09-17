@@ -1,5 +1,12 @@
 test_that("use", {
-  expect_silent(check_gcae_setup(create_gcae_setup()))
+  expect_silent(
+    check_gcae_setup(
+      create_gcae_setup(
+        datadir = "my_datadir/",
+        data = "HumanOrigins249_tiny"
+      )
+    )
+  )
   expect_error(check_gcae_setup(1))
   expect_error(check_gcae_setup(c(1, 1)))
   expect_error(check_gcae_setup(0))

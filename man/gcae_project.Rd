@@ -15,11 +15,13 @@ gcae_project(
 }
 \arguments{
 \item{datadir}{directory where sample data is stored.
+If not absolute: assumed relative to \verb{GenoCAE/} directory.
 A valid \code{datadir} ends with a slash (\code{/})
 and does not start with a full stop (\code{.})}
 
-\item{data}{file prefix, not including path, of the data files
-(EIGENSTRAT of PLINK format)}
+\item{data}{file prefix, not including path, of the data files.
+The data files must be in EIGENSTRAT
+or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}

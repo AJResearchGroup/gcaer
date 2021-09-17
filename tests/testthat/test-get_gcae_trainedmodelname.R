@@ -1,8 +1,9 @@
 test_that("use", {
-  data <- "HumanOrigins249_tiny"
-  gcae_setup <- create_gcae_setup()
+  gcae_setup <- create_gcae_setup(
+    datadir = "my_datadir/",
+    data = "HumanOrigins249_tiny"
+  )
   trainedmodelname <- get_gcae_trainedmodelname(
-    data = data,
     gcae_setup = gcae_setup
   )
   expect_equal(
