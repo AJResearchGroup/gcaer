@@ -10,16 +10,16 @@ library(plinkr)
 
 # Simulate data in PLINK1 text format
 assoc_qt_params <- create_demo_assoc_qt_params(
-  n_individuals = 1000,
+  n_individuals = 10,
   traits = create_demo_traits()
 )
 
 # Convert PLINK1 text format to PLINK1 binary format
-base_input_filename <- "~/issue_2_text"
+base_input_filename <- "~/gcaer_issue_2_text"
 ped_filename <- paste0(base_input_filename, ".ped")
 map_filename <- paste0(base_input_filename, ".map")
 phe_filename <- paste0(base_input_filename, ".phe")
-base_output_filename <- "~/issue_2_bin"
+base_output_filename <- "~/gcaer_issue_2_bin"
 plinkr::save_ped_table_to_file(
   ped_table = assoc_qt_params$ped_table,
   ped_filename = ped_filename
