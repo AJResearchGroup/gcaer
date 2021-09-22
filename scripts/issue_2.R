@@ -21,11 +21,11 @@ map_filename <- paste0(base_input_filename, ".map")
 phe_filename <- paste0(base_input_filename, ".phe")
 base_output_filename <- "~/gcaer_issue_2_bin"
 plinkr::save_ped_table_to_file(
-  ped_table = assoc_qt_params$ped_table,
+  ped_table = assoc_qt_params$data$ped_table,
   ped_filename = ped_filename
 )
 plinkr::save_map_table_to_file(
-  map_table = assoc_qt_params$map_table,
+  map_table = assoc_qt_params$data$map_table,
   map_filename = map_filename
 )
 plinkr::save_phe_table_to_file(
@@ -36,6 +36,12 @@ plink_bin_filenames <- plinkr::convert_plink_text_files_to_plink_bin_files(
   base_input_filename = base_input_filename,
   base_output_filename = base_output_filename
 )
+plinkr::save_phe_table_to_file(
+  phe_table = assoc_qt_params$phe_table,
+  phe_filename = paste0(base_output_filename, ".phe")
+)
+
+
 
 # Done!
 
@@ -47,5 +53,4 @@ bed_table <- read_plink_bed_file(
   names_loci = bim_table$id,
   names_ind = fam_table$id
 )
-
-plinkr::read_plink_bed_file(plink_bin_filenames$bed_filename)
+phe_table <- assoc_qt_params$phe_table
