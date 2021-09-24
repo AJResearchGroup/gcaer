@@ -27,7 +27,7 @@
 #' @export
 gcae_project <- function(
   gcae_setup = create_gcae_setup(),
-  superpops = file.path(datadir, "HO_superpopulations"),
+  superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
@@ -54,7 +54,7 @@ gcae_project <- function(
     gcae_options = gcae_options
   )
   testthat::expect_true(dir.exists(gcae_output_subfolder))
-  gcae_plot_subfolder <- file.path(gcae_output_subfolder, data)
+  gcae_plot_subfolder <- file.path(gcae_output_subfolder, gcae_setup$data)
   testthat::expect_true(dir.exists(gcae_plot_subfolder))
   project_filenames <- list.files(
     gcae_plot_subfolder,

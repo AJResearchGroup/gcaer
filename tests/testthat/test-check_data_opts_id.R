@@ -1,0 +1,13 @@
+test_that("use", {
+  expect_silent(check_data_opts_id("my_data_opts_id"))
+  expect_error(check_data_opts_id(c(1, 1)))
+  expect_error(check_data_opts_id(0))
+  expect_error(check_data_opts_id(-1))
+  expect_error(check_data_opts_id(""))
+  expect_error(check_data_opts_id(c()))
+  expect_error(check_data_opts_id(NA))
+  expect_error(check_data_opts_id(NULL))
+  expect_error(check_data_opts_id(Inf))
+  expect_error(check_data_opts_id(42))
+  expect_error(check_data_opts_id(3.14))
+})

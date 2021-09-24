@@ -31,12 +31,21 @@ train_opts/train_opts_id.json}
 \item{data_opts_id}{data options id,
 corresponding to a file data_opts/data_opts_id.json
 The data options affect how data is input to the model.}
+
+\item{trainedmodelname}{name of the trained model,
+which is \code{ae_out} by default}
 }
 \value{
 full paths to the created files
 }
 \description{
 Create the GCAE setup
+}
+\examples{
+create_gcae_setup(
+  datadir = "my_datadir/",
+  data = "HumanOrigins249_tiny"
+)
 }
 \author{
 Richèl J.C. Bilderbeek

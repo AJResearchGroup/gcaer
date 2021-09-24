@@ -10,7 +10,11 @@
 #' @return the GCAE options,
 #' as can be checked by \link{check_gcae_setup}
 #' @examples
-#' check_gcae_setup(create_gcae_setup())
+#' gcae_setup <- create_gcae_setup(
+#'   datadir = "my_datadir/",
+#'   data = "HumanOrigins249_tiny"
+#' )
+#' check_gcae_setup(gcae_setup)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_gcae_setup <- function(

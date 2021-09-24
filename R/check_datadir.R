@@ -4,6 +4,8 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `datadir` is invalid.
+#' @examples
+#' check_datadir("my_datadir/")
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_datadir <- function(

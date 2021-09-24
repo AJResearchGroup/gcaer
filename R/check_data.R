@@ -4,6 +4,8 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `data` is invalid.
+#' @examples
+#' check_data("HumanOrigins249_tiny")
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_data <- function(

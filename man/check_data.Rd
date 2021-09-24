@@ -18,6 +18,9 @@ Nothing. Will \link{stop} if \code{data} is invalid.
 Check if the \code{data} is valid
 Will \link{stop} if not.
 }
+\examples{
+check_data("HumanOrigins249_tiny")
+}
 \author{
 Richèl J.C. Bilderbeek
 }

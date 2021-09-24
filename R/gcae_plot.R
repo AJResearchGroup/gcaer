@@ -8,8 +8,8 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_plot <- function(
-  superpops = file.path(datadir, "HO_superpopulations"),
   gcae_setup = create_gcae_setup(),
+  superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {

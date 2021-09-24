@@ -1,12 +1,11 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!is_gcae_installed()) return()
-  datadir <- file.path(get_gcae_subfolder(), "example_tiny/")
-  data <- "HumanOrigins249_tiny"
-  gcae_setup <- create_gcae_setup()
+  gcae_setup <- create_gcae_setup(
+    datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
+    data = "HumanOrigins249_tiny"
+  )
   train_filenames <- gcae_train(
-    datadir = datadir,
-    data = data,
     gcae_setup = gcae_setup,
     epochs = 1,
     save_interval = 1
@@ -18,31 +17,11 @@ test_that("abuse", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!is_gcae_installed()) return()
   gcae_setup <- create_gcae_setup(
-    model_id = "M1",
-    train_opts_id = "ex3",
-    data_opts_id = "b_0_4"
+    datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
+    data = "HumanOrigins249_tiny"
   )
   expect_error(
     gcae_train(
-      datadir = "nonsense/",
-      data = "HumanOrigins249_tiny",
-      gcae_setup = gcae_setup
-    ),
-    "Error"
-  )
-  expect_error(
-    gcae_train(
-      datadir = "example_tiny/",
-      data = "nonsense",
-      gcae_setup = gcae_setup
-    ),
-    "Error"
-  )
-
-  expect_error(
-    gcae_train(
-      datadir = "example_tiny/",
-      data = "HumanOrigins249_tiny",
       gcae_setup = "nonsense"
     ),
     "'gcae_setup' must be a list"

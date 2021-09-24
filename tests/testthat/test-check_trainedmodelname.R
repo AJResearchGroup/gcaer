@@ -1,0 +1,13 @@
+test_that("use", {
+  expect_silent(check_trainedmodelname("my_trainedmodelname"))
+  expect_error(check_trainedmodelname(c(1, 1)))
+  expect_error(check_trainedmodelname(0))
+  expect_error(check_trainedmodelname(-1))
+  expect_error(check_trainedmodelname(""))
+  expect_error(check_trainedmodelname(c()))
+  expect_error(check_trainedmodelname(NA))
+  expect_error(check_trainedmodelname(NULL))
+  expect_error(check_trainedmodelname(Inf))
+  expect_error(check_trainedmodelname(42))
+  expect_error(check_trainedmodelname(3.14))
+})

@@ -34,6 +34,7 @@ default_params_doc(
   train_filenames,
   train_opts_id,
   train_times_filename,
+  trainedmodelname,
   url,
   verbose
 )
@@ -120,6 +121,9 @@ as created (and returned) by \link{gcae_train}}
 train_opts/train_opts_id.json}
 
 \item{train_times_filename}{path to the \code{train_times.csv} file}
+
+\item{trainedmodelname}{name of the trained model,
+which is \code{ae_out} by default}
 
 \item{url}{\code{GCAE} download URL}
 

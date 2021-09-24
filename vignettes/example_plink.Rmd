@@ -14,7 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-In this vignette, we'll use GCAE on the PLINK tutorial's example data, to train and use a GCAE neural network.
+In this vignette, we'll use GCAE on the PLINK tutorial's example data, 
+to train and use a GCAE neural network.
 
 Here are the steps:
 

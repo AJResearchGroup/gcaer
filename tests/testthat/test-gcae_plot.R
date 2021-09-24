@@ -6,10 +6,11 @@ test_that("use", {
     get_gcae_subfolder(gcae_options = gcae_options),
     "example_tiny/"
   )
-  gcae_setup <- create_gcae_setup()
-  gcae_train(
+  gcae_setup <- create_gcae_setup(
     datadir = datadir,
-    data = data,
+    data = data
+  )
+  gcae_train(
     gcae_setup = gcae_setup,
     epochs = 3,
     save_interval = 1,
@@ -17,15 +18,11 @@ test_that("use", {
   )
   superpops <- file.path(datadir, "HO_superpopulations")
   gcae_project(
-    datadir = datadir,
-    data = data,
     superpops = superpops,
     gcae_setup = gcae_setup,
     gcae_options = gcae_options
   )
   plot_filenames <- gcae_plot(
-    datadir = datadir,
-    data = data,
     superpops = superpops,
     gcae_setup = gcae_setup,
     gcae_options = gcae_options,

@@ -55,6 +55,8 @@
 #' @param train_opts_id train options id, corresponding to a file
 #' train_opts/train_opts_id.json
 #' @param train_times_filename path to the `train_times.csv` file
+#' @param trainedmodelname name of the trained model,
+#'   which is `ae_out` by default
 #' @param url \code{GCAE} download URL
 #' @param verbose the verbosity of a function.
 #' Set to \link{TRUE} for more output.
@@ -92,6 +94,7 @@ default_params_doc <- function(
   train_filenames,
   train_opts_id,
   train_times_filename,
+  trainedmodelname,
   url,
   verbose
 ) {

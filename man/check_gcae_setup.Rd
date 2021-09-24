@@ -24,7 +24,11 @@ that folder, similar to \link{normalizePath}
 with \code{mustWork} set to \link{FALSE}
 }
 \examples{
-check_gcae_setup(create_gcae_setup())
+gcae_setup <- create_gcae_setup(
+  datadir = "my_datadir/",
+  data = "HumanOrigins249_tiny"
+)
+check_gcae_setup(gcae_setup)
 }
 \author{
 Richèl J.C. Bilderbeek

@@ -1,0 +1,13 @@
+test_that("use", {
+  expect_silent(check_model_id("my_model_id"))
+  expect_error(check_model_id(c(1, 1)))
+  expect_error(check_model_id(0))
+  expect_error(check_model_id(-1))
+  expect_error(check_model_id(""))
+  expect_error(check_model_id(c()))
+  expect_error(check_model_id(NA))
+  expect_error(check_model_id(NULL))
+  expect_error(check_model_id(Inf))
+  expect_error(check_model_id(42))
+  expect_error(check_model_id(3.14))
+})

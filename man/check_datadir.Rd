@@ -19,6 +19,9 @@ Nothing. Will \link{stop} if \code{datadir} is invalid.
 Check if the \code{datadir} is valid
 Will \link{stop} if not.
 }
+\examples{
+check_datadir("my_datadir/")
+}
 \author{
 Richèl J.C. Bilderbeek
 }

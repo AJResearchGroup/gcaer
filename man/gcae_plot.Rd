@@ -5,18 +5,18 @@
 \title{Plot}
 \usage{
 gcae_plot(
-  superpops = file.path(datadir, "HO_superpopulations"),
   gcae_setup = create_gcae_setup(),
+  superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 )
 }
 \arguments{
-\item{superpops}{path to the superpops file.
-This argument is named after the GCAE \code{--superpops} CLI flag.}
-
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
+
+\item{superpops}{path to the superpops file.
+This argument is named after the GCAE \code{--superpops} CLI flag.}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
