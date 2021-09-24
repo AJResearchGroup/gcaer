@@ -132,7 +132,10 @@ if (good_to_go) {
 In this tutorial, we'll be using a standard GCAE setup.
 
 ```{r gcae_setup}
-gcae_setup <- create_gcae_setup()
+gcae_setup <- create_gcae_setup(
+  datadir = "example_tiny/",
+  data = "HumanOrigins249_tiny"
+)
 names(gcae_setup)
 ```
 
