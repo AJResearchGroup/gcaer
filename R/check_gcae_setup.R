@@ -40,9 +40,9 @@ check_gcae_setup <- function(
   testthat::expect_true(is.character(gcae_setup$model_id))
   testthat::expect_true(is.character(gcae_setup$train_opts_id))
   testthat::expect_true(is.character(gcae_setup$data_opts_id))
-testthat::expect_true(is.character(gcae_setup$datadir))
-testthat::expect_true(is.character(gcae_setup$data))
-testthat::expect_true(is.character(gcae_setup$trainedmodelname))
+  testthat::expect_true(is.character(gcae_setup$datadir))
+  testthat::expect_true(is.character(gcae_setup$data))
+  testthat::expect_true(is.character(gcae_setup$trainedmodelname))
 
   testthat::expect_true(nchar(gcae_setup$model_id) >= 1)
   testthat::expect_true(nchar(gcae_setup$train_opts_id) >= 1)
@@ -50,4 +50,8 @@ testthat::expect_true(is.character(gcae_setup$trainedmodelname))
   testthat::expect_true(nchar(gcae_setup$datadir) >= 1)
   testthat::expect_true(nchar(gcae_setup$data) >= 1)
   testthat::expect_true(nchar(gcae_setup$trainedmodelname) >= 1)
+
+  gcaer::check_data(gcae_setup$data)
+  gcaer::check_datadir(gcae_setup$datadir)
+
 }

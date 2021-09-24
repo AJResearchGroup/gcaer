@@ -133,8 +133,8 @@ In this tutorial, we'll be using a standard GCAE setup.
 
 ```{r gcae_setup}
 gcae_setup <- create_gcae_setup(
-  datadir = "example_tiny/",
-  data = "HumanOrigins249_tiny"
+  datadir = datadir,
+  data = data
 )
 names(gcae_setup)
 ```
@@ -186,8 +186,6 @@ Here we train the auto-encoder:
 if (good_to_go) {
   epochs <- 3
   train_filenames <- gcae_train(
-    datadir = datadir,
-    data = data,
     gcae_setup = gcae_setup,
     epochs = epochs,
     save_interval = 1
@@ -243,8 +241,6 @@ if (good_to_go) {
 if (good_to_go) {
   superpops <- file.path(datadir, "HO_superpopulations")
   project_filenames <- gcae_project(
-    datadir = datadir,
-    data = data,
     superpops = superpops,
     gcae_setup = gcae_setup
   )
@@ -288,8 +284,6 @@ Here we let GCAE create all plots:
 ```{r gcae_plot,cache=FALSE}
 if (good_to_go) {
   plot_filenames <- gcae_plot(
-    datadir = datadir,
-    data = data,
     superpops = superpops,
     gcae_setup = gcae_setup,
     gcae_options = gcae_options

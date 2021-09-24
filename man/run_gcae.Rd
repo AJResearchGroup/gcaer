@@ -14,7 +14,7 @@ as created by \link{create_gcae_options}}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
-Use \link{check_verbose} to detect if this argument is valid.}
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 the text that GCAE returns

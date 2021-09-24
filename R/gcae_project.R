@@ -26,18 +26,19 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_project <- function(
-  datadir,
-  data,
   gcae_setup = create_gcae_setup(),
   superpops = file.path(datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
+  gcaer::check_gcae_setup(gcae_setup)
   testthat::expect_true(file.exists(superpops))
+  gcaer::check_gcae_options(gcae_options)
+  plinkr::check_verbose(verbose)
   args <- c(
     "project",
-    "--datadir", datadir,
-    "--data", data,
+    "--datadir", gcae_setup$datadir,
+    "--data", gcae_setup$data,
     "--model_id", gcae_setup$model_id,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
@@ -49,7 +50,6 @@ gcae_project <- function(
     verbose = verbose
   )
   gcae_output_subfolder <- gcaer::get_gcae_output_subfolder(
-    data = data,
     gcae_setup = gcae_setup,
     gcae_options = gcae_options
   )

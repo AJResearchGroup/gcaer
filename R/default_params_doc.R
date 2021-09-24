@@ -58,7 +58,7 @@
 #' @param url \code{GCAE} download URL
 #' @param verbose the verbosity of a function.
 #' Set to \link{TRUE} for more output.
-#' Use \link{check_verbose} to detect if this argument is valid.
+#' Use \link[plinkr]{check_verbose} to detect if this argument is valid.
 #' @author Richèl J.C. Bilderbeek
 #' @note This is an internal function, so it should be marked with
 #'   \code{@noRd}. This is not done, as this will disallow all

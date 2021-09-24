@@ -7,16 +7,12 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_train <- function(
-  datadir,
-  data,
   gcae_setup = create_gcae_setup(),
   epochs = 1,
   save_interval = 1,
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
-  gcaer::check_datadir(datadir)
-  gcaer::check_data(datadir)
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_epochs(epochs)
   gcaer::check_save_interval(save_interval)
@@ -25,8 +21,8 @@ gcae_train <- function(
 
   args <- c(
     "train",
-    "--datadir", datadir,
-    "--data", data,
+    "--datadir", gcae_setup$datadir,
+    "--data", gcae_setup$data,
     "--model_id", gcae_setup$model_id,
     "--epochs", epochs,
     "--save_interval", save_interval,
@@ -39,7 +35,6 @@ gcae_train <- function(
     verbose = verbose
   )
   ae_out_subfolder <- get_gcae_output_subfolder(
-    data = data,
     gcae_setup = gcae_setup,
     gcae_options = gcae_options
   )

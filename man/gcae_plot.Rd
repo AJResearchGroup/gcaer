@@ -5,8 +5,6 @@
 \title{Plot}
 \usage{
 gcae_plot(
-  datadir,
-  data,
   superpops = file.path(datadir, "HO_superpopulations"),
   gcae_setup = create_gcae_setup(),
   gcae_options = create_gcae_options(),
@@ -14,15 +12,6 @@ gcae_plot(
 )
 }
 \arguments{
-\item{datadir}{directory where sample data is stored.
-If not absolute: assumed relative to \verb{GenoCAE/} directory.
-A valid \code{datadir} ends with a slash (\code{/})
-and does not start with a full stop (\code{.})}
-
-\item{data}{file prefix, not including path, of the data files.
-The data files must be in EIGENSTRAT
-or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
-
 \item{superpops}{path to the superpops file.
 This argument is named after the GCAE \code{--superpops} CLI flag.}
 
@@ -34,7 +23,7 @@ as created by \link{create_gcae_options}}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
-Use \link{check_verbose} to detect if this argument is valid.}
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 full paths to the created files

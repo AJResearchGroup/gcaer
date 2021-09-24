@@ -5,8 +5,6 @@
 \title{Train model, and save its state at certain epochs to disk.}
 \usage{
 gcae_train(
-  datadir,
-  data,
   gcae_setup = create_gcae_setup(),
   epochs = 1,
   save_interval = 1,
@@ -15,15 +13,6 @@ gcae_train(
 )
 }
 \arguments{
-\item{datadir}{directory where sample data is stored.
-If not absolute: assumed relative to \verb{GenoCAE/} directory.
-A valid \code{datadir} ends with a slash (\code{/})
-and does not start with a full stop (\code{.})}
-
-\item{data}{file prefix, not including path, of the data files.
-The data files must be in EIGENSTRAT
-or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
-
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
 
@@ -37,7 +26,7 @@ as created by \link{create_gcae_options}}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
-Use \link{check_verbose} to detect if this argument is valid.}
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 full paths to the created files
