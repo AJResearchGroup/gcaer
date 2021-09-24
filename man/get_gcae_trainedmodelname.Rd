@@ -4,7 +4,7 @@
 \alias{get_gcae_trainedmodelname}
 \title{Get the GCAE \code{trainedmodelname}}
 \usage{
-get_gcae_trainedmodelname(gcae_setup = create_gcae_setup())
+get_gcae_trainedmodelname(gcae_setup)
 }
 \arguments{
 \item{gcae_setup}{GCAE model setup,
@@ -18,10 +18,11 @@ Get the GCAE trained model name,
 to be used by the GCAE\code{--trainedmodelname} CLI flag
 }
 \examples{
-get_gcae_trainedmodelname(
-  data = "HumanOrigins249_tiny",
-  gcae_setup = create_gcae_setup()
+gcae_setup <- create_gcae_setup(
+  datadir = "my_datadir/",
+  data = "HumanOrigins249_tiny"
 )
+get_gcae_trainedmodelname(gcae_setup)
 }
 \author{
 Richèl J.C. Bilderbeek

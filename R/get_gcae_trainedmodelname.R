@@ -5,14 +5,15 @@
 #' @inheritParams default_params_doc
 #' @return the GCAE trained model name
 #' @examples
-#' get_gcae_trainedmodelname(
-#'   data = "HumanOrigins249_tiny",
-#'   gcae_setup = create_gcae_setup()
+#' gcae_setup <- create_gcae_setup(
+#'   datadir = "my_datadir/",
+#'   data = "HumanOrigins249_tiny"
 #' )
+#' get_gcae_trainedmodelname(gcae_setup)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcae_trainedmodelname <- function(
-  gcae_setup = create_gcae_setup()
+  gcae_setup
 ) {
   gcaer::check_gcae_setup(gcae_setup)
   trainedmodelname <- paste0(
