@@ -5,3 +5,4 @@
 ^scripts$
 ^NEWS\.md$
 ^appveyor\.yml$
+^Singularity$
