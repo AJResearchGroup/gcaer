@@ -132,11 +132,13 @@ if (good_to_go) {
 In this tutorial, we'll be using a standard GCAE setup.
 
 ```{r gcae_setup}
-gcae_setup <- create_gcae_setup(
-  datadir = datadir,
-  data = data
-)
-names(gcae_setup)
+if (good_to_go) {
+  gcae_setup <- create_gcae_setup(
+    datadir = datadir,
+    data = data
+  )
+  names(gcae_setup)
+}
 ```
 
 The GCAE setup contains the GCAE setup, such as the auto-encoder's
