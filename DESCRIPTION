@@ -15,7 +15,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     gert,
-    plinkr (>= 0.17),
+    plinkr (>= 0.17.1),
     rappdirs,
     reticulate,
     stringr
