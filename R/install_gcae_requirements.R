@@ -7,7 +7,6 @@ install_gcae_requirements <- function(
   gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   gcae_requirements_txt_path <- file.path(gcae_subfolder, "requirements.txt")
   testthat::expect_true(file.exists(gcae_requirements_txt_path))
-
   args <- c(
     reticulate::py_config()$python,
     "-m",
@@ -22,5 +21,21 @@ install_gcae_requirements <- function(
       stderr = TRUE
     )
   )
+  # Install docopt
+  args <- c(
+    reticulate::py_config()$python,
+    "-m",
+    "pip",
+    "install", "docopt"
+  )
+  suppressWarnings(
+    text <- system2(
+      command = args[1],
+      args = args[-1],
+      stdout = TRUE,
+      stderr = TRUE
+    )
+  )
+
   text
 }
