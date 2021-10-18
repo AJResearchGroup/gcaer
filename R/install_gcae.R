@@ -28,7 +28,10 @@ install_gcae <- function(
   }
   testthat::expect_true(dir.exists(gcae_subfolder))
 
-  gcaer::install_gcae_requirements(gcae_options = gcae_options)
+  gcaer::install_gcae_requirements(
+    gcae_options = gcae_options,
+    verbose = verbose
+  )
 
   testthat::expect_true(
     gcaer::is_gcae_installed(gcae_options)

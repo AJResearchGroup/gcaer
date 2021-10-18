@@ -2,10 +2,20 @@
 #' @inheritParams default_params_doc
 #' @export
 install_gcae_requirements <- function(
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 ) {
+  # Upgrade pip
+  text_upgrade_pip <- gcaer::upgrade_pip(
+    verbose = verbose
+  )
+
+  # Installing requirements
   gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   gcae_requirements_txt_path <- file.path(gcae_subfolder, "requirements.txt")
+  if (verbose) {
+    message("Installing requirements from ", gcae_requirements_txt_path)
+  }
   testthat::expect_true(file.exists(gcae_requirements_txt_path))
   args <- c(
     reticulate::py_config()$python,
@@ -13,14 +23,21 @@ install_gcae_requirements <- function(
     "pip",
     "install", "-r", gcae_requirements_txt_path
   )
+  if (verbose) {
+    message("args: ", paste0(args, collapse = " "))
+  }
   suppressWarnings(
-    text <- system2(
+    text_install_requirements <- system2(
       command = args[1],
       args = args[-1],
       stdout = TRUE,
       stderr = TRUE
     )
   )
+  if (verbose) {
+    message("text_install_requirements: ", paste0(text_install_requirements, collapse = " "))
+  }
+
   # Install docopt
   args <- c(
     reticulate::py_config()$python,
@@ -29,12 +46,17 @@ install_gcae_requirements <- function(
     "install", "docopt"
   )
   suppressWarnings(
-    text <- system2(
+    text_install_docopt <- system2(
       command = args[1],
       args = args[-1],
       stdout = TRUE,
       stderr = TRUE
     )
+  )
+  text <- c(
+    text_upgrade_pip,
+    text_install_requirements,
+    text_install_docopt
   )
   text
 }

@@ -14,8 +14,8 @@ From: richelbilderbeek/default/plinkr:0.17.2
     conda update conda
 
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    # Rscript -e 'reticulate::install_miniconda()'
-    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
+    Rscript -e 'reticulate::install_miniconda()'
+    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
 
 %environment
     export PATH=/miniconda/bin:$PATH
@@ -24,7 +24,7 @@ From: richelbilderbeek/default/plinkr:0.17.2
 exec R --vanilla --silent --no-echo "$@"
 
 %test
-    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
+    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
 
 %help
 

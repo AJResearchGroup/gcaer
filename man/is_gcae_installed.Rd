@@ -4,11 +4,15 @@
 \alias{is_gcae_installed}
 \title{Determine if \code{GCAE} is installed}
 \usage{
-is_gcae_installed(gcae_options = create_gcae_options())
+is_gcae_installed(gcae_options = create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 \code{TRUE} if \code{GCAE} is installed
