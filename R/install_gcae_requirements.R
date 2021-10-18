@@ -36,6 +36,5 @@ install_gcae_requirements <- function(
       stderr = TRUE
     )
   )
-
   text
 }

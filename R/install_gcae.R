@@ -4,7 +4,10 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 install_gcae <- function(
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  github_repo_url = "https://github.com/cnettel/GenoCAE",
+  github_repo_branch_name = "Pheno",
+  verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
   testthat::expect_false(
@@ -17,10 +20,10 @@ install_gcae <- function(
   if (!dir.exists(gcae_subfolder)) {
     # Clone repo
     gert::git_clone(
-      url = "https://github.com/kausmees/GenoCAE",
+      url = github_repo_url,
       path = gcae_subfolder,
-      branch = "master",
-      verbose = FALSE
+      branch = github_repo_branch_name,
+      verbose = verbose
     )
   }
   testthat::expect_true(dir.exists(gcae_subfolder))

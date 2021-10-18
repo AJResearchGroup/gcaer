@@ -22,6 +22,8 @@ default_params_doc(
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,
+  github_repo_branch_name,
+  github_repo_url,
   log_filename,
   losses_from_project_filename,
   losses_from_train_t_filename,
@@ -87,6 +89,13 @@ stores its temporary files}
 
 \item{genotype_concordances_filename}{path to the
 \code{genotype_concordances.csv} file}
+
+\item{github_repo_branch_name}{name of the \code{git} branch,
+e.g \code{master} or \code{Pheno}}
+
+\item{github_repo_url}{URL of the GitHub repository,
+e.g. \verb{https://github.com/kausmees/GenoCAE}
+or \verb{https://github.com/cnettel/GenoCAE}}
 
 \item{log_filename}{name of a \code{GCAE} \code{.log} file}
 

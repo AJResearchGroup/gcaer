@@ -33,6 +33,11 @@
 #' stores its temporary files
 #' @param genotype_concordances_filename path to the
 #' `genotype_concordances.csv` file
+#' @param github_repo_branch_name name of the `git` branch,
+#' e.g `master` or `Pheno`
+#' @param github_repo_url URL of the GitHub repository,
+#' e.g. `https://github.com/kausmees/GenoCAE`
+#' or `https://github.com/cnettel/GenoCAE`
 #' @param log_filename name of a \code{GCAE} \code{.log} file
 #' @param losses_from_project_filename path to the
 #' `losses_from_project.csv` file
@@ -82,6 +87,8 @@ default_params_doc <- function(
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,
+  github_repo_branch_name,
+  github_repo_url,
   log_filename,
   losses_from_project_filename,
   losses_from_train_t_filename,

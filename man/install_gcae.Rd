@@ -4,11 +4,27 @@
 \alias{install_gcae}
 \title{Install a specific version of GCAE}
 \usage{
-install_gcae(gcae_options = create_gcae_options())
+install_gcae(
+  gcae_options = create_gcae_options(),
+  github_repo_url = "https://github.com/cnettel/GenoCAE",
+  github_repo_branch_name = "Pheno",
+  verbose = FALSE
+)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{github_repo_url}{URL of the GitHub repository,
+e.g. \verb{https://github.com/kausmees/GenoCAE}
+or \verb{https://github.com/cnettel/GenoCAE}}
+
+\item{github_repo_branch_name}{name of the \code{git} branch,
+e.g \code{master} or \code{Pheno}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 Nothing
