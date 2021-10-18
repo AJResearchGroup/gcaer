@@ -6,9 +6,15 @@ install_gcae_requirements <- function(
   verbose = FALSE
 ) {
   # Upgrade pip
+  if (verbose) {
+    message("Upgrade pip ")
+  }
   text_upgrade_pip <- gcaer::upgrade_pip(
     verbose = verbose
   )
+  if (verbose) {
+    message("text_upgrade_pip: ", paste0(text_upgrade_pip, collapse = " "))
+  }
 
   # Installing requirements
   gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
@@ -35,7 +41,10 @@ install_gcae_requirements <- function(
     )
   )
   if (verbose) {
-    message("text_install_requirements: ", paste0(text_install_requirements, collapse = " "))
+    message(
+      "text_install_requirements: ",
+      paste0(text_install_requirements, collapse = " ")
+    )
   }
 
   # Install docopt
@@ -53,6 +62,11 @@ install_gcae_requirements <- function(
       stderr = TRUE
     )
   )
+  if (verbose) {
+    message(
+      "text_install_docopt: ", paste0(text_install_docopt, collapse = " ")
+    )
+  }
   text <- c(
     text_upgrade_pip,
     text_install_requirements,
