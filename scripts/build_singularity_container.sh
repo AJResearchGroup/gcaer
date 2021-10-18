@@ -9,4 +9,4 @@
 # ./scripts/build_singularity_container.sh
 #
 #
-sudo -E singularity build gcaer.sif Singularity
+sudo -E singularity --quiet build gcaer.sif Singularity
