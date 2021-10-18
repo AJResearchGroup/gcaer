@@ -47,30 +47,9 @@ install_gcae_requirements <- function(
     )
   }
 
-  # Install docopt
-  args <- c(
-    reticulate::py_config()$python,
-    "-m",
-    "pip",
-    "install", "docopt"
-  )
-  suppressWarnings(
-    text_install_docopt <- system2(
-      command = args[1],
-      args = args[-1],
-      stdout = TRUE,
-      stderr = TRUE
-    )
-  )
-  if (verbose) {
-    message(
-      "text_install_docopt: ", paste0(text_install_docopt, collapse = " ")
-    )
-  }
   text <- c(
     text_upgrade_pip,
-    text_install_requirements,
-    text_install_docopt
+    text_install_requirements
   )
   text
 }
