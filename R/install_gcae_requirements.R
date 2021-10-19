@@ -5,9 +5,15 @@ install_gcae_requirements <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
+  # Install miniconda
+  if (verbose) {
+    message("Install miniconda")
+  }
+  reticulate::install_miniconda()
+
   # Install pip
   if (verbose) {
-    message("Install pip ")
+    message("Install pip")
   }
   reticulate::py_install("pip")
 
