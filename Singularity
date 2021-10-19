@@ -14,7 +14,7 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     conda update conda
 
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    # Rscript -e 'reticulate::install_miniconda()'
+    Rscript -e 'reticulate::install_miniconda()'
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
 
 %environment
