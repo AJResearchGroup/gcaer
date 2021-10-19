@@ -14,7 +14,7 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     conda update conda
 
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    Rscript -e 'reticulate::install_miniconda()'
+    # Rscript -e 'reticulate::install_miniconda()'
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
 
 %environment
@@ -49,7 +49,7 @@ run_gcae(args = "--help", gcae_options = gcae_options)
     AUTHOR Richel J.C. Bilderbeek
 
     NAME plinkr
- 
+
     DESCRIPTION The plinkr R package, with the multiple PLINK versions installed
 
     USAGE simply run the container
