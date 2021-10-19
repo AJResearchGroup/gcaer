@@ -5,6 +5,12 @@ install_gcae_requirements <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
+  # Install pip
+  if (verbose) {
+    message("Install pip ")
+  }
+  reticulate::py_install("pip")
+
   # Upgrade pip
   if (verbose) {
     message("Upgrade pip ")
@@ -48,6 +54,7 @@ install_gcae_requirements <- function(
   }
 
   text <- c(
+    text_install_pip,
     text_upgrade_pip,
     text_install_requirements
   )
