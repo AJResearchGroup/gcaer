@@ -9,7 +9,9 @@ install_gcae_requirements <- function(
   if (verbose) {
     message("Install miniconda")
   }
-  reticulate::install_miniconda()
+
+  # Will throw an error if Miniconda is already installed
+  try(reticulate::install_miniconda(), silent = TRUE)
 
   # Install pip
   if (verbose) {
