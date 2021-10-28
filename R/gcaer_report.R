@@ -15,5 +15,12 @@ gcaer_report <- function(
   } else {
     message("GCAE is installed: no")
   }
+  if (gcaer::is_pip_installed(gcae_options = gcae_options)) {
+    message("pip installed: yes")
+    gcaer::list_python_packages(gcae_options = gcae_options)
+  } else {
+    message("pip installed: no")
+  }
+
   message(paste0(devtools::session_info(), collapse = "\n"))
 }

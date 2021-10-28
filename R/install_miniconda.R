@@ -25,9 +25,13 @@ install_miniconda <- function(
     error = function(e) {
       miniconda_exists <- reticulate:::miniconda_exists(path = miniconda_path)
       message("Miniconda exists: ", miniconda_exists)
-      miniconda_passes_test <- reticulate:::miniconda_test(path = miniconda_path)
+      miniconda_passes_test <- reticulate:::miniconda_test(
+        path = miniconda_path
+      )
       message("Miniconda passes test: ", miniconda_passes_test)
-      python_binary_path <- reticulate:::python_binary_path(dir = miniconda_path)
+      python_binary_path <- reticulate:::python_binary_path(
+        dir = miniconda_path
+      )
       message("Miniconda python_binary_path: ", python_binary_path)
       stop("Failed to install Miniconda at ", miniconda_path)
     }

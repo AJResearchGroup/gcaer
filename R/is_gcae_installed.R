@@ -10,7 +10,9 @@ is_gcae_installed <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
-  has_cloned_gcae_repo <- gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)
+  has_cloned_gcae_repo <- gcaer::has_cloned_gcae_repo(
+    gcae_options = gcae_options
+  )
   if (!has_cloned_gcae_repo) {
     return(FALSE)
   }
