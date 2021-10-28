@@ -18,12 +18,13 @@ list_python_packages <- function(
       )
     }
   )
-
-  system2(
-    python_binary_path,
-    c("-m", "pip", "list")
+  suppressWarnings(
+    text <- system2(
+      command = normalizePath(python_binary_path),
+      args = c("-m", "pip", "list"),
+      stdout = TRUE,
+      stderr = TRUE
+    )
   )
-
-  # /home/richel/.local/share/r-miniconda/envs/r-reticulate/bin/python -m pip list
-
+  text
 }

@@ -16,5 +16,26 @@ is_pip_installed <- function(
     )
 
   }
-  "pip" %in% gcaer::list_python_packages()
+  tryCatch(
+    suppressMessages(
+      suppressWarnings(
+        packages <- gcaer::list_python_packages(gcae_options = gcae_options)
+      )
+    ),
+    warning = function(e) {
+      return(FALSE)
+    },
+    error = function(e) {
+      return(FALSE)
+    }
+  )
+  tryCatch(
+    "pip" %in% gcaer::list_python_packages(gcae_options = gcae_options),
+    warning = function(e) {
+      return(FALSE)
+    },
+    error = function(e) {
+      return(FALSE)
+    }
+  )
 }

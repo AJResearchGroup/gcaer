@@ -6,7 +6,7 @@
 get_python_binary_path <- function(
   gcae_options = create_gcae_options()
 ) {
-  miniconda_path = get_miniconda_path(gcae_options = gcae_options)
+  miniconda_path <- get_miniconda_path(gcae_options = gcae_options)
   python_binary_path <- reticulate:::python_binary_path(
     dir = miniconda_path
   )
