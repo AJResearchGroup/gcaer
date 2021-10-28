@@ -3,7 +3,8 @@
 #' @export
 install_gcae_requirements <- function(
   gcae_options = create_gcae_options(),
-  verbose = FALSE
+  verbose = FALSE,
+  sink_tempfile = get_gcaer_tempfilename(pattern = "sink_")
 ) {
   # Install miniconda
   if (verbose) {
@@ -17,6 +18,7 @@ install_gcae_requirements <- function(
   if (verbose) {
     message("Install pip")
   }
+  # 'reticulate::py_install' will always produce output
   reticulate::py_install("pip")
 
   # Upgrade pip
