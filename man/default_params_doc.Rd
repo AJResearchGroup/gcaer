@@ -28,10 +28,12 @@ default_params_doc(
   losses_from_project_filename,
   losses_from_train_t_filename,
   losses_from_train_v_filename,
+  miniconda_path,
   model_id,
   os,
   out,
   project_filenames,
+  python_bin_path,
   save_interval,
   train_filenames,
   train_opts_id,
@@ -108,6 +110,10 @@ or \verb{https://github.com/cnettel/GenoCAE}}
 \item{losses_from_train_v_filename}{path to the
 \code{losses_from_train_v.csv} file}
 
+\item{miniconda_path}{the Miniconda path,
+as can be obtained using \link{get_miniconda_path}
+of a \code{gcae_options} (see \link{create_gcae_options})}
+
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 
 \item{os}{name of the operating system,
@@ -119,6 +125,8 @@ This parameter is named after the \code{GCAE}
 
 \item{project_filenames}{path to the files
 as created (and returned) by \link{gcae_project}}
+
+\item{python_bin_path}{path to a \code{python} binary/executable}
 
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}

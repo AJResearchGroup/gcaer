@@ -3,11 +3,12 @@
 #' @return the text of the installation
 #' @export
 upgrade_pip <- function(
+  python_bin_path = reticulate::py_config()$python,
   verbose = FALSE
 ) {
-  # Upgrade pip
+  testthat::expect_true(file.exists(python_bin_path))
   args <- c(
-    reticulate::py_config()$python,
+    normalizePath(python_bin_path),
     "-m",
     "pip",
     "install", "--upgrade", "pip"

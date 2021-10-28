@@ -6,8 +6,7 @@
 \usage{
 install_gcae_requirements(
   gcae_options = create_gcae_options(),
-  verbose = FALSE,
-  sink_tempfile = get_gcaer_tempfilename(pattern = "sink_")
+  verbose = FALSE
 )
 }
 \arguments{
@@ -18,6 +17,15 @@ as created by \link{create_gcae_options}}
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
+\value{
+the text produced at installation
+}
 \description{
 Install the GCAE requirements
+}
+\examples{
+gcaer_report()
+}
+\author{
+Richèl J.C. Bilderbeek
 }

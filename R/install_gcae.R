@@ -13,21 +13,14 @@ install_gcae <- function(
   testthat::expect_false(
     gcaer::is_gcae_installed(gcae_options)
   )
-
-  dir.create(gcae_options$gcae_folder, showWarnings = FALSE, recursive = TRUE)
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
-
-  if (!dir.exists(gcae_subfolder)) {
-    # Clone repo
-    gert::git_clone(
-      url = github_repo_url,
-      path = gcae_subfolder,
-      branch = github_repo_branch_name,
+  # Clone repo
+  if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
+    gcaer::clone_gcae_repo(
+      gcae_options = gcae_options,
       verbose = verbose
     )
   }
-  testthat::expect_true(dir.exists(gcae_subfolder))
-
+  # Install requirements
   gcaer::install_gcae_requirements(
     gcae_options = gcae_options,
     verbose = verbose

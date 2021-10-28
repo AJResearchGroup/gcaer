@@ -1,67 +1,49 @@
 #' Install the GCAE requirements
 #' @inheritParams default_params_doc
+#' @return the text produced at installation
+#' @examples
+#' gcaer_report()
+#' @author Richèl J.C. Bilderbeek
 #' @export
 install_gcae_requirements <- function(
   gcae_options = create_gcae_options(),
-  verbose = FALSE,
-  sink_tempfile = get_gcaer_tempfilename(pattern = "sink_")
+  verbose = FALSE
 ) {
-  # Install miniconda
-  if (verbose) {
-    message("Install miniconda")
+  # Install Miniconda
+  miniconda_path <- gcaer::get_miniconda_path(gcae_options = gcae_options)
+  if (!gcaer::is_miniconda_installed(miniconda_path = miniconda_path)) {
+    gcaer::install_miniconda(miniconda_path = miniconda_path)
+  } else if (verbose) {
+    message("Miniconda already installed at ", miniconda_path)
   }
-
-  # Will throw an error if Miniconda is already installed
-  try(reticulate::install_miniconda(), silent = TRUE)
-
+  testthat::expect_true(gcaer::is_miniconda_installed(miniconda_path))
   # Install pip
   if (verbose) {
     message("Install pip")
   }
   # 'reticulate::py_install' will always produce output
-  reticulate::py_install("pip")
-
+  conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
+  testthat::expect_true(file.exists(conda_binary_path))
+  reticulate::py_install("pip", conda = conda_binary_path)
   # Upgrade pip
-  if (verbose) {
-    message("Upgrade pip ")
+  if (1 == 2) {
+    if (verbose) {
+      message("Upgrade pip ")
+    }
+    python_bin_path <- file.path(miniconda_path, "bin", "python")
+    testthat::expect_true(file.exists(python_bin_path))
+    text_upgrade_pip <- gcaer::upgrade_pip(
+      python_bin_path = python_bin_path,
+      verbose = verbose
+    )
+    if (verbose) {
+      message("text_upgrade_pip: ", paste0(text_upgrade_pip, collapse = " "))
+    }
   }
-  text_upgrade_pip <- gcaer::upgrade_pip(
-    verbose = verbose
-  )
-  if (verbose) {
-    message("text_upgrade_pip: ", paste0(text_upgrade_pip, collapse = " "))
-  }
-
   # Installing requirements
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
-  gcae_requirements_txt_path <- file.path(gcae_subfolder, "requirements.txt")
-  if (verbose) {
-    message("Installing requirements from ", gcae_requirements_txt_path)
-  }
-  testthat::expect_true(file.exists(gcae_requirements_txt_path))
-  args <- c(
-    reticulate::py_config()$python,
-    "-m",
-    "pip",
-    "install", "-r", gcae_requirements_txt_path
+  text_install_requirements <- gcaer::install_python_packages(
+    gcae_options = gcae_options
   )
-  if (verbose) {
-    message("args: ", paste0(args, collapse = " "))
-  }
-  suppressWarnings(
-    text_install_requirements <- system2(
-      command = args[1],
-      args = args[-1],
-      stdout = TRUE,
-      stderr = TRUE
-    )
-  )
-  if (verbose) {
-    message(
-      "text_install_requirements: ",
-      paste0(text_install_requirements, collapse = " ")
-    )
-  }
 
   text <- c(
     text_upgrade_pip,

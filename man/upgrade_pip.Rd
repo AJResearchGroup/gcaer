@@ -4,9 +4,11 @@
 \alias{upgrade_pip}
 \title{Upgrade pip}
 \usage{
-upgrade_pip(verbose = FALSE)
+upgrade_pip(python_bin_path = reticulate::py_config()$python, verbose = FALSE)
 }
 \arguments{
+\item{python_bin_path}{path to a \code{python} binary/executable}
+
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}

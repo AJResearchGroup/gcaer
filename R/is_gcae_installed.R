@@ -10,12 +10,15 @@ is_gcae_installed <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
+  has_cloned_gcae_repo <- gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)
+  if (!has_cloned_gcae_repo) {
+    return(FALSE)
+  }
   if (verbose) {
     message(
-      "gcae_subfolder (if it exists, GCAE is installed): ",
-      gcae_subfolder
+      "Has cloned the GCAE repo (if it exists, GCAE is installed): ",
+      has_cloned_gcae_repo
     )
   }
-  dir.exists(gcae_subfolder)
+  has_cloned_gcae_repo
 }
