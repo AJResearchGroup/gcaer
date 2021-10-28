@@ -6,7 +6,8 @@
 \usage{
 install_gcae_requirements(
   gcae_options = create_gcae_options(),
-  verbose = FALSE
+  verbose = FALSE,
+  sink_tempfile = get_gcaer_tempfilename(pattern = "sink_")
 )
 }
 \arguments{
