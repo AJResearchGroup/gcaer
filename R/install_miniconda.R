@@ -2,7 +2,7 @@
 #' @inheritParams default_params_doc
 #' @return Nothing
 #' @note the output of this function cannot be silenced, thanks
-#' to \link[reticulate](install_miniconda)
+#' to \link[reticulate]{install_miniconda}
 #' @examples
 #' # Install to a temporary folder
 #' gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())

@@ -19,7 +19,7 @@ Install Miniconda
 }
 \note{
 the output of this function cannot be silenced, thanks
-to \link\href{install_miniconda}{reticulate}
+to \link[reticulate]{install_miniconda}
 }
 \examples{
 # Install to a temporary folder
