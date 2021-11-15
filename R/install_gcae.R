@@ -10,9 +10,18 @@ install_gcae <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
-  testthat::expect_false(
-    gcaer::is_gcae_installed(gcae_options)
-  )
+  if (gcaer::is_gcae_installed(gcae_options)) {
+    stop(
+      "Cannot install GCAE when it is already installed. \n",
+      "GCAE is already installed in 'gcae_options$gcae_folder': ",
+        gcae_options$gcae_folder, " \n",
+      "for 'gcae_options$gcae_version': ",
+      gcae_options$gcae_version, " \n",
+      "Tip 1: probably this is not a problem: GCAE is already installed! \n",
+      "Tip 2: use 'gcaer::is_gcae_installed' ",
+      "to determine if GCAE is already installed \n"
+    )
+  }
   # Clone repo
   if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
     gcaer::clone_gcae_repo(

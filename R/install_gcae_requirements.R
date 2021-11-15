@@ -46,7 +46,6 @@ install_gcae_requirements <- function(
   )
 
   text <- c(
-    text_upgrade_pip,
     text_install_requirements
   )
   text

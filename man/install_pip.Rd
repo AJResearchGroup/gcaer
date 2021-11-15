@@ -2,7 +2,7 @@
 % Please edit documentation in R/install_pip.R
 \name{install_pip}
 \alias{install_pip}
-\title{Determine if \code{pip} is installed}
+\title{Install \code{pip}}
 \usage{
 install_pip(gcae_options = create_gcae_options())
 }
@@ -11,10 +11,10 @@ install_pip(gcae_options = create_gcae_options())
 as created by \link{create_gcae_options}}
 }
 \value{
-TRUE if \code{pip} is installed
+Nothing
 }
 \description{
-Determine if \code{pip} is installed
+Install \code{pip}
 }
 \examples{
 is_pip_installed()
