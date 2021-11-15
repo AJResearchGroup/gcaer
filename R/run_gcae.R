@@ -20,6 +20,8 @@ run_gcae <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
+  testthat::expect_true(gcaer::is_miniconda_installed())
+  testthat::expect_true(gcaer::is_pip_installed())
   gcaer::check_gcae_is_installed(gcae_options)
 
   gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
