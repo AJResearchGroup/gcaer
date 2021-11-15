@@ -8,6 +8,15 @@
 install_pip <- function(
   gcae_options = create_gcae_options()
 ) {
+  if (gcaer::is_pip_installed(gcae_options = gcae_options)) {
+    stop(
+      "Cannot install 'pip', as it is already installed \n",
+      "'gcae_options$gcae_folder': ", gcae_options$gcae_folder, " \n",
+      "'gcae_options$gcae_version': ", gcae_options$gcae_version, " \n",
+      " \n",
+      "Tip: run 'gcaer::install_pip()'"
+    )
+  }
   conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
   if (!file.exists(conda_binary_path)) {
     stop(
@@ -19,5 +28,6 @@ install_pip <- function(
   conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
   testthat::expect_true(file.exists(conda_binary_path))
   reticulate::py_install(packages = "pip", conda = conda_binary_path)
+  gcaer::check_pip_is_installed(gcae_options = gcae_options)
   invisible(gcae_options)
 }

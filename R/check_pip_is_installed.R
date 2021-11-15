@@ -21,11 +21,11 @@ check_pip_is_installed <- function(
     )
 
   }
-  packages <- character(0)
+  t_packages <- tibble::tibble()
   tryCatch(
     suppressMessages(
       suppressWarnings(
-        packages <- gcaer::list_python_packages(gcae_options = gcae_options)
+        t_packages <- gcaer::list_python_packages(gcae_options = gcae_options)
       )
     ),
     warning = function(e) {
@@ -33,6 +33,7 @@ check_pip_is_installed <- function(
         "'gcaer::list_python_packages(gcae_options)' failed with a warning. \n",
         "'gcae_options$gcae_folder': ", gcae_options$gcae_folder, " \n",
         "'gcae_options$gcae_version': ", gcae_options$gcae_version, " \n",
+        "'conda_binary_path': ", conda_binary_path, " \n",
         "Warning ('e$message'): ", e$message, " \n",
         "Warning ('e$warning'): ", e$warning, " \n",
         " \n",
@@ -44,18 +45,21 @@ check_pip_is_installed <- function(
         "'gcaer::list_python_packages(gcae_options)' failed with an error. \n",
         "'gcae_options$gcae_folder': ", gcae_options$gcae_folder, " \n",
         "'gcae_options$gcae_version': ", gcae_options$gcae_version, " \n",
+        "Warning ('e$message'): ", e$message, " \n",
         "Error message: ", e$message, " \n",
         " \n",
         "Tip: run 'gcaer::install_pip()'"
       )
     }
   )
-  if (!"pip" %in% packages) {
+
+  if (!"pip" %in% t_packages$package) {
     stop(
       "Package 'pip' not found in the list ",
       "returned by 'gcaer::list_python_packages(gcae_options)'. \n",
       "'gcae_options$gcae_folder': ", gcae_options$gcae_folder, " \n",
       "'gcae_options$gcae_version': ", gcae_options$gcae_version, " \n",
+      "packages: ", packages,
       " \n",
       "Tip: run 'gcaer::install_pip()'"
     )
