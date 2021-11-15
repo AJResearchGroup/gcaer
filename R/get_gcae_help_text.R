@@ -10,10 +10,12 @@
 #' }
 #' @export
 get_gcae_help_text <- function(
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 ) {
   gcaer::run_gcae(
     args = "--help",
-    gcae_options = gcae_options
+    gcae_options = gcae_options,
+    verbose = verbose
   )
 }

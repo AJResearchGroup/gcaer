@@ -6,7 +6,8 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 install_pip <- function(
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 ) {
   if (gcaer::is_pip_installed(gcae_options = gcae_options)) {
     stop(
@@ -25,8 +26,10 @@ install_pip <- function(
     )
 
   }
-  conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
   testthat::expect_true(file.exists(conda_binary_path))
+  if (verbose) {
+    message("Installing pip for 'conda_binary_path': ", conda_binary_path)
+  }
   reticulate::py_install(packages = "pip", conda = conda_binary_path)
   gcaer::check_pip_is_installed(gcae_options = gcae_options)
   invisible(gcae_options)

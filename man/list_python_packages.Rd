@@ -4,14 +4,22 @@
 \alias{list_python_packages}
 \title{List the Python packages and their versions}
 \usage{
-list_python_packages(gcae_options = create_gcae_options())
+list_python_packages(gcae_options = create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
-the Python packages and their versions
+a \link[tibble]{tibble} with two rows:
+\itemize{
+\item \code{package}: the package name
+\item \code{version}: the package version
+}
 }
 \description{
 List the Python packages and their versions

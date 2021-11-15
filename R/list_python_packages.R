@@ -6,7 +6,8 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 list_python_packages <- function(
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 ) {
   python_binary_path <- character(0)
   tryCatch(
@@ -21,6 +22,9 @@ list_python_packages <- function(
       )
     }
   )
+  if (verbose) {
+    message("python_binary_path: ", python_binary_path)
+  }
   # Cannot check if pip is installed,
   # as that is done by calling this function,
   # and see if 'pip' is in the list of installed Python packages.
@@ -42,6 +46,9 @@ list_python_packages <- function(
     .name_repair = "minimal"
   )
   names(t_packages) <- tolower(text_matrix[1, ])
+  if (verbose) {
+    message("Packages found: \n", paste0(text, collapse = "\n"))
+  }
 
   has_pip <- sum(t_packages$package == "pip") == 1
   if (!has_pip) {

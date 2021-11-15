@@ -4,11 +4,15 @@
 \alias{install_python_packages}
 \title{Install the GCAE requirements}
 \usage{
-install_python_packages(gcae_options)
+install_python_packages(gcae_options, verbose = FALSE)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 nothing

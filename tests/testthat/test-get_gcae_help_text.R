@@ -1,7 +1,8 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!is_gcae_installed()) return()
-  expect_silent(get_gcae_help_text())
+  list_python_packages()
+  expect_silent(get_gcae_help_text(verbose = TRUE))
 
   text <- get_gcae_help_text()
   expect_true(is.character(text))

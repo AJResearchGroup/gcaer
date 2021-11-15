@@ -18,13 +18,15 @@ install_gcae_requirements <- function(
   }
   testthat::expect_true(gcaer::is_miniconda_installed(miniconda_path))
   # Install pip
-  if (verbose) {
-    message("Install pip")
+  if (gcaer::is_pip_installed()) {
+    gcaer::install_pip(gcae_options = gcae_options, verbose = verbose)
   }
-  # 'reticulate::py_install' will always produce output
-  conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
-  testthat::expect_true(file.exists(conda_binary_path))
-  reticulate::py_install("pip", conda = conda_binary_path)
+  if (1 == 2) {
+    # 'reticulate::py_install' will always produce output
+    conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
+    testthat::expect_true(file.exists(conda_binary_path))
+    reticulate::py_install("pip", conda = conda_binary_path)
+  }
   # Upgrade pip
   if (1 == 2) {
     if (verbose) {
@@ -44,7 +46,6 @@ install_gcae_requirements <- function(
   text_install_requirements <- gcaer::install_python_packages(
     gcae_options = gcae_options
   )
-
   text <- c(
     text_install_requirements
   )

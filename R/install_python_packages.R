@@ -6,9 +6,11 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 install_python_packages <- function(
-  gcae_options
+  gcae_options,
+  verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
+  plinkr::check_verbose(verbose)
 
   # Get the Python packages' names from the GCAE repo
   gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
@@ -25,8 +27,15 @@ install_python_packages <- function(
 
   # Install packages
   conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
+  if (verbose) {
+    message("conda_binary_path: ", conda_binary_path)
+  }
   testthat::expect_true(file.exists(conda_binary_path))
+  if (verbose) {
+    message("Installing packages: ", paste(package_names, collapse = ", "))
+  }
   reticulate::py_install(packages = package_names, conda = conda_binary_path)
+
 
   # Nope, use py_install
   if (1 == 2) {

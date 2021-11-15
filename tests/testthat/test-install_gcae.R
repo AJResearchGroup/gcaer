@@ -22,7 +22,7 @@ test_that("Install twice must give a proper error message", {
   gcae_options <- create_gcae_options(gcae_folder = gcae_folder)
   install_gcae(gcae_options) # reticulate::py_install will always produce output
   expect_error(
-    install_gcae(gcae_options), # reticulate::py_install will always produce output
+    install_gcae(gcae_options), # reticulate::py_install will always produce output # nolint
     "Cannot install GCAE when it is already installed"
   )
   unlink(gcae_folder, recursive = TRUE)

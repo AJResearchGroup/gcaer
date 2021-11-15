@@ -3,5 +3,5 @@ test_that("use", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
-  install_gcae_requirements(gcae_options)
+  install_gcae_requirements(gcae_options, verbose = TRUE)
 })

@@ -9,7 +9,9 @@ is_gcae_installed <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
-  gcaer::check_gcae_options(gcae_options)
+  gcaer::check_gcae_options(gcae_options = gcae_options)
+
+  gcaer::check_pip_is_installed(gcae_options = gcae_options)
   has_cloned_gcae_repo <- gcaer::has_cloned_gcae_repo(
     gcae_options = gcae_options
   )
