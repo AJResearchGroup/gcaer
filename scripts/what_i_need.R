@@ -8,12 +8,13 @@
 folder_name <- tempfile()
 
 # Initially, nothing is installed, this must be verified
-is_conda_installed <- function(folder_name) {
-  # ...
-}
+# is_conda_installed <- function(folder_name) {
+#   # ...
+# }
+#
+# testthat::expect_false(is_conda_installed(folder_name = folder_name))
 
-testthat::expect_false(is_conda_installed(folder_name = folder_name))
-
+renv::use_python()
 # Time to install Conda (or any other environment)
 install_conda <- function(folder_name) {
   # ...

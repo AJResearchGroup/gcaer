@@ -1,0 +1,111 @@
+---
+title: "install"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{install}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gcaer)
+```
+
+# Introduction
+
+ * Install a Conda environment
+ * Install Python packages
+ * Run a Python script with that Conda environment and packages
+
+We use only one point of contact, `folder_name`,
+which is the location where the Python environment and packages
+are installed:
+
+```{r}
+gcae_options <- create_gcae_options(gcae_folder = tempfile())
+gcae_options_to_str(gcae_options)
+```
+
+Initially, nothing is installed, this must be verified
+
+```{r}
+testthat::expect_false(
+  is_miniconda_installed(miniconda_path = get_miniconda_path(gcae_options))
+)
+```
+
+Time to install Conda (or any other environment):
+
+```{r}
+install_miniconda(miniconda_path = get_miniconda_path(gcae_options))
+testthat::expect_true(
+  is_miniconda_installed(
+    miniconda_path = get_miniconda_path(gcae_options)
+  )
+)
+```
+
+Get a list of the installed Python packages
+(or more likely: a tibble):
+
+```{r}
+installed_python_packages <- gcaer::list_python_packages(
+  gcae_options = gcae_options
+)
+knitr::kable(installed_python_packages)
+```
+
+Tensorflow (or any other absent package) will not be in that list yet:
+
+```{r}
+package_name <- "tensorflow"
+testthat::expect_false(package_name %in% installed_python_packages$package) 
+```
+
+
+Install it:
+
+```
+install_python_packages(
+  gcae_options = gcae_options,
+  package_names = package_name
+)
+```
+
+Now the Python package should be installed:
+
+```
+installed_python_packages <- gcaer::list_python_packages(
+  gcae_options = gcae_options
+)
+testthat::expect_true(package_name %in% installed_python_packages$package) 
+```
+
+Great, with our environment and packages in place,
+we run a Python script with those packages with command-line arguments
+
+```
+run_python_script <- function(
+  folder_name,
+  python_script_path,
+  args
+) {
+  # ...
+}
+
+python_script_path <- system.file("extdata", "run_gcae.py", package = "ormr")
+
+output <- run_python_script(
+  folder_name = folder_name,
+  python_script_path = python_script_path,
+  args = "--help"
+)
+testthat::expect_true(length(output) > 0)
+```

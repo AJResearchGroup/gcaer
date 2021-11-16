@@ -1,3 +1,8 @@
+# miniconda_path <- file.path(tempfile(), "my_miniconda_path")
+# reticulate::install_miniconda(path = miniconda_path)
+# reticulate::use_miniconda(condaenv = miniconda_path)
+
+
 miniconda_path <- file.path(tempfile(), "my_miniconda_path")
 
 # Install Miniconda to my custom path
@@ -12,7 +17,7 @@ testthat::expect_true("my_miniconda_path" %in% available_condas$name)
 
 # Cannot activate it?? This is the error message:
 #
-# Error in reticulate::use_miniconda(condaenv = "my_miniconda_path") : 
+# Error in reticulate::use_miniconda(condaenv = "my_miniconda_path") :
 #  Miniconda is not installed.
 # Use reticulate::install_miniconda() to install Miniconda.
 reticulate::use_miniconda(condaenv = "my_miniconda_path")
@@ -22,7 +27,7 @@ python_path <- available_condas["my_miniconda_path" == available_condas$name, ]$
 
 # Cannot activate it?? This is the error message:
 #
-# Error in reticulate::use_miniconda(condaenv = python_path) : 
+# Error in reticulate::use_miniconda(condaenv = python_path) :
 #   Miniconda is not installed.
 # Use reticulate::install_miniconda() to install Miniconda.
 reticulate::use_miniconda(condaenv = python_path)
@@ -32,15 +37,15 @@ python_folder <- dirname(python_path)
 
 # Cannot activate it?? This is the error message:
 #
-# Error in reticulate::use_miniconda(condaenv = python_folder) : 
+# Error in reticulate::use_miniconda(condaenv = python_folder) :
 #   Miniconda is not installed.
 # Use reticulate::install_miniconda() to install Miniconda.
 reticulate::use_miniconda(condaenv = python_folder)
 
 conda_paths <- stringr::str_subset(
   string = list.files(
-    path = miniconda_path, 
-    full.names = TRUE, 
+    path = miniconda_path,
+    full.names = TRUE,
     recursive = TRUE
   ),
   pattern = "/conda$"
