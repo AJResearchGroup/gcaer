@@ -6,15 +6,18 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 is_pip_installed <- function(
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 ) {
-  result <- logical(0)
+  result <- FALSE
   tryCatch({
       gcaer::check_pip_is_installed(gcae_options = gcae_options)
       result <- TRUE
     },
     error = function(e) {
-      result <- FALSE
+      if (verbose) {
+        message(e$message)
+      }
     }
   )
   testthat::expect_equal(length(result), 1)

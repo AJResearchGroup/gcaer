@@ -10,16 +10,20 @@ check_gcae_is_installed <- function(
 ) {
   gcaer::check_gcae_options(gcae_options)
 
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
+  has_cloned_gcae_repo <-
+  if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
+    stop("GCAE repository is not cloned")
+    HIERO
+  }
+  gcaer::check_pip_is_installed(gcae_options = gcae_options)
 
-  if (!dir.exists(gcae_subfolder)) {
-    stop(
-      "GCAE is not installed. \n",
-      "GCAE subfolder is not found \n",
-      "GCAE folder: ", gcae_options$gcae_folder, " \n",
-      "GCAE subfolder: ", gcae_subfolder, " \n",
-      "Tip: run 'gcaer::install_gcae()'"
+  if (verbose) {
+    message(
+      "Has cloned the GCAE repo (if it exists, GCAE is installed): ",
+      has_cloned_gcae_repo
     )
   }
+  has_cloned_gcae_repo
+
 
 }

@@ -36,6 +36,5 @@ install_miniconda <- function(
       stop("Failed to install Miniconda at ", miniconda_path)
     }
   )
-
   invisible(miniconda_path)
 }

@@ -4,11 +4,15 @@
 \alias{is_pip_installed}
 \title{Determine if \code{pip} is installed}
 \usage{
-is_pip_installed(gcae_options = create_gcae_options())
+is_pip_installed(gcae_options = create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 TRUE if \code{pip} is installed

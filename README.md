@@ -22,7 +22,7 @@ This assumes you have the `remotes` package installed.
 
 ## Install GCAE versions
 
-To install GCAE all:
+To install GCAE:
 
 ```
 library(gcaer)

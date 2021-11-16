@@ -11,18 +11,17 @@ is_gcae_installed <- function(
 ) {
   gcaer::check_gcae_options(gcae_options = gcae_options)
 
-  gcaer::check_pip_is_installed(gcae_options = gcae_options)
-  has_cloned_gcae_repo <- gcaer::has_cloned_gcae_repo(
-    gcae_options = gcae_options
+  result <- FALSE
+  tryCatch({
+    gcaer::check_gcae_is_installed(gcae_options = gcae_options)
+    result <- TRUE
+  },
+  error = function(e) {
+    if (verbose) {
+      message(e$message)
+    }
+  }
   )
-  if (!has_cloned_gcae_repo) {
-    return(FALSE)
-  }
-  if (verbose) {
-    message(
-      "Has cloned the GCAE repo (if it exists, GCAE is installed): ",
-      has_cloned_gcae_repo
-    )
-  }
-  has_cloned_gcae_repo
+  testthat::expect_equal(length(result), 1)
+  result
 }
