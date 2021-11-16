@@ -1,6 +1,354 @@
 #' Get the path to the `python` binary
 #' @inheritParams default_params_doc
-#' @return the path to the `python` binary
+#' @return the path to the `python` binary that has `pip` installed.
+#' See 'Note' why this binary was chosen over the other three.
+#' @note
+#' When installing Miniconda as such:
+#'
+#' ```
+#' gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
+#' miniconda_path <- get_miniconda_path(gcae_options)
+#' install_miniconda(miniconda_path = miniconda_path)
+#' ```
+#'
+#' There is a lot happening:
+#'
+#' ```
+#' * Installing Miniconda -- please wait a moment ...
+#' PREFIX=/home/richel/.cache/gcaer/file745452b6be92/r-miniconda
+#' Unpacking payload ...
+#' Collecting package metadata (current_repodata.json): ...working... done
+#' Solving environment: ...working... done
+#'
+#' ## Package Plan ##
+#'
+#'   environment location: /home/richel/.cache/gcaer/file745452b6be92/r-miniconda
+#'
+#'   added / updated specs:
+#'     - _libgcc_mutex==0.1=main
+#'     - _openmp_mutex==4.5=1_gnu
+#'     - brotlipy==0.7.0=py39h27cfd23_1003
+#'     - ca-certificates==2021.7.5=h06a4308_1
+#'     - certifi==2021.5.30=py39h06a4308_0
+#'     - cffi==1.14.6=py39h400218f_0
+#'     - chardet==4.0.0=py39h06a4308_1003
+#'     - conda-package-handling==1.7.3=py39h27cfd23_1
+#'     - conda==4.10.3=py39h06a4308_0
+#'     - cryptography==3.4.7=py39hd23ed53_0
+#'     - idna==2.10=pyhd3eb1b0_0
+#'     - ld_impl_linux-64==2.35.1=h7274673_9
+#'     - libffi==3.3=he6710b0_2
+#'     - libgcc-ng==9.3.0=h5101ec6_17
+#'     - libgomp==9.3.0=h5101ec6_17
+#'     - libstdcxx-ng==9.3.0=hd4cf53a_17
+#'     - ncurses==6.2=he6710b0_1
+#'     - openssl==1.1.1k=h27cfd23_0
+#'     - pip==21.1.3=py39h06a4308_0
+#'     - pycosat==0.6.3=py39h27cfd23_0
+#'     - pycparser==2.20=py_2
+#'     - pyopenssl==20.0.1=pyhd3eb1b0_1
+#'     - pysocks==1.7.1=py39h06a4308_0
+#'     - python==3.9.5=h12debd9_4
+#'     - readline==8.1=h27cfd23_0
+#'     - requests==2.25.1=pyhd3eb1b0_0
+#'     - ruamel_yaml==0.15.100=py39h27cfd23_0
+#'     - setuptools==52.0.0=py39h06a4308_0
+#'     - six==1.16.0=pyhd3eb1b0_0
+#'     - sqlite==3.36.0=hc218d9a_0
+#'     - tk==8.6.10=hbc83047_0
+#'     - tqdm==4.61.2=pyhd3eb1b0_1
+#'     - tzdata==2021a=h52ac0ba_0
+#'     - urllib3==1.26.6=pyhd3eb1b0_1
+#'     - wheel==0.36.2=pyhd3eb1b0_0
+#'     - xz==5.2.5=h7b6447c_0
+#'     - yaml==0.2.5=h7b6447c_0
+#'     - zlib==1.2.11=h7b6447c_3
+#'
+#'
+#' The following NEW packages will be INSTALLED:
+#'
+#'   _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+#'   _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-4.5-1_gnu
+#'   brotlipy           pkgs/main/linux-64::brotlipy-0.7.0-py39h27cfd23_1003
+#'   ca-certificates    pkgs/main/linux-64::ca-certificates-2021.7.5-h06a4308_1
+#'   certifi            pkgs/main/linux-64::certifi-2021.5.30-py39h06a4308_0
+#'   cffi               pkgs/main/linux-64::cffi-1.14.6-py39h400218f_0
+#'   chardet            pkgs/main/linux-64::chardet-4.0.0-py39h06a4308_1003
+#'   conda              pkgs/main/linux-64::conda-4.10.3-py39h06a4308_0
+#'   conda-package-han~ pkgs/main/linux-64::conda-package-handling-1.7.3-py39h27cfd23_1
+#'   cryptography       pkgs/main/linux-64::cryptography-3.4.7-py39hd23ed53_0
+#'   idna               pkgs/main/noarch::idna-2.10-pyhd3eb1b0_0
+#'   ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.35.1-h7274673_9
+#'   libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2
+#'   libgcc-ng          pkgs/main/linux-64::libgcc-ng-9.3.0-h5101ec6_17
+#'   libgomp            pkgs/main/linux-64::libgomp-9.3.0-h5101ec6_17
+#'   libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-9.3.0-hd4cf53a_17
+#'   ncurses            pkgs/main/linux-64::ncurses-6.2-he6710b0_1
+#'   openssl            pkgs/main/linux-64::openssl-1.1.1k-h27cfd23_0
+#'   pip                pkgs/main/linux-64::pip-21.1.3-py39h06a4308_0
+#'   pycosat            pkgs/main/linux-64::pycosat-0.6.3-py39h27cfd23_0
+#'   pycparser          pkgs/main/noarch::pycparser-2.20-py_2
+#'   pyopenssl          pkgs/main/noarch::pyopenssl-20.0.1-pyhd3eb1b0_1
+#'   pysocks            pkgs/main/linux-64::pysocks-1.7.1-py39h06a4308_0
+#'   python             pkgs/main/linux-64::python-3.9.5-h12debd9_4
+#'   readline           pkgs/main/linux-64::readline-8.1-h27cfd23_0
+#'   requests           pkgs/main/noarch::requests-2.25.1-pyhd3eb1b0_0
+#'   ruamel_yaml        pkgs/main/linux-64::ruamel_yaml-0.15.100-py39h27cfd23_0
+#'   setuptools         pkgs/main/linux-64::setuptools-52.0.0-py39h06a4308_0
+#'   six                pkgs/main/noarch::six-1.16.0-pyhd3eb1b0_0
+#'   sqlite             pkgs/main/linux-64::sqlite-3.36.0-hc218d9a_0
+#'   tk                 pkgs/main/linux-64::tk-8.6.10-hbc83047_0
+#'   tqdm               pkgs/main/noarch::tqdm-4.61.2-pyhd3eb1b0_1
+#'   tzdata             pkgs/main/noarch::tzdata-2021a-h52ac0ba_0
+#'   urllib3            pkgs/main/noarch::urllib3-1.26.6-pyhd3eb1b0_1
+#'   wheel              pkgs/main/noarch::wheel-0.36.2-pyhd3eb1b0_0
+#'   xz                 pkgs/main/linux-64::xz-5.2.5-h7b6447c_0
+#'   yaml               pkgs/main/linux-64::yaml-0.2.5-h7b6447c_0
+#'   zlib               pkgs/main/linux-64::zlib-1.2.11-h7b6447c_3
+#'
+#'
+#' Preparing transaction: ...working... done
+#' Executing transaction: ...working... done
+#' installation finished.
+#' Collecting package metadata (current_repodata.json): ...working... done
+#' Solving environment: ...working... done
+#'
+#' ## Package Plan ##
+#'
+#'   environment location: /home/richel/.cache/gcaer/file745452b6be92/r-miniconda
+#'
+#'   added / updated specs:
+#'     - conda
+#'
+#'
+#' The following packages will be downloaded:
+#'
+#'     package                    |            build
+#'     ---------------------------|-----------------
+#'     ca-certificates-2021.10.26 |       h06a4308_2         115 KB
+#'     certifi-2021.10.8          |   py39h06a4308_0         151 KB
+#'     charset-normalizer-2.0.4   |     pyhd3eb1b0_0          35 KB
+#'     cryptography-35.0.0        |   py39hd23ed53_0         1.3 MB
+#'     idna-3.2                   |     pyhd3eb1b0_0          48 KB
+#'     ncurses-6.3                |       h7f8727e_2         782 KB
+#'     openssl-1.1.1l             |       h7f8727e_0         2.5 MB
+#'     pycparser-2.21             |     pyhd3eb1b0_0          94 KB
+#'     pyopenssl-21.0.0           |     pyhd3eb1b0_1          49 KB
+#'     requests-2.26.0            |     pyhd3eb1b0_0          59 KB
+#'     setuptools-58.0.4          |   py39h06a4308_0         790 KB
+#'     tk-8.6.11                  |       h1ccaba5_0         3.0 MB
+#'     tqdm-4.62.3                |     pyhd3eb1b0_1          83 KB
+#'     tzdata-2021e               |       hda174b7_0         112 KB
+#'     urllib3-1.26.7             |     pyhd3eb1b0_0         111 KB
+#'     ------------------------------------------------------------
+#'                                            Total:         9.2 MB
+#'
+#' The following NEW packages will be INSTALLED:
+#'
+#'   charset-normalizer pkgs/main/noarch::charset-normalizer-2.0.4-pyhd3eb1b0_0
+#'
+#' The following packages will be REMOVED:
+#'
+#'   chardet-4.0.0-py39h06a4308_1003
+#'   pip-21.1.3-py39h06a4308_0
+#'   wheel-0.36.2-pyhd3eb1b0_0
+#'
+#' The following packages will be UPDATED:
+#'
+#'   ca-certificates                       2021.7.5-h06a4308_1 --> 2021.10.26-h06a4308_2
+#'   certifi                          2021.5.30-py39h06a4308_0 --> 2021.10.8-py39h06a4308_0
+#'   cryptography                         3.4.7-py39hd23ed53_0 --> 35.0.0-py39hd23ed53_0
+#'   idna                                    2.10-pyhd3eb1b0_0 --> 3.2-pyhd3eb1b0_0
+#'   ncurses                                    6.2-he6710b0_1 --> 6.3-h7f8727e_2
+#'   openssl                                 1.1.1k-h27cfd23_0 --> 1.1.1l-h7f8727e_0
+#'   pycparser                                       2.20-py_2 --> 2.21-pyhd3eb1b0_0
+#'   pyopenssl                             20.0.1-pyhd3eb1b0_1 --> 21.0.0-pyhd3eb1b0_1
+#'   requests                              2.25.1-pyhd3eb1b0_0 --> 2.26.0-pyhd3eb1b0_0
+#'   setuptools                          52.0.0-py39h06a4308_0 --> 58.0.4-py39h06a4308_0
+#'   tk                                      8.6.10-hbc83047_0 --> 8.6.11-h1ccaba5_0
+#'   tqdm                                  4.61.2-pyhd3eb1b0_1 --> 4.62.3-pyhd3eb1b0_1
+#'   tzdata                                   2021a-h52ac0ba_0 --> 2021e-hda174b7_0
+#'   urllib3                               1.26.6-pyhd3eb1b0_1 --> 1.26.7-pyhd3eb1b0_0
+#'
+#'
+#'
+#' Downloading and Extracting Packages
+#' tzdata-2021e         | 112 KB    | ########## | 100%
+#' certifi-2021.10.8    | 151 KB    | ########## | 100%
+#' setuptools-58.0.4    | 790 KB    | ########## | 100%
+#' tqdm-4.62.3          | 83 KB     | ########## | 100%
+#' ca-certificates-2021 | 115 KB    | ########## | 100%
+#' urllib3-1.26.7       | 111 KB    | ########## | 100%
+#' tk-8.6.11            | 3.0 MB    | ########## | 100%
+#' ncurses-6.3          | 782 KB    | ########## | 100%
+#' pyopenssl-21.0.0     | 49 KB     | ########## | 100%
+#' openssl-1.1.1l       | 2.5 MB    | ########## | 100%
+#' cryptography-35.0.0  | 1.3 MB    | ########## | 100%
+#' idna-3.2             | 48 KB     | ########## | 100%
+#' requests-2.26.0      | 59 KB     | ########## | 100%
+#' charset-normalizer-2 | 35 KB     | ########## | 100%
+#' pycparser-2.21       | 94 KB     | ########## | 100%
+#' Preparing transaction: ...working... done
+#' Verifying transaction: ...working... done
+#' Executing transaction: ...working... done
+#' Collecting package metadata (current_repodata.json): ...working... done
+#' Solving environment: ...working... done
+#'
+#' ## Package Plan ##
+#'
+#'   environment location: /home/richel/.cache/gcaer/file745452b6be92/r-miniconda/envs/r-reticulate
+#'
+#'   added / updated specs:
+#'     - numpy
+#'     - python=3.6
+#'
+#'
+#' The following packages will be downloaded:
+#'
+#'     package                    |            build
+#'     ---------------------------|-----------------
+#'     _libgcc_mutex-0.1          |      conda_forge           3 KB  conda-forge
+#'     _openmp_mutex-4.5          |            1_gnu          22 KB  conda-forge
+#'     ca-certificates-2021.10.8  |       ha878542_0         139 KB  conda-forge
+#'     certifi-2016.9.26          |           py36_0         217 KB  conda-forge
+#'     ld_impl_linux-64-2.36.1    |       hea4e1c9_2         667 KB  conda-forge
+#'     libblas-3.9.0              |12_linux64_openblas          12 KB  conda-forge
+#'     libcblas-3.9.0             |12_linux64_openblas          12 KB  conda-forge
+#'     libffi-3.4.2               |       h7f98852_5          57 KB  conda-forge
+#'     libgcc-ng-11.2.0           |      h1d223b6_11         887 KB  conda-forge
+#'     libgfortran-ng-11.2.0      |      h69a702a_11          19 KB  conda-forge
+#'     libgfortran5-11.2.0        |      h5c6108e_11         1.7 MB  conda-forge
+#'     libgomp-11.2.0             |      h1d223b6_11         427 KB  conda-forge
+#'     liblapack-3.9.0            |12_linux64_openblas          12 KB  conda-forge
+#'     libopenblas-0.3.18         |pthreads_h8fe5266_0         9.6 MB  conda-forge
+#'     libstdcxx-ng-11.2.0        |      he4da1e4_11         4.2 MB  conda-forge
+#'     libzlib-1.2.11             |    h36c2ea0_1013          59 KB  conda-forge
+#'     ncurses-6.2                |       h58526e2_4         985 KB  conda-forge
+#'     numpy-1.19.5               |   py36hfc0c790_2         5.3 MB  conda-forge
+#'     openssl-1.1.1l             |       h7f98852_0         2.1 MB  conda-forge
+#'     pip-21.3.1                 |     pyhd8ed1ab_0         1.2 MB  conda-forge
+#'     python-3.6.13              |hb7a2778_2_cpython        38.3 MB  conda-forge
+#'     python_abi-3.6             |          2_cp36m           4 KB  conda-forge
+#'     readline-8.1               |       h46c0cb4_0         295 KB  conda-forge
+#'     setuptools-49.6.0          |   py36h5fab9bb_3         936 KB  conda-forge
+#'     sqlite-3.36.0              |       h9cd32fc_2         1.4 MB  conda-forge
+#'     tk-8.6.11                  |       h27826a3_1         3.3 MB  conda-forge
+#'     wheel-0.37.0               |     pyhd8ed1ab_1          31 KB  conda-forge
+#'     xz-5.2.5                   |       h516909a_1         343 KB  conda-forge
+#'     zlib-1.2.11                |    h36c2ea0_1013          86 KB  conda-forge
+#'     ------------------------------------------------------------
+#'                                            Total:        72.3 MB
+#'
+#' The following NEW packages will be INSTALLED:
+#'
+#'   _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge
+#'   _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-1_gnu
+#'   ca-certificates    conda-forge/linux-64::ca-certificates-2021.10.8-ha878542_0
+#'   certifi            conda-forge/linux-64::certifi-2016.9.26-py36_0
+#'   ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.36.1-hea4e1c9_2
+#'   libblas            conda-forge/linux-64::libblas-3.9.0-12_linux64_openblas
+#'   libcblas           conda-forge/linux-64::libcblas-3.9.0-12_linux64_openblas
+#'   libffi             conda-forge/linux-64::libffi-3.4.2-h7f98852_5
+#'   libgcc-ng          conda-forge/linux-64::libgcc-ng-11.2.0-h1d223b6_11
+#'   libgfortran-ng     conda-forge/linux-64::libgfortran-ng-11.2.0-h69a702a_11
+#'   libgfortran5       conda-forge/linux-64::libgfortran5-11.2.0-h5c6108e_11
+#'   libgomp            conda-forge/linux-64::libgomp-11.2.0-h1d223b6_11
+#'   liblapack          conda-forge/linux-64::liblapack-3.9.0-12_linux64_openblas
+#'   libopenblas        conda-forge/linux-64::libopenblas-0.3.18-pthreads_h8fe5266_0
+#'   libstdcxx-ng       conda-forge/linux-64::libstdcxx-ng-11.2.0-he4da1e4_11
+#'   libzlib            conda-forge/linux-64::libzlib-1.2.11-h36c2ea0_1013
+#'   ncurses            conda-forge/linux-64::ncurses-6.2-h58526e2_4
+#'   numpy              conda-forge/linux-64::numpy-1.19.5-py36hfc0c790_2
+#'   openssl            conda-forge/linux-64::openssl-1.1.1l-h7f98852_0
+#'   pip                conda-forge/noarch::pip-21.3.1-pyhd8ed1ab_0
+#'   python             conda-forge/linux-64::python-3.6.13-hb7a2778_2_cpython
+#'   python_abi         conda-forge/linux-64::python_abi-3.6-2_cp36m
+#'   readline           conda-forge/linux-64::readline-8.1-h46c0cb4_0
+#'   setuptools         conda-forge/linux-64::setuptools-49.6.0-py36h5fab9bb_3
+#'   sqlite             conda-forge/linux-64::sqlite-3.36.0-h9cd32fc_2
+#'   tk                 conda-forge/linux-64::tk-8.6.11-h27826a3_1
+#'   wheel              conda-forge/noarch::wheel-0.37.0-pyhd8ed1ab_1
+#'   xz                 conda-forge/linux-64::xz-5.2.5-h516909a_1
+#'   zlib               conda-forge/linux-64::zlib-1.2.11-h36c2ea0_1013
+#'
+#'
+#'
+#' Downloading and Extracting Packages
+#' tk-8.6.11            | 3.3 MB    | ########## | 100%
+#' certifi-2016.9.26    | 217 KB    | ########## | 100%
+#' liblapack-3.9.0      | 12 KB     | ########## | 100%
+#' python-3.6.13        | 38.3 MB   | ########## | 100%
+#' libgfortran5-11.2.0  | 1.7 MB    | ########## | 100%
+#' xz-5.2.5             | 343 KB    | ########## | 100%
+#' setuptools-49.6.0    | 936 KB    | ########## | 100%
+#' readline-8.1         | 295 KB    | ########## | 100%
+#' ld_impl_linux-64-2.3 | 667 KB    | ########## | 100%
+#' sqlite-3.36.0        | 1.4 MB    | ########## | 100%
+#' libgcc-ng-11.2.0     | 887 KB    | ########## | 100%
+#' ca-certificates-2021 | 139 KB    | ########## | 100%
+#' numpy-1.19.5         | 5.3 MB    | ########## | 100%
+#' _openmp_mutex-4.5    | 22 KB     | ########## | 100%
+#' libblas-3.9.0        | 12 KB     | ########## | 100%
+#' libstdcxx-ng-11.2.0  | 4.2 MB    | ########## | 100%
+#' zlib-1.2.11          | 86 KB     | ########## | 100%
+#' openssl-1.1.1l       | 2.1 MB    | ########## | 100%
+#' libzlib-1.2.11       | 59 KB     | ########## | 100%
+#' libopenblas-0.3.18   | 9.6 MB    | ########## | 100%
+#' libgomp-11.2.0       | 427 KB    | ########## | 100%
+#' libffi-3.4.2         | 57 KB     | ########## | 100%
+#' pip-21.3.1           | 1.2 MB    | ########## | 100%
+#' libcblas-3.9.0       | 12 KB     | ########## | 100%
+#' libgfortran-ng-11.2. | 19 KB     | ########## | 100%
+#' _libgcc_mutex-0.1    | 3 KB      | ########## | 100%
+#' wheel-0.37.0         | 31 KB     | ########## | 100%
+#' python_abi-3.6       | 4 KB      | ########## | 100%
+#' ncurses-6.2          | 985 KB    | ########## | 100%
+#' Preparing transaction: ...working... done
+#' Verifying transaction: ...working... done
+#' Executing transaction: ...working... done
+#' #
+#' # To activate this environment, use
+#' #
+#' #     $ conda activate r-reticulate
+#' #
+#' # To deactivate an active environment, use
+#' #
+#' #     $ conda deactivate
+#'
+#' * Miniconda has been successfully installed at '/home/richel/.cache/gcaer/file745452b6be92/r-miniconda'.
+#' ```
+#'
+#' Now, there are four Python binaries present:
+#'
+#' ```
+#' richel@N141CU:~/.cache/gcaer/file745452b6be92$ find . | egrep "/python$"
+#' ./r-miniconda/bin/python
+#' ./r-miniconda/envs/r-reticulate/bin/python
+#' ./r-miniconda/pkgs/python-3.6.13-hb7a2778_2_cpython/bin/python
+#' ./r-miniconda/pkgs/python-3.9.5-h12debd9_4/bin/python
+#' ```
+#'
+#' Of these, only the `r-reticulate` version has `pip` installed:
+#'
+#' ```
+#' (base) richel@N141CU:~/.cache/gcaer/file745452b6be92$ ./r-miniconda/bin/python -m pip list
+#' /home/richel/.cache/gcaer/file745452b6be92/r-miniconda/bin/python: No module named pip
+#' (base) richel@N141CU:~/.cache/gcaer/file745452b6be92$ r-miniconda/envs/r-reticulate/bin/python -m pip list
+#' Package    Version
+#' ---------- -------------------
+#' certifi    2016.9.26
+#' numpy      1.19.5
+#' pip        21.3.1
+#' setuptools 49.6.0.post20210108
+#' wheel      0.37.0
+#' (base) richel@N141CU:~/.cache/gcaer/file745452b6be92$ ./r-miniconda/pkgs/python-3.6.13-hb7a2778_2_cpython/bin/python -m pip list
+#' /home/richel/.cache/gcaer/file745452b6be92/r-miniconda/pkgs/python-3.6.13-hb7a2778_2_cpython/bin/python: No module named pip
+#' (base) richel@N141CU:~/.cache/gcaer/file745452b6be92$ ./r-miniconda/pkgs/python-3.9.5-h12debd9_4/bin/python -m pip list
+#' /home/richel/.cache/gcaer/file745452b6be92/r-miniconda/pkgs/python-3.9.5-h12debd9_4/bin/python: No module named pip
+#' ```
+#'
+#' Hence, \link{get_python_binary_path} returns the Python binary that
+#' has `pip` installed.
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_python_binary_path <- function(
