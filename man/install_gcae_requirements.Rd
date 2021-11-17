@@ -24,7 +24,7 @@ the text produced at installation
 Install the GCAE requirements
 }
 \examples{
-gcaer_report()
+# install_gcae_requirements() # Takes 30 mins
 }
 \author{
 Richèl J.C. Bilderbeek

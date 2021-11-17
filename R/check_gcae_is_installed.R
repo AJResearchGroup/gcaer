@@ -10,20 +10,22 @@ check_gcae_is_installed <- function(
 ) {
   gcaer::check_gcae_options(gcae_options)
 
-  has_cloned_gcae_repo <-
   if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
-    stop("GCAE repository is not cloned")
-    HIERO
-  }
-  gcaer::check_pip_is_installed(gcae_options = gcae_options)
-
-  if (verbose) {
-    message(
-      "Has cloned the GCAE repo (if it exists, GCAE is installed): ",
-      has_cloned_gcae_repo
+    stop(
+      "GCAE repository is not cloned. \n",
+      "Tip: run 'gcaer::clone_gcae_repo()'"
     )
   }
-  has_cloned_gcae_repo
-
-
+  ormr_folder_name <- gcae_options$gcae_folder
+  if (
+    !ormr::is_python_package_installed(
+      ormr_folder_name = ormr_folder_name,
+      package_name = "tensorflow"
+    )
+  ) {
+    stop(
+      "Tensorflow not installed \n",
+      "Tip: run 'gcaer::install_gcae_requirements()'"
+    )
+  }
 }

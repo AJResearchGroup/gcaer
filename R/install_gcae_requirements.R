@@ -2,52 +2,22 @@
 #' @inheritParams default_params_doc
 #' @return the text produced at installation
 #' @examples
-#' gcaer_report()
+#' # install_gcae_requirements() # Takes 30 mins
 #' @author Richèl J.C. Bilderbeek
 #' @export
 install_gcae_requirements <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
-  # Install Miniconda
-  miniconda_path <- gcaer::get_miniconda_path(gcae_options = gcae_options)
-  if (!gcaer::is_miniconda_installed(miniconda_path = miniconda_path)) {
-    gcaer::install_miniconda(miniconda_path = miniconda_path)
-  } else if (verbose) {
-    message("Miniconda already installed at ", miniconda_path)
-  }
-  testthat::expect_true(gcaer::is_miniconda_installed(miniconda_path))
-  # Install pip
-  if (gcaer::is_pip_installed()) {
-    gcaer::install_pip(gcae_options = gcae_options, verbose = verbose)
-  }
-  if (1 == 2) {
-    # 'reticulate::py_install' will always produce output
-    conda_binary_path <- gcaer::get_conda_binary_path(gcae_options = gcae_options)
-    testthat::expect_true(file.exists(conda_binary_path))
-    reticulate::py_install("pip", conda = conda_binary_path)
-  }
-  # Upgrade pip
-  if (1 == 2) {
-    if (verbose) {
-      message("Upgrade pip ")
-    }
-    python_bin_path <- file.path(miniconda_path, "bin", "python")
-    testthat::expect_true(file.exists(python_bin_path))
-    text_upgrade_pip <- gcaer::upgrade_pip(
-      python_bin_path = python_bin_path,
-      verbose = verbose
-    )
-    if (verbose) {
-      message("text_upgrade_pip: ", paste0(text_upgrade_pip, collapse = " "))
-    }
-  }
-  # Installing requirements
-  text_install_requirements <- gcaer::install_python_packages(
-    gcae_options = gcae_options
+  gcae_requirements_filename <- file.path(
+    get_gcae_subfolder(), "requirements.txt"
   )
-  text <- c(
-    text_install_requirements
+  package_names <- readLines(gcae_requirements_filename)
+
+  ormr_folder_name <- gcae_options$gcae_folder
+  ormr::create_conda_env(ormr_folder_name = ormr_folder_name)
+  ormr::install_python_packages(
+    ormr_folder_name = ormr_folder_name,
+    package_names = package_names
   )
-  text
 }
