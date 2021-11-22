@@ -28,7 +28,6 @@ default_params_doc(
   losses_from_project_filename,
   losses_from_train_t_filename,
   losses_from_train_v_filename,
-  miniconda_path,
   model_id,
   os,
   out,
@@ -109,10 +108,6 @@ or \verb{https://github.com/cnettel/GenoCAE}}
 
 \item{losses_from_train_v_filename}{path to the
 \code{losses_from_train_v.csv} file}
-
-\item{miniconda_path}{the Miniconda path,
-as can be obtained using \link{get_miniconda_path}
-of a \code{gcae_options} (see \link{create_gcae_options})}
 
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 

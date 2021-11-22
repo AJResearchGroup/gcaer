@@ -6,3 +6,4 @@
 ^NEWS\.md$
 ^appveyor\.yml$
 ^Singularity$
+^gcaer\.sif$

@@ -45,9 +45,6 @@
 #' `losses_from_train_t.csv` file
 #' @param losses_from_train_v_filename path to the
 #' `losses_from_train_v.csv` file
-#' @param miniconda_path the Miniconda path,
-#' as can be obtained using \link{get_miniconda_path}
-#' of a `gcae_options` (see \link{create_gcae_options})
 #' @param model_id model id, corresponding to a file models/model_id.json
 #' @param os name of the operating system,
 #' as returned by \link[rappdirs]{app_dir}
@@ -97,7 +94,6 @@ default_params_doc <- function(
   losses_from_project_filename,
   losses_from_train_t_filename,
   losses_from_train_v_filename,
-  miniconda_path,
   model_id,
   os,
   out,
