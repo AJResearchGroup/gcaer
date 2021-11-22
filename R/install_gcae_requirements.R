@@ -9,13 +9,15 @@ install_gcae_requirements <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
-  gcae_requirements_filename <- file.path(
-    get_gcae_subfolder(), "requirements.txt"
+  package_names <- gcaer::get_gcae_required_python_packages(
+    gcae_options = gcae_options
   )
-  package_names <- readLines(gcae_requirements_filename)
 
   ormr_folder_name <- gcae_options$gcae_folder
-  ormr::create_conda_env(ormr_folder_name = ormr_folder_name)
+  if (!ormr::does_conda_env_exists(ormr_folder_name = gcae_options$gcae_folder)) {
+    ormr::create_conda_env(ormr_folder_name = gcae_options$gcae_folder)
+  }
+  ormr::check_conda_env_exists(ormr_folder_name = gcae_options$gcae_folder)
   ormr::install_python_packages(
     ormr_folder_name = ormr_folder_name,
     package_names = package_names
