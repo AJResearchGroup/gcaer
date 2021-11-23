@@ -6,9 +6,10 @@ test_that("use", {
     get_gcae_required_python_packages()
   )
 
-  # This is not in the list, but it is needed
   expect_true(
-    "utils" %in% get_gcae_required_python_packages()
+    tibble::is_tibble(
+      get_gcae_required_python_packages()
+    )
   )
 })
 

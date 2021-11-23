@@ -1,6 +1,8 @@
-#' Get the names and version fo all the Python packages GCAE needs
+#' Get the names and version of all the Python packages GCAE needs
 #' @inheritParams default_params_doc
-#' @return a character vector
+#' @return a \link[tibble]{tibble} with columns
+#'  * `package`
+#'  * `version`
 #' @export
 get_gcae_required_python_packages <- function(
   gcae_options = create_gcae_options()
@@ -15,23 +17,15 @@ get_gcae_required_python_packages <- function(
   gcae_requirements_filename <- file.path(
     get_gcae_subfolder(gcae_options = gcae_options), "requirements.txt"
   )
-  package_names <- readLines(gcae_requirements_filename)
-
-  # Packages that are not in the GCAE requirements.txt, but needed regardless
-
-  # 'utils' is definitely not needed, it is a namespace
-  #
-  # package_names <- c(package_names, "utils") # nolint don't do this
-  #
-
-  # Remove versions
-  #package_names[package_names == "setuptools==47.1.1"] <- "setuptools"
-  package_names <- stringr::str_replace(
-    string = package_names,
-    pattern = "(>|=)=.*$",
-    replacement = ""
+  requirements <- readLines(gcae_requirements_filename)
+  split_requirements <- stringr::str_match(
+    string = requirements,
+    pattern = "([a-z-]+)([=<>]=[0-9\\.]+)?"
   )
-
-  package_names
-
+  split_requirements[is.na(split_requirements[, 3]), 3] <- ""
+  packages <- tibble::tibble(
+    package = split_requirements[, 2],
+    version = split_requirements[, 3]
+  )
+  packages
 }
