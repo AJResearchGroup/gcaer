@@ -23,7 +23,6 @@ check_gcae_is_installed <- function(
 
   for (row_index in seq_len(nrow(packages))) {
     package_name <- packages$package[row_index]
-    package_version <- packages$version[row_index]
     if (
       !ormr::is_python_package_installed(
         ormr_folder_name = gcae_options$gcae_folder,
@@ -35,6 +34,8 @@ check_gcae_is_installed <- function(
         "Tip: run 'gcaer::install_gcae_requirements()'"
       )
     }
+    package_version <- packages$version[row_index]
+    if (package_version == "") next
     if (
       !ormr::is_python_package_with_version_installed(
         ormr_folder_name = gcae_options$gcae_folder,
