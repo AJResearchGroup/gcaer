@@ -7,18 +7,20 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     apt-get -y install python3 wget
     apt-get -y clean
 
-    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
-    export PATH=/miniconda/bin:$PATH
-    rm Miniconda3-latest-Linux-x86_64.sh
-    conda update conda
+    # 'ormr' will take care of this
+    # wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    # bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
+    # export PATH=/miniconda/bin:$PATH
+    # rm Miniconda3-latest-Linux-x86_64.sh
+    # conda update conda
 
+    Rscript -e 'remotes::install_github("richelbilderbeek/ormr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    # Rscript -e 'reticulate::install_miniconda()' # Done by gcaer::install_gcae
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
 
-%environment
-    export PATH=/miniconda/bin:$PATH
+# 'ormr' will take care of this
+# %environment
+#     export PATH=/miniconda/bin:$PATH
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
@@ -48,13 +50,13 @@ run_gcae(args = "--help", gcae_options = gcae_options)
 
     AUTHOR Richel J.C. Bilderbeek
 
-    NAME plinkr
+    NAME gcaer
 
-    DESCRIPTION The plinkr R package, with the multiple PLINK versions installed
+    DESCRIPTION The gcaer R package, with the PLINK and Python packages installed
 
     USAGE simply run the container
 
-    URL https://github.com/richelbilderbeek/plinkr
+    URL https://github.com/richelbilderbeek/gcaer
 
-    VERSION 0.4
+    VERSION 0.4.0
 
