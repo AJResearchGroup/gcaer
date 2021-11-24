@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_gcae_required_python_packages.R
 \name{get_gcae_required_python_packages}
 \alias{get_gcae_required_python_packages}
-\title{Get the names and version fo all the Python packages GCAE needs}
+\title{Get the names and version of all the Python packages GCAE needs}
 \usage{
 get_gcae_required_python_packages(gcae_options = create_gcae_options())
 }
@@ -11,8 +11,12 @@ get_gcae_required_python_packages(gcae_options = create_gcae_options())
 as created by \link{create_gcae_options}}
 }
 \value{
-a character vector
+a \link[tibble]{tibble} with columns
+\itemize{
+\item \code{package}
+\item \code{version}
+}
 }
 \description{
-Get the names and version fo all the Python packages GCAE needs
+Get the names and version of all the Python packages GCAE needs
 }
