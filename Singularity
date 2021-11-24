@@ -15,11 +15,11 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     # conda update conda
 
     Rscript -e 'remotes::install_github("richelbilderbeek/ormr")'
-    Rscript -e 'ormr::ormr_report()'
+    Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    Rscript -e 'gcaer::gcaer_report()'
-    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
-    Rscript -e 'gcaer::gcaer_report()'
+    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
+    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = FALSE)'
+    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
 
 # 'ormr' will take care of this
 # %environment
