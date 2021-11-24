@@ -23,20 +23,5 @@ is_gcae_installed <- function(
   }
   )
   testthat::expect_equal(length(result), 1)
-
-  # Check if all packages are in
-
-  package_names <- gcaer::get_gcae_required_python_packages(
-    gcae_options = gcae_options
-  )
-  for (package_name in package_names) {
-    if (!ormr::is_python_package_installed(
-      ormr_folder_name = gcae_options$gcae_folder,
-      package_name = package_name
-    )) {
-      stop("Python package '", package_name, "' not installed")
-    }
-  }
-
   result
 }
