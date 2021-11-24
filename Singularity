@@ -14,6 +14,7 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     rm Miniconda3-latest-Linux-x86_64.sh
     conda update conda
 
+    Rscript -e 'install.packages("semver")'
     Rscript -e 'remotes::install_github("richelbilderbeek/ormr")'
     Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
