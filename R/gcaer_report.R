@@ -15,6 +15,13 @@ gcaer_report <- function(
   } else {
     message("GCAE is installed: no")
   }
+  message("**********************************")
+  message("* Report from the 'ormr' package *")
+  message("**********************************")
   ormr::ormr_report(ormr_folder_name = gcae_options$gcae_folder)
+
+  message("******************")
+  message("* R session info *")
+  message("******************")
   message(paste0(devtools::session_info(), collapse = "\n"))
 }

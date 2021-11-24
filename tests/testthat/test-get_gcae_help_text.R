@@ -5,6 +5,7 @@ test_that("use", {
   expect_silent(get_gcae_help_text(verbose = TRUE))
 
   text <- get_gcae_help_text()
+  text <- get_gcae_help_text(verbose = TRUE)
   expect_true(is.character(text))
   expect_true(length(text) > 3)
 })

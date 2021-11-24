@@ -29,7 +29,8 @@ run_gcae <- function(
   output <- ormr::run_python_script_with_args(
     ormr_folder_name = gcae_options$gcae_folder,
     python_script_path = gcae_run_gcae_py_path,
-    args = args
+    args = args,
+    verbose = verbose
   )
   output
 }
