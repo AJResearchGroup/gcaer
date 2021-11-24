@@ -7,12 +7,12 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     apt-get -y install python3 wget
     apt-get -y clean
 
-    # 'ormr' will take care of this
-    # wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    # bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
-    # export PATH=/miniconda/bin:$PATH
-    # rm Miniconda3-latest-Linux-x86_64.sh
-    # conda update conda
+    # 'ormr' needs this
+    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
+    export PATH=/miniconda/bin:$PATH
+    rm Miniconda3-latest-Linux-x86_64.sh
+    conda update conda
 
     Rscript -e 'remotes::install_github("richelbilderbeek/ormr")'
     Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
