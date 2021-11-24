@@ -38,6 +38,7 @@ jobs:
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_github("richelbilderbeek/plinkr")
+          install.packages("semver")
           remotes::install_github("richelbilderbeek/ormr")
           remotes::install_github("ropensci/pdftools")
           remotes::install_github("OchoaLab/genio")
