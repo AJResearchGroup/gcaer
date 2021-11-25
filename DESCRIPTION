@@ -19,12 +19,12 @@ Imports:
     ormr (>= 0.5.0),
     plinkr (>= 0.17.1),
     rappdirs,
-    reticulate,
     stringr
 Suggests:
     ggplot2,
     markdown,
     readr,
+    reticulate,
     rmarkdown,
     knitr,
     pdftools,
