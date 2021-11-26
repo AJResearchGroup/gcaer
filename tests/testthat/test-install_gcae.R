@@ -2,6 +2,7 @@ test_that("un- or install in temp gcae folder", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (plinkr::get_os() == "win") return()
+  if (!is_gcae_installed()) return()
 
   gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
   expect_false(is_gcae_installed(gcae_options))
@@ -16,7 +17,8 @@ test_that("Install twice must give a proper error message", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (plinkr::get_os() == "win") return()
-  if (!is_gcae_installed(gcae_options = create_gcae_options())) return()
+  if (!is_gcae_installed()) return()
+
   expect_error(
     install_gcae(gcae_options = create_gcae_options()),
     "Cannot install GCAE when it is already installed"
