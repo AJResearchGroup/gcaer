@@ -2,9 +2,9 @@
 #'
 #' Install a specific version of GCAE.
 #'
-#'  * Clone the GCAE repo, see \link{clone_gcae_repo}
-#'  * Install the needed Python packages, see \link{install_gcae_requirements}
-#'  * Fix the GCAE script, see \link{fix_gcae_script}
+#'  1. Clone the GCAE repo, see \link{clone_gcae_repo}
+#'  2. Install the needed Python packages, see \link{install_gcae_requirements}
+#'  3. Fix the GCAE script, see \link{fix_gcae_script}
 #'
 #' @inheritParams default_params_doc
 #' @return Nothing
@@ -29,24 +29,18 @@ install_gcae <- function(
       "to determine if GCAE is already installed \n"
     )
   }
-  # Clone repo
+  # 1. Clone the GCAE repo
   if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
     gcaer::clone_gcae_repo(
       gcae_options = gcae_options,
       verbose = verbose
     )
   }
-  # Install requirements
+  # 2. Install the needed Python packages
   gcaer::install_gcae_requirements(
     gcae_options = gcae_options,
     verbose = verbose
   )
-
-  testthat::expect_true(
-    gcaer::is_gcae_installed(gcae_options = gcae_options)
-  )
-
-  gcaer::fix_gcae_script(
-    gcae_options = gcae_options
-  )
+  # 3. Fix the GCAE script
+  gcaer::fix_gcae_script(gcae_options = gcae_options)
 }
