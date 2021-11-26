@@ -57,22 +57,22 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
 
-      - name: Test coverage
+      - name: Test coverage (when GCAE is installed)
         env:
           install_gcae: ${{ matrix.install_gcae }}
         run: if [[ "$install_gcae" == true ]]; then Rscript -e "covr::codecov()"; fi
 
-      - name: Lint
-        run: lintr::lint_package()
-        shell: Rscript {0}
+      - name: Lint (when GCAE is not installed)
+        env:
+          install_gcae: ${{ matrix.install_gcae }}
+        run: if [[ "$install_gcae" == false ]]; then Rscript -e "lintr::lint_package()"; fi
 
 #      - name: Install GCAE
 #        run: remotes::install_github("richelbilderbeek/gcaer")
 #        shell: Rscript {0}
 
-#      - name: Report
-#        run: gcaer::gcaer_report()
-#        shell: Rscript {0}
+      - name: Report
+        run: ./scripts/gcaer_report.sh
 
 #      - name: Self-test
 #        env:
