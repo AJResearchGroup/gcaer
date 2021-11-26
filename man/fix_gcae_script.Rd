@@ -4,7 +4,14 @@
 \alias{fix_gcae_script}
 \title{Fix the GCAE script}
 \usage{
-fix_gcae_script(gcae_options)
+fix_gcae_script(gcae_options = create_gcae_options())
+}
+\arguments{
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
+}
+\value{
+nothing. The script file modified
 }
 \description{
 Fix the GCAE script.
@@ -21,4 +28,7 @@ due to the addition of:
 }
 
 This function comments out that line.
+}
+\author{
+Richèl J.C. Bilderbeek
 }

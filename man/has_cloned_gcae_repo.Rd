@@ -4,11 +4,15 @@
 \alias{has_cloned_gcae_repo}
 \title{Determines if the GCAE repo has been cloned already}
 \usage{
-has_cloned_gcae_repo(gcae_options = create_gcae_options())
+has_cloned_gcae_repo(gcae_options = create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 TRUE if the GCAE repo has been cloned already

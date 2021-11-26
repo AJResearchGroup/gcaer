@@ -16,6 +16,14 @@ Nothing. Will \link{stop} if GCAE is not installed.
 \description{
 Check if GCAE is installed. Will \link{stop} if not
 }
+\details{
+GCAE is installed, if:
+\itemize{
+\item The GCAE repo is cloned, see \link{check_gcae_repo_is_cloned}
+\item The needed Python packages, see \link{check_gcae_python_packages_are_installed}
+\item Fix the GCAE script, see \link{check_gcae_script_is_fixed}
+}
+}
 \author{
 Richèl J.C. Bilderbeek
 }

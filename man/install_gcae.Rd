@@ -30,7 +30,14 @@ Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 Nothing
 }
 \description{
-Install a specific version of GCAE
+Install a specific version of GCAE.
+}
+\details{
+\itemize{
+\item Clone the GCAE repo, see \link{clone_gcae_repo}
+\item Install the needed Python packages, see \link{install_gcae_requirements}
+\item Fix the GCAE script, see \link{fix_gcae_script}
+}
 }
 \author{
 Richèl J.C. Bilderbeek

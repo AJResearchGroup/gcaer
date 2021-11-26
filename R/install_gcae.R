@@ -1,4 +1,11 @@
 #' Install a specific version of GCAE
+#'
+#' Install a specific version of GCAE.
+#'
+#'  * Clone the GCAE repo, see \link{clone_gcae_repo}
+#'  * Install the needed Python packages, see \link{install_gcae_requirements}
+#'  * Fix the GCAE script, see \link{fix_gcae_script}
+#'
 #' @inheritParams default_params_doc
 #' @return Nothing
 #' @author Richèl J.C. Bilderbeek

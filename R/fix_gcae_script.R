@@ -13,8 +13,13 @@
 #' }
 #'
 #' This function comments out that line.
-#'
-fix_gcae_script <- function(gcae_options) {
+#' @inheritParams default_params_doc
+#' @return nothing. The script file modified
+#' @author Richèl J.C. Bilderbeek
+#' @export
+fix_gcae_script <- function(
+  gcae_options = create_gcae_options()
+) {
   gcaer::check_gcae_options(gcae_options)
   run_gcae_py_path <- gcaer::get_run_gcae_py_path(gcae_options)
   testthat::expect_true(file.exists(run_gcae_py_path))
