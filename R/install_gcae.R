@@ -38,7 +38,7 @@ install_gcae <- function(
       verbose = verbose
     )
   }
-  gcaeer::check_gcae_repo_is_cloned(gcae_options = gcae_options)
+  gcaer::check_gcae_repo_is_cloned(gcae_options = gcae_options)
 
   if (verbose) {
     message("2. Install the needed Python packages")
