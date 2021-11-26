@@ -4,12 +4,7 @@
 \alias{run_gcae}
 \title{Run GCAE from arguments}
 \usage{
-run_gcae(
-  args,
-  gcae_options = create_gcae_options(),
-  verbose = FALSE,
-  check_install = FALSE
-)
+run_gcae(args, gcae_options = create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{args}{arguments for the GCAE executable}
@@ -20,9 +15,6 @@ as created by \link{create_gcae_options}}
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
-
-\item{check_install}{check if GCAE is installed
-properly. Set to FALSE to run GCAE at your own risk}
 }
 \value{
 the text that GCAE returns

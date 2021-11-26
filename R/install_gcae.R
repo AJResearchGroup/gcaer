@@ -43,6 +43,10 @@ install_gcae <- function(
   )
 
   testthat::expect_true(
-    gcaer::is_gcae_installed(gcae_options)
+    gcaer::is_gcae_installed(gcae_options = gcae_options)
+  )
+
+  gcaer::fix_gcae_script(
+    gcae_options = gcae_options
   )
 }

@@ -3,8 +3,7 @@ test_that("un- or install in temp gcae folder", {
   if (!plinkr::is_on_ci()) return()
   if (plinkr::get_os() == "win") return()
 
-  gcae_folder <- normalizePath(get_gcaer_tempfilename(), mustWork = FALSE)
-  gcae_options <- create_gcae_options(gcae_folder = gcae_folder)
+  gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
   expect_false(is_gcae_installed(gcae_options))
   install_gcae(gcae_options) # reticulate::py_install will always produce output
   expect_true(is_gcae_installed(gcae_options))
