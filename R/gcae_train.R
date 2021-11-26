@@ -29,15 +29,32 @@ gcae_train <- function(
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id
   )
-  gcaer::run_gcae(
+  if (verbose) {
+    message(
+      "Running GCAE with arguments: '", paste0(args, collapse = " "), " \n",
+      "Tip: you should be able to copy-paste this :-)"
+    )
+  }
+  output <- gcaer::run_gcae(
     args = args,
     gcae_options = gcae_options,
     verbose = verbose
   )
+  if (verbose) {
+    message("GCAE output: \n", paste0(output, collapse = "\n"))
+  }
   ae_out_subfolder <- get_gcae_output_subfolder(
     gcae_setup = gcae_setup,
     gcae_options = gcae_options
   )
+  if (!dir.exists(ae_out_subfolder)) {
+    stop(
+      "'ae_out_subfolder' not found at path '", ae_out_subfolder, "' \n",
+      paste0(gcae_options_to_str(gcae_options), collapse = "\n"),
+      "'args': '", paste0(args, collapse = " "), "' \n",
+      "Tip: you should be able to copy-paste the args :-)"
+    )
+  }
   testthat::expect_true(dir.exists(ae_out_subfolder))
   train_filenames <- list.files(
     path = ae_out_subfolder,
