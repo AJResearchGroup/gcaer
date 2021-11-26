@@ -16,12 +16,9 @@ test_that("Install twice must give a proper error message", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (plinkr::get_os() == "win") return()
-
-  gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
-  install_gcae(gcae_options = gcae_options) # reticulate::py_install will always produce output
+  if (!is_gcae_installed(gcae_options = create_gcae_options())) return()
   expect_error(
-    install_gcae(gcae_options = gcae_options),
+    install_gcae(gcae_options = create_gcae_options()),
     "Cannot install GCAE when it is already installed"
   )
-  unlink(gcae_options$gcae_folder, recursive = TRUE)
 })
