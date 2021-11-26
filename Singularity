@@ -23,9 +23,9 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = FALSE)'
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
 
-# 'ormr' will take care of this
-# %environment
-#     export PATH=/miniconda/bin:$PATH
+# 'ormr' needs this
+%environment
+    export PATH=/miniconda/bin:$PATH
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
