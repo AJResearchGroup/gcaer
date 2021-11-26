@@ -10,6 +10,7 @@ is_gcae_installed <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options = gcae_options)
+  plinkr::check_verbose(verbose = verbose)
 
   result <- FALSE
   tryCatch({
