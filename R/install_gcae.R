@@ -29,7 +29,9 @@ install_gcae <- function(
       "to determine if GCAE is already installed \n"
     )
   }
-  # 1. Clone the GCAE repo
+  if (verbose) {
+    message("1. Clone the GCAE repo")
+  }
   if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
     gcaer::clone_gcae_repo(
       gcae_options = gcae_options,
@@ -38,7 +40,9 @@ install_gcae <- function(
   }
   gcaeer::check_gcae_repo_is_cloned(gcae_options = gcae_options)
 
-  # 2. Install the needed Python packages
+  if (verbose) {
+    message("2. Install the needed Python packages")
+  }
   gcaer::install_gcae_requirements(
     gcae_options = gcae_options,
     verbose = verbose
@@ -46,6 +50,14 @@ install_gcae <- function(
   gcaer::check_gcae_python_packages_are_installed(gcae_options = gcae_options)
 
   # 3. Fix the GCAE script
+  if (verbose) {
+    message("Fix the GCAE script")
+  }
   gcaer::fix_gcae_script(gcae_options = gcae_options)
   gcaer::check_gcae_script_is_fixed(gcae_options = gcae_options)
+
+  if (verbose) {
+    message("Extra check for now")
+  }
+  gcaer::check_gcae_is_installed(gcae_options = gcae_options)
 }
