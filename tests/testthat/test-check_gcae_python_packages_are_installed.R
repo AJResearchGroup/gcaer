@@ -23,13 +23,6 @@ test_that("use", {
     "Python package 'docopt' not installed"
   )
   gcaer::install_gcae_requirements(gcae_options = gcae_options)
-  expect_error(
-    check_gcae_python_packages_are_installed(
-      gcae_options = gcae_options
-    ),
-    "Python package 'pandas-plink' not installed"
-  )
-  gcaer::install_gcae_requirements(gcae_options = gcae_options)
   expect_silent(
     check_gcae_python_packages_are_installed(
       gcae_options = gcae_options
