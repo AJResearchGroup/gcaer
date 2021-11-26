@@ -35,7 +35,9 @@ This is a list of functions to run or with with \code{GCAE}:
 }
 }
 \examples{
-is_gcae_installed()
+if (plinkr::is_on_ci()) {
+  is_gcae_installed()
+}
 }
 \author{
 Richèl J.C. Bilderbeek

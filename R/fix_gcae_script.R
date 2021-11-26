@@ -26,14 +26,14 @@ fix_gcae_script <- function(
 
   script_text <- readr::read_lines(run_gcae_py_path)
   first_line_regex <- "^tf.config.experimental.enable_tensor_float_32_execution"
-  first_line_index <- stringr::str_which(
+  index <- stringr::str_which(
     string = script_text,
     pattern = first_line_regex
   )
-  if (length(first_line_index) != 0) {
+  if (length(index) != 0) {
     # Add comments
-    script_text[first_line_index:(first_line_index+2)] <- stringr::str_replace(
-      string = script_text[first_line_index:(first_line_index+2)],
+    script_text[index:(index + 2)] <- stringr::str_replace(
+      string = script_text[index:(index + 2)],
       pattern = "(.*)",
       replacement = "#\\1"
     )

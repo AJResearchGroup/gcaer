@@ -4,14 +4,17 @@
 #'  * `package`
 #'  * `version`
 #' @export
-get_gcae_required_python_packages <- function(
+get_gcae_required_python_packages <- function( # nolint indeed a long function name
   gcae_options = create_gcae_options()
 ) {
   if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
     stop(
       "GCAE repo is not cloned. \n",
       "Tip: run 'gcaer::clone_gcae_repo(gcae_options = gcae_options)' \n",
-      paste0(gcaer::gcae_options_to_str(gcae_options = gcae_options), collapse = "\n")
+      paste0(
+        gcaer::gcae_options_to_str(gcae_options = gcae_options),
+        collapse = "\n"
+      )
     )
   }
   gcae_requirements_filename <- file.path(

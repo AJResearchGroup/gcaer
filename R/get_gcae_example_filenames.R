@@ -2,8 +2,10 @@
 #' @inheritParams default_params_doc
 #' @return the path to all \code{GCAE} files
 #' @examples
-#' if (is_gcae_installed()) {
-#'   get_gcae_example_filenames()
+#' if (plinkr::is_on_ci()) {
+#'   if (is_gcae_installed()) {
+#'     get_gcae_example_filenames()
+#'   }
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export

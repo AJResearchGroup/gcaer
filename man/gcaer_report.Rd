@@ -14,7 +14,9 @@ as created by \link{create_gcae_options}}
 Create a \link{gcaer} report, to be used when reporting bugs
 }
 \examples{
-gcaer_report()
+if (plinkr::is_on_ci()) {
+  gcaer_report()
+}
 }
 \author{
 Richèl J.C. Bilderbeek

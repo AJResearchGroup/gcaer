@@ -17,8 +17,10 @@ the path to all \code{GCAE} files
 Get the paths to all \code{GCAE} example files
 }
 \examples{
-if (is_gcae_installed()) {
-  get_gcae_example_filenames()
+if (plinkr::is_on_ci()) {
+  if (is_gcae_installed()) {
+    get_gcae_example_filenames()
+  }
 }
 }
 \author{

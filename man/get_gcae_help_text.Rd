@@ -21,10 +21,10 @@ the text of the gcae help file
 Get the text of the gcae help file
 }
 \examples{
-if (is_gcae_installed()) {
-
-  # Default version
-  get_gcae_help_text()
+if (plinkr::is_on_ci()) {
+  if (is_gcae_installed()) {
+    get_gcae_help_text()
+  }
 }
 }
 \author{

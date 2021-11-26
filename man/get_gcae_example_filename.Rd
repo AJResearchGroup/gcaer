@@ -23,8 +23,10 @@ Will \link{stop} if the file does not exist
 Get the path to a gcaer file
 }
 \examples{
-if (is_gcae_installed()) {
-  get_gcae_example_filename("HumanOrigins249_tiny.fam")
+if (plinkr::is_on_ci()) {
+  if (is_gcae_installed()) {
+    get_gcae_example_filename("HumanOrigins249_tiny.fam")
+  }
 }
 }
 \author{

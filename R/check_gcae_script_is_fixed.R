@@ -25,8 +25,5 @@ check_gcae_script_is_fixed <- function(
       "GCAE script is not fixed."
     )
   }
-
-  gcaer::is_gcae_script_fixed()
+  invisible(gcae_options)
 }
-
-

@@ -5,7 +5,8 @@
 #' GCAE is installed, if:
 #'
 #'  * The GCAE repo is cloned, see \link{check_gcae_repo_is_cloned}
-#'  * The needed Python packages, see \link{check_gcae_python_packages_are_installed}
+#'  * The needed Python packages,
+#'    see \link{check_gcae_python_packages_are_installed}
 #'  * Fix the GCAE script, see \link{check_gcae_script_is_fixed}
 #'
 #' @inheritParams default_params_doc

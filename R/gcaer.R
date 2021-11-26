@@ -27,7 +27,9 @@
 #' * \link{evaluate}: run \code{GCAE} \code{evaluate}
 #'
 #' @examples
-#' is_gcae_installed()
+#' if (plinkr::is_on_ci()) {
+#'   is_gcae_installed()
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @docType package
 #' @name gcaer
