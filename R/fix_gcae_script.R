@@ -20,7 +20,8 @@
 fix_gcae_script <- function(
   gcae_options = create_gcae_options()
 ) {
-  gcaer::check_gcae_options(gcae_options)
+  gcaer::check_gcae_options(gcae_options = gcae_options)
+  gcaer::check_gcae_repo_is_cloned(gcae_options = gcae_options)
   run_gcae_py_path <- gcaer::get_run_gcae_py_path(gcae_options)
   testthat::expect_true(file.exists(run_gcae_py_path))
 

@@ -36,11 +36,16 @@ install_gcae <- function(
       verbose = verbose
     )
   }
+  gcaeer::check_gcae_repo_is_cloned(gcae_options = gcae_options)
+
   # 2. Install the needed Python packages
   gcaer::install_gcae_requirements(
     gcae_options = gcae_options,
     verbose = verbose
   )
+  gcaer::check_gcae_python_packages_are_installed(gcae_options = gcae_options)
+
   # 3. Fix the GCAE script
   gcaer::fix_gcae_script(gcae_options = gcae_options)
+  gcaer::check_gcae_script_is_fixed(gcae_options = gcae_options)
 }
