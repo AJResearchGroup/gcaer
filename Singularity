@@ -2,12 +2,15 @@ Bootstrap: library
 From: richelbilderbeek/default/plinkr:0.17.2.1
 
 %post
+    # Install apt
     sed -i 's/$/ universe/' /etc/apt/sources.list
     apt-get -y update
+
+    # Install python3
     apt-get -y install python3 wget
     apt-get -y clean
 
-    # 'ormr' needs this
+    # Install Miniconda
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
     export PATH=/miniconda/bin:$PATH
@@ -24,8 +27,8 @@ From: richelbilderbeek/default/plinkr:0.17.2.1
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
 
 # 'ormr' needs this
-%environment
-    export PATH=/miniconda/bin:$PATH
+#%environment
+#    export PATH=/miniconda/bin:$PATH
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
