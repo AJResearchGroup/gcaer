@@ -14,13 +14,10 @@ install_gcae_requirements <- function(
   )
 
   ormr_folder_name <- gcae_options$gcae_folder
-  if (
-    !ormr::does_conda_env_exists(
-      ormr_folder_name = gcae_options$gcae_folder
-    )
-  ) {
-    ormr::create_conda_env(ormr_folder_name = gcae_options$gcae_folder)
-  }
+  ormr::create_and_activate_conda_env(
+    ormr_folder_name = ormr_folder_name,
+    python_version = gcae_options$python_version
+  )
   ormr::check_conda_env_exists(ormr_folder_name = gcae_options$gcae_folder)
 
   for (i in seq_len(nrow(t_required))) {
