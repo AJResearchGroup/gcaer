@@ -15,6 +15,8 @@ create_gcae_options(
 
 \item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
 Use \link{get_gcae_version} to get the \code{GCAE} version.}
+
+\item{python_version}{the Python version}
 }
 \value{
 the GCAE options,

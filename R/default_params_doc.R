@@ -54,6 +54,7 @@
 #' @param project_filenames path to the files
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
+#' @param python_version the Python version
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
 #' @param train_filenames path to the files
@@ -99,6 +100,7 @@ default_params_doc <- function(
   out,
   project_filenames,
   python_bin_path,
+  python_version,
   save_interval,
   train_filenames,
   train_opts_id,

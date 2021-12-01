@@ -33,6 +33,7 @@ default_params_doc(
   out,
   project_filenames,
   python_bin_path,
+  python_version,
   save_interval,
   train_filenames,
   train_opts_id,
@@ -122,6 +123,8 @@ This parameter is named after the \code{GCAE}
 as created (and returned) by \link{gcae_project}}
 
 \item{python_bin_path}{path to a \code{python} binary/executable}
+
+\item{python_version}{the Python version}
 
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}
