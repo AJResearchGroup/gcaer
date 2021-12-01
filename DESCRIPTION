@@ -16,7 +16,7 @@ Depends:
 Imports:
     devtools,
     gert,
-    ormr (>= 0.6.0),
+    ormr (>= 0.6.1),
     plinkr (>= 0.17.1),
     rappdirs,
     stringr
