@@ -1,7 +1,7 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
-  gcae_options <- create_gcae_options(gcae_folder = tempfile())
+  gcae_options <- create_gcae_options()
   expect_error(
     check_gcae_python_packages_are_installed(
       gcae_options = gcae_options

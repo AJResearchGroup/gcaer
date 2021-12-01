@@ -14,7 +14,7 @@ test_that("use", {
 })
 
 test_that("need to clone the repo", {
-  gcae_options <- create_gcae_options(gcae_folder = tempfile())
+  gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
   expect_error(
     get_gcae_required_python_packages(gcae_options = gcae_options),
     "Tip: run 'gcaer::clone_gcae_repo"
