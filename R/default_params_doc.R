@@ -54,6 +54,8 @@
 #' @param out the base filename of the output files.
 #' This parameter is named after the \code{GCAE}
 #' \code{--out} flag
+#' @param pheno_model_id phenotype model ID,
+#' as checked by \link{check_pheno_model_id}
 #' @param project_filenames path to the files
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
@@ -101,6 +103,7 @@ default_params_doc <- function(
   model_id,
   os,
   out,
+  pheno_model_id,
   project_filenames,
   python_bin_path,
   python_version,

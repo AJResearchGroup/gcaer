@@ -10,7 +10,8 @@ create_gcae_setup(
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
-  trainedmodelname = "ae_out"
+  trainedmodelname = "ae_out",
+  pheno_model_id = "p1"
 )
 }
 \arguments{
@@ -34,6 +35,9 @@ The data options affect how data is input to the model.}
 
 \item{trainedmodelname}{name of the trained model,
 which is \code{ae_out} by default}
+
+\item{pheno_model_id}{phenotype model ID,
+as checked by \link{check_pheno_model_id}}
 }
 \value{
 full paths to the created files

@@ -31,6 +31,7 @@ default_params_doc(
   model_id,
   os,
   out,
+  pheno_model_id,
   project_filenames,
   python_bin_path,
   python_version,
@@ -121,6 +122,9 @@ as returned by \link[rappdirs]{app_dir}}
 \item{out}{the base filename of the output files.
 This parameter is named after the \code{GCAE}
 \code{--out} flag}
+
+\item{pheno_model_id}{phenotype model ID,
+as checked by \link{check_pheno_model_id}}
 
 \item{project_filenames}{path to the files
 as created (and returned) by \link{gcae_project}}

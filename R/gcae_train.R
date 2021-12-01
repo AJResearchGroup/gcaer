@@ -19,6 +19,9 @@ gcae_train <- function(
   gcaer::check_gcae_options(gcae_options)
   plinkr::check_verbose(verbose)
 
+  #- name: Train models with phenotype
+  # run: python3 run_gcae.py train --datadir example_tiny --data issue_2_bin --model_id M1  --epochs 20 --save_interval 2  --train_opts_id ex3  --data_opts_id b_0_4 --pheno_model_id=p1
+
   args <- c(
     "train",
     "--datadir", gcae_setup$datadir,
@@ -27,7 +30,8 @@ gcae_train <- function(
     "--epochs", epochs,
     "--save_interval", save_interval,
     "--train_opts_id", gcae_setup$train_opts_id,
-    "--data_opts_id", gcae_setup$data_opts_id
+    "--data_opts_id", gcae_setup$data_opts_id,
+    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
   )
   if (verbose) {
     message(

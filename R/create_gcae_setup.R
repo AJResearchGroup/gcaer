@@ -16,7 +16,8 @@ create_gcae_setup <- function(
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
-  trainedmodelname = "ae_out"
+  trainedmodelname = "ae_out",
+  pheno_model_id = "p1"
 ) {
   gcaer::check_datadir(datadir)
   gcaer::check_data(data)
@@ -24,12 +25,14 @@ create_gcae_setup <- function(
   gcaer::check_train_opts_id(train_opts_id)
   gcaer::check_data_opts_id(data_opts_id)
   gcaer::check_trainedmodelname(trainedmodelname)
+  gcaer::check_pheno_model_id(pheno_model_id)
   list(
     datadir = datadir,
     data = data,
     model_id = model_id,
     train_opts_id = train_opts_id,
     data_opts_id = data_opts_id,
-    trainedmodelname = trainedmodelname
+    trainedmodelname = trainedmodelname,
+    pheno_model_id = pheno_model_id
   )
 }
