@@ -9,13 +9,16 @@ test_that("use", {
     "GCAE repo is not cloned"
   )
   clone_gcae_repo(gcae_options = gcae_options)
-  expect_error(
-    check_gcae_python_packages_are_installed(
-      gcae_options = gcae_options
-    ),
-    "Conda environment does not exist"
-  )
-  ormr::create_conda_env(ormr_folder_name = gcae_options$gcae_folder)
+  if (1 == 2) {
+    # 'ormr' is eager
+    expect_error(
+      check_gcae_python_packages_are_installed(
+        gcae_options = gcae_options
+      ),
+      "Conda environment does not exist"
+    )
+    ormr::create_conda_env(ormr_folder_name = gcae_options$gcae_folder)
+  }
   expect_error(
     check_gcae_python_packages_are_installed(
       gcae_options = gcae_options

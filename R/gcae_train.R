@@ -21,6 +21,7 @@ gcae_train <- function(
 
   #- name: Train models with phenotype
   # run: python3 run_gcae.py train --datadir example_tiny --data issue_2_bin --model_id M1  --epochs 20 --save_interval 2  --train_opts_id ex3  --data_opts_id b_0_4 --pheno_model_id=p1
+  gcaer::check_gcae_train_files_are_present(gcae_setup = gcae_setup)
 
   args <- c(
     "train",

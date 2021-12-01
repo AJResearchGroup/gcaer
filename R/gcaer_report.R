@@ -7,7 +7,8 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcaer_report <- function(
-  gcae_options = gcaer::create_gcae_options()
+  gcae_options = gcaer::create_gcae_options(),
+  verbose = FALSE
 ) {
   message("OS: ", rappdirs::app_dir()$os)
   message("GCAE folder (from 'gcae_options'): ", gcae_options$gcae_folder)
@@ -20,7 +21,13 @@ gcaer_report <- function(
   message("**********************************")
   message("* Report from the 'ormr' package *")
   message("**********************************")
-  ormr::ormr_report(ormr_folder_name = gcae_options$gcae_folder)
+  ormr_folder_name <- gcae_options$gcae_folder
+  python_version <- gcae_options$python_version
+  ormr::ormr_report(
+    ormr_folder_name = ormr_folder_name,
+    python_version = python_version,
+    verbose = verbose
+  )
 
   message("******************")
   message("* R session info *")

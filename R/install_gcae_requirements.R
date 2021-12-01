@@ -57,20 +57,26 @@ install_gcae_requirements <- function(
         !ormr::is_python_package_with_version_installed(
           ormr_folder_name = ormr_folder_name,
           package_name = package_name,
-          package_version = package_version
+          package_version = package_version,
+          python_version = python_version,
+          verbose = verbose
         )
       ) {
         ormr::install_python_package_with_version(
           ormr_folder_name = ormr_folder_name,
           package_name = package_name,
-          package_version = package_version
+          package_version = package_version,
+          python_version = python_version,
+          verbose = verbose
         )
       }
       testthat::expect_true(
         ormr::is_python_package_with_version_installed(
           ormr_folder_name = ormr_folder_name,
           package_name = package_name,
-          package_version = package_version
+          package_version = package_version,
+          python_version = python_version,
+          verbose = verbose
         )
       )
     }

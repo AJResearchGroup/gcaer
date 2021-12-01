@@ -4,11 +4,15 @@
 \alias{gcaer_report}
 \title{Create a \link{gcaer} report, to be used when reporting bugs}
 \usage{
-gcaer_report(gcae_options = gcaer::create_gcae_options())
+gcaer_report(gcae_options = gcaer::create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \description{
 Create a \link{gcaer} report, to be used when reporting bugs
