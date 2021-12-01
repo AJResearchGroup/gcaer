@@ -34,10 +34,13 @@
 #' @param genotype_concordances_filename path to the
 #' `genotype_concordances.csv` file
 #' @param github_repo_branch_name name of the `git` branch,
-#' e.g `master` or `Pheno`
+#' e.g `master` or `Pheno`.
+#' Use \link{get_default_github_repo_branch_name} for the default value
 #' @param github_repo_url URL of the GitHub repository,
 #' e.g. `https://github.com/kausmees/GenoCAE`
 #' or `https://github.com/cnettel/GenoCAE`
+#' or `https://github.com/richelbilderbeek/GenoCAE`.
+#' Use \link{get_default_github_repo_url} for the default value
 #' @param log_filename name of a \code{GCAE} \code{.log} file
 #' @param losses_from_project_filename path to the
 #' `losses_from_project.csv` file

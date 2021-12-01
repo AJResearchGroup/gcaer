@@ -6,8 +6,8 @@
 \usage{
 install_gcae(
   gcae_options = create_gcae_options(),
-  github_repo_url = "https://github.com/cnettel/GenoCAE",
-  github_repo_branch_name = "Pheno",
+  github_repo_url = get_default_github_repo_url(),
+  github_repo_branch_name = get_default_github_repo_branch(),
   verbose = FALSE
 )
 }
@@ -17,10 +17,13 @@ as created by \link{create_gcae_options}}
 
 \item{github_repo_url}{URL of the GitHub repository,
 e.g. \verb{https://github.com/kausmees/GenoCAE}
-or \verb{https://github.com/cnettel/GenoCAE}}
+or \verb{https://github.com/cnettel/GenoCAE}
+or \verb{https://github.com/richelbilderbeek/GenoCAE}.
+Use \link{get_default_github_repo_url} for the default value}
 
 \item{github_repo_branch_name}{name of the \code{git} branch,
-e.g \code{master} or \code{Pheno}}
+e.g \code{master} or \code{Pheno}.
+Use \link{get_default_github_repo_branch_name} for the default value}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
