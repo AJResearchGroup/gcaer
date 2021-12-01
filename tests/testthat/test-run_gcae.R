@@ -1,5 +1,6 @@
 test_that("show help", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   expect_silent(
     text <- run_gcae(

@@ -1,5 +1,6 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   gcae_setup <- create_gcae_setup(
     datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
@@ -15,6 +16,7 @@ test_that("use", {
 
 test_that("abuse", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   gcae_setup <- create_gcae_setup(
     datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
