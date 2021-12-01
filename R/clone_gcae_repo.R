@@ -6,7 +6,7 @@
 clone_gcae_repo <- function(
   gcae_options = create_gcae_options(),
   github_repo_url = get_default_github_repo_url(),
-  github_repo_branch_name = get_default_github_repo_branch(),
+  github_repo_branch_name = get_default_github_repo_branch_name(),
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)

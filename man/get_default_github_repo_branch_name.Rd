@@ -13,7 +13,7 @@ a string with the name of the git branch
 Get the name of the default GitHub repository branch
 }
 \examples{
-get_default_github_repo_branch()
+get_default_github_repo_branch_name()
 }
 \author{
 Richèl J.C. Bilderbeek
