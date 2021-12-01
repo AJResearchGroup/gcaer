@@ -14,11 +14,15 @@ install_gcae_requirements <- function(
   )
 
   ormr_folder_name <- gcae_options$gcae_folder
-  ormr::create_and_activate_conda_env(
-    ormr_folder_name = ormr_folder_name,
-    python_version = gcae_options$python_version
-  )
-  ormr::check_conda_env_exists(ormr_folder_name = gcae_options$gcae_folder)
+  python_version <- gcae_options$python_version
+  testthat::expect_equal(python_version, ormr::get_default_python_version())
+  if (1 == 2) {
+    # No need, 'ormr' is eager
+    ormr::create_and_activate_conda_env(
+      ormr_folder_name = ormr_folder_name,
+    )
+    ormr::check_conda_env_exists(ormr_folder_name = gcae_options$gcae_folder)
+  }
 
   for (i in seq_len(nrow(t_required))) {
     package_name <- t_required$package[i]
@@ -28,18 +32,24 @@ install_gcae_requirements <- function(
       if (
         !ormr::is_python_package_installed(
           ormr_folder_name = ormr_folder_name,
-          package_name = package_name
+          package_name = package_name,
+          python_version = python_version,
+          verbose = verbose
         )
       ) {
         ormr::install_python_package(
           ormr_folder_name = ormr_folder_name,
-          package_name = package_name
+          package_name = package_name,
+          python_version = python_version,
+          verbose = verbose
         )
       }
       testthat::expect_true(
         ormr::is_python_package_installed(
           ormr_folder_name = ormr_folder_name,
-          package_name = package_name
+          package_name = package_name,
+          python_version = python_version,
+          verbose = verbose
         )
       )
     } else {
