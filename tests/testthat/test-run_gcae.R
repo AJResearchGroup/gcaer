@@ -22,5 +22,6 @@ test_that("error", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   args <- c("--nonsense")
+  skip("Not yet")
   expect_error(run_gcae(args), "Invalid command")
 })
