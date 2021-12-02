@@ -3,7 +3,7 @@ test_that("use", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   gcae_options <- create_gcae_options()
-  data <- "HumanOrigins249_tiny"
+  data <- "issue_2_bin"
   datadir <- file.path(
     get_gcae_subfolder(gcae_options = gcae_options),
     "example_tiny/"
@@ -18,6 +18,7 @@ test_that("use", {
     save_interval = 1,
     gcae_options = gcae_options
   )
+  skip("Until here :-)")
   superpops <- file.path(datadir, "HO_superpopulations")
   gcae_project(
     superpops = superpops,
