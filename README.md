@@ -5,9 +5,9 @@ Branch   |[![GitHub Actions logo](man/figures/GitHubActions.png)](https://github
 `master` |![R-CMD-check](https://github.com/richelbilderbeek/gcaer/workflows/R-CMD-check/badge.svg?branch=master)   |[![codecov.io](https://codecov.io/github/richelbilderbeek/gcaer/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/gcaer/branch/master)
 `develop`|![R-CMD-check](https://github.com/richelbilderbeek/gcaer/workflows/R-CMD-check/badge.svg?branch=develop)  |[![codecov.io](https://codecov.io/github/richelbilderbeek/gcaer/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/gcaer/branch/develop)
 
-Work with [GCAE](https://github.com/cnettel/genocae/tree/Pheno) from R.
+Work with [GCAE](https://github.com/richelbilderbeek/genocae/tree/Pheno) from R.
 
- * [GCAE GitHub repository](https://github.com/cnettel/genocae/tree/Pheno)
+ * [GCAE GitHub repository](https://github.com/richelbilderbeek/genocae/tree/Pheno)
 
 ## Installation
 
@@ -49,5 +49,5 @@ run_gcae("--help")
 
 ## Links
 
- * [GCAE GitHub repository](https://github.com/cnettel/genocae/tree/Pheno)
+ * [GCAE GitHub repository](https://github.com/richelbilderbeek/genocae/tree/Pheno)
 
