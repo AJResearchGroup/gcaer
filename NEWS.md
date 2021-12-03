@@ -2,11 +2,16 @@
 
 Newest versions at top.
 
-## gcaer v0.4 (unreleased)
+## gcaer v0.4 (2021-12-03)
 
 ### NEW FEATURES
 
- * None
+ * Singularity container is based on the `ormr` Singularity container 
+   (which is subsequently based upon the `plinkr` Singularity container)
+ * Fixes [bug in GenoCAE](https://github.com/kausmees/GenoCAE/issues/19),
+   use [the richelbilderbeek Fork of GCAE](https://github.com/richelbilderbeek/GenoCAE)
+   as the main repo
+ * Can run `gcae_train` on a phenotype
 
 ### MINOR IMPROVEMENTS
 
