@@ -1,25 +1,24 @@
-# Create sim data for Carl
-# https://github.com/richelbilderbeek/gcaer/issues/2
+# Create sim data
+# that works nicely with the 166 individuals
+# in the example_tiny/HO_superpopulations file
+# (https://github.com/richelbilderbeek/gcaer/issues/6)
 #
 # Output must be in PLINK binary format
 #
-#
-#
-
 library(plinkr)
 
 # Simulate data in PLINK1 text format
 assoc_qt_params <- create_demo_assoc_qt_params(
-  n_individuals = 10,
+  n_individuals = 166,
   traits = create_demo_traits()
 )
 
 # Convert PLINK1 text format to PLINK1 binary format
-base_input_filename <- "~/gcaer_issue_2_text"
+base_input_filename <- "~/gcaer_issue_6_text"
 ped_filename <- paste0(base_input_filename, ".ped")
 map_filename <- paste0(base_input_filename, ".map")
 phe_filename <- paste0(base_input_filename, ".phe")
-base_output_filename <- "~/gcaer_issue_2_bin"
+base_output_filename <- "~/gcaer_issue_6_bin"
 plinkr::save_ped_table_to_file(
   ped_table = assoc_qt_params$data$ped_table,
   ped_filename = ped_filename
