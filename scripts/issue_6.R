@@ -57,11 +57,21 @@ testthat::expect_equal(nrow(pops), 166)
 # Note I change ID to unique numbers just to be sure, as using a `1` in
 # all cases should also work...?
 #
+if (1 == 2) {
+  assoc_qt_data <- plinkr::rename_fids(
+    data = assoc_qt_data,
+    fids = pops$nationality
+  )
+  assoc_qt_data <- plinkr::rename_iids(
+    data = assoc_qt_data,
+    iids = seq_len(nrow(assoc_qt_data$data$ped_table))
+  )
+}
+
 assoc_qt_data$data$ped_table$FID <- pops$nationality
 assoc_qt_data$data$ped_table$IID <- seq_len(nrow(assoc_qt_data$data$ped_table))
-head(assoc_qt_data$data$ped_table)
 assoc_qt_data$phenotype_data$phe_table$FID <- pops$nationality
-assoc_qt_data$phenotype_data$phe_table$FID <- seq_len(nrow(assoc_qt_data$data$ped_table))
+assoc_qt_data$phenotype_data$phe_table$IID <- seq_len(nrow(assoc_qt_data$data$ped_table))
 
 base_input_filename <- "~/gcaer_issue_6_text"
 phe_filename <- paste0(base_input_filename, ".phe")
