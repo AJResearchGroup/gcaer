@@ -17,7 +17,7 @@ create_gcae_setup <- function(
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
   trainedmodelname = "ae_out",
-  pheno_model_id = "p1"
+  pheno_model_id
 ) {
   gcaer::check_datadir(datadir)
   gcaer::check_data(data)
