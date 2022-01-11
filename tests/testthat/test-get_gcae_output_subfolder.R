@@ -17,7 +17,7 @@ test_that("use", {
           pheno_model_id = "p2"
         )
       ),
-      pattern = "ae_out/ae\\.M1.ex3\\.b_0_4\\.issue_2_bin\\.p1$"
+      pattern = "ae_out/ae\\.M1.ex3\\.b_0_4\\.issue_2_bin\\.p2$"
     )
   )
 })
