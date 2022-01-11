@@ -7,7 +7,8 @@
 #' @examples
 #' gcae_setup <- create_gcae_setup(
 #'   datadir = "my_datadir/",
-#'   data = "HumanOrigins249_tiny"
+#'   data = "HumanOrigins249_tiny",
+#'   pheno_model_id = "p2"
 #' )
 #' get_gcae_trainedmodelname(gcae_setup)
 #' @author Richèl J.C. Bilderbeek

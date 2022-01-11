@@ -11,7 +11,8 @@ test_that("use", {
   )
   gcae_setup <- create_gcae_setup(
     datadir = datadir,
-    data = data
+    data = data,
+    pheno_model_id = "p1"
   )
   superpops <- file.path(datadir, "HO_superpopulations")
   # Cannot be silent?

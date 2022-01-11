@@ -20,7 +20,8 @@ to be used by the GCAE\code{--trainedmodelname} CLI flag
 \examples{
 gcae_setup <- create_gcae_setup(
   datadir = "my_datadir/",
-  data = "HumanOrigins249_tiny"
+  data = "HumanOrigins249_tiny",
+  pheno_model_id = "p2"
 )
 get_gcae_trainedmodelname(gcae_setup)
 }

@@ -11,7 +11,7 @@ create_gcae_setup(
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
   trainedmodelname = "ae_out",
-  pheno_model_id = "p1"
+  pheno_model_id = "p2"
 )
 }
 \arguments{

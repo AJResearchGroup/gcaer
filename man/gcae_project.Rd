@@ -5,7 +5,7 @@
 \title{Project}
 \usage{
 gcae_project(
-  gcae_setup = create_gcae_setup(),
+  gcae_setup,
   superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
