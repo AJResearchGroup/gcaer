@@ -18,7 +18,7 @@ test_that("use", {
   gcae_setup <- create_gcae_setup(
     datadir = datadir,
     data = data,
-    model_id = "M0",
+    model_id = "M1",
     pheno_model_id = "p2"
   )
   superpops <- clean_file_path(file.path(datadir, "HO_superpopulations"))
@@ -33,32 +33,15 @@ test_that("use", {
   expect_true(all(file.exists(train_filenames)))
 
   # 3. Project
-  # Error:
-  # Encoded data file not found:
-  # /home/richel/.local/share/gcaer/gcae_v1_0/ae_out/ae.M1.ex3.b_0_4.issue_6_bin/issue_6_bin/encoded_data.h5
-  #
-  # which is reasonable:
-  #
-  # /home/richel/.local/share/gcaer/gcae_v1_0/ae_out/ae.M1.ex3.b_0_4.issue_6_bin.p1/issue_6_bin/encoded_data.h5
-  #                                                                             ^^^
-  # as the phenotype is not added ----------------------------------------------+++
-  #
-  # Traceback (most recent call last):
-  #   File "/home/richel/.local/share/gcaer/gcae_v1_0/run_gcae.py", line 1616, in <module>
-  #   main()
-  # File "/home/richel/.local/share/gcaer/gcae_v1_0/run_gcae.py", line 1185, in main
-  # epochs = get_saved_epochs(train_directory)
-  # File "/home/richel/.local/share/gcaer/gcae_v1_0/utils/data_handler.py", line 758, in get_saved_epochs
-  # for i in os.listdir(train_directory+"/weights"):
-  #   FileNotFoundError: [Errno 2] No such file or directory: '/home/richel/.local/share/gcaer/gcae_v1_0/ae_out/ae.M1.ex3.b_0_4.issue_6_bin/weights'
   Sys.time()
   project_filenames <- gcae_project(
     superpops = superpops,
     gcae_setup = gcae_setup,
     verbose = TRUE
   )
+  Sys.time()
 
-  # project_results <- parse_project_files(project_filenames)
+  project_results <- parse_project_files(project_filenames)
   expect_equal(
     names(project_results),
     c("losses_from_project_table", "genotype_concordances_table")

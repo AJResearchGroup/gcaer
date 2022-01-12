@@ -23,7 +23,8 @@ gcae_plot <- function(
     "plot",
     "--datadir", gcae_setup$datadir,
     "--trainedmodelname", trainedmodelname,
-    "--superpops", superpops
+    "--superpops", superpops,
+    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
   )
   gcaer::run_gcae(
     args = args,

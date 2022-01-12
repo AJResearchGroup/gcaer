@@ -42,7 +42,8 @@ gcae_project <- function(
     "--model_id", gcae_setup$model_id,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
-    "--superpops", superpops
+    "--superpops", superpops,
+    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
   )
   gcaer::run_gcae(
     args = args,
