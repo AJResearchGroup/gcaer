@@ -9,6 +9,6 @@ test_that("use", {
   )
   expect_equal(
     trainedmodelname,
-    "ae.M1.ex3.b_0_4.HumanOrigins249_tiny"
+    "ae.M1.ex3.b_0_4.HumanOrigins249_tiny.p2"
   )
 })

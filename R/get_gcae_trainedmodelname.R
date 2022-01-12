@@ -21,7 +21,8 @@ get_gcae_trainedmodelname <- function(
     "ae.", gcae_setup$model_id, ".",
     gcae_setup$train_opts_id, ".",
     gcae_setup$data_opts_id, ".",
-    gcae_setup$data
+    gcae_setup$data, ".",
+    gcae_setup$pheno_model_id
   )
   trainedmodelname
 }

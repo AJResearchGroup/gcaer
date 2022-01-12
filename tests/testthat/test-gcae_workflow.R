@@ -13,6 +13,7 @@ test_that("use", {
   # 4. Plot
 
   # 1. Setup
+  Sys.time()
   datadir <- file.path(get_gcae_subfolder(), "example_tiny/")
   data <- "issue_6_bin"
   gcae_setup <- create_gcae_setup(
@@ -55,5 +56,6 @@ test_that("use", {
     verbose = TRUE
   )
   plot_filenames
+  Sys.time()
 
 })
