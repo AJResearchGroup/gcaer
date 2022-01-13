@@ -52,7 +52,6 @@ test_that("use", {
   plot_filenames <- gcae_plot(
     superpops = superpops,
     gcae_setup = gcae_setup,
-    gcae_options = gcae_options,
     verbose = TRUE
   )
   plot_filenames
