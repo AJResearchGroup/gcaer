@@ -1,5 +1,5 @@
 Bootstrap: library
-From: richelbilderbeek/default/ormr:0.6.2
+From: richelbilderbeek/default/ormr:v0.6.2.1
 
 %post
     # Install apt
