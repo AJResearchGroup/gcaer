@@ -4,7 +4,7 @@ test_that("use", {
   if (!is_gcae_installed()) return()
   gcae_setup <- create_gcae_setup(
     datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
-    data = "issue_2_bin"
+    data = "issue_6_bin"
   )
   train_filenames <- gcae_train(
     gcae_setup = gcae_setup,

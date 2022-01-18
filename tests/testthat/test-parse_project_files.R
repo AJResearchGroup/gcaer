@@ -2,7 +2,7 @@ test_that("use", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   gcae_options <- create_gcae_options()
-  data <- "issue_2_bin"
+  data <- "issue_6_bin"
   datadir <- file.path(
     get_gcae_subfolder(gcae_options = gcae_options),
     "example_tiny/"

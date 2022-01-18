@@ -12,10 +12,10 @@ test_that("use", {
       string = get_gcae_output_subfolder(
         gcae_setup = create_gcae_setup(
           datadir = "my_datadir/",
-          data = "issue_2_bin"
+          data = "issue_6_bin"
         )
       ),
-      pattern = "ae_out/ae\\.M1.ex3\\.b_0_4\\.issue_2_bin\\.p1$"
+      pattern = "ae_out/ae\\.M1.ex3\\.b_0_4\\.issue_6_bin\\.p1$"
     )
   )
 })
