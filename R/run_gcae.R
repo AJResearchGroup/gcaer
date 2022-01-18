@@ -21,6 +21,7 @@ run_gcae <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
+  gcaer::check_gcae_args(args)
   gcaer::check_gcae_options(gcae_options)
   gcaer::check_gcae_is_installed(gcae_options)
 

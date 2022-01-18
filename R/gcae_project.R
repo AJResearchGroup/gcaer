@@ -26,7 +26,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_project <- function(
-  gcae_setup = create_gcae_setup(),
+  gcae_setup,
   superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
   gcae_options = create_gcae_options(),
   verbose = FALSE
@@ -42,7 +42,8 @@ gcae_project <- function(
     "--model_id", gcae_setup$model_id,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
-    "--superpops", superpops
+    "--superpops", superpops,
+    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
   )
   gcaer::run_gcae(
     args = args,
@@ -55,7 +56,9 @@ gcae_project <- function(
   )
   testthat::expect_true(dir.exists(gcae_output_subfolder))
   gcae_plot_subfolder <- file.path(gcae_output_subfolder, gcae_setup$data)
-  testthat::expect_true(dir.exists(gcae_plot_subfolder))
+  if (!dir.exists(gcae_plot_subfolder)) {
+    stop("Folder 'gcae_plot_subfolder' not found at ", gcae_plot_subfolder)
+  }
   project_filenames <- list.files(
     gcae_plot_subfolder,
     full.names = TRUE,

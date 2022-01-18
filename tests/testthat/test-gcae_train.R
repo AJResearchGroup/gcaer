@@ -1,17 +1,6 @@
 test_that("use", {
+  # See test-gcae_workflow.R for the full GCAE workflow
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
-  if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_installed()) return()
-  gcae_setup <- create_gcae_setup(
-    datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
-    data = "issue_6_bin"
-  )
-  train_filenames <- gcae_train(
-    gcae_setup = gcae_setup,
-    epochs = 1,
-    save_interval = 1
-  )
-  expect_true(all(file.exists(train_filenames)))
 })
 
 test_that("abuse", {

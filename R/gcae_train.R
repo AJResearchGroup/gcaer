@@ -23,16 +23,11 @@ gcae_train <- function(
   # run: python3 run_gcae.py train --datadir example_tiny --data issue_6_bin --model_id M1  --epochs 20 --save_interval 2  --train_opts_id ex3  --data_opts_id b_0_4 --pheno_model_id=p1
   gcaer::check_gcae_train_files_are_present(gcae_setup = gcae_setup)
 
-  args <- c(
-    "train",
-    "--datadir", gcae_setup$datadir,
-    "--data", gcae_setup$data,
-    "--model_id", gcae_setup$model_id,
-    "--epochs", epochs,
-    "--save_interval", save_interval,
-    "--train_opts_id", gcae_setup$train_opts_id,
-    "--data_opts_id", gcae_setup$data_opts_id,
-    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
+
+  args <- create_gcae_train_args(
+    gcae_setup = gcae_setup,
+    epochs = epochs,
+    save_interval = save_interval
   )
   if (verbose) {
     message(
