@@ -47,6 +47,49 @@ library(gcaer)
 run_gcae("--help")
 ```
 
+### Full workflow
+
+All that needs to be supplied is:
+
+ * `datadir`: the folder that holds PLINK1 binary files
+ * `data`: the PLINK1 binary files basename
+ * optional: `superpops`: a file with labeled data
+
+```
+datadir <- file.path(get_gcae_subfolder(), "example_tiny/")
+data <- "issue_6_bin"
+gcae_setup <- create_gcae_setup(
+  datadir = datadir,
+  data = data,
+  model_id = "M1",
+  pheno_model_id = "p2"
+)
+superpops <- clean_file_path(file.path(datadir, "HO_superpopulations"))
+
+# 2. Train, approx 3 mins
+train_filenames <- gcae_train(
+  gcae_setup = gcae_setup,
+  epochs = 1,
+  save_interval = 1
+)
+
+# 3. Project
+project_filenames <- gcae_project(
+  superpops = superpops,
+  gcae_setup = gcae_setup,
+  verbose = TRUE
+)
+project_results <- parse_project_files(project_filenames)
+
+# 4. Plot
+plot_filenames <- gcae_plot(
+  superpops = superpops,
+  gcae_setup = gcae_setup,
+  verbose = TRUE
+)
+plot_filenames
+```
+
 ## Links
 
  * [GCAE GitHub repository](https://github.com/richelbilderbeek/genocae/tree/Pheno)
