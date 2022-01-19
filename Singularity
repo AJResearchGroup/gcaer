@@ -67,4 +67,3 @@ run_gcae(args = "--help", gcae_options = gcae_options)
     URL https://github.com/richelbilderbeek/gcaer
 
     VERSION 0.5.0.1
-
