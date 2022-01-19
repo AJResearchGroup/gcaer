@@ -28,7 +28,7 @@ jobs:
 #      - name: Show present working directory
 #        run: echo $PWD
 
-      - name: Build Container
+      - name: Create Singularity container
         run: ./scripts/build_singularity_container.sh
 
       - name: Test container, must detect GCAE
