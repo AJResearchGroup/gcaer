@@ -35,6 +35,25 @@ full paths to the created files
 Train model, and save its state at certain epochs to disk,
 use the GCAE command-line interface
 }
+\examples{
+if (plinkr::is_on_ci() && is_gcae_installed()) {
+  gcae_setup <- create_gcae_setup(
+    datadir = datadir,
+    data = data,
+    model_id = "M1",
+    pheno_model_id = "p2"
+  )
+  train_filenames <- gcae_train(
+    gcae_setup = gcae_setup,
+    epochs = 1,
+    save_interval = 1
+  )
+}
+}
+\seealso{
+use \link{create_gcae_train_args} to get the command-line
+arguments
+}
 \author{
 Richèl J.C. Bilderbeek
 }

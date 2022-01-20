@@ -22,8 +22,17 @@ the CLI arguments
 Create the CLI arguments to train with GCAE
 }
 \examples{
-# Use the default GCAE version
-create_gcae_options()
+gcae_setup <- create_gcae_setup(
+  datadir = datadir,
+  data = data,
+  model_id = "M1",
+  pheno_model_id = "p2"
+)
+args <- create_gcae_train_args(
+  gcae_setup = gcae_setup,
+  epochs = 1,
+  save_interval = 1
+)
 }
 \author{
 Richèl J.C. Bilderbeek

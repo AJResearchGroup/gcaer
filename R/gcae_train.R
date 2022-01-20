@@ -4,6 +4,22 @@
 #' use the GCAE command-line interface
 #' @inheritParams default_params_doc
 #' @return full paths to the created files
+#' @seealso use \link{create_gcae_train_args} to get the command-line
+#' arguments
+#' @examples
+#' if (plinkr::is_on_ci() && is_gcae_installed()) {
+#'   gcae_setup <- create_gcae_setup(
+#'     datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
+#'     data = "issue_6_bin",
+#'     model_id = "M1",
+#'     pheno_model_id = "p2"
+#'   )
+#'   train_filenames <- gcae_train(
+#'     gcae_setup = gcae_setup,
+#'     epochs = 1,
+#'     save_interval = 1
+#'   )
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_train <- function(
