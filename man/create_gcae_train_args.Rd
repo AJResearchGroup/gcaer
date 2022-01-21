@@ -23,8 +23,8 @@ Create the CLI arguments to train with GCAE
 }
 \examples{
 gcae_setup <- create_gcae_setup(
-  datadir = datadir,
-  data = data,
+  datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
+  data = "issue_6_bin",
   model_id = "M1",
   pheno_model_id = "p2"
 )
@@ -33,6 +33,10 @@ args <- create_gcae_train_args(
   epochs = 1,
   save_interval = 1
 )
+# 'python3' is the path to Python3
+# 'run_gcae.py' is the path to the GenoCAE Python script
+full_args <- c("python3", "run_gcae.py", args)
+cat(full_args)
 }
 \author{
 Richèl J.C. Bilderbeek
