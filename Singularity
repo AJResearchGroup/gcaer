@@ -7,6 +7,7 @@ From: richelbilderbeek/default/ormr:0.6.2
     #apt-get -y update
 
     Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
+    Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = FALSE)'
