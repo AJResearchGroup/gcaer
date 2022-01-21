@@ -3,23 +3,9 @@ From: richelbilderbeek/default/ormr:0.6.2
 
 %post
     # Install apt
-    sed -i 's/$/ universe/' /etc/apt/sources.list
-    apt-get -y update
+    #sed -i 's/$/ universe/' /etc/apt/sources.list
+    #apt-get -y update
 
-    # Install python3
-    #apt-get -y install python3 wget
-    #apt-get -y clean
-
-    # Install Miniconda
-    #wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    #bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
-    #export PATH=/miniconda/bin:$PATH
-    #rm Miniconda3-latest-Linux-x86_64.sh
-    #conda update conda
-
-    #Rscript -e 'install.packages("semver")'
-    #Rscript -e 'install.packages("reticulate")'
-    #Rscript -e 'remotes::install_github("richelbilderbeek/ormr")'
     Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
