@@ -56,9 +56,8 @@ gcae_project <- function(
   )
   testthat::expect_true(dir.exists(gcae_output_subfolder))
   gcae_plot_subfolder <- file.path(gcae_output_subfolder, gcae_setup$data)
-  if (!dir.exists(gcae_plot_subfolder)) {
-    stop("Folder 'gcae_plot_subfolder' not found at ", gcae_plot_subfolder)
-  }
+  testthat::expect_true(dir.exists(gcae_plot_subfolder))
+
   project_filenames <- list.files(
     gcae_plot_subfolder,
     full.names = TRUE,
