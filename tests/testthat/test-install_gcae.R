@@ -7,7 +7,12 @@ test_that("un- or install", {
   gcae_options <- create_gcae_options()
   skip("Nah, this is false")
   expect_false(is_gcae_installed(gcae_options))
-  install_gcae(gcae_options = gcae_options, verbose = TRUE) # reticulate::py_install will always produce output
+  # Cannot do expect_silent, as 'reticulate::py_install'
+  # will always produce output
+  install_gcae(
+    gcae_options = gcae_options,
+    verbose = TRUE
+  )
   expect_true(is_gcae_installed(gcae_options))
   expect_silent(uninstall_gcae(gcae_options))
   expect_false(is_gcae_installed(gcae_options))

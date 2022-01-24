@@ -4,6 +4,6 @@
 #' get_default_github_repo_branch_name()
 #' @author Richèl J.C. Bilderbeek
 #' @export
-get_default_github_repo_branch_name <- function() {
+get_default_github_repo_branch_name <- function() { # nolint indeed a long function name
   "Pheno"
 }

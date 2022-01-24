@@ -6,7 +6,7 @@
 #' @return nothing
 #' @author Richèl J.C. Bilderbeek
 #' @export
-check_gcae_train_files_are_present <- function(gcae_setup) {
+check_gcae_train_files_are_present <- function(gcae_setup) { # nolint indeed a long function name
   gcaer::check_gcae_setup(gcae_setup)
   bed_filename <- paste0(file.path(gcae_setup$datadir, gcae_setup$data), ".bed")
   bim_filename <- paste0(file.path(gcae_setup$datadir, gcae_setup$data), ".bim")

@@ -46,7 +46,11 @@ check_gcae_args <- function(args) {
   )
   dash_args <- args[substring(args, 1, 1) == "-"]
 
-  invalid_dash_args <- stringr::str_which(dash_args, dash_arg_regex, negate = TRUE)
+  invalid_dash_args <- stringr::str_which(
+    dash_args,
+    dash_arg_regex,
+    negate = TRUE
+  )
   if (length(invalid_dash_args) != 0) {
     stop(
       "Invalid argument(s): ",

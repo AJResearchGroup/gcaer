@@ -14,5 +14,9 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 clean_file_path <- function(file_path) {
-  stringr::str_replace_all(string = file_path, pattern = "//", replacement = "/")
+  stringr::str_replace_all(
+    string = file_path,
+    pattern = "//",
+    replacement = "/"
+  )
 }
