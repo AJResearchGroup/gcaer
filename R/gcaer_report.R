@@ -12,6 +12,7 @@ gcaer_report <- function(
 ) {
   message("OS: ", rappdirs::app_dir()$os)
   message("GCAE folder (from 'gcae_options'): ", gcae_options$gcae_folder)
+  message("GCAE folder (from 'gcae_options'): ", gcae_options$gcae_folder)
   message("GCAE version (from 'gcae_options'): ", gcae_options$gcae_version)
   if (gcaer::is_gcae_installed(gcae_options)) {
     message("GCAE is installed: yes")

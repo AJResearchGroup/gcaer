@@ -21,6 +21,7 @@ create_gcae_options <- function(
   gcaer::check_python_version(python_version)
   list(
     gcae_folder = gcae_folder,
+    ormr_folder_name = ormr_folder_name,
     gcae_version = gcae_version,
     python_version = python_version
   )

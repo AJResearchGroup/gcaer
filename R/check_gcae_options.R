@@ -23,10 +23,16 @@ check_gcae_options <- function(
       "Tip: use 'gcaer::create_gcae_options()'\n"
     )
   }
+  testthat::expect_true("gcae_folder" %in% names(gcae_options))
+  testthat::expect_true("ormr_folder_name" %in% names(gcae_options))
   testthat::expect_true("gcae_version" %in% names(gcae_options))
+  testthat::expect_true("python_version" %in% names(gcae_options))
+  gcaer::check_gcae_folder(gcae_options$gcae_folder)
+  gcaer::check_ormr_folder_name(gcae_options$ormr_folder_name)
+  gcaer::check_gcae_version(gcae_options$gcae_version)
+  gcaer::check_python_version(gcae_options$python_version)
   testthat::expect_equal(
     length(names(gcae_options)),
     length(unique(names(gcae_options)))
   )
-  gcaer::check_gcae_version(gcae_options$gcae_version)
 }
