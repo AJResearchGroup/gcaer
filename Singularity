@@ -9,9 +9,9 @@ From: richelbilderbeek/default/ormr:0.6.2
     Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
-    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = FALSE)'
-    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"))'
+    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"))'
+    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"))'
+    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"))'
 
 # 'ormr' needs this
 #%environment
@@ -21,11 +21,12 @@ From: richelbilderbeek/default/ormr:0.6.2
 exec R --vanilla --silent --no-echo "$@"
 
 %test
-    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer"), verbose = TRUE)'
+    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"), verbose = TRUE)'
 
 %help
 
-This container has the R package gcaer and GCAE installed.
+This container has the R package gcaer and GCAE installed, 
+including the needed Python packages.
 
 To make the container run a script called, e.g. `script.R`, do:
 
@@ -33,13 +34,23 @@ To make the container run a script called, e.g. `script.R`, do:
 cat script.R | ./gcaer.sif
 ```
 
-Within the script, set `gcae_options` to `create_gcae_options(gcae_folder = "/opt/gcaer")`, for example:
+The GCAE scripts can be found at '/opt/gcaer', 
+which is the same as the `gcae_folder` parameter.
+
+The installed Python packages can be found at '/opt/gcaer', 
+which is the same as the `ormr_folder_name` parameter.
+
+Due to this, within your scripts, 
+set `gcae_options` to `create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer")`, 
+for example:
 
 ```
 library(gcaer)
-gcae_options <- create_gcae_options(gcae_folder = "/opt/gcaer")
+gcae_options <- create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer")
 run_gcae(args = "--help", gcae_options = gcae_options)
 ```
+
+
 
 %labels
 
@@ -53,4 +64,4 @@ run_gcae(args = "--help", gcae_options = gcae_options)
 
     URL https://github.com/richelbilderbeek/gcaer
 
-    VERSION 0.5.0.1
+    VERSION 0.5.1
