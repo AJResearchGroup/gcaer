@@ -1,0 +1,13 @@
+test_that("use", {
+  expect_silent(check_gcae_folder("my_gcae_folder"))
+  expect_error(check_gcae_folder(c("my_gcae_folder", "my_gcae_folder")))
+  expect_error(check_gcae_folder(0))
+  expect_error(check_gcae_folder(-1))
+  expect_error(check_gcae_folder(""))
+  expect_error(check_gcae_folder(c()))
+  expect_error(check_gcae_folder(NA))
+  expect_error(check_gcae_folder(NULL))
+  expect_error(check_gcae_folder(Inf))
+  expect_error(check_gcae_folder(42))
+  expect_error(check_gcae_folder(3.14))
+})

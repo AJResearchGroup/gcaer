@@ -6,12 +6,16 @@
 \usage{
 create_gcae_options(
   gcae_folder = gcaer::get_gcae_folder(),
+  ormr_folder_name = gcaer::get_default_ormr_folder_name(),
   gcae_version = "1.0",
   python_version = "3.6"
 )
 }
 \arguments{
 \item{gcae_folder}{folder where \code{GCAE} is installed}
+
+\item{ormr_folder_name}{folder where the link[ormr]{ormr} R package
+installs the Python packages}
 
 \item{gcae_version}{version of GCAE, e.g. \code{"1.0"}
 Use \link{get_gcae_version} to get the \code{GCAE} version.}

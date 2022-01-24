@@ -1,0 +1,13 @@
+test_that("use", {
+  expect_silent(check_ormr_folder_name("my_gcae_folder"))
+  expect_error(check_ormr_folder_name(c("my_gcae_folder", "my_gcae_folder")))
+  expect_error(check_ormr_folder_name(0))
+  expect_error(check_ormr_folder_name(-1))
+  expect_error(check_ormr_folder_name(""))
+  expect_error(check_ormr_folder_name(c()))
+  expect_error(check_ormr_folder_name(NA))
+  expect_error(check_ormr_folder_name(NULL))
+  expect_error(check_ormr_folder_name(Inf))
+  expect_error(check_ormr_folder_name(42))
+  expect_error(check_ormr_folder_name(3.14))
+})

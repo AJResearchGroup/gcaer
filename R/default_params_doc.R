@@ -49,6 +49,8 @@
 #' @param losses_from_train_v_filename path to the
 #' `losses_from_train_v.csv` file
 #' @param model_id model id, corresponding to a file models/model_id.json
+#' @param ormr_folder_name folder where the link[ormr]{ormr} R package
+#' installs the Python packages
 #' @param os name of the operating system,
 #' as returned by \link[rappdirs]{app_dir}
 #' @param out the base filename of the output files.
@@ -101,6 +103,7 @@ default_params_doc <- function(
   losses_from_train_t_filename,
   losses_from_train_v_filename,
   model_id,
+  ormr_folder_name,
   os,
   out,
   pheno_model_id,

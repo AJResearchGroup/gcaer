@@ -29,6 +29,7 @@ default_params_doc(
   losses_from_train_t_filename,
   losses_from_train_v_filename,
   model_id,
+  ormr_folder_name,
   os,
   out,
   pheno_model_id,
@@ -115,6 +116,9 @@ Use \link{get_default_github_repo_url} for the default value}
 \code{losses_from_train_v.csv} file}
 
 \item{model_id}{model id, corresponding to a file models/model_id.json}
+
+\item{ormr_folder_name}{folder where the link[ormr]{ormr} R package
+installs the Python packages}
 
 \item{os}{name of the operating system,
 as returned by \link[rappdirs]{app_dir}}

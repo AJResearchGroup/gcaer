@@ -23,13 +23,15 @@ run_gcae <- function(
 ) {
   gcaer::check_gcae_args(args)
   gcaer::check_gcae_options(gcae_options)
+  plinkr::check_verbose(verbose)
+
   gcaer::check_gcae_is_installed(gcae_options)
 
   run_gcae_py_path <- gcaer::get_run_gcae_py_path(gcae_options = gcae_options)
   testthat::expect_true(file.exists(run_gcae_py_path))
 
   output <- ormr::run_python_script_with_args(
-    ormr_folder_name = gcae_options$gcae_folder,
+    ormr_folder_name = gcae_options$ormr_folder_name,
     python_script_path = run_gcae_py_path,
     args = args,
     verbose = verbose
