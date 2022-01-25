@@ -16,10 +16,6 @@ clone_gcae_repo <- function(
       gcae_options$gcae_folder
     )
   }
-  if (verbose) {
-    message("Creating folder at ", gcae_options$gcae_folder)
-  }
-
   # 'gert::git_clone' expects that the folder does not exist
   testthat::expect_false(dir.exists(gcae_options$gcae_folder))
   gert::git_clone(

@@ -31,8 +31,16 @@ install_gcae <- function(
   }
   if (verbose) {
     message("1. Clone the GCAE repo")
+    message(
+      "dir.exists(gcae_options$gcae_folder: ",
+      dir.exists(gcae_options$gcae_folder)
+    )
   }
-  if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
+  if (!gcaer::has_cloned_gcae_repo(
+    gcae_options = gcae_options,
+    verbose = verbose
+  )) {
+    testthat::expect_false(dir.exists(gcae_options$gcae_folder))
     gcaer::clone_gcae_repo(
       gcae_options = gcae_options,
       verbose = verbose
