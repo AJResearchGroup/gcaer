@@ -16,7 +16,21 @@ install_gcae <- function(
   github_repo_branch_name = get_default_github_repo_branch_name(),
   verbose = FALSE
 ) {
+  if (verbose) {
+    message("0. Start of 'install_gcae'")
+    message(
+      "dir.exists(gcae_options$gcae_folder: ",
+      dir.exists(gcae_options$gcae_folder)
+    )
+  }
   gcaer::check_gcae_options(gcae_options)
+  if (verbose) {
+    message("0. Start of 'install_gcae', before 'is_gcae_installed'")
+    message(
+      "dir.exists(gcae_options$gcae_folder: ",
+      dir.exists(gcae_options$gcae_folder)
+    )
+  }
   if (gcaer::is_gcae_installed(gcae_options)) {
     stop(
       "Cannot install GCAE when it is already installed. \n",
