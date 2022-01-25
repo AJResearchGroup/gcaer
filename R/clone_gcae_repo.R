@@ -16,16 +16,17 @@ clone_gcae_repo <- function(
       gcae_options$gcae_folder
     )
   }
+  if (verbose) {
+    message("Creating folder at ", gcae_options$gcae_folder)
+  }
   dir.create(gcae_options$gcae_folder, showWarnings = FALSE, recursive = TRUE)
 
-  if (!dir.exists(gcae_options$gcae_folder)) {
-    # Clone repo
-    gert::git_clone(
-      url = github_repo_url,
-      path = gcae_options$gcae_folder,
-      branch = github_repo_branch_name,
-      verbose = verbose
-    )
-  }
+  # Clone repo
+  gert::git_clone(
+    url = github_repo_url,
+    path = gcae_options$gcae_folder,
+    branch = github_repo_branch_name,
+    verbose = verbose
+  )
   testthat::expect_true(dir.exists(gcae_options$gcae_folder))
 }

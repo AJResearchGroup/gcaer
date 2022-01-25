@@ -22,4 +22,15 @@ check_gcae_repo_is_cloned <- function(
       "Tip: run 'gcaer::clone_gcae_repo()'"
     )
   }
+  filename <- file.path(gcae_options$gcae_folder, "requirements.txt")
+  if (!file.exists(filename)) {
+    stop(
+      "GCAE repository is not cloned: file not found \n",
+      "Path to 'requirements.txt': ", filename, " \n",
+      paste0(
+        gcaer::gcae_options_to_str(gcae_options = gcae_options), collapse = "\n"
+      ), " \n",
+      "Tip: run 'gcaer::clone_gcae_repo()'"
+    )
+  }
 }
