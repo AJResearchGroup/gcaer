@@ -19,7 +19,9 @@ test_that("use", {
       ),
       "Conda environment does not exist"
     )
-    ormr::create_conda_env(ormr_folder_name = gcae_options$gcae_folder)
+    ormr::create_conda_env(
+      ormr_folder_name = gcae_options$ormr_folder_name
+    )
   }
   expect_error(
     check_gcae_python_packages_are_installed(

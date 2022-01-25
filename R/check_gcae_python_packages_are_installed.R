@@ -17,7 +17,7 @@ check_gcae_python_packages_are_installed <- function( # nolint indeed a long fun
     package_name <- packages$package[row_index]
     if (
       !ormr::is_python_package_installed(
-        ormr_folder_name = gcae_options$gcae_folder,
+        ormr_folder_name = gcae_options$ormr_folder_name,
         package_name = package_name
       )
     ) {
@@ -30,7 +30,7 @@ check_gcae_python_packages_are_installed <- function( # nolint indeed a long fun
     if (package_version == "") next
     if (
       !ormr::is_python_package_with_version_installed(
-        ormr_folder_name = gcae_options$gcae_folder,
+        ormr_folder_name = gcae_options$ormr_folder_name,
         package_name = package_name,
         package_version = package_version
       )

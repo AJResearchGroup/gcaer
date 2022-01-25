@@ -24,9 +24,9 @@ clone_gcae_repo <- function(
     )
   }
   if (dir.exists(gcae_options$gcae_folder)) {
-    unlink(gcae_options$gcae_folder, recursive = TRUE, force = TRUE)
+    unlink(gcae_options$gcae_folder, recursive = TRUE)
+    testthat::expect_false(dir.exists(gcae_options$gcae_folder))
   }
-  testthat::expect_false(dir.exists(gcae_options$gcae_folder))
 
   # 'gert::git_clone' expects that the folder does not exist
   gert::git_clone(
