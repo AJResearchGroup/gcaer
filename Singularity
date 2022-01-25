@@ -2,7 +2,6 @@ Bootstrap: library
 From: richelbilderbeek/default/ormr:0.6.2
 
 %post
-    Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/gcaer"))'
