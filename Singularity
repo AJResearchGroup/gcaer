@@ -2,20 +2,12 @@ Bootstrap: library
 From: richelbilderbeek/default/ormr:0.6.2
 
 %post
-    # Install apt
-    #sed -i 's/$/ universe/' /etc/apt/sources.list
-    #apt-get -y update
-
     Rscript -e 'ormr::ormr_report(ormr_folder_name = "/opt/gcaer")'
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"))'
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"))'
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcaer", ormr_folder_name = "/opt/gcaer"))'
-
-# 'ormr' needs this
-#%environment
-#    export PATH=/miniconda/bin:$PATH
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
@@ -58,9 +50,9 @@ run_gcae(args = "--help", gcae_options = gcae_options)
 
     NAME gcaer
 
-    DESCRIPTION The gcaer R package, with the PLINK and Python packages installed
+    DESCRIPTION The gcaer R package, with PLINK and Python packages installed
 
-    USAGE simply run the container
+    USAGE send an R script to the container, e.g. `cat script.R | ./gcaer.sif`
 
     URL https://github.com/richelbilderbeek/gcaer
 
