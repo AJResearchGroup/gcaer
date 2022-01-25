@@ -13,7 +13,7 @@ install_gcae_requirements <- function(
     gcae_options = gcae_options
   )
 
-  ormr_folder_name <- gcae_options$gcae_folder
+  ormr_folder_name <- gcae_options$ormr_folder_name
   python_version <- gcae_options$python_version
   testthat::expect_equal(python_version, ormr::get_default_python_version())
   if (1 == 2) {
