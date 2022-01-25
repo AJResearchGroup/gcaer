@@ -20,6 +20,9 @@ get_gcae_required_python_packages <- function( # nolint indeed a long function n
   gcae_requirements_filename <- file.path(
     gcae_options$gcae_folder, "requirements.txt"
   )
+  if (!file.exists(gcae_requirements_filename)) {
+    stop("Could not find GenoCAE file at ", gcae_requirements_filename)
+  }
   requirements <- readLines(gcae_requirements_filename)
   split_requirements <- stringr::str_match(
     string = requirements,
