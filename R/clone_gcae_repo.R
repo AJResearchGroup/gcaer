@@ -19,9 +19,9 @@ clone_gcae_repo <- function(
   if (verbose) {
     message("Creating folder at ", gcae_options$gcae_folder)
   }
-  dir.create(gcae_options$gcae_folder, showWarnings = FALSE, recursive = TRUE)
 
-  # Clone repo
+  # 'gert::git_clone' expects that the folder does not exist
+  testthat::expect_false(dir.exists(gcae_options$gcae_folder))
   gert::git_clone(
     url = github_repo_url,
     path = gcae_options$gcae_folder,
