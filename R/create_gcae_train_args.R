@@ -5,7 +5,7 @@
 #' @return the CLI arguments
 #' @examples
 #' gcae_setup <- create_gcae_setup(
-#'   datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
+#'   datadir = file.path(get_gcae_folder(), "example_tiny/"),
 #'   data = "issue_6_bin",
 #'   model_id = "M1",
 #'   pheno_model_id = "p2"

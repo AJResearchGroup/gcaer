@@ -13,7 +13,7 @@ get_gcae_output_folder <- function(
   gcae_options = create_gcae_options()
 ) {
   ae_out_folder <- file.path(
-    get_gcae_subfolder(gcae_options = gcae_options),
+    gcae_options$gcae_folder,
     "ae_out"
   )
   ae_out_folder

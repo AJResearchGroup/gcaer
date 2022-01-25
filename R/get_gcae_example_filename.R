@@ -14,8 +14,7 @@ get_gcae_example_filename <- function(
   example_filename,
   gcae_options = create_gcae_options()
 ) {
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options)
-  example_folder <- file.path(gcae_subfolder, "example_tiny")
+  example_folder <- file.path(gcae_options$gcae_folder, "example_tiny")
   testthat::expect_true(dir.exists(example_folder))
   full_path <- file.path(example_folder, example_filename)
   if (!file.exists(full_path)) {

@@ -11,7 +11,7 @@ get_gcae_model_filename <- function(
   gcae_options = create_gcae_options()
 ) {
   file.path(
-    get_gcae_subfolder(gcae_options = gcae_options),
+    gcae_options$gcae_folder,
     "models",
     paste0(model_id, ".json")
   )

@@ -12,8 +12,7 @@
 get_gcae_example_filenames <- function(
   gcae_options = create_gcae_options()
 ) {
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options)
-  example_folder <- file.path(gcae_subfolder, "example_tiny")
+  example_folder <- file.path(gcae_options$gcae_folder, "example_tiny")
   testthat::expect_true(dir.exists(example_folder))
   list.files(example_folder, full.names = TRUE)
 }

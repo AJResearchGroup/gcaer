@@ -12,11 +12,10 @@ check_gcae_repo_is_cloned <- function(
   gcae_options = create_gcae_options()
 ) {
   gcaer::check_gcae_options(gcae_options)
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
-  if (!dir.exists(gcae_subfolder)) {
+  if (!dir.exists(gcae_options$gcae_folder)) {
     stop(
-      "GCAE repository is not cloned: GCAE subfolder not found \n",
-      "'gcae_subfolder': ", gcae_subfolder, " \n",
+      "GCAE repository is not cloned: GCAE folder not found \n",
+      "'gcae_options$gcae_folder': ", gcae_options$gcae_folder, " \n",
       paste0(
         gcaer::gcae_options_to_str(gcae_options = gcae_options), collapse = "\n"
       ), " \n",

@@ -2,6 +2,60 @@
 
 Newest versions at top.
 
+## gcaer v0.6 (unreleased)
+
+### NEW FEATURES
+
+ * `gcae_folder` must be the path to `GenoCAE`
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
+## gcaer v0.5.1 (2022-01-25)
+
+### NEW FEATURES
+
+ * Can specify a separate `GenoCAE` and `ormr` folder
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
+## gcaer v0.5 (2022-01-14)
+
+### NEW FEATURES
+
+ * Can run GenoCAE from R and do the core of the workflow
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
 ## gcaer v0.4 (2021-12-03)
 
 ### NEW FEATURES

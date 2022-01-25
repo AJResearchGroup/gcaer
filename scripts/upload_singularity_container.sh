@@ -17,4 +17,4 @@ echo "To sign the container, paste your passphrase"
 singularity sign gcaer.sif
 
 # Upload the latest version
-singularity push gcaer.sif library://richelbilderbeek/default/gcaer:0.5.2
+singularity push gcaer.sif library://richelbilderbeek/default/gcaer:0.6

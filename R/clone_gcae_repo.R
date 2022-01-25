@@ -10,20 +10,22 @@ clone_gcae_repo <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_options(gcae_options)
-  gcae_subfolder <- gcaer::get_gcae_subfolder(gcae_options = gcae_options)
   if (gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {
-    stop("GCAE repo already has been cloned at ", gcae_subfolder)
+    stop(
+      "GCAE repo already has been cloned at ",
+      gcae_options$gcae_folder
+    )
   }
   dir.create(gcae_options$gcae_folder, showWarnings = FALSE, recursive = TRUE)
 
-  if (!dir.exists(gcae_subfolder)) {
+  if (!dir.exists(gcae_options$gcae_folder)) {
     # Clone repo
     gert::git_clone(
       url = github_repo_url,
-      path = gcae_subfolder,
+      path = gcae_options$gcae_folder,
       branch = github_repo_branch_name,
       verbose = verbose
     )
   }
-  testthat::expect_true(dir.exists(gcae_subfolder))
+  testthat::expect_true(dir.exists(gcae_options$gcae_folder))
 }

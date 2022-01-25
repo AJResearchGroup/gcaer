@@ -11,7 +11,7 @@ get_gcae_train_opts_filename <- function(
   gcae_options = create_gcae_options()
 ) {
   file.path(
-    get_gcae_subfolder(gcae_options = gcae_options),
+    gcae_options$gcae_folder,
     "train_opts",
     paste0(train_opts_id, ".json")
   )

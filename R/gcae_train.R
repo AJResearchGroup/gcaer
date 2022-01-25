@@ -9,7 +9,7 @@
 #' @examples
 #' if (plinkr::is_on_ci() && is_gcae_installed()) {
 #'   gcae_setup <- create_gcae_setup(
-#'     datadir = file.path(get_gcae_subfolder(), "example_tiny/"),
+#'     datadir = file.path(gcae_options$gcae_folder, "example_tiny/"),
 #'     data = "issue_6_bin",
 #'     model_id = "M1",
 #'     pheno_model_id = "p2"

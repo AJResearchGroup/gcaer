@@ -56,7 +56,7 @@ All that needs to be supplied is:
  * optional: `superpops`: a file with labeled data
 
 ```
-datadir <- file.path(get_gcae_subfolder(), "example_tiny/")
+datadir <- file.path(get_gcae_folder(), "example_tiny/")
 data <- "issue_6_bin"
 gcae_setup <- create_gcae_setup(
   datadir = datadir,

@@ -18,7 +18,7 @@ get_gcae_required_python_packages <- function( # nolint indeed a long function n
     )
   }
   gcae_requirements_filename <- file.path(
-    get_gcae_subfolder(gcae_options = gcae_options), "requirements.txt"
+    gcae_options$gcae_folder, "requirements.txt"
   )
   requirements <- readLines(gcae_requirements_filename)
   split_requirements <- stringr::str_match(

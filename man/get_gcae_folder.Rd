@@ -11,11 +11,14 @@ path to the default \code{GCAE} folder as used by \link{gcaer}
 }
 \description{
 Get the path to the default \code{GCAE} folder as used by \link{gcaer}.
-This is the folder where all \code{GCAE} versions are installed.
+This is the folder where \code{GCAE} is installed
 }
 \details{
 Use \link{get_gcaer_folder} to get the folder where \link{gcaer}
 stores its temporary files
+}
+\examples{
+get_gcae_folder()
 }
 \author{
 Richèl J.C. Bilderbeek
