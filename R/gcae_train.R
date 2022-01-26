@@ -8,6 +8,7 @@
 #' arguments
 #' @examples
 #' if (plinkr::is_on_ci() && is_gcae_installed()) {
+#'   gcae_options <- create_gcae_options()
 #'   gcae_setup <- create_gcae_setup(
 #'     datadir = file.path(gcae_options$gcae_folder, "example_tiny/"),
 #'     data = "issue_6_bin",
