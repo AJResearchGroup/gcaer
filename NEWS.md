@@ -2,7 +2,25 @@
 
 Newest versions at top.
 
-## gcaer v0.6 (unreleased)
+## gcaer v0.6.1 (unreleased)
+
+### NEW FEATURES
+
+ * Fix `GenoCAE`'s `Pheno` branch to work well with `gcaer`
+
+### MINOR IMPROVEMENTS
+
+ * None
+
+### BUG FIXES
+
+ * None
+
+### DEPRECATED AND DEFUNCT
+
+ * None
+
+## gcaer v0.6 (2022-01-26)
 
 ### NEW FEATURES
 
