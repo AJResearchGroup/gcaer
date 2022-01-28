@@ -17,6 +17,7 @@ default_params_doc(
   example_filename,
   gcae_exe_path,
   gcae_folder,
+  gcae_input_filenames,
   gcae_options,
   gcae_setup,
   gcae_version,
@@ -24,6 +25,8 @@ default_params_doc(
   genotype_concordances_filename,
   github_repo_branch_name,
   github_repo_url,
+  labels_filename,
+  labels_table,
   log_filename,
   losses_from_project_filename,
   losses_from_train_t_filename,
@@ -79,6 +82,21 @@ the \code{GCAE} or \code{GCAE2} executable file.}
 
 \item{gcae_folder}{folder where \code{GCAE} is installed}
 
+\item{gcae_input_filenames}{the GCAE input filenames,
+in the form of a \link{list} with the following elements:
+\itemize{
+\item \code{bed_filename}: path to a \code{.bed} file,
+as can be read by \link[plinkr]{read_plink_bed_file}
+\item \code{bim_filename}: path to a \code{.bim} file,
+as can be read by \link[plinkr]{read_plink_bim_file}
+\item \code{fam_filename}: path to a \code{.fam} file,
+as can be read by \link[plinkr]{read_plink_fam_file}
+\item \code{phe_filename}: path to a \code{.phe} file,
+as can be read by \link[plinkr]{read_plink_phe_file}
+\item \code{labels_filename}: path to a \code{.csv} file
+as can be read by \link{read_labels_file}
+}}
+
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
 
@@ -103,6 +121,14 @@ e.g. \verb{https://github.com/kausmees/GenoCAE}
 or \verb{https://github.com/cnettel/GenoCAE}
 or \verb{https://github.com/richelbilderbeek/GenoCAE}.
 Use \link{get_default_github_repo_url} for the default value}
+
+\item{labels_filename}{path to a \code{.csv} file containing super-
+and -population labels, as can be read by \link{read_labels_table}}
+
+\item{labels_table}{a table containing super-
+and -population labels, as can be read by \link{read_labels_table}.
+Note that \code{GCAE} does not use column names, \code{gcaer} adds these
+for convenience}
 
 \item{log_filename}{name of a \code{GCAE} \code{.log} file}
 

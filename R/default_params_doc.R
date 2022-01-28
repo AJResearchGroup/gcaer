@@ -23,6 +23,18 @@
 #' @param gcae_exe_path path to
 #'   the \code{GCAE} or \code{GCAE2} executable file.
 #' @param gcae_folder folder where \code{GCAE} is installed
+#' @param gcae_input_filenames the GCAE input filenames,
+#' in the form of a \link{list} with the following elements:
+#'   * `bed_filename`: path to a `.bed` file,
+#'     as can be read by \link[plinkr]{read_plink_bed_file}
+#'   * `bim_filename`: path to a `.bim` file,
+#'     as can be read by \link[plinkr]{read_plink_bim_file}
+#'   * `fam_filename`: path to a `.fam` file,
+#'     as can be read by \link[plinkr]{read_plink_fam_file}
+#'   * `phe_filename`: path to a `.phe` file,
+#'     as can be read by \link[plinkr]{read_plink_phe_file}
+#'   * `labels_filename`: path to a `.csv` file
+#'     as can be read by \link{read_labels_file}
 #' @param gcae_options options to run GCAE,
 #' as created by \link{create_gcae_options}
 #' @param gcae_setup GCAE model setup,
@@ -41,6 +53,12 @@
 #' or `https://github.com/cnettel/GenoCAE`
 #' or `https://github.com/richelbilderbeek/GenoCAE`.
 #' Use \link{get_default_github_repo_url} for the default value
+#' @param labels_filename path to a `.csv` file containing super-
+#' and -population labels, as can be read by \link{read_labels_table}
+#' @param labels_table a table containing super-
+#' and -population labels, as can be read by \link{read_labels_table}.
+#' Note that `GCAE` does not use column names, `gcaer` adds these
+#' for convenience
 #' @param log_filename name of a \code{GCAE} \code{.log} file
 #' @param losses_from_project_filename path to the
 #' `losses_from_project.csv` file
@@ -91,6 +109,7 @@ default_params_doc <- function(
   example_filename,
   gcae_exe_path,
   gcae_folder,
+  gcae_input_filenames,
   gcae_options,
   gcae_setup,
   gcae_version,
@@ -98,6 +117,8 @@ default_params_doc <- function(
   genotype_concordances_filename,
   github_repo_branch_name,
   github_repo_url,
+  labels_filename,
+  labels_table,
   log_filename,
   losses_from_project_filename,
   losses_from_train_t_filename,

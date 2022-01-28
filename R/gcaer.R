@@ -26,6 +26,11 @@
 #' * \link{gcae_animate}: run \code{GCAE} \code{animate}
 #' * \link{evaluate}: run \code{GCAE} \code{evaluate}
 #'
+#' This is a list of functions to create simulated data for `GCAE`:
+#'
+#'  * \link{create_gcae_input_files_1}: create `GCAE` input files
+#'    for a simple setting
+#'
 #' @examples
 #' if (plinkr::is_on_ci()) {
 #'   is_gcae_installed()

@@ -33,6 +33,12 @@ This is a list of functions to run or with with \code{GCAE}:
 \item \link{gcae_animate}: run \code{GCAE} \code{animate}
 \item \link{evaluate}: run \code{GCAE} \code{evaluate}
 }
+
+This is a list of functions to create simulated data for \code{GCAE}:
+\itemize{
+\item \link{create_gcae_input_files_1}: create \code{GCAE} input files
+for a simple setting
+}
 }
 \examples{
 if (plinkr::is_on_ci()) {
