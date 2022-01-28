@@ -28,35 +28,59 @@ check_gcae_input_data <- function(gcae_input_data) {
 
   n_snps_in_bed_table <- nrow(gcae_input_data$bed_table)
   n_snps_in_bim_table <- nrow(gcae_input_data$bim_table)
+  if (n_snps_in_bed_table != n_snps_in_bim_table) {
+    stop(
+      "Must have an equal amount of SNPs in .bed and .bim table. \n",
+      "Number of SNPs in .bed table: ", n_snps_in_bed_table, " \n",
+      "Number of SNPs in .bim table: ", n_snps_in_bim_table
+    )
+  }
+
+  snps_names_in_bed_table <- rownames(gcae_input_data$bed_table)
+  snps_names_in_bim_table <- gcae_input_data$bim_table$id
+  if (snps_names_in_bed_table != snps_names_in_bim_table) {
+    stop(
+      "SNP names in .bed and .bim table must match \n",
+      "SNP names in .bed table: ", snps_names_in_bed_table, " \n",
+      "SNP names in .bim table: ", snps_names_in_bim_table
+    )
+  }
 
   n_individuals_in_bed_table <- ncol(gcae_input_data$bed_table)
   n_individuals_in_fam_table <- nrow(gcae_input_data$fam_table)
-  expect_equal(n_individuals_in_bed_table, n_individuals_in_fam_table)
+  n_individuals_in_phe_table <- nrow(gcae_input_data$phe_table)
+  if (n_individuals_in_bed_table != n_individuals_in_fam_table) {
+    stop(
+      "Must have an equal amount of individuals in .bed and .fam table. \n",
+      "Number of individuals in .bed table: ",
+        n_individuals_in_bed_table, " \n",
+      "Number of individuals in .fam table: ", n_individuals_in_fam_table
+    )
+  }
+  if (n_individuals_in_bed_table != n_individuals_in_phe_table) {
+    stop(
+      "Must have an equal amount of individuals in .bed and .phe table. \n",
+      "Number of individuals in .bed table: ",
+      n_individuals_in_bed_table, " \n",
+      "Number of individuals in .phe table: ", n_individuals_in_phe_table
+    )
+  }
 
-  n_snps <- 1
-  n_individuals <- 1000
-  expect_equal(n_snps_in_bim_table, n_snps_in_bed_table)
-
-
-  expect_true(all(gcae_input_data$labels_table$super_population == "Global"))
-  expect_true(all(gcae_input_data$labels_table$population %in% LETTERS[1:3]))
-
-  # The same format as GCAE
-  expect_true(all(gcae_input_data$phe_table$FID %in% LETTERS[1:3]))
   # All FID and IID combinations must be unique
-  expect_equal(
-    nrow(gcae_input_data$phe_table),
-    nrow(dplyr::distinct(dplyr::select(gcae_input_data$phe_table, FID, IID)))
+  unique_phe_table <- dplyr::distinct(
+    dplyr::select(gcae_input_data$phe_table, FID, IID)
   )
-  expect_true(all(gcae_input_data$phe_table$FID %in% LETTERS[1:3]))
+  n_unique_individuals_in_phe_table <- nrow(unique_phe_table)
+  if (n_unique_individuals_in_phe_table != n_unique_individuals_in_phe_table) {
+    stop("All individuals in the .phe table must be unique")
+  }
 
-  expect_equal(
+  testthat::expect_equal(
     gcae_input_data$phe_table$FID,
     gcae_input_data$fam_table$fam
   )
-  expect_equal(
+  testthat::expect_equal(
     as.character(gcae_input_data$phe_table$IID),
     gcae_input_data$fam_table$id
   )
-
 }
