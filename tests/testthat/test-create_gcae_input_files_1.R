@@ -19,7 +19,12 @@ test_that("use", {
   expect_equal(n_snps, nrow(gcae_input_data$bed_table))
   expect_equal(n_individuals, ncol(gcae_input_data$bed_table))
 
-  expect_true(all(gcae_input_data$labels_table$super_population == "Global"))
+  expect_true(
+    all(
+      gcae_input_data$labels_table$super_population %in%
+        c("Americas", "Central/South Asia")
+    )
+  )
   expect_true(all(gcae_input_data$labels_table$population %in% LETTERS[1:3]))
 
   file.remove(as.character(unlist(gcae_input_filenames)))

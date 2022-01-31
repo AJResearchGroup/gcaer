@@ -10,9 +10,9 @@
 #'
 #' Genotype|Phenotype|Allele frequency|Population|Superpopulation
 #' --------|---------|----------------|----------|---------------
-#' AA      |0        |25%             |A         |Global
-#' AC      |50       |50%             |B         |Global
-#' CC      |100      |25%             |C         |Global
+#' AA      |0        |25%             |A         |Americas
+#' AC      |50       |50%             |B         |Americas
+#' CC      |100      |25%             |C         |Central/South Asia
 #'
 #' @param base_input_filename base filename of the files to be created
 #' @return a `gcae_input_filenames`, as can be checked by
@@ -70,9 +70,9 @@ create_gcae_input_files_1 <- function(base_input_filename = "setting_1") {
   filenames$phe_filename <- phe_filename
   labels <- tibble::tribble(
     ~super_population, ~population,
-    "Global", "A",
-    "Global", "B",
-    "Global", "C"
+    "Americas", "A",
+    "Americas", "B",
+    "Central/South Asia", "C"
   )
   save_labels_file(
     labels_table = labels,

@@ -14,7 +14,6 @@ test_that("use", {
 
   # 1. Setup
   Sys.time()
-  gcae_options <- create_gcae_options()
   datadir <- get_test_datadir()
   data <- "gcae_input_files_1"
   data_opts_id <- "b_0_4"
@@ -23,13 +22,13 @@ test_that("use", {
   gcae_setup <- create_gcae_setup(
     datadir = datadir,
     data = data,
+    superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"),
     model_id = model_id,
     data_opts_id = data_opts_id,
     train_opts_id = train_opts_id,
     pheno_model_id = "p2",
     trainedmodeldir = normalizePath(get_gcaer_tempfilename(), mustWork = FALSE)
   )
-  superpops <- clean_file_path(file.path(datadir, "HO_superpopulations"))
 
   expect_true(
     file.exists(
@@ -70,7 +69,6 @@ test_that("use", {
   # 3. Project
   Sys.time()
   project_filenames <- gcae_project(
-    superpops = superpops,
     gcae_setup = gcae_setup,
     verbose = TRUE
   )
