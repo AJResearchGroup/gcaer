@@ -10,7 +10,8 @@ create_gcae_setup(
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
-  trainedmodelname = "ae_out",
+  trainedmodeldir = "ae_out",
+  trainedmodelname = "my_model_name",
   pheno_model_id = "p2"
 )
 }
@@ -32,6 +33,8 @@ train_opts/train_opts_id.json}
 \item{data_opts_id}{data options id,
 corresponding to a file data_opts/data_opts_id.json
 The data options affect how data is input to the model.}
+
+\item{trainedmodeldir}{name of the folder to save the trained model to.}
 
 \item{trainedmodelname}{name of the trained model,
 which is \code{ae_out} by default}

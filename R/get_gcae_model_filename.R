@@ -8,7 +8,7 @@
 #' @export
 get_gcae_model_filename <- function(
   model_id = "M1",
-  gcae_s = create_gcae_options()
+  gcae_options = create_gcae_options()
 ) {
 
   file.path(

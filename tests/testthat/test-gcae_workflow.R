@@ -15,8 +15,8 @@ test_that("use", {
   # 1. Setup
   Sys.time()
   gcae_options <- create_gcae_options()
-  datadir <- file.path(get_gcae_folder(), "example_tiny/")
-  data <- "issue_6_bin"
+  datadir <- get_test_datadir()
+  data <- "gcae_input_files_1"
   data_opts_id <- "b_0_4"
   model_id <- "M1"
   train_opts_id <- "ex3"
@@ -26,7 +26,9 @@ test_that("use", {
     model_id = model_id,
     data_opts_id = data_opts_id,
     train_opts_id = train_opts_id,
-    pheno_model_id = "p2"
+    pheno_model_id = "p2",
+    trainedmodeldir = get_gcaer_filename(),
+    trainedmodelname = "my_output"
   )
   superpops <- clean_file_path(file.path(datadir, "HO_superpopulations"))
 
@@ -61,7 +63,8 @@ test_that("use", {
   train_filenames <- gcae_train(
     gcae_setup = gcae_setup,
     epochs = 1,
-    save_interval = 1
+    save_interval = 1,
+    verbose = TRUE
   )
   expect_true(all(file.exists(train_filenames)))
 

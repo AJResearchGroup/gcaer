@@ -32,30 +32,14 @@ check_gcae_setup <- function(
   testthat::expect_true("data_opts_id" %in% names(gcae_setup))
   testthat::expect_true("datadir" %in% names(gcae_setup))
   testthat::expect_true("data" %in% names(gcae_setup))
+  testthat::expect_true("trainedmodeldir" %in% names(gcae_setup))
   testthat::expect_true("trainedmodelname" %in% names(gcae_setup))
 
-  testthat::expect_equal(1, length(gcae_setup$model_id))
-  testthat::expect_equal(1, length(gcae_setup$train_opts_id))
-  testthat::expect_equal(1, length(gcae_setup$data_opts_id))
-  testthat::expect_equal(1, length(gcae_setup$datadir))
-  testthat::expect_equal(1, length(gcae_setup$data))
-  testthat::expect_equal(1, length(gcae_setup$trainedmodelname))
-
-  testthat::expect_true(is.character(gcae_setup$model_id))
-  testthat::expect_true(is.character(gcae_setup$train_opts_id))
-  testthat::expect_true(is.character(gcae_setup$data_opts_id))
-  testthat::expect_true(is.character(gcae_setup$datadir))
-  testthat::expect_true(is.character(gcae_setup$data))
-  testthat::expect_true(is.character(gcae_setup$trainedmodelname))
-
-  testthat::expect_true(nchar(gcae_setup$model_id) >= 1)
-  testthat::expect_true(nchar(gcae_setup$train_opts_id) >= 1)
-  testthat::expect_true(nchar(gcae_setup$data_opts_id) >= 1)
-  testthat::expect_true(nchar(gcae_setup$datadir) >= 1)
-  testthat::expect_true(nchar(gcae_setup$data) >= 1)
-  testthat::expect_true(nchar(gcae_setup$trainedmodelname) >= 1)
-
+  gcaer::check_model_id(gcae_setup$model_id)
+  gcaer::check_train_opts_id(gcae_setup$train_opts_id)
+  gcaer::check_data_opts_id(gcae_setup$data_opts_id)
   gcaer::check_data(gcae_setup$data)
   gcaer::check_datadir(gcae_setup$datadir)
-
+  gcaer::check_trainedmodeldir(gcae_setup$trainedmodeldir)
+  gcaer::check_trainedmodelname(gcae_setup$trainedmodelname)
 }

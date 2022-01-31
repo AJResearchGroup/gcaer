@@ -87,6 +87,7 @@
 #' @param train_opts_id train options id, corresponding to a file
 #' train_opts/train_opts_id.json
 #' @param train_times_filename path to the `train_times.csv` file
+#' @param trainedmodeldir name of the folder to save the trained model to.
 #' @param trainedmodelname name of the trained model,
 #'   which is `ae_out` by default
 #' @param url \code{GCAE} download URL
@@ -135,6 +136,7 @@ default_params_doc <- function(
   train_filenames,
   train_opts_id,
   train_times_filename,
+  trainedmodeldir,
   trainedmodelname,
   url,
   verbose
