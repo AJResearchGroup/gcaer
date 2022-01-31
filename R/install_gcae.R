@@ -75,7 +75,7 @@ install_gcae <- function(
   if (verbose) {
     message("3. Determine if the GCAE script needs to be fixed")
   }
-  if (gcaer::is_gcae_script_fixed(
+  if (!gcaer::is_gcae_script_fixed(
     gcae_options = gcae_options,
     verbose = verbose
   )) {

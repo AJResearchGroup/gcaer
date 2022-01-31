@@ -90,6 +90,13 @@ test_that("abuse", {
   ###############
   # phe_table
   ###############
+  # Remove a row
+  bad_gcae_input_data <- good_gcae_input_data
+  bad_gcae_input_data$phe_table <- bad_gcae_input_data$phe_table[-1, ]
+  expect_error(
+    check_gcae_input_data(bad_gcae_input_data),
+    "Must have an equal amount of individuals in .bed and .phe table"
+  )
   # Set all FIDs to the same value
   bad_gcae_input_data <- good_gcae_input_data
   bad_gcae_input_data$phe_table$FID <- "A"
