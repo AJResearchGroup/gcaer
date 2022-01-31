@@ -14,15 +14,47 @@ test_that("use", {
 
   # 1. Setup
   Sys.time()
+  gcae_options <- create_gcae_options()
   datadir <- file.path(get_gcae_folder(), "example_tiny/")
   data <- "issue_6_bin"
+  data_opts_id <- "b_0_4"
+  model_id <- "M1"
+  train_opts_id <- "ex3"
   gcae_setup <- create_gcae_setup(
     datadir = datadir,
     data = data,
-    model_id = "M1",
+    model_id = model_id,
+    data_opts_id = data_opts_id,
+    train_opts_id = train_opts_id,
     pheno_model_id = "p2"
   )
   superpops <- clean_file_path(file.path(datadir, "HO_superpopulations"))
+
+  expect_true(
+    file.exists(
+      get_gcae_data_opts_filename(
+        data_opts_id = data_opts_id,
+        gcae_options = gcae_options
+      )
+    )
+  )
+  expect_true(
+    file.exists(
+      get_gcae_model_filename(
+        model_id = model_id,
+        gcae_options = gcae_options
+      )
+    )
+  )
+  expect_true(
+    file.exists(
+      get_gcae_train_opts_filename(
+        train_opts_id = train_opts_id,
+        gcae_options = gcae_options
+      )
+    )
+  )
+
 
   # 2. Train, approx 3 mins
   Sys.time()

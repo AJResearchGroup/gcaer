@@ -21,6 +21,9 @@ Will \link{stop} if not.
 \examples{
 check_data("HumanOrigins249_tiny")
 }
+\seealso{
+to check the input data files, use \link{check_gcae_input_data}
+}
 \author{
 Richèl J.C. Bilderbeek
 }

@@ -24,6 +24,11 @@ full path to the data options' JSON file
 Get the filename to the GCAE data options.
 This function is named after the GCAE \code{data_opts} folder.
 }
+\examples{
+get_gcae_data_opts_filename(
+  data_opts_id = "b_0_4"
+)
+}
 \author{
 Richèl J.C. Bilderbeek
 }

@@ -4,6 +4,10 @@
 #' This function is named after the GCAE `data_opts` folder.
 #' @inheritParams default_params_doc
 #' @return full path to the data options' JSON file
+#' @examples
+#' get_gcae_data_opts_filename(
+#'   data_opts_id = "b_0_4"
+#' )
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcae_data_opts_filename <- function(
