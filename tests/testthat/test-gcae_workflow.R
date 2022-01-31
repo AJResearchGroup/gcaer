@@ -65,7 +65,7 @@ test_that("use", {
     save_interval = 1,
     verbose = TRUE
   )
-  # expect_true(all(file.exists(train_filenames)))
+  expect_true(all(file.exists(train_filenames)))
 
   # 3. Project
   Sys.time()

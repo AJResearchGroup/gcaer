@@ -10,8 +10,8 @@ create_test_gcae_setup(
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
-  trainedmodelname = "ae_out",
-  pheno_model_id = "p2"
+  pheno_model_id = "p2",
+  trainedmodeldir = get_gcaer_tempfilename(pattern = "ae_out")
 )
 }
 \arguments{
@@ -33,11 +33,10 @@ train_opts/train_opts_id.json}
 corresponding to a file data_opts/data_opts_id.json
 The data options affect how data is input to the model.}
 
-\item{trainedmodelname}{name of the trained model,
-which is \code{ae_out} by default}
-
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
+
+\item{trainedmodeldir}{name of the folder to save the trained model to.}
 }
 \value{
 a GCAE setup

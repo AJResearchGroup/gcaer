@@ -89,7 +89,7 @@ specification, training options and data options:
  * `data_opts_id`: the setup of the ?file storage? of the auto-encoder
  * `pheno_model_id`: the setup of the phenotypic prediction 
    neural network, trained on the latent space of the auto-encoder
- * `trainedmodelname`: ?name of the trained model
+ * `trainedmodeldir`: folder to store the trained model
 
 Here we take a look at how each of these is set up.
 

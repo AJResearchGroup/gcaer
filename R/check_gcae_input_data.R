@@ -70,7 +70,7 @@ check_gcae_input_data <- function(gcae_input_data) {
   unique_phe_table <- dplyr::distinct(
     dplyr::select(gcae_input_data$phe_table, FID, IID)
   )
-  n_unique_individuals_in_phe_table <- nrow(unique_phe_table)
+  n_unique_individuals_in_phe_table <- nrow(unique_phe_table) # nolint indeed a long variable name
   if (n_unique_individuals_in_phe_table != n_unique_individuals_in_phe_table) {
     stop("All individuals in the .phe table must be unique")
   }
@@ -95,12 +95,19 @@ check_gcae_input_data <- function(gcae_input_data) {
     )
   }
 
-
-  if (!all(gcae_input_data$fam_table$fam %in% gcae_input_data$labels_table$population)) {
+  if (
+    !all(
+      gcae_input_data$fam_table$fam %in%
+        gcae_input_data$labels_table$population
+    )
+  ) {
     stop(
       "All family IDs must be within the labels table. \n",
       "First labels table's family IDs (i.e. the 'population' column)): ",
-      paste0(head(gcae_input_data$labels_table$population), collapse = ", "), " \n",
+      paste0(
+        head(gcae_input_data$labels_table$population),
+        collapse = ", "
+      ), " \n",
       "First .fam table family IDs (i.e. the 'fam' column)): ",
       paste0(head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
     )

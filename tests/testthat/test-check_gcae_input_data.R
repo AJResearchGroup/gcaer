@@ -107,14 +107,14 @@ test_that("abuse", {
   )
   # Set all FIDs to the same value
   bad_gcae_input_data <- good_gcae_input_data
-  bad_gcae_input_data$phe_table$FID <- "A"
+  bad_gcae_input_data$phe_table$FID <- "A" # nolint follow PLINK naming conventions
   expect_error(
     check_gcae_input_data(bad_gcae_input_data),
     "The family IDs in the .phe and .fam tables must match"
   )
   # Individuals mismatch the id/IID
   bad_gcae_input_data <- good_gcae_input_data
-  bad_gcae_input_data$phe_table$IID <- "X"
+  bad_gcae_input_data$phe_table$IID <- "X" # nolint follow PLINK naming conventions
   expect_error(
     check_gcae_input_data(bad_gcae_input_data),
     "The within-family IDs in the .phe and .fam tables must match"

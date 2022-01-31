@@ -4,14 +4,11 @@
 \alias{get_gcae_output_subfolder}
 \title{Get the path to the GCAE output subfolder}
 \usage{
-get_gcae_output_subfolder(gcae_setup, gcae_options = create_gcae_options())
+get_gcae_output_subfolder(gcae_setup)
 }
 \arguments{
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
-
-\item{gcae_options}{options to run GCAE,
-as created by \link{create_gcae_options}}
 }
 \value{
 full paths to the created files

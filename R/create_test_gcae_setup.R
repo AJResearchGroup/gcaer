@@ -14,8 +14,8 @@ create_test_gcae_setup <- function(
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
-  trainedmodelname = "ae_out",
-  pheno_model_id = "p2"
+  pheno_model_id = "p2",
+  trainedmodeldir = get_gcaer_tempfilename(pattern = "ae_out")
 ) {
   gcaer::create_gcae_setup(
     datadir = datadir,
@@ -23,7 +23,7 @@ create_test_gcae_setup <- function(
     model_id = model_id,
     train_opts_id = train_opts_id,
     data_opts_id = data_opts_id,
-    trainedmodelname = trainedmodelname,
-    pheno_model_id = pheno_model_id
+    pheno_model_id = pheno_model_id,
+    trainedmodeldir = trainedmodeldir
   )
 }
