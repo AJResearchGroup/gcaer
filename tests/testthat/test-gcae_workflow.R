@@ -14,6 +14,7 @@ test_that("use", {
 
   # 1. Setup
   Sys.time()
+  gcae_options <- create_gcae_options()
   datadir <- get_test_datadir()
   data <- "gcae_input_files_1"
   data_opts_id <- "b_0_4"
@@ -67,9 +68,11 @@ test_that("use", {
   expect_true(all(file.exists(train_filenames)))
 
   # 3. Project
+  skip("Not now")
   Sys.time()
   project_filenames <- gcae_project(
     gcae_setup = gcae_setup,
+    gcae_options = gcae_options,
     verbose = TRUE
   )
   Sys.time()
