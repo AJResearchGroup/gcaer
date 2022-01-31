@@ -27,9 +27,9 @@ as there are exactly 3 genotypes
 \details{
 \tabular{lllll}{
    Genotype \tab Phenotype \tab Allele frequency \tab Population \tab Superpopulation \cr
-   AA \tab 0 \tab 25\% \tab A \tab Global \cr
-   AC \tab 50 \tab 50\% \tab B \tab Global \cr
-   CC \tab 100 \tab 25\% \tab C \tab Global \cr
+   AA \tab 0 \tab 25\% \tab A \tab Americas \cr
+   AC \tab 50 \tab 50\% \tab B \tab Americas \cr
+   CC \tab 100 \tab 25\% \tab C \tab Central/South Asia \cr
 }
 }
 \examples{

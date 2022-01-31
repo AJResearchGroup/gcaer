@@ -4,19 +4,11 @@
 \alias{gcae_project}
 \title{Project}
 \usage{
-gcae_project(
-  gcae_setup,
-  superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
-  gcae_options = create_gcae_options(),
-  verbose = FALSE
-)
+gcae_project(gcae_setup, gcae_options = create_gcae_options(), verbose = FALSE)
 }
 \arguments{
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
-
-\item{superpops}{path to the superpops file.
-This argument is named after the GCAE \code{--superpops} CLI flag.}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
@@ -24,6 +16,9 @@ as created by \link{create_gcae_options}}
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
+
+\item{superpops}{path to the superpops file.
+This argument is named after the GCAE \code{--superpops} CLI flag.}
 }
 \value{
 full paths to the created files. These are:
