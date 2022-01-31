@@ -45,13 +45,6 @@ if (!good_to_go) {
 }
 ```
 
-While developing this package, for now, we set `good_to_go` to `FALSE`
-regardless. In that way, the GHA CI will show us the result of the test suite.
-
-```{r}
-good_to_go <- FALSE
-```
-
 These are the GCAE options:
 
 ```{r gcae_options}
