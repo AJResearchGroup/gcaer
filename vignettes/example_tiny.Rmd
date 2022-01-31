@@ -62,9 +62,9 @@ gcae_options
 The GCAE options allow a user to select a GCAE version at a custom location.
 Or: the GCAE options allows a user to **run** GenoCAE.
 
-This is the GCAE setup:
+In this tutorial, we'll be using a standard GCAE setup:
 
-```{r gcae_options}
+```{r gcae_setup}
 gcae_setup <- create_test_gcae_setup()
 gcae_setup
 ```
@@ -78,18 +78,6 @@ Or: the GCAE setup allows a user to define how GenoCAE learns/trains/etc.
 ## Determine the GCAE setup
 
 ## See the GCAE setup
-
-In this tutorial, we'll be using a standard GCAE setup.
-
-```{r gcae_setup}
-if (good_to_go) {
-  gcae_setup <- create_test_gcae_setup(
-    datadir = datadir,
-    data = data
-  )
-  names(gcae_setup)
-}
-```
 
 The GCAE setup contains the GCAE setup, such as the auto-encoder's
 specification, training options and data options:
@@ -127,7 +115,7 @@ if (good_to_go) {
 
 These are the full paths of the files we will use:
 
-```{r read_fam_file}
+```{r get_gcae_input_filenames}
 if (good_to_go) {
   gcae_input_filenames <- get_gcae_input_filenames(
     gcae_setup = gcae_setup
@@ -140,7 +128,7 @@ if (good_to_go) {
 
 ```{r model_id}
 if (good_to_go) {
-  model_filename <- get_gcae_model_filename(gcae_setup)
+  model_filename <- get_gcae_model_filename(gcae_setup$model_id)
   testthat::expect_true(file.exists(model_filename))
   readr::read_lines(model_filename)
 }
@@ -150,7 +138,7 @@ if (good_to_go) {
 
 ```{r train_opts_id}
 if (good_to_go) {
-  train_opts_filename <- get_gcae_train_opts_filename(gcae_setup)
+  train_opts_filename <- get_gcae_train_opts_filename(gcae_setup$train_opts_id)
   testthat::expect_true(file.exists(train_opts_filename))
   readr::read_lines(train_opts_filename)
 }
@@ -160,7 +148,7 @@ if (good_to_go) {
 
 ```{r data_opts_id}
 if (good_to_go) {
-  data_opts_filename <- get_gcae_data_opts_filename(gcae_setup)
+  data_opts_filename <- get_gcae_data_opts_filename(gcae_setup$model_id)
   testthat::expect_true(file.exists(data_opts_filename))
   readr::read_lines(data_opts_filename)
 }
@@ -168,11 +156,13 @@ if (good_to_go) {
 
 ### pheno_model_id
 
-```{r data_opts_id}
+```{r pheno_model_id}
 if (good_to_go) {
-  pheno_model_id_filename <- get_gcae_pheno_model_filename(gcae_setup)
-  testthat::expect_true(file.exists(pheno_model_id_filename))
-  readr::read_lines(pheno_model_id_filename)
+  # pheno_model_id_filename <- get_gcae_pheno_model_filename(
+  #   gcae_setup$pheno_model_id
+  # )
+  # testthat::expect_true(file.exists(pheno_model_id_filename))
+  # readr::read_lines(pheno_model_id_filename)
 }
 ```
 
