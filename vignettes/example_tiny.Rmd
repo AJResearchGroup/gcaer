@@ -242,8 +242,7 @@ if (good_to_go) {
   ggplot2::ggplot(
     train_results$train_times_table,
     ggplot2::aes(x = epoch, y = train_times_sec)
-  ) + ggplot2::geom_line() +
-    ggplot2::scale_y_continuous(limits = c(0.0, 1.0))
+  ) + ggplot2::geom_line()
 }
 ```
 
@@ -254,8 +253,7 @@ if (good_to_go) {
   ggplot2::ggplot(
     train_results$losses_from_train_t_table,
     ggplot2::aes(x = epoch, y = losses_from_train_t)
-  ) + ggplot2::geom_line() +
-    ggplot2::scale_y_continuous(limits = c(0.0, 1.0))
+  ) + ggplot2::geom_line()
 }
 ```
 
@@ -266,8 +264,7 @@ if (good_to_go) {
   ggplot2::ggplot(
     train_results$losses_from_train_v_table,
     ggplot2::aes(x = epoch, y = losses_from_train_v)
-  ) + ggplot2::geom_line() +
-    ggplot2::scale_y_continuous(limits = c(0.0, 1.0))
+  ) + ggplot2::geom_line()
 }
 ```
 
@@ -275,7 +272,8 @@ if (good_to_go) {
 
 ```{r gcae_project,cache=FALSE}
 if (good_to_go) {
-  superpops <- file.path(datadir, "HO_superpopulations")
+  gcae_setup$datadir
+  superpops <- file.path(gcae_setup$datadir, "gcae_input_files_1_labels.csv")
   project_filenames <- gcae_project(
     superpops = superpops,
     gcae_setup = gcae_setup

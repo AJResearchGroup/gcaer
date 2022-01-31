@@ -7,11 +7,12 @@
 create_gcae_setup(
   datadir,
   data,
-  model_id = "M1",
-  train_opts_id = "ex3",
-  data_opts_id = "b_0_4",
-  trainedmodeldir = get_gcaer_tempfilename(pattern = "ae_out"),
-  pheno_model_id = "p2"
+  superpops,
+  model_id,
+  train_opts_id,
+  data_opts_id,
+  pheno_model_id,
+  trainedmodeldir = get_gcaer_tempfilename(pattern = "ae_out")
 )
 }
 \arguments{
@@ -24,6 +25,9 @@ and does not start with a full stop (\code{.})}
 The data files must be in EIGENSTRAT
 or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 
+\item{superpops}{path to the \code{superpops} file, which contains
+the labels table and can be read using \link{read_labels_file}}
+
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 
 \item{train_opts_id}{train options id, corresponding to a file
@@ -33,10 +37,10 @@ train_opts/train_opts_id.json}
 corresponding to a file data_opts/data_opts_id.json
 The data options affect how data is input to the model.}
 
-\item{trainedmodeldir}{name of the folder to save the trained model to.}
-
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
+
+\item{trainedmodeldir}{name of the folder to save the trained model to.}
 }
 \value{
 full paths to the created files

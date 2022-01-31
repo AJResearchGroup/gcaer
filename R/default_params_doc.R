@@ -82,6 +82,8 @@
 #' @param python_version the Python version
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
+#' @param superpops path to the `superpops` file, which contains
+#' the labels table and can be read using \link{read_labels_file}
 #' @param train_filenames path to the files
 #' as created (and returned) by \link{gcae_train}
 #' @param train_opts_id train options id, corresponding to a file
@@ -133,6 +135,7 @@ default_params_doc <- function(
   python_bin_path,
   python_version,
   save_interval,
+  superpops,
   train_filenames,
   train_opts_id,
   train_times_filename,

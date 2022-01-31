@@ -7,6 +7,7 @@
 create_test_gcae_setup(
   datadir = get_test_datadir(),
   data = get_test_data(),
+  superpops = "",
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
@@ -23,6 +24,9 @@ and does not start with a full stop (\code{.})}
 \item{data}{file prefix, not including path, of the data files.
 The data files must be in EIGENSTRAT
 or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
+
+\item{superpops}{path to the \code{superpops} file, which contains
+the labels table and can be read using \link{read_labels_file}}
 
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 

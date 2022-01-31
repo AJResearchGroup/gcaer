@@ -51,8 +51,7 @@ gcae_project <- function(
     verbose = verbose
   )
   gcae_output_subfolder <- gcaer::get_gcae_output_subfolder(
-    gcae_setup = gcae_setup,
-    gcae_options = gcae_options
+    gcae_setup = gcae_setup
   )
   testthat::expect_true(dir.exists(gcae_output_subfolder))
   gcae_plot_subfolder <- file.path(gcae_output_subfolder, gcae_setup$data)

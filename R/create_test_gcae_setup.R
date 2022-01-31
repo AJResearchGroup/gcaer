@@ -11,6 +11,7 @@
 create_test_gcae_setup <- function(
   datadir = get_test_datadir(),
   data = get_test_data(),
+  superpops = "",
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
@@ -20,6 +21,7 @@ create_test_gcae_setup <- function(
   gcaer::create_gcae_setup(
     datadir = datadir,
     data = data,
+    superpops = superpops,
     model_id = model_id,
     train_opts_id = train_opts_id,
     data_opts_id = data_opts_id,

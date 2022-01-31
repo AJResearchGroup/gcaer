@@ -1,25 +1,15 @@
 test_that("use", {
   expect_silent(
     get_gcae_output_subfolder(
-      gcae_setup = create_gcae_setup(
-        datadir = "my_datadir/",
-        data = "HumanOrigins249_tiny",
-        pheno_model_id = "p2",
-        trainedmodeldir = "there"
-      )
+      gcae_setup = create_test_gcae_setup()
     )
   )
   expect_true(
     stringr::str_detect(
       string = get_gcae_output_subfolder(
-        gcae_setup = create_gcae_setup(
-          datadir = "my_datadir/",
-          data = "issue_6_bin",
-          pheno_model_id = "p2",
-          trainedmodeldir = "trainedmodeldir"
-        )
+        gcae_setup = create_test_gcae_setup()
       ),
-      pattern = "trainedmodeldirae\\.M1.ex3\\.b_0_4\\.issue_6_bin\\.p2$"
+      pattern = "ae\\.M1.ex3\\.b_0_4\\.gcae_input_files_1\\.p2$"
     )
   )
 })

@@ -40,6 +40,7 @@ default_params_doc(
   python_bin_path,
   python_version,
   save_interval,
+  superpops,
   train_filenames,
   train_opts_id,
   train_times_filename,
@@ -166,6 +167,9 @@ as created (and returned) by \link{gcae_project}}
 
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}
+
+\item{superpops}{path to the \code{superpops} file, which contains
+the labels table and can be read using \link{read_labels_file}}
 
 \item{train_filenames}{path to the files
 as created (and returned) by \link{gcae_train}}
