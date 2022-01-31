@@ -5,6 +5,9 @@ test_that("use", {
 
   gcae_input_filenames <- create_gcae_input_files_1()
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
+
+  # There is only 1 phenotype
+  expect_equal(3, ncol(gcae_input_data$phe_table))
   check_gcae_input_data(gcae_input_data)
 
   # Assume if something is in one table, it is also in the other,

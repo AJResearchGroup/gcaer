@@ -8,7 +8,7 @@ Newest versions at top.
 
  * Fix `GenoCAE`'s `Pheno` branch to work well with `gcaer`
  * Add `check_gcae_input_data` to check that the data can be read by `GenoCAE`
-   and giving a clear error when it cannot
+   and to give a clear error when it cannot
  * Added `read_labels_file` and `save_labels_file` to work with a `GenoCAE`
    labels file
 
