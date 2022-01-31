@@ -18,6 +18,7 @@ test_that("use", {
     "--save_interval", save_interval,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
+    "--trainedmodeldir", gcae_setup$trainedmodeldir,
     paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
   )
   expect_equal(created, expected)
