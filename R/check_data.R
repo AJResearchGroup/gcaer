@@ -4,6 +4,7 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `data` is invalid.
+#' @seealso to check the input data files, use \link{check_gcae_input_data}
 #' @examples
 #' check_data("HumanOrigins249_tiny")
 #' @author Richèl J.C. Bilderbeek
