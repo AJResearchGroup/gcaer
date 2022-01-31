@@ -14,15 +14,12 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcae_output_subfolder <- function(
-  gcae_setup,
-  gcae_options = create_gcae_options()
+  gcae_setup
 ) {
   gcaer::check_gcae_setup(gcae_setup)
-  gcaer::check_gcae_options(gcae_options)
-  ae_out_folder <- gcaer::get_gcae_output_folder(gcae_options = gcae_options)
   ae_out_subfolder <- file.path(
-    ae_out_folder,
     paste0(
+      gcae_setup$trainedmodeldir,
       "ae.",
       gcae_setup$model_id, ".",
       gcae_setup$train_opts_id, ".",

@@ -60,10 +60,7 @@ gcae_train <- function(
   if (verbose) {
     message("GCAE output: \n", paste0(output, collapse = "\n"))
   }
-  ae_out_subfolder <- get_gcae_output_subfolder(
-    gcae_setup = gcae_setup,
-    gcae_options = gcae_options
-  )
+  ae_out_subfolder <- gcaer::get_gcae_output_subfolder(gcae_setup = gcae_setup)
   if (!dir.exists(ae_out_subfolder)) {
     stop(
       "'ae_out_subfolder' not found at path '", ae_out_subfolder, "' \n",

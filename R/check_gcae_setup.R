@@ -33,7 +33,7 @@ check_gcae_setup <- function(
   testthat::expect_true("datadir" %in% names(gcae_setup))
   testthat::expect_true("data" %in% names(gcae_setup))
   testthat::expect_true("trainedmodeldir" %in% names(gcae_setup))
-  testthat::expect_true("trainedmodelname" %in% names(gcae_setup))
+  #testthat::expect_true("trainedmodelname" %in% names(gcae_setup)) # nolint removed for now
 
   gcaer::check_model_id(gcae_setup$model_id)
   gcaer::check_train_opts_id(gcae_setup$train_opts_id)
@@ -41,5 +41,5 @@ check_gcae_setup <- function(
   gcaer::check_data(gcae_setup$data)
   gcaer::check_datadir(gcae_setup$datadir)
   gcaer::check_trainedmodeldir(gcae_setup$trainedmodeldir)
-  gcaer::check_trainedmodelname(gcae_setup$trainedmodelname)
+  #gcaer::check_trainedmodelname(gcae_setup$trainedmodelname) # nolint removed for now
 }

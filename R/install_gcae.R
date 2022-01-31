@@ -17,7 +17,7 @@ install_gcae <- function(
   verbose = FALSE
 ) {
   if (verbose) {
-    message("0. Start of 'install_gcae'")
+    message("1/6. Start of 'install_gcae'")
     message(
       "dir.exists(gcae_options$gcae_folder: ",
       dir.exists(gcae_options$gcae_folder)
@@ -25,7 +25,7 @@ install_gcae <- function(
   }
   gcaer::check_gcae_options(gcae_options)
   if (verbose) {
-    message("0. Start of 'install_gcae', before 'is_gcae_installed'")
+    message("2/6. Start of 'install_gcae', before 'is_gcae_installed'")
     message(
       "dir.exists(gcae_options$gcae_folder: ",
       dir.exists(gcae_options$gcae_folder)
@@ -44,7 +44,7 @@ install_gcae <- function(
     )
   }
   if (verbose) {
-    message("1. Clone the GCAE repo")
+    message("3/6. Clone the GCAE repo")
     message(
       "dir.exists(gcae_options$gcae_folder: ",
       dir.exists(gcae_options$gcae_folder)
@@ -63,7 +63,7 @@ install_gcae <- function(
   gcaer::check_gcae_repo_is_cloned(gcae_options = gcae_options)
 
   if (verbose) {
-    message("2. Install the needed Python packages")
+    message("4/6. Install the needed Python packages")
   }
   gcaer::install_gcae_requirements(
     gcae_options = gcae_options,
@@ -73,7 +73,7 @@ install_gcae <- function(
 
   # 3. Fix the GCAE script
   if (verbose) {
-    message("3. Determine if the GCAE script needs to be fixed")
+    message("5/6. Determine if the GCAE script needs to be fixed")
   }
   if (!gcaer::is_gcae_script_fixed(
     gcae_options = gcae_options,
@@ -87,7 +87,7 @@ install_gcae <- function(
   gcaer::check_gcae_script_is_fixed(gcae_options = gcae_options)
 
   if (verbose) {
-    message("Extra check for now")
+    message("6/6. Extra check for now")
   }
   gcaer::check_gcae_is_installed(gcae_options = gcae_options)
 }
