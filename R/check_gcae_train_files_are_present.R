@@ -17,5 +17,7 @@ check_gcae_train_files_are_present <- function(gcae_setup) { # nolint indeed a l
   }
   testthat::expect_true(file.exists(bim_filename))
   testthat::expect_true(file.exists(fam_filename))
-  testthat::expect_true(file.exists(phe_filename))
+  if (!file.exists(phe_filename)) {
+    stop(".phe file not found at ", phe_filename)
+  }
 }

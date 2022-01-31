@@ -33,6 +33,13 @@ create_gcae_input_filenames(
   labels_filename = get_gcaer_filename("gcae_input_files_1_labels.csv")
 )
 }
+\seealso{
+use \link{get_gcae_input_filenames} to obtain
+the \code{gcae_input_filenames} from a \code{gcae_setup}
+(see \link{check_gcae_setup})
+and \code{gcae_options}
+(see \link{check_gcae_options})
+}
 \author{
 Richèl J.C. Bilderbeek
 }

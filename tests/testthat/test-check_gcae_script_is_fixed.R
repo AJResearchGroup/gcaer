@@ -7,8 +7,13 @@ test_that("use", {
     "GCAE repository is not cloned"
   )
   clone_gcae_repo(gcae_options = gcae_options)
-  expect_error(
-    check_gcae_script_is_fixed(gcae_options = gcae_options),
-    "GCAE script is not fixed."
-  )
+  if (1 == 2) {
+    expect_error(
+      check_gcae_script_is_fixed(gcae_options = gcae_options),
+      "GCAE script is not fixed."
+    )
+  } else {
+    # GCAE repo is fixed
+    expect_silent(check_gcae_script_is_fixed(gcae_options = gcae_options))
+  }
 })

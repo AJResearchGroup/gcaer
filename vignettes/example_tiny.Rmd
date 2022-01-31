@@ -49,7 +49,7 @@ While developing this package, for now, we set `good_to_go` to `FALSE`
 regardless. In that way, the GHA CI will show us the result of the test suite.
 
 ```{r}
-good_to_go <- FALSE
+good_to_go <- TRUE
 ```
 
 These are the GCAE options:
@@ -60,79 +60,22 @@ gcae_options
 ```
 
 The GCAE options allow a user to select a GCAE version at a custom location.
+Or: the GCAE options allows a user to **run** GenoCAE.
 
-## See the genetic data
+This is the GCAE setup:
 
-These are the `example_tiny` files supplied with GCAE:
-
-```{r datadir}
-if (good_to_go) {
-  datadir <- file.path(
-    gcae_options$gcae_folder,
-    "example_tiny/"
-  )
-  list.files(datadir)
-}
-```
-Of these files, we will use `HumanOrigins249_tiny` as the base file name:
-
-```{r base_filename}
-if (good_to_go) {
-  data <- "HumanOrigins249_tiny"
-  list.files(datadir, pattern = data)
-}
+```{r gcae_options}
+gcae_setup <- create_test_gcae_setup()
+gcae_setup
 ```
 
-We will be using the PLINK binary files, which are the `.bed`, `.bim` 
-and `.fam` files.
+The GCAE setup allow a user to specify:
+ * which data to work on
+ * the GCAE convolutional autoencoder architecture
 
-This is the `.fam` file:
+Or: the GCAE setup allows a user to define how GenoCAE learns/trains/etc.
 
-```{r read_fam_file}
-n_individuals <- "[unknown]"
-if (good_to_go) {
-  fam_filename <- list.files(datadir, full.names = TRUE, pattern = "\\.fam$")
-  fam_table <- plinkr::read_plink_fam_file(fam_filename)
-  n_individuals <- nrow(fam_table)
-  knitr::kable(head(fam_table))
-}
-```
-
-This table shows us the `r n_individuals` individuals.
-
-This is the `.bim` file:
-
-```{r read_bim_file}
-n_snps <- "[unknown]"
-if (good_to_go) {
-  bim_filename <- list.files(datadir, full.names = TRUE, pattern = "\\.bim$")
-  bim_table <- plinkr::read_plink_bim_file(bim_filename)
-  n_snps <- nrow(bim_table)
-  knitr::kable(head(bim_table))
-}
-```
-
-This table shows us the `r n_snps` SNPs.
-
-This is the `.bed` file:
-
-```{r read_bed_file}
-if (good_to_go) {
-  bed_filename <- list.files(
-    datadir,
-    full.names = TRUE,
-    pattern = "\\.bed$"
-  )
-  bed_table <- plinkr::read_plink_bed_file_from_files(
-    bed_filename = bed_filename,
-    bim_filename = bim_filename,
-    fam_filename = fam_filename
-  )
-  testthat::expect_equal(n_individuals, ncol(bed_table))
-  testthat::expect_equal(n_snps, nrow(bed_table))
-  knitr::kable(head(bed_table[, 1:10]))
-}
-```
+## Determine the GCAE setup
 
 ## See the GCAE setup
 
@@ -140,7 +83,7 @@ In this tutorial, we'll be using a standard GCAE setup.
 
 ```{r gcae_setup}
 if (good_to_go) {
-  gcae_setup <- create_gcae_setup(
+  gcae_setup <- create_test_gcae_setup(
     datadir = datadir,
     data = data
   )
@@ -151,17 +94,53 @@ if (good_to_go) {
 The GCAE setup contains the GCAE setup, such as the auto-encoder's
 specification, training options and data options:
 
+ * `datadir`: folder where the input data is stored
+ * `data`: base filename of the data files in the `datadir`
  * `model_id`: the setup of the auto-encoder
  * `train_opts_id`: the setup of the training of the auto-encoder
  * `data_opts_id`: the setup of the ?file storage? of the auto-encoder
+ * `pheno_model_id`: the setup of the phenotypic prediction 
+   neural network, trained on the latent space of the auto-encoder
+ * `trainedmodelname`: ?name of the trained model
 
 Here we take a look at how each of these is set up.
+
+### `datadir` and `data`
+
+The `datadir` in the name of the folder that hold the GCAE input files.
+
+```{r show_datadir}
+if (good_to_go) {
+  gcae_setup$datadir
+}
+```
+
+In this setup, we will use the files in that folder that have
+the same base filename as `data` (`r gcae_setup$data` in this case).
+Here are the files that match:
+
+```{r base_filename}
+if (good_to_go) {
+  list.files(gcae_setup$datadir, pattern = gcae_setup$data)
+}
+```
+
+These are the full paths of the files we will use:
+
+```{r read_fam_file}
+if (good_to_go) {
+  gcae_input_filenames <- get_gcae_input_filenames(
+    gcae_setup = gcae_setup
+  )
+  gcae_input_filenames
+}
+```
 
 ### The model ID
 
 ```{r model_id}
 if (good_to_go) {
-  model_filename <- get_gcae_model_filename(gcae_setup$model_id)
+  model_filename <- get_gcae_model_filename(gcae_setup)
   testthat::expect_true(file.exists(model_filename))
   readr::read_lines(model_filename)
 }
@@ -171,7 +150,7 @@ if (good_to_go) {
 
 ```{r train_opts_id}
 if (good_to_go) {
-  train_opts_filename <- get_gcae_train_opts_filename(gcae_setup$train_opts_id)
+  train_opts_filename <- get_gcae_train_opts_filename(gcae_setup)
   testthat::expect_true(file.exists(train_opts_filename))
   readr::read_lines(train_opts_filename)
 }
@@ -181,11 +160,69 @@ if (good_to_go) {
 
 ```{r data_opts_id}
 if (good_to_go) {
-  data_opts_filename <- get_gcae_data_opts_filename(gcae_setup$data_opts_id)
+  data_opts_filename <- get_gcae_data_opts_filename(gcae_setup)
   testthat::expect_true(file.exists(data_opts_filename))
   readr::read_lines(data_opts_filename)
 }
 ```
+
+### pheno_model_id
+
+```{r data_opts_id}
+if (good_to_go) {
+  pheno_model_id_filename <- get_gcae_pheno_model_filename(gcae_setup)
+  testthat::expect_true(file.exists(pheno_model_id_filename))
+  readr::read_lines(pheno_model_id_filename)
+}
+```
+
+
+## See the genetic data
+
+
+We read all the files in at once:
+
+```{r}
+if (good_to_go) {
+  gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
+  gcae_input_data
+}
+```
+
+This is the `.fam` table:
+
+```{r read_fam_file}
+n_individuals <- "[unknown]"
+if (good_to_go) {
+  n_individuals <- nrow(gcae_input_data$fam_table)
+  knitr::kable(head(gcae_input_data$fam_table))
+}
+```
+
+This table shows us the `r n_individuals` individuals.
+
+This is the `.bim` file:
+
+```{r read_bim_file}
+n_snps <- "[unknown]"
+if (good_to_go) {
+  n_snps <- nrow(gcae_input_data$bim_table)
+  knitr::kable(head(gcae_input_data$bim_table))
+}
+```
+
+This table shows us the `r n_snps` SNPs.
+
+This is the `.bed` file:
+
+```{r read_bed_file}
+if (good_to_go) {
+  testthat::expect_equal(n_individuals, ncol(gcae_input_data$bed_table))
+  testthat::expect_equal(n_snps, nrow(gcae_input_data$bed_table))
+  knitr::kable(head(gcae_input_data$bed_table[, 1:10]))
+}
+```
+
 
 ## Training
 

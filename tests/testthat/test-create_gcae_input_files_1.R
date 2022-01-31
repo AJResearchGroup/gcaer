@@ -6,9 +6,10 @@ test_that("use", {
   gcae_input_filenames <- create_gcae_input_files_1()
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
 
+  expect_silent(check_gcae_input_data(gcae_input_data))
+
   # There is only 1 phenotype
   expect_equal(3, ncol(gcae_input_data$phe_table))
-  check_gcae_input_data(gcae_input_data)
 
   # Assume if something is in one table, it is also in the other,
   # thanks to 'check_gcae_input_data'
@@ -25,7 +26,9 @@ test_that("use", {
 })
 
 test_that("match inst/extdata/setting_1", {
-  testthat::expect_true(plinkr::is_plink_installed())
+  expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!plinkr::is_on_ci()) return()
+  if (!plinkr::is_plink_installed()) return()
 
   # The original data
   expected_gcae_input_data <- NA

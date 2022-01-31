@@ -9,8 +9,8 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 create_test_gcae_setup <- function(
-  datadir= "example_tiny/",
-  data = "issue_6_bin",
+  datadir = get_test_datadir(),
+  data = get_test_data(),
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
