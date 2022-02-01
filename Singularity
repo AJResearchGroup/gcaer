@@ -2,7 +2,6 @@ Bootstrap: library
 From: richelbilderbeek/default/ormr:0.6.2
 
 %post
-    conda update -n base -c defaults conda
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/ormr_gcaer"), verbose = TRUE)'
