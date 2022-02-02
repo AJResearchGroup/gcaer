@@ -69,10 +69,10 @@ create_gcae_input_files_1 <- function(base_input_filename = "setting_1") {
   )
   filenames$phe_filename <- phe_filename
   labels <- tibble::tribble(
-    ~super_population, ~population,
-    "Americas", "A",
-    "Americas", "B",
-    "Central/South Asia", "C"
+    ~population, ~super_population,
+    "A", "Americas",
+    "B", "Americas",
+    "C", "Central/South Asia"
   )
   save_labels_file(
     labels_table = labels,

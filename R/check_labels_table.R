@@ -19,7 +19,7 @@ check_labels_table <- function(
   testthat::expect_true(tibble::is_tibble(labels_table))
   testthat::expect_equal(2, ncol(labels_table))
   testthat::expect_equal(
-    c("super_population", "population"),
+    c("population", "super_population"),
     names(labels_table)
   )
 }

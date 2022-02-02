@@ -24,6 +24,7 @@ save_labels_file <- function(
   labels_table,
   labels_filename
 ) {
+  gcaer::check_labels_table(labels_table)
   readr::write_csv(
     x = labels_table,
     file = labels_filename,
