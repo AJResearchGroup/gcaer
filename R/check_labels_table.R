@@ -5,8 +5,9 @@
 #'
 #' A `labels_table` is a \link[tibble]{tibble}
 #' with two columns and zero, one or more rows.
-#' The columns are named `super_population`
-#' and `population` and expresses which population (e.g. 'The Netherlands')
+#' The columns are named `population`
+#' and `super_population`
+#' and expresses which population (e.g. 'The Netherlands')
 #' is part of which superpopulation (e.g. 'Europe').
 #' There are as much rows as there are populations.
 #' @inheritParams default_params_doc
@@ -19,7 +20,7 @@ check_labels_table <- function(
   testthat::expect_true(tibble::is_tibble(labels_table))
   testthat::expect_equal(2, ncol(labels_table))
   testthat::expect_equal(
-    c("population", "super_population"),
-    names(labels_table)
+    names(labels_table),
+    c("population", "super_population")
   )
 }

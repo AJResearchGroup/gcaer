@@ -22,8 +22,9 @@ Will \link{stop} if not.
 \details{
 A \code{labels_table} is a \link[tibble]{tibble}
 with two columns and zero, one or more rows.
-The columns are named \code{super_population}
-and \code{population} and expresses which population (e.g. 'The Netherlands')
+The columns are named \code{population}
+and \code{super_population}
+and expresses which population (e.g. 'The Netherlands')
 is part of which superpopulation (e.g. 'Europe').
 There are as much rows as there are populations.
 }

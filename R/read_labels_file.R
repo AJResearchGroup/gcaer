@@ -18,6 +18,6 @@ read_labels_file <- function(labels_filename) {
     show_col_types = FALSE
   )
   # Add labels, as these are easier to work with
-  names(label_table) <- c("super_population", "population")
+  names(label_table) <- c("population", "super_population")
   label_table
 }

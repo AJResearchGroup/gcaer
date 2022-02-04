@@ -38,7 +38,7 @@ check_gcae_input_data <- function(gcae_input_data) {
 
   snps_names_in_bed_table <- rownames(gcae_input_data$bed_table)
   snps_names_in_bim_table <- gcae_input_data$bim_table$id
-  if (snps_names_in_bed_table != snps_names_in_bim_table) {
+  if (any(snps_names_in_bed_table != snps_names_in_bim_table)) {
     stop(
       "SNP names in .bed and .bim table must match \n",
       "SNP names in .bed table: ", snps_names_in_bed_table, " \n",

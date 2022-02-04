@@ -15,6 +15,9 @@
 #' CC      |100      |25%             |C         |Central/South Asia
 #'
 #' @param base_input_filename base filename of the files to be created
+#' @param n_individuals number of individuals
+#' @param n_traits the number of quantitative traits
+#' @param n_snps_per_trait the number of SNPs that determine a trait
 #' @return a `gcae_input_filenames`, as can be checked by
 #' \link{check_gcae_input_filenames}
 #' @examples
@@ -25,25 +28,35 @@
 #' file.remove(as.character(unlist(gcae_input_filenames)))
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_gcae_input_files_1 <- function(base_input_filename = "setting_1") {
+create_gcae_input_files_1 <- function(
+  base_input_filename = "setting_1",
+  n_individuals = 1000,
+  n_traits = 1,
+  n_snps_per_trait = 1
+) {
   set.seed(1)
-  n_individuals <- 1000 # as NSPHS
+  traits <- rep(
+    list(
+      plinkr::create_additive_trait(
+        mafs = 0.499999,
+        base_phenotype_value = pi,
+        phenotype_increase = pi,
+        n_snps = n_snps_per_trait
+      )
+    ),
+    n_traits
+  )
   assoc_qt_data <- plinkr::create_demo_assoc_qt_data(
     n_individuals = n_individuals,
-    traits = plinkr::create_additive_trait(
-      mafs = 0.499999,
-      base_phenotype_value = pi,
-      phenotype_increase = pi
-    )
+    traits = traits
   )
-
+  sum_phenotypes <- rowSums(
+    assoc_qt_data$phenotype_data$phe_table[, c(-1, -2)]
+  )
   # Set populations
-  is_a <- assoc_qt_data$phenotype_data$phe_table$additive == 1.0 * pi
-  is_b <- assoc_qt_data$phenotype_data$phe_table$additive == 2.0 * pi
-  is_c <- assoc_qt_data$phenotype_data$phe_table$additive == 3.0 * pi
-  testthat::expect_equal(sum(is_a), 242)
-  testthat::expect_equal(sum(is_b), 516)
-  testthat::expect_equal(sum(is_c), 242)
+  is_a <- order(sum_phenotypes) < n_individuals / 3
+  is_b <- order(sum_phenotypes) > 2 * n_individuals / 3
+  is_c <- !is_a & !is_b
   testthat::expect_equal(sum(is_a) + sum(is_b) + sum(is_c), n_individuals)
   assoc_qt_data$phenotype_data$phe_table$FID[is_a] <- "A"
   assoc_qt_data$phenotype_data$phe_table$FID[is_b] <- "B"

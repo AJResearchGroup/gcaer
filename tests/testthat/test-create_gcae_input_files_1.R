@@ -3,18 +3,24 @@ test_that("use", {
   if (!plinkr::is_on_ci()) return()
   if (!plinkr::is_plink_installed()) return()
 
-  gcae_input_filenames <- create_gcae_input_files_1()
+  n_individuals <- 5
+  n_traits <- 3
+  n_snps_per_trait <- 2
+  gcae_input_filenames <- create_gcae_input_files_1(
+    n_individuals = n_individuals,
+    n_traits = n_traits,
+    n_snps_per_trait = n_snps_per_trait
+  )
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
 
   expect_silent(check_gcae_input_data(gcae_input_data))
 
   # There is only 1 phenotype
-  expect_equal(3, ncol(gcae_input_data$phe_table))
+  expect_equal(2 + n_traits, ncol(gcae_input_data$phe_table))
 
   # Assume if something is in one table, it is also in the other,
   # thanks to 'check_gcae_input_data'
-  n_snps <- 1
-  n_individuals <- 1000
+  n_snps <- n_traits * n_snps_per_trait
 
   expect_equal(n_snps, nrow(gcae_input_data$bed_table))
   expect_equal(n_individuals, ncol(gcae_input_data$bed_table))
@@ -31,6 +37,7 @@ test_that("use", {
 })
 
 test_that("match inst/extdata/setting_1", {
+  skip("Does not need to match anymore")
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!plinkr::is_plink_installed()) return()

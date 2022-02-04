@@ -4,10 +4,21 @@
 \alias{create_gcae_input_files_1}
 \title{Create setting 1 for GCAE}
 \usage{
-create_gcae_input_files_1(base_input_filename = "setting_1")
+create_gcae_input_files_1(
+  base_input_filename = "setting_1",
+  n_individuals = 1000,
+  n_traits = 1,
+  n_snps_per_trait = 1
+)
 }
 \arguments{
 \item{base_input_filename}{base filename of the files to be created}
+
+\item{n_individuals}{number of individuals}
+
+\item{n_traits}{the number of quantitative traits}
+
+\item{n_snps_per_trait}{the number of SNPs that determine a trait}
 }
 \value{
 a \code{gcae_input_filenames}, as can be checked by
