@@ -139,8 +139,8 @@ if (good_to_go) {
 ```{r train_opts_id}
 if (good_to_go) {
   train_opts_filename <- get_gcae_train_opts_filename(gcae_setup$train_opts_id)
-  testthat::expect_true(file.exists(train_opts_filename))
-  readr::read_lines(train_opts_filename)
+  # testthat::expect_true(file.exists(train_opts_filename))
+  # readr::read_lines(train_opts_filename)
 }
 ```
 
@@ -149,8 +149,8 @@ if (good_to_go) {
 ```{r data_opts_id}
 if (good_to_go) {
   data_opts_filename <- get_gcae_data_opts_filename(gcae_setup$data_opts_id)
-  testthat::expect_true(file.exists(data_opts_filename))
-  readr::read_lines(data_opts_filename)
+  #testthat::expect_true(file.exists(data_opts_filename))
+  #readr::read_lines(data_opts_filename)
 }
 ```
 
