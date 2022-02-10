@@ -129,8 +129,8 @@ if (good_to_go) {
 ```{r model_id}
 if (good_to_go) {
   model_filename <- get_gcae_model_filename(gcae_setup$model_id)
-  testthat::expect_true(file.exists(model_filename))
-  readr::read_lines(model_filename)
+  # testthat::expect_true(file.exists(model_filename))
+  # readr::read_lines(model_filename)
 }
 ```
 
