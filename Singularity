@@ -10,8 +10,8 @@ From: richelbilderbeek/default/ormr:0.6.2
 %runscript
 exec R --vanilla --silent --no-echo "$@"
 
-%test
-    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/ormr_gcaer"), verbose = TRUE)'
+#%test
+#    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/ormr_gcaer"), verbose = TRUE)'
 
 %help
 
