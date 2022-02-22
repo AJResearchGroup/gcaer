@@ -18,12 +18,8 @@ Get the path to the GCAE output subfolder.
 This subfolder contains the output of one model
 }
 \examples{
-get_gcae_output_subfolder(
-  gcae_setup = create_gcae_setup(
-    datadir = "my_datadir/",
-    data = "HumanOrigins249_tiny"
-  )
-)
+gcae_setup <- create_test_gcae_setup()
+get_gcae_output_subfolder(gcae_setup = gcae_setup)
 }
 \author{
 Richèl J.C. Bilderbeek

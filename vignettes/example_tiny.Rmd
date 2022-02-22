@@ -35,10 +35,18 @@ To determine if GCAE is installed, we'll first load `gcaer`:
 library(gcaer)
 ```
 
+These are the GCAE options:
+
+```{r gcae_options}
+# We will use the local Python, instead of a Conda environment
+gcae_options <- create_gcae_options(ormr_folder_name = "python3")
+gcae_options
+```
+
 Now `gcaer` can detect if GCAE is installed:
 
 ```{r is_gcae_installed}
-good_to_go <- is_gcae_installed()
+good_to_go <- is_gcae_installed(gcae_options = gcae_options)
 if (!good_to_go) {
   message("GCAE is not installed")
   message("Tip: use 'gcaer::install_gcae()'")
@@ -49,14 +57,7 @@ While developing this package, for now, we set `good_to_go` to `FALSE`
 regardless. In that way, the GHA CI will show us the result of the test suite.
 
 ```{r}
-good_to_go <- TRUE
-```
-
-These are the GCAE options:
-
-```{r gcae_options}
-gcae_options <- create_gcae_options()
-gcae_options
+good_to_go <- FALSE
 ```
 
 The GCAE options allow a user to select a GCAE version at a custom location.

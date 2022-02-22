@@ -5,11 +5,7 @@
 #' @inheritParams default_params_doc
 #' @return the GCAE trained model name
 #' @examples
-#' gcae_setup <- create_gcae_setup(
-#'   datadir = "my_datadir/",
-#'   data = "HumanOrigins249_tiny",
-#'   pheno_model_id = "p2"
-#' )
+#' gcae_setup <- create_test_gcae_setup()
 #' get_gcae_trainedmodelname(gcae_setup)
 #' @author Richèl J.C. Bilderbeek
 #' @export

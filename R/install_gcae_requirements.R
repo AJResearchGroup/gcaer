@@ -20,7 +20,14 @@ install_gcae_requirements <- function(
   for (i in seq_len(nrow(t_required))) {
     package_name <- t_required$package[i]
     if (verbose) message(i, "/", nrow(t_required), ": ", package_name)
+
+    # If Conda is used, this is a clean version, e.g. '1.2.3'
+    # If python3 is used, this contains an operator, e.g. '==3.2.1'
     package_version <- t_required$version[i]
+    if (ormr_folder_name == "python3") {
+      package_version <- stringr::str_sub(string = package_version, start = 3)
+    }
+
     if (package_version == "") {
       if (
         !ormr::is_python_package_installed(

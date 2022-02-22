@@ -18,11 +18,7 @@ Get the GCAE trained model name,
 to be used by the GCAE\code{--trainedmodelname} CLI flag
 }
 \examples{
-gcae_setup <- create_gcae_setup(
-  datadir = "my_datadir/",
-  data = "HumanOrigins249_tiny",
-  pheno_model_id = "p2"
-)
+gcae_setup <- create_test_gcae_setup()
 get_gcae_trainedmodelname(gcae_setup)
 }
 \author{

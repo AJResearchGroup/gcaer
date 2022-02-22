@@ -51,7 +51,13 @@ Create the GCAE setup
 \examples{
 create_gcae_setup(
   datadir = "my_datadir/",
-  data = "HumanOrigins249_tiny"
+  data = "HumanOrigins249_tiny",
+  superpops = "HO_superpopulations",
+  model_id = "M1",
+  train_opts_id = "ex3",
+  data_opts_id = "b_0_4",
+  pheno_model_id = "p2",
+  trainedmodeldir = "ae_out"
 )
 }
 \author{

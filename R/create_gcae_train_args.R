@@ -4,12 +4,7 @@
 #' @inheritParams default_params_doc
 #' @return the CLI arguments
 #' @examples
-#' gcae_setup <- create_gcae_setup(
-#'   datadir = file.path(get_gcae_folder(), "example_tiny/"),
-#'   data = "issue_6_bin",
-#'   model_id = "M1",
-#'   pheno_model_id = "p2"
-#' )
+#' gcae_setup <- create_test_gcae_setup()
 #' args <- create_gcae_train_args(
 #'   gcae_setup = gcae_setup,
 #'   epochs = 1,
