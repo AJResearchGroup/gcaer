@@ -18,7 +18,7 @@ Imports:
     dplyr,
     gert,
     ormr (>= 0.6.2.2),
-    plinkr (>= 0.18.0.3),
+    plinkr (>= 0.18.0.4),
     rappdirs,
     stringr
 Suggests:
