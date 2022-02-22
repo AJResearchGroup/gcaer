@@ -22,7 +22,7 @@ gcaer_report <- function(
   message("**********************************")
   message("* Report from the 'ormr' package *")
   message("**********************************")
-  ormr_folder_name <- gcae_options$gcae_folder
+  ormr_folder_name <- gcae_options$ormr_folder_name
   python_version <- gcae_options$python_version
   ormr::ormr_report(
     ormr_folder_name = ormr_folder_name,
