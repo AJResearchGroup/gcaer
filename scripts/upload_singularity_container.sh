@@ -18,3 +18,10 @@ singularity sign gcaer.sif
 
 # Upload the latest version
 singularity push gcaer.sif library://richelbilderbeek/default/gcaer:0.6.1
+
+if [[ $HOSTNAME == "N141CU" ]]; then
+  notify-send "Done uploading 'gcaer.sif'" "Done uploading 'gcaer.sif'"
+fi
+
+
+
