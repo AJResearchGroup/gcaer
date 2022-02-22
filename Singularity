@@ -1,17 +1,17 @@
 Bootstrap: library
-From: richelbilderbeek/default/ormr:0.6.2
+From: richelbilderbeek/default/ormr:0.6.2.1
 
 %post
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
-    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/ormr_gcaer"), verbose = TRUE)'
-    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/ormr_gcaer"))'
+    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"), verbose = TRUE)'
+    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"))'
 
 %runscript
 exec R --vanilla --silent --no-echo "$@"
 
 #%test
-#    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "/opt/ormr_gcaer"), verbose = TRUE)'
+#    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"), verbose = TRUE)'
 
 %help
 
