@@ -1,5 +1,5 @@
 Bootstrap: library
-From: richelbilderbeek/default/ormr:0.6.2.1
+From: richelbilderbeek/default/ormr:0.6.2.2
 
 %post
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
@@ -8,7 +8,9 @@ From: richelbilderbeek/default/ormr:0.6.2.1
     Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"))'
 
 %runscript
-exec R --vanilla --silent --no-echo "$@"
+echo "'gcaer.sif' running with arguments '$@'"
+exec Rscript "$@"
+#exec R --vanilla --silent --no-echo "$@"
 
 #%test
 #    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"), verbose = TRUE)'

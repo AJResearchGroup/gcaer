@@ -17,7 +17,7 @@ Imports:
     devtools,
     dplyr,
     gert,
-    ormr (>= 0.6.2),
+    ormr (>= 0.6.2.2),
     plinkr (>= 0.17.1),
     rappdirs,
     stringr
