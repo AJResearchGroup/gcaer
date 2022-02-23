@@ -186,7 +186,7 @@ This is the `.fam` table:
 n_individuals <- "[unknown]"
 if (good_to_go) {
   n_individuals <- nrow(gcae_input_data$fam_table)
-  knitr::kable(head(gcae_input_data$fam_table))
+  knitr::kable(utils::head(gcae_input_data$fam_table))
 }
 ```
 
@@ -198,7 +198,7 @@ This is the `.bim` file:
 n_snps <- "[unknown]"
 if (good_to_go) {
   n_snps <- nrow(gcae_input_data$bim_table)
-  knitr::kable(head(gcae_input_data$bim_table))
+  knitr::kable(utils::head(gcae_input_data$bim_table))
 }
 ```
 
@@ -210,7 +210,7 @@ This is the `.bed` file:
 if (good_to_go) {
   testthat::expect_equal(n_individuals, ncol(gcae_input_data$bed_table))
   testthat::expect_equal(n_snps, nrow(gcae_input_data$bed_table))
-  knitr::kable(head(gcae_input_data$bed_table[, 1:10]))
+  knitr::kable(utils::head(gcae_input_data$bed_table[, 1:10]))
 }
 ```
 
@@ -449,7 +449,7 @@ Now the first CSVs:
 if (good_to_go) {
   csv_plot_filename <- csv_plot_filenames[1]
   cat(basename(csv_plot_filename))
-  knitr::kable(head(readr::read_csv(csv_plot_filename)))
+  knitr::kable(utils::head(readr::read_csv(csv_plot_filename)))
 }
 ```
 
@@ -459,6 +459,6 @@ Now the second CSVs:
 if (good_to_go) {
   csv_plot_filename <- csv_plot_filenames[2]
   cat(basename(csv_plot_filename))
-  knitr::kable(head(readr::read_csv(csv_plot_filename)))
+  knitr::kable(utils::head(readr::read_csv(csv_plot_filename)))
 }
 ```

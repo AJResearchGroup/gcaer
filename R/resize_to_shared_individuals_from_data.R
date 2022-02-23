@@ -88,11 +88,11 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) {
     stop(
       "Empty common IDs set. \n",
       "head(iids_from_fam_table): ",
-        paste0(head(iids_from_fam_table), collapse = ","), " \n",
+        paste0(utils::head(iids_from_fam_table), collapse = ","), " \n",
       "head(iids_from_labels): ",
-        paste0(head(iids_from_labels), collapse = ","), " \n",
+        paste0(utils::head(iids_from_labels), collapse = ","), " \n",
       "head(iids_from_phe_table): ",
-        paste0(head(iids_from_phe_table), collapse = ","), " \n"
+        paste0(utils::head(iids_from_phe_table), collapse = ","), " \n"
     )
   }
 }
