@@ -2,8 +2,6 @@
 #'
 #' Project, using the GCAE command-line interface
 #' @inheritParams default_params_doc
-#' @param superpops path to the superpops file.
-#' This argument is named after the GCAE `--superpops` CLI flag.
 #' @return full paths to the created files. These are:
 #'  * `losses_from_project.csv` and `losses_from_project.pdf`
 #'    show the loss function value of the model per epoch.

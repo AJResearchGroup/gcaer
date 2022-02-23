@@ -6,6 +6,7 @@ Newest versions at top.
 
 ### NEW FEATURES
 
+ * Add 'check_gcae_input_files'
  * Add 'get_test_labels_table'
 
 ### MINOR IMPROVEMENTS

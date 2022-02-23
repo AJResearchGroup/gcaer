@@ -7,8 +7,10 @@
 check_superpops(superpops)
 }
 \arguments{
-\item{superpops}{path to the \code{superpops} file, which contains
-the labels table and can be read using \link{read_labels_file}}
+\item{superpops}{path to the \code{superpops} file,
+which contains the labels table and can be read
+using \link{read_labels_file}.
+This argument is named after the GCAE \code{--superpops} CLI flag.}
 }
 \value{
 Nothing. Will \link{stop} if \code{superpops} is invalid.

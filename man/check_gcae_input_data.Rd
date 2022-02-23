@@ -6,6 +6,12 @@
 \usage{
 check_gcae_input_data(gcae_input_data)
 }
+\arguments{
+\item{gcae_input_data}{in-memory data that can be used
+as input for \code{GCAE}. Use link{read_gcae_input_files}
+to read it from files, use \link{check_gcae_input_data}
+to check it for validity.}
+}
 \value{
 Nothing. Will \link{stop} if \code{gcae_input_data} is invalid.
 }
@@ -20,6 +26,15 @@ check_gcae_input_data(gcae_input_data)
 
 # Clean up
 file.remove(as.character(unlist(gcae_input_filenames)))
+}
+\seealso{
+\itemize{
+\item Use \link{check_gcae_input_data} to check the in-memory GCAE input data
+\item Use \link{check_gcae_input_files} to check the
+files to be used by GCAE as input
+\item Use \link{check_gcae_input_filenames} to check the
+filenames (and not the files' content) to be GCAE input files
+}
 }
 \author{
 Richèl J.C. Bilderbeek

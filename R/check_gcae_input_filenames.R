@@ -5,6 +5,12 @@
 #' @inheritParams default_params_doc
 #' @return Nothing.
 #' Will \link{stop} if the GenoCAE input filenames \link{list} is invalid.
+#' @seealso
+#'  * Use \link{check_gcae_input_data} to check the in-memory GCAE input data
+#'  * Use \link{check_gcae_input_files} to check the
+#'    files to be used by GCAE as input
+#'  * Use \link{check_gcae_input_filenames} to check the
+#'    filenames (and not the files' content) to be GCAE input files
 #' @examples
 #' # Create the files
 #' gcae_input_filenames <- create_gcae_input_files_1()

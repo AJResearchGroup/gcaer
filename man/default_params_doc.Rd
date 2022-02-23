@@ -10,13 +10,16 @@ default_params_doc(
   base_input_filename,
   base_output_filename,
   base_phenotype_value,
+  bed_filename,
+  bim_filename,
   data,
   datadir,
   data_opts_id,
   epochs,
   example_filename,
-  gcae_exe_path,
+  fam_filename,
   gcae_folder,
+  gcae_input_data,
   gcae_input_filenames,
   gcae_options,
   gcae_setup,
@@ -35,6 +38,7 @@ default_params_doc(
   ormr_folder_name,
   os,
   out,
+  phe_filename,
   pheno_model_id,
   project_filenames,
   python_bin_path,
@@ -62,6 +66,12 @@ used as output for \code{GCAE}/\code{GCAE2}}
 \item{base_phenotype_value}{the base phenotypic value for an additive trait,
 i.e. the phenotypic value for homozygotes of the common allele}
 
+\item{bed_filename}{name of a PLINK genotypes (\code{.bed}) file,
+as can be read using \link[plinkr]{read_plink_bed_file}}
+
+\item{bim_filename}{name of a PLINK \code{.bim} file
+as can be read using \link[plinkr]{read_plink_bim_file}}
+
 \item{data}{file prefix, not including path, of the data files.
 The data files must be in EIGENSTRAT
 or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
@@ -79,10 +89,15 @@ The data options affect how data is input to the model.}
 
 \item{example_filename}{name of the example file}
 
-\item{gcae_exe_path}{path to
-the \code{GCAE} or \code{GCAE2} executable file.}
+\item{fam_filename}{name of a PLINK \code{.fam} file
+as can be read using \link[plinkr]{read_plink_fam_file}}
 
 \item{gcae_folder}{folder where \code{GCAE} is installed}
+
+\item{gcae_input_data}{in-memory data that can be used
+as input for \code{GCAE}. Use link{read_gcae_input_files}
+to read it from files, use \link{check_gcae_input_data}
+to check it for validity.}
 
 \item{gcae_input_filenames}{the GCAE input filenames,
 in the form of a \link{list} with the following elements:
@@ -155,6 +170,9 @@ as returned by \link[rappdirs]{app_dir}}
 This parameter is named after the \code{GCAE}
 \code{--out} flag}
 
+\item{phe_filename}{name of a PLINK phenotype (\code{.phe}) file
+as can be read using \link[plinkr]{read_plink_phe_file}}
+
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
 
@@ -168,8 +186,10 @@ as created (and returned) by \link{gcae_project}}
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}
 
-\item{superpops}{path to the \code{superpops} file, which contains
-the labels table and can be read using \link{read_labels_file}}
+\item{superpops}{path to the \code{superpops} file,
+which contains the labels table and can be read
+using \link{read_labels_file}.
+This argument is named after the GCAE \code{--superpops} CLI flag.}
 
 \item{train_filenames}{path to the files
 as created (and returned) by \link{gcae_train}}

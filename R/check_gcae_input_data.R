@@ -4,6 +4,12 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `gcae_input_data` is invalid.
+#' @seealso
+#'  * Use \link{check_gcae_input_data} to check the in-memory GCAE input data
+#'  * Use \link{check_gcae_input_files} to check the
+#'    files to be used by GCAE as input
+#'  * Use \link{check_gcae_input_filenames} to check the
+#'    filenames (and not the files' content) to be GCAE input files
 #' @examples
 #' gcae_input_filenames <- create_gcae_input_files_1()
 #' gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
@@ -67,6 +73,8 @@ check_gcae_input_data <- function(gcae_input_data) {
   }
 
   # All FID and IID combinations must be unique
+  FID <- NULL # nolint use Tidyverse global
+  IID <- NULL # nolint use Tidyverse global
   unique_phe_table <- dplyr::distinct(
     dplyr::select(gcae_input_data$phe_table, FID, IID)
   )
@@ -79,9 +87,10 @@ check_gcae_input_data <- function(gcae_input_data) {
     stop(
       "The family IDs in the .phe and .fam tables must match. \n",
       "First .phe table FIDs: ",
-        paste0(head(gcae_input_data$phe_table$FID), collapse = ", "), " \n",
+        paste0(
+          utils::head(gcae_input_data$phe_table$FID), collapse = ", "), " \n",
       "First .fam table family IDs (i.e. the 'fam' column)): ",
-      paste0(head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
+      paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
     )
   }
 
@@ -89,9 +98,10 @@ check_gcae_input_data <- function(gcae_input_data) {
     stop(
       "The within-family IDs in the .phe and .fam tables must match. \n",
       "First .phe table IIDs: ",
-      paste0(head(gcae_input_data$phe_table$IID), collapse = ", "), " \n",
+      paste0(
+        utils::head(gcae_input_data$phe_table$IID), collapse = ", "), " \n",
       "First .fam table within-family IDs (i.e. the 'id' column)): ",
-      paste0(head(gcae_input_data$fam_table$id), collapse = ", "), " \n"
+      paste0(utils::head(gcae_input_data$fam_table$id), collapse = ", "), " \n"
     )
   }
 
@@ -105,11 +115,11 @@ check_gcae_input_data <- function(gcae_input_data) {
       "All family IDs must be within the labels table. \n",
       "First labels table's family IDs (i.e. the 'population' column)): ",
       paste0(
-        head(gcae_input_data$labels_table$population),
+        utils::head(gcae_input_data$labels_table$population),
         collapse = ", "
       ), " \n",
       "First .fam table family IDs (i.e. the 'fam' column)): ",
-      paste0(head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
+      paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
     )
   }
 

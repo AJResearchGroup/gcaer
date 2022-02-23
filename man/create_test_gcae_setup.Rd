@@ -25,8 +25,10 @@ and does not start with a full stop (\code{.})}
 The data files must be in EIGENSTRAT
 or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 
-\item{superpops}{path to the \code{superpops} file, which contains
-the labels table and can be read using \link{read_labels_file}}
+\item{superpops}{path to the \code{superpops} file,
+which contains the labels table and can be read
+using \link{read_labels_file}.
+This argument is named after the GCAE \code{--superpops} CLI flag.}
 
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 

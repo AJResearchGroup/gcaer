@@ -13,6 +13,18 @@ create_gcae_input_filenames(
 )
 }
 \arguments{
+\item{bed_filename}{name of a PLINK genotypes (\code{.bed}) file,
+as can be read using \link[plinkr]{read_plink_bed_file}}
+
+\item{bim_filename}{name of a PLINK \code{.bim} file
+as can be read using \link[plinkr]{read_plink_bim_file}}
+
+\item{fam_filename}{name of a PLINK \code{.fam} file
+as can be read using \link[plinkr]{read_plink_fam_file}}
+
+\item{phe_filename}{name of a PLINK phenotype (\code{.phe}) file
+as can be read using \link[plinkr]{read_plink_phe_file}}
+
 \item{labels_filename}{path to a \code{.csv} file containing super-
 and -population labels, as can be read by \link{read_labels_table}}
 }

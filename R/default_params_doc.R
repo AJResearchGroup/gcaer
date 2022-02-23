@@ -8,6 +8,10 @@
 #' used as output for \code{GCAE}/\code{GCAE2}
 #' @param base_phenotype_value the base phenotypic value for an additive trait,
 #' i.e. the phenotypic value for homozygotes of the common allele
+#' @param bed_filename name of a PLINK genotypes (`.bed`) file,
+#' as can be read using \link[plinkr]{read_plink_bed_file}
+#' @param bim_filename name of a PLINK `.bim` file
+#' as can be read using \link[plinkr]{read_plink_bim_file}
 #' @param data file prefix, not including path, of the data files.
 #' The data files must be in EIGENSTRAT
 #' or PLINK binary (`.bed`, `.bim`, `.fam`) format)
@@ -20,9 +24,13 @@
 #' The data options affect how data is input to the model.
 #' @param epochs number of epochs to train
 #' @param example_filename name of the example file
-#' @param gcae_exe_path path to
-#'   the \code{GCAE} or \code{GCAE2} executable file.
+#' @param fam_filename name of a PLINK `.fam` file
+#' as can be read using \link[plinkr]{read_plink_fam_file}
 #' @param gcae_folder folder where \code{GCAE} is installed
+#' @param gcae_input_data in-memory data that can be used
+#' as input for `GCAE`. Use link{read_gcae_input_files}
+#' to read it from files, use \link{check_gcae_input_data}
+#' to check it for validity.
 #' @param gcae_input_filenames the GCAE input filenames,
 #' in the form of a \link{list} with the following elements:
 #'   * `bed_filename`: path to a `.bed` file,
@@ -74,6 +82,8 @@
 #' @param out the base filename of the output files.
 #' This parameter is named after the \code{GCAE}
 #' \code{--out} flag
+#' @param phe_filename name of a PLINK phenotype (`.phe`) file
+#' as can be read using \link[plinkr]{read_plink_phe_file}
 #' @param pheno_model_id phenotype model ID,
 #' as checked by \link{check_pheno_model_id}
 #' @param project_filenames path to the files
@@ -82,8 +92,10 @@
 #' @param python_version the Python version
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
-#' @param superpops path to the `superpops` file, which contains
-#' the labels table and can be read using \link{read_labels_file}
+#' @param superpops path to the `superpops` file,
+#' which contains the labels table and can be read
+#' using \link{read_labels_file}.
+#' This argument is named after the GCAE `--superpops` CLI flag.
 #' @param train_filenames path to the files
 #' as created (and returned) by \link{gcae_train}
 #' @param train_opts_id train options id, corresponding to a file
@@ -105,13 +117,16 @@ default_params_doc <- function(
   base_input_filename,
   base_output_filename,
   base_phenotype_value,
+  bed_filename,
+  bim_filename,
   data,
   datadir,
   data_opts_id,
   epochs,
   example_filename,
-  gcae_exe_path,
+  fam_filename,
   gcae_folder,
+  gcae_input_data,
   gcae_input_filenames,
   gcae_options,
   gcae_setup,
@@ -130,6 +145,7 @@ default_params_doc <- function(
   ormr_folder_name,
   os,
   out,
+  phe_filename,
   pheno_model_id,
   project_filenames,
   python_bin_path,
