@@ -108,18 +108,36 @@ check_gcae_input_data <- function(gcae_input_data) {
   if (
     !all(
       gcae_input_data$fam_table$fam %in%
-        gcae_input_data$labels_table$population
+        gcae_input_data$labels_table$super_population
     )
   ) {
     stop(
-      "All family IDs must be within the labels table. \n",
+      "All family IDs must be superpopulations within the labels table. \n",
+      "First labels table's family IDs (i.e. the 'super_population' column)): ",
+      paste0(
+        utils::head(gcae_input_data$labels_table$super_population),
+        collapse = ", "
+      ), " \n",
+      "First .fam table family IDs (i.e. the 'fam' column)): ",
+      paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
+    )
+  }
+
+  if (
+    !all(
+      gcae_input_data$fam_table$id %in%
+      gcae_input_data$labels_table$population
+    )
+  ) {
+    stop(
+      "All within-family IDs must be populations within the labels table. \n",
       "First labels table's family IDs (i.e. the 'population' column)): ",
       paste0(
         utils::head(gcae_input_data$labels_table$population),
         collapse = ", "
       ), " \n",
-      "First .fam table family IDs (i.e. the 'fam' column)): ",
-      paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
+      "First .fam table within-family IDs (i.e. the 'id' column)): ",
+      paste0(utils::head(gcae_input_data$fam_table$id), collapse = ", "), " \n"
     )
   }
 
