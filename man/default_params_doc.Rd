@@ -140,10 +140,10 @@ or \verb{https://github.com/richelbilderbeek/GenoCAE}.
 Use \link{get_default_github_repo_url} for the default value}
 
 \item{labels_filename}{path to a \code{.csv} file containing super-
-and -population labels, as can be read by \link{read_labels_table}}
+and -population labels, as can be read by \link{read_labels_file}}
 
 \item{labels_table}{a table containing super-
-and -population labels, as can be read by \link{read_labels_table}.
+and -population labels, as can be read by \link{read_labels_file}.
 Note that \code{GCAE} does not use column names, \code{gcaer} adds these
 for convenience}
 

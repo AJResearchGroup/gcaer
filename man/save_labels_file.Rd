@@ -8,12 +8,12 @@ save_labels_file(labels_table, labels_filename)
 }
 \arguments{
 \item{labels_table}{a table containing super-
-and -population labels, as can be read by \link{read_labels_table}.
+and -population labels, as can be read by \link{read_labels_file}.
 Note that \code{GCAE} does not use column names, \code{gcaer} adds these
 for convenience}
 
 \item{labels_filename}{path to a \code{.csv} file containing super-
-and -population labels, as can be read by \link{read_labels_table}}
+and -population labels, as can be read by \link{read_labels_file}}
 }
 \value{
 the \code{labels_table} invisibly

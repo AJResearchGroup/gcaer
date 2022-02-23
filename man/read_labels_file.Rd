@@ -8,7 +8,7 @@ read_labels_file(labels_filename)
 }
 \arguments{
 \item{labels_filename}{path to a \code{.csv} file containing super-
-and -population labels, as can be read by \link{read_labels_table}}
+and -population labels, as can be read by \link{read_labels_file}}
 }
 \value{
 a \code{labels_table}, as can be checked by \link{check_labels_table}

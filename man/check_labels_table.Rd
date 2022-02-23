@@ -8,7 +8,7 @@ check_labels_table(labels_table)
 }
 \arguments{
 \item{labels_table}{a table containing super-
-and -population labels, as can be read by \link{read_labels_table}.
+and -population labels, as can be read by \link{read_labels_file}.
 Note that \code{GCAE} does not use column names, \code{gcaer} adds these
 for convenience}
 }

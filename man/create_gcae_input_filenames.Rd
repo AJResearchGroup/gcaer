@@ -26,7 +26,7 @@ as can be read using \link[plinkr]{read_plink_fam_file}}
 as can be read using \link[plinkr]{read_plink_phe_file}}
 
 \item{labels_filename}{path to a \code{.csv} file containing super-
-and -population labels, as can be read by \link{read_labels_table}}
+and -population labels, as can be read by \link{read_labels_file}}
 }
 \value{
 a \code{gcae_input_filenames},
