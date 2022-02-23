@@ -2,11 +2,11 @@
 
 Newest versions at top.
 
-## gcaer v0.6.2 (unreleased)
+## gcaer v0.6.2.2 (unreleased)
 
 ### NEW FEATURES
 
- * None
+ * Add 'get_test_labels_table'
 
 ### MINOR IMPROVEMENTS
 
