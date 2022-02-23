@@ -7,10 +7,15 @@
 #' Will \link{stop} if the GenoCAE input files are invalid.
 #' @seealso
 #'  * Use \link{check_gcae_input_data} to check the in-memory GCAE input data
+#'    extensively
+#'  * Use \link{check_gcae_input_data_data_type} to check the
+#'    data type of the in-memory GCAE input data
 #'  * Use \link{check_gcae_input_files} to check the
-#'    files to be used by GCAE as input
+#'    files to be used by GCAE as input,
+#'    i.e. `GCAE` can run these
 #'  * Use \link{check_gcae_input_filenames} to check the
 #'    filenames (and not the files' content) to be GCAE input files
+#'  * Use \link{summarise_gcae_input_data} to summarise the data
 #' @examples
 #' # Create the files
 #' gcae_input_filenames <- create_gcae_input_files_1(

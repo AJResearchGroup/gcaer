@@ -83,11 +83,10 @@ create_gcae_input_files_1 <- function(
     phe_filename = phe_filename
   )
   filenames$phe_filename <- phe_filename
-  labels <- tibble::tribble(
-    ~population, ~super_population,
-    "A", "Americas",
-    "B", "Americas",
-    "C", "Central/South Asia"
+
+  labels <- tibble::tibble(
+    population = assoc_qt_data$phenotype_data$phe_table$IID,
+    super_population = assoc_qt_data$phenotype_data$phe_table$FID
   )
   save_labels_file(
     labels_table = labels,

@@ -20,6 +20,9 @@
 #' # Read the files
 #' gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
 #'
+#' # Summarise the data
+#' summarise_gcae_input_data(gcae_input_data)
+#'
 #' # Clean up
 #' file.remove(as.character(unlist(gcae_input_filenames)))
 #' @author Richèl J.C. Bilderbeek

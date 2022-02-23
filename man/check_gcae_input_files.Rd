@@ -45,10 +45,15 @@ file.remove(as.character(unlist(gcae_input_filenames)))
 \seealso{
 \itemize{
 \item Use \link{check_gcae_input_data} to check the in-memory GCAE input data
+extensively
+\item Use \link{check_gcae_input_data_data_type} to check the
+data type of the in-memory GCAE input data
 \item Use \link{check_gcae_input_files} to check the
-files to be used by GCAE as input
+files to be used by GCAE as input,
+i.e. \code{GCAE} can run these
 \item Use \link{check_gcae_input_filenames} to check the
 filenames (and not the files' content) to be GCAE input files
+\item Use \link{summarise_gcae_input_data} to summarise the data
 }
 }
 \author{

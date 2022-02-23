@@ -7,7 +7,11 @@ Newest versions at top.
 ### NEW FEATURES
 
  * Add 'check_gcae_input_files'
+ * Add 'create_test_gcae_input_data'
+ * Add 'create_test_gcae_input_filenames'
  * Add 'get_test_labels_table'
+ * Add 'summarise_gcae_input_data'
+ * Add 'summarise_gcae_input_files'
 
 ### MINOR IMPROVEMENTS
 

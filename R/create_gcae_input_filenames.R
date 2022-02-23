@@ -5,11 +5,15 @@
 #' @inheritParams default_params_doc
 #' @return a `gcae_input_filenames`,
 #' as can be checked by \link{check_gcae_input_filenames}
-#' @seealso use \link{get_gcae_input_filenames} to obtain
+#' @seealso
+#' Use \link{get_gcae_input_filenames} to obtain
 #' the `gcae_input_filenames` from a `gcae_setup`
 #' (see \link{check_gcae_setup})
 #' and `gcae_options`
-#' (see \link{check_gcae_options})
+#' (see \link{check_gcae_options}).
+#'
+#' Use \link{create_test_gcae_input_filenames} to create
+#' a `gcae_input_filenames` to be used in testing.
 #' @examples
 #' create_gcae_input_filenames(
 #'   bed_filename = get_gcaer_filename("gcae_input_files_1.bed"),
