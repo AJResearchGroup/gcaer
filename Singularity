@@ -15,8 +15,10 @@ Rscript "$@"
 #exec Rscript "$@"
 #exec R --vanilla --silent --no-echo "$@"
 
-#%test
-#    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"), verbose = TRUE)'
+%test
+    Rscript -e 'plinkr::plinkr_report(plink_optionses = plinkr::create_plink_optionses(plink_folder = "/opt/plinkr"))'
+    Rscript -e 'ormr::ormr_report(ormr_folder_name = "python3", verbose = TRUE)'
+    Rscript -e 'gcaer::is_gcae_installed(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/GenoCAE", ormr_folder_name = "python3"), verbose = TRUE)'
 
 %help
 
