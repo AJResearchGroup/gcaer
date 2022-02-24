@@ -20,12 +20,14 @@ Check if the \code{gcae_input_data} is valid, i.e. can be run by GCAE.
 Will \link{stop} if not.
 }
 \examples{
-gcae_input_filenames <- create_gcae_input_files_1()
-gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
-check_gcae_input_data(gcae_input_data)
+if (plinkr::is_plink_installed()) {
+  gcae_input_filenames <- create_gcae_input_files_1()
+  gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
+  check_gcae_input_data(gcae_input_data)
 
-# Clean up
-file.remove(as.character(unlist(gcae_input_filenames)))
+  # Clean up
+  file.remove(as.character(unlist(gcae_input_filenames)))
+}
 }
 \seealso{
 Related checking functions:

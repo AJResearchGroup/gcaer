@@ -1,4 +1,6 @@
 test_that("use", {
+  if (plinkr::is_plink_installed()) return()
+
   # Create the files
   gcae_input_filenames <- create_gcae_input_files_1(
     base_input_filename = gcaer::get_gcaer_tempfilename()
