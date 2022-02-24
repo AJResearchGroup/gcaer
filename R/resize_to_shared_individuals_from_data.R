@@ -95,4 +95,44 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) {
         paste0(utils::head(iids_from_phe_table), collapse = ","), " \n"
     )
   }
+  sample_ids <- plinkr::get_sample_ids_from_fam_table(
+    fam_table = gcae_input_data$fam_table
+  )
+  keep_ids <- sample_ids$id %in% common_iids
+  common_sample_ids <- sample_ids[keep_ids, ]
+  plinkr::check_sample_ids(common_sample_ids)
+
+  # Resize to the new size
+
+  new_bed_table <- matrix(
+    data = gcae_input_data$bed_table[, keep_ids],
+    nrow = nrow(gcae_input_data$bed_table),
+    ncol = sum(keep_ids),
+    dimnames = list(
+      rownames(gcae_input_data$bed_table),
+      colnames(gcae_input_data$bed_table)[keep_ids]
+    )
+  )
+  plinkr::check_bed_table(new_bed_table)
+
+  new_fam_table <- tibble::as_tibble(merge(gcae_input_data$fam_table, common_sample_ids))
+  plinkr::check_fam_table(new_fam_table)
+
+  new_labels_table <- gcae_input_data$labels_table[gcae_input_data$labels_table$population %in% common_iids, ]
+  gcaer::check_labels_table(new_labels_table)
+
+  new_phe_table <- tibble::as_tibble(merge(gcae_input_data$phe_table, common_sample_ids, by.x = c("FID", "IID"), by.y = c("fam", "id")))
+  plinkr::check_phe_table(new_phe_table)
+
+  new_gcae_input_data <- list(
+    bed_table = new_bed_table,
+    bim_table = gcae_input_data$bim_table,
+    fam_table = new_fam_table,
+    labels_table = new_labels_table,
+    phe_table = new_phe_table
+  )
+  # Temporarily
+  gcaer::check_gcae_input_data(new_gcae_input_data)
+
+  new_gcae_input_data
 }
