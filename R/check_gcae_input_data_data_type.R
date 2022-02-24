@@ -21,12 +21,14 @@
 #'
 #'  * Use \link{summarise_gcae_input_data} to summarise the GCAE input data
 #' @examples
-#' gcae_input_filenames <- create_gcae_input_files_1()
-#' gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
-#' check_gcae_input_data(gcae_input_data)
+#' if (plinkr::is_plink_installed()) {
+#'   gcae_input_filenames <- create_gcae_input_files_1()
+#'   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
+#'   check_gcae_input_data(gcae_input_data)
 #'
-#' # Clean up
-#' file.remove(as.character(unlist(gcae_input_filenames)))
+#'   # Clean up
+#'   file.remove(as.character(unlist(gcae_input_filenames)))
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_gcae_input_data_data_type <- function(gcae_input_data) {
