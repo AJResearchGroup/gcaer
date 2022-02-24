@@ -2,6 +2,7 @@ Bootstrap: library
 From: richelbilderbeek/default/ormr:0.6.2.2
 
 %post
+    Rscript -e 'update.packages()'
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     # Use gcae.sif, which has GCAE installed
@@ -10,7 +11,8 @@ From: richelbilderbeek/default/ormr:0.6.2.2
 
 %runscript
 echo "'gcaer.sif' running with arguments '$@'"
-exec Rscript "$@"
+Rscript "$@"
+#exec Rscript "$@"
 #exec R --vanilla --silent --no-echo "$@"
 
 #%test
