@@ -51,6 +51,11 @@ jobs:
           install_gcae: ${{ matrix.install_gcae }}
         run: if [[ "$install_gcae" == true ]]; then ./scripts/install_gcae.sh; fi
 
+      - name: Install PLINK
+        env:
+          install_gcae: ${{ matrix.install_gcae }}
+        run: if [[ "$install_gcae" == true ]]; then Rscript -e "plinkr::install_plinks()"; fi
+
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
