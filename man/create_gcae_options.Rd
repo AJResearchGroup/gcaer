@@ -6,7 +6,7 @@
 \usage{
 create_gcae_options(
   gcae_folder = gcaer::get_gcae_folder(),
-  ormr_folder_name = gcaer::get_default_ormr_folder_name(),
+  ormr_folder_name = "python3",
   gcae_version = "1.0",
   python_version = "3.6"
 )
