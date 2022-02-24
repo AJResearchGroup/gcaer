@@ -27,8 +27,8 @@ message("Show gcaer report")
 message("-----------------")
 gcaer::gcaer_report(gcae_options = gcae_options)
 
-message("-----------------")
-message("Show GCAE help   ")
-message("-----------------")
-gcaer::run_gcae(args = "--help", gcae_options = gcae_options, verbose = TRUE)
+# message("-----------------")
+# message("Show GCAE help   ")
+# message("-----------------")
+# gcaer::run_gcae(args = "--help", gcae_options = gcae_options, verbose = TRUE)
 
