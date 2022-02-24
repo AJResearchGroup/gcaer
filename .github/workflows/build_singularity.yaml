@@ -41,5 +41,5 @@ jobs:
         run: cat scripts/demo_container.R
 
       - name: Run container
-        run: singularity run gcaer.sif scripts/demo_container.R
+        run: singularity run --bind $PWD/scripts/ gcaer.sif scripts/demo_container.R
 
