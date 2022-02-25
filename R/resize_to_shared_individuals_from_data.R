@@ -28,7 +28,10 @@
 #' summarise_gcae_input_data(gcae_input_data)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-resize_to_shared_individuals_from_data <- function(gcae_input_data) { # nolint indeed a long function name
+resize_to_shared_individuals_from_data <- function( # nolint indeed a long function name
+  gcae_input_data,
+  verbose = FALSE
+) {
   # gcae_input_data can be invalid, which is _why_ we resize
   gcaer::check_gcae_input_data_data_type(gcae_input_data)
 
@@ -88,8 +91,9 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) { # nolint i
   common_sample_ids <- sample_ids[keep_ids, ]
   plinkr::check_sample_ids(common_sample_ids)
 
+  #
   # Resize to the new size
-
+  #
   new_bed_table <- matrix(
     data = gcae_input_data$bed_table[, keep_ids],
     nrow = nrow(gcae_input_data$bed_table),
@@ -104,11 +108,19 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) { # nolint i
   new_fam_table <- tibble::as_tibble(
     merge(gcae_input_data$fam_table, common_sample_ids)
   )
+  if (verbose) {
+    message("head(new_fam_table):")
+    message(paste0(knitr::kable(head(new_fam_table)), collapse = "\n"))
+  }
   plinkr::check_fam_table(new_fam_table)
 
   new_labels_table <- gcae_input_data$labels_table[
     gcae_input_data$labels_table$population %in% common_iids,
   ]
+  if (verbose) {
+    message("head(new_labels_table):")
+    message(paste0(knitr::kable(head(new_labels_table)), collapse = "\n"))
+  }
   gcaer::check_labels_table(new_labels_table)
 
   new_phe_table <- tibble::as_tibble(
@@ -117,6 +129,10 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) { # nolint i
     by.x = c("FID", "IID"),
     by.y = c("fam", "id"))
   )
+  if (verbose) {
+    message("head(new_phe_table):")
+    message(paste0(knitr::kable(head(new_phe_table)), collapse = "\n"))
+  }
   plinkr::check_phe_table(new_phe_table)
 
   new_gcae_input_data <- list(
@@ -127,7 +143,7 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) { # nolint i
     phe_table = new_phe_table
   )
   # Temporarily
-  gcaer::check_gcae_input_data(new_gcae_input_data)
+  # gcaer::check_gcae_input_data(new_gcae_input_data)
 
   new_gcae_input_data
 }

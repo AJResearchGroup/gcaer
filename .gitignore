@@ -42,3 +42,4 @@ inst/doc
 *.sif
 setting_1.*
 setting_1_labels.csv
+plink.log

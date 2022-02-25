@@ -4,13 +4,17 @@
 \alias{resize_to_shared_individuals_from_data}
 \title{Resize the \code{gcae_input_data} to only contain the shared individuals.}
 \usage{
-resize_to_shared_individuals_from_data(gcae_input_data)
+resize_to_shared_individuals_from_data(gcae_input_data, verbose = FALSE)
 }
 \arguments{
 \item{gcae_input_data}{in-memory data that can be used
 as input for \code{GCAE}. Use link{read_gcae_input_files}
 to read it from files, use \link{check_gcae_input_data}
 to check it for validity.}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 the \code{gcae_input_data} with only shared individuals
