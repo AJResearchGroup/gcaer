@@ -28,7 +28,7 @@
 #' summarise_gcae_input_data(gcae_input_data)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-resize_to_shared_individuals_from_files <- function(gcae_input_filenames) {
+resize_to_shared_individuals_from_files <- function(gcae_input_filenames) { # nolint indeed a long function name
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
 
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)

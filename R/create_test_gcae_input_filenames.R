@@ -14,7 +14,7 @@
 #' create_test_gcae_input_filenames()
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_test_gcae_input_filenames <- function(
+create_test_gcae_input_filenames <- function( # nolint indeed a long function name
   bed_filename = get_gcaer_filename("gcae_input_files_1.bed"),
   bim_filename = get_gcaer_filename("gcae_input_files_1.bim"),
   fam_filename = get_gcaer_filename("gcae_input_files_1.fam"),

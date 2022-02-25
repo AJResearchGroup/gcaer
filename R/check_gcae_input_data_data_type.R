@@ -31,7 +31,7 @@
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
-check_gcae_input_data_data_type <- function(gcae_input_data) {
+check_gcae_input_data_data_type <- function(gcae_input_data) { # nolint indeed a long function name
   testthat::expect_true(is.list(gcae_input_data))
   testthat::expect_true("bed_table" %in% names(gcae_input_data))
   testthat::expect_true("bim_table" %in% names(gcae_input_data))

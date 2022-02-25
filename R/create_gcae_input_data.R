@@ -6,7 +6,7 @@
 #' @seealso use \link{create_test_gcae_input_data} to obtain
 #' a `gcae_input_data` to be used in testing
 #' @examples
-#' gcae_input_data <- create_gcae_input_data()
+#' gcae_input_data <- create_test_gcae_input_data()
 #' check_gcae_input_data(gcae_input_data)
 #' @author Richèl J.C. Bilderbeek
 #' @export

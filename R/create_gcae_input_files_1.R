@@ -55,7 +55,7 @@ create_gcae_input_files_1 <- function(
     traits = traits
   )
   # All on chromosome 1
-  assoc_qt_data$data$map_table$CHR <- 1
+  assoc_qt_data$data$map_table$CHR <- 1 # nolint PLINK variable naming convention
   sum_phenotypes <- rowSums(
     assoc_qt_data$phenotype_data$phe_table[, c(-1, -2)]
   )

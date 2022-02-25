@@ -29,7 +29,7 @@ a \code{gcae_input_data}
 Create a \code{gcae_input_data}
 }
 \examples{
-gcae_input_data <- create_gcae_input_data()
+gcae_input_data <- create_test_gcae_input_data()
 check_gcae_input_data(gcae_input_data)
 }
 \seealso{

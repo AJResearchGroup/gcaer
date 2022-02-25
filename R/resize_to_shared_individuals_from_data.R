@@ -28,7 +28,7 @@
 #' summarise_gcae_input_data(gcae_input_data)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-resize_to_shared_individuals_from_data <- function(gcae_input_data) {
+resize_to_shared_individuals_from_data <- function(gcae_input_data) { # nolint indeed a long function name
   # gcae_input_data can be invalid, which is _why_ we resize
   gcaer::check_gcae_input_data_data_type(gcae_input_data)
 
@@ -50,7 +50,7 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) {
 
   # These labels are added from the .fam table, so
   # the .bed table can be ignored
-  # bed_table_individuals <- colnames(gcae_input_data$bed_table) # nolint indeed, do not use this code :-)
+  # bed_table_individuals <- colnames(gcae_input_data$bed_table)                # nolint indeed, do not use this code :-)
 
   fam_table_individuals <- plinkr::get_sample_ids_from_fam_table(
     fam_table = gcae_input_data$fam_table
@@ -58,23 +58,9 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) {
   phe_table_individuals <- plinkr::get_sample_ids_from_phe_table(
     phe_table = gcae_input_data$phe_table
   )
+  # We don't need it, but we keep it here for symmetry
+  # labels_table_individuals <- gcae_input_data$labels_table$population         # nolint indeed, do not use this code
 
-  labels_table_individuals <- gcae_input_data$labels_table$population
-
-  # ==> data_1.fam <==
-  # FID = 0
-  # IID = XXxx-xxxx
-  #
-  # ==> data_1_labels.csv <==
-  # population (first column) = IID = XXxx-xxxx
-  #
-  # ==> sample_ids.txt <==
-  # FID = 0
-  # IID = XXxx-xxxx
-  #
-  # ==> data_1.phe <==
-  # FID = 0
-  # IID = XXxx-xxxx
   iids_from_fam_table <- gcae_input_data$fam_table$id
   iids_from_labels <- gcae_input_data$labels_table$population
   iids_from_phe_table <- gcae_input_data$phe_table$IID
@@ -115,13 +101,22 @@ resize_to_shared_individuals_from_data <- function(gcae_input_data) {
   )
   plinkr::check_bed_table(new_bed_table)
 
-  new_fam_table <- tibble::as_tibble(merge(gcae_input_data$fam_table, common_sample_ids))
+  new_fam_table <- tibble::as_tibble(
+    merge(gcae_input_data$fam_table, common_sample_ids)
+  )
   plinkr::check_fam_table(new_fam_table)
 
-  new_labels_table <- gcae_input_data$labels_table[gcae_input_data$labels_table$population %in% common_iids, ]
+  new_labels_table <- gcae_input_data$labels_table[
+    gcae_input_data$labels_table$population %in% common_iids,
+  ]
   gcaer::check_labels_table(new_labels_table)
 
-  new_phe_table <- tibble::as_tibble(merge(gcae_input_data$phe_table, common_sample_ids, by.x = c("FID", "IID"), by.y = c("fam", "id")))
+  new_phe_table <- tibble::as_tibble(
+    merge(gcae_input_data$phe_table,
+    common_sample_ids,
+    by.x = c("FID", "IID"),
+    by.y = c("fam", "id"))
+  )
   plinkr::check_phe_table(new_phe_table)
 
   new_gcae_input_data <- list(
