@@ -2,7 +2,6 @@ Bootstrap: library
 From: richelbilderbeek/default/ormr:0.6.2.2
 
 %post
-    Rscript -e 'update.packages()'
     Rscript -e 'remotes::install_github("richelbilderbeek/plinkr")'
     Rscript -e 'remotes::install_github("richelbilderbeek/gcaer")'
     # Use gcae.sif, which has GCAE installed
@@ -12,8 +11,6 @@ From: richelbilderbeek/default/ormr:0.6.2.2
 %runscript
 echo "'gcaer.sif' running with arguments '$@'"
 Rscript "$@"
-#exec Rscript "$@"
-#exec R --vanilla --silent --no-echo "$@"
 
 %test
     Rscript -e 'plinkr::plinkr_report(plink_optionses = plinkr::create_plink_optionses(plink_folder = "/opt/plinkr"))'
@@ -57,7 +54,7 @@ for example:
 
     DESCRIPTION The gcaer R package, with PLINK and Python packages installed
 
-    USAGE send an R script to the container, e.g. `cat script.R | ./gcaer.sif`
+    USAGE Run with an R script, i.e. `singularity run gcaer.sif script.R`
 
     URL https://github.com/richelbilderbeek/gcaer
 
