@@ -37,9 +37,12 @@ jobs:
       - name: Show help of container
         run: singularity run-help gcaer.sif
 
-      - name: Show script
+      - name: Show run script
+        run: cat scripts/run_container.sh
+
+      - name: Show R script
         run: cat scripts/demo_container.R
 
       - name: Run container
-        run: singularity run --bind $PWD/scripts/ gcaer.sif scripts/demo_container.R
+        run: ./scripts/run_container.sh
 
