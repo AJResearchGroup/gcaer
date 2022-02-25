@@ -86,6 +86,8 @@
 #' as can be read using \link[plinkr]{read_plink_phe_file}
 #' @param pheno_model_id phenotype model ID,
 #' as checked by \link{check_pheno_model_id}
+#' @param plink_options PLINK options,
+#' as created by \link[plinkr]{create_plink_options}
 #' @param project_filenames path to the files
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
@@ -146,6 +148,7 @@ default_params_doc <- function(
   os,
   out,
   phe_filename,
+  plink_options,
   pheno_model_id,
   project_filenames,
   python_bin_path,

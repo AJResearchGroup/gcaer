@@ -20,6 +20,9 @@ create_gcae_input_files_1(
 \item{n_traits}{the number of quantitative traits}
 
 \item{n_snps_per_trait}{the number of SNPs that determine a trait}
+
+\item{plink_options}{PLINK options,
+as created by \link[plinkr]{create_plink_options}}
 }
 \value{
 a \code{gcae_input_filenames}, as can be checked by

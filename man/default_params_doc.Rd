@@ -39,6 +39,7 @@ default_params_doc(
   os,
   out,
   phe_filename,
+  plink_options,
   pheno_model_id,
   project_filenames,
   python_bin_path,
@@ -172,6 +173,9 @@ This parameter is named after the \code{GCAE}
 
 \item{phe_filename}{name of a PLINK phenotype (\code{.phe}) file
 as can be read using \link[plinkr]{read_plink_phe_file}}
+
+\item{plink_options}{PLINK options,
+as created by \link[plinkr]{create_plink_options}}
 
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}

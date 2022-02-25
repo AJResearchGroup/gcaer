@@ -14,6 +14,7 @@
 #' AC      |50       |50%             |B         |Americas
 #' CC      |100      |25%             |C         |Central/South Asia
 #'
+#' @inheritParams default_params_doc
 #' @param base_input_filename base filename of the files to be created
 #' @param n_individuals number of individuals
 #' @param n_traits the number of quantitative traits
