@@ -21,18 +21,21 @@
 #' @return a `gcae_input_filenames`, as can be checked by
 #' \link{check_gcae_input_filenames}
 #' @examples
-#' # Create the files
-#' gcae_input_filenames <- create_gcae_input_files_1()
+#' if (plinkr::is_plink_installed()) {
+#'   # Create the files
+#'   gcae_input_filenames <- create_gcae_input_files_1()
 #'
-#' # Clean up
-#' file.remove(as.character(unlist(gcae_input_filenames)))
+#'   # Clean up
+#'   file.remove(as.character(unlist(gcae_input_filenames)))
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 create_gcae_input_files_1 <- function(
   base_input_filename = "setting_1",
   n_individuals = 1000,
   n_traits = 1,
-  n_snps_per_trait = 1
+  n_snps_per_trait = 1,
+  plink_options = plinkr::create_plink_options()
 ) {
   set.seed(1)
   traits <- rep(
@@ -70,7 +73,8 @@ create_gcae_input_files_1 <- function(
 
 
   assoc_qt_data$data <- plinkr::convert_plink_text_data_to_plink_bin_data(
-    plink_text_data = assoc_qt_data$data
+    plink_text_data = assoc_qt_data$data,
+    plink_options = plink_options
   )
   filenames <- plinkr::save_plink_bin_data(
     plink_bin_data = assoc_qt_data$data,

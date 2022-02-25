@@ -10,7 +10,10 @@
 #' summarise_gcae_input_data(gcae_input_data)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-summarise_gcae_input_data <- function(gcae_input_data) {
+summarise_gcae_input_data <- function(
+  gcae_input_data,
+  verbose = FALSE
+) {
   summary <- list(
     n_individuals_in_bed_table = ncol(gcae_input_data$bed_table),
     n_snps_in_bed_table = nrow(gcae_input_data$bed_table),
@@ -22,8 +25,10 @@ summarise_gcae_input_data <- function(gcae_input_data) {
     ),
     n_individuals_in_phe_table = nrow(gcae_input_data$phe_table)
   )
-  for (i in seq_along(summary)) {
-    message(names(summary)[i], ": ", summary[[i]])
+  if (verbose) {
+    for (i in seq_along(summary)) {
+      message(names(summary)[i], ": ", summary[[i]])
+    }
   }
   summary
 }

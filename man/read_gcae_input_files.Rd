@@ -42,17 +42,19 @@ as can be checked by \link{check_labels_table}
 Read the GenoCAE input filenames
 }
 \examples{
-# Create the files
-gcae_input_filenames <- create_gcae_input_files_1()
+if (plinkr::is_plink_installed()) {
+  # Create the files
+  gcae_input_filenames <- create_gcae_input_files_1()
 
-# Read the files
-gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
+  # Read the files
+  gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
 
-# Summarise the data
-summarise_gcae_input_data(gcae_input_data)
+  # Summarise the data
+  summarise_gcae_input_data(gcae_input_data)
 
-# Clean up
-file.remove(as.character(unlist(gcae_input_filenames)))
+  # Clean up
+  file.remove(as.character(unlist(gcae_input_filenames)))
+}
 }
 \author{
 Richèl J.C. Bilderbeek

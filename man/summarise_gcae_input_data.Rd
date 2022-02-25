@@ -4,13 +4,17 @@
 \alias{summarise_gcae_input_data}
 \title{Summarise the \code{gcae_input_data}}
 \usage{
-summarise_gcae_input_data(gcae_input_data)
+summarise_gcae_input_data(gcae_input_data, verbose = FALSE)
 }
 \arguments{
 \item{gcae_input_data}{in-memory data that can be used
 as input for \code{GCAE}. Use link{read_gcae_input_files}
 to read it from files, use \link{check_gcae_input_data}
 to check it for validity.}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 This function will show the summary using \link{message}.

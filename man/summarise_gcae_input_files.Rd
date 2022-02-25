@@ -4,7 +4,7 @@
 \alias{summarise_gcae_input_files}
 \title{Summarise the GCAE input files}
 \usage{
-summarise_gcae_input_files(gcae_input_filenames)
+summarise_gcae_input_files(gcae_input_filenames, verbose = FALSE)
 }
 \arguments{
 \item{gcae_input_filenames}{the GCAE input filenames,
@@ -21,6 +21,10 @@ as can be read by \link[plinkr]{read_plink_phe_file}
 \item \code{labels_filename}: path to a \code{.csv} file
 as can be read by \link{read_labels_file}
 }}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 This function will show the summary using \link{message}.

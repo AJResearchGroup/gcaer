@@ -31,12 +31,14 @@ Check if the GenoCAE input filenames \link{list} is valid.
 Will \link{stop} if not
 }
 \examples{
-# Create the files
-gcae_input_filenames <- create_gcae_input_files_1()
-check_gcae_input_filenames(gcae_input_filenames)
+if (plinkr::is_plink_installed()) {
+  # Create the files
+  gcae_input_filenames <- create_gcae_input_files_1()
+  check_gcae_input_filenames(gcae_input_filenames)
 
-# Clean up
-file.remove(as.character(unlist(gcae_input_filenames)))
+  # Clean up
+  file.remove(as.character(unlist(gcae_input_filenames)))
+}
 }
 \seealso{
 Related checking functions:

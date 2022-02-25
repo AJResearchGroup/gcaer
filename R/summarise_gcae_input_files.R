@@ -10,12 +10,16 @@
 #' summarise_gcae_input_files(gcae_input_filenames)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-summarise_gcae_input_files <- function(gcae_input_filenames) {
+summarise_gcae_input_files <- function(
+  gcae_input_filenames,
+  verbose = FALSE
+) {
   gcaer::check_gcae_input_filenames(gcae_input_filenames = gcae_input_filenames)
   gcae_input_data <- gcaer::read_gcae_input_files(
     gcae_input_filenames = gcae_input_filenames
   )
   gcaer::summarise_gcae_input_data(
-    gcae_input_data = gcae_input_data
+    gcae_input_data = gcae_input_data,
+    verbose = verbose
   )
 }
