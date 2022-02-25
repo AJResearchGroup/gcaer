@@ -11,7 +11,7 @@
 #'
 #' # Save it
 #' labels_filename <- get_gcaer_tempfilename(fileext = ".csv")
-#' save_labels_file(
+#' save_labels_table(
 #'   labels_table = labels_table,
 #'   labels_filename = labels_filename
 #' )
@@ -20,11 +20,17 @@
 #' file.remove(labels_filename)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-save_labels_file <- function(
+save_labels_table <- function(
   labels_table,
   labels_filename
 ) {
   gcaer::check_labels_table(labels_table)
+
+  dir.create(
+    dirname(labels_filename),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
   readr::write_csv(
     x = labels_table,
     file = labels_filename,

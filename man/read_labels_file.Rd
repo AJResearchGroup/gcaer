@@ -24,7 +24,7 @@ labels_filename <- get_gcaer_filename("gcae_input_files_1_labels.csv")
 read_labels_file(labels_filename)
 }
 \seealso{
-use \link{save_labels_file} to save a \code{labels_table}
+use \link{save_labels_table} to save a \code{labels_table}
 }
 \author{
 Richèl J.C. Bilderbeek

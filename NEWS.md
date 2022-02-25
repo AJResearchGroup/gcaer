@@ -2,14 +2,18 @@
 
 Newest versions at top.
 
-## gcaer v0.6.2.2 (unreleased)
+## gcaer v0.6.3
 
 ### NEW FEATURES
 
  * Add 'check_gcae_input_files'
+ * Add 'create_gcae_input_data'
  * Add 'create_test_gcae_input_data'
  * Add 'create_test_gcae_input_filenames'
  * Add 'get_test_labels_table'
+ * Add 'resize_to_shared_individuals_from_data'
+ * Add 'resize_to_shared_individuals_from_files'
+ * Add 'save_gcae_input_data'
  * Add 'summarise_gcae_input_data'
  * Add 'summarise_gcae_input_files'
 
@@ -23,7 +27,8 @@ Newest versions at top.
 
 ### DEPRECATED AND DEFUNCT
 
- * None
+ * Use 'save_labels_table' instead of 'save_labels_file', as the function
+   saves a 'label_table'
 
 ## gcaer v0.6.1 (2022-02-22)
 
@@ -32,7 +37,7 @@ Newest versions at top.
  * Fix `GenoCAE`'s `Pheno` branch to work well with `gcaer`
  * Add `check_gcae_input_data` to check that the data can be read by `GenoCAE`
    and to give a clear error when it cannot
- * Added `read_labels_file` and `save_labels_file` to work with a `GenoCAE`
+ * Added `read_labels_file` and `save_labels_table` to work with a `GenoCAE`
    labels file
 
 ### MINOR IMPROVEMENTS

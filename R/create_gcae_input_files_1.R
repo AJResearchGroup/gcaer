@@ -93,7 +93,7 @@ create_gcae_input_files_1 <- function(
     population = assoc_qt_data$phenotype_data$phe_table$IID,
     super_population = assoc_qt_data$phenotype_data$phe_table$FID
   )
-  save_labels_file(
+  save_labels_table(
     labels_table = labels,
     labels_filename = labels_filename
   )
