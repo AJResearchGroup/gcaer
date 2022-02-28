@@ -90,12 +90,12 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   # Resize to the new size
   #
   new_bed_table <- matrix(
-    data = gcae_input_data$bed_table[, keep_ids],
+    data = gcae_input_data$bed_table[, which(keep_ids)],
     nrow = nrow(gcae_input_data$bed_table),
     ncol = sum(keep_ids),
     dimnames = list(
       rownames(gcae_input_data$bed_table),
-      colnames(gcae_input_data$bed_table)[keep_ids]
+      colnames(gcae_input_data$bed_table)[which(keep_ids)]
     )
   )
   plinkr::check_bed_table(new_bed_table)

@@ -1,4 +1,19 @@
-test_that("use", {
+test_that("use, resize fam table", {
+  gcae_input_data <- create_test_gcae_input_data()
+  expect_silent(check_gcae_input_data(gcae_input_data))
+
+  # Keep only the first half of the fam table
+  gcae_input_data$fam_table <- gcae_input_data$fam_table[
+    seq(1, nrow(gcae_input_data$fam_table) / 2),
+  ]
+
+  before <- summarise_gcae_input_data(gcae_input_data)
+  gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
+  after <- summarise_gcae_input_data(gcae_input_data)
+  expect_true(any(as.integer(after) != as.integer(before)))
+})
+
+test_that("use, resize phenotypes", {
   gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(gcae_input_data))
 
