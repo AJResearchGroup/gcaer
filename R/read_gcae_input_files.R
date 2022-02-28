@@ -16,7 +16,9 @@
 #' @examples
 #' if (plinkr::is_plink_installed()) {
 #'   # Create the files
-#'   gcae_input_filenames <- create_gcae_input_files_1()
+#'   gcae_input_filenames <- create_gcae_input_files_1(
+#'     base_input_filename = get_gcaer_tempfilename()
+#'   )
 #'
 #'   # Read the files
 #'   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)

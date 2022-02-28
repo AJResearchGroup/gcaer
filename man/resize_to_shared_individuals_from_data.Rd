@@ -34,17 +34,12 @@ gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
 summarise_gcae_input_data(gcae_input_data)
 }
 \seealso{
-Related checking functions:
+Related resize functions:
 \itemize{
-\item Use \link{check_gcae_input_data} to check the in-memory GCAE input data
-extensively
-\item Use \link{check_gcae_input_data_data_type} to check the
-data type of the in-memory GCAE input data
-\item Use \link{check_gcae_input_files} to check the
-files to be used by GCAE as input,
-i.e. \code{GCAE} can run these
-\item Use \link{check_gcae_input_filenames} to check the
-filenames (and not the files' content) to be GCAE input files
+\item Use \link{resize_to_shared_individuals_from_data}
+to resize the data in in-memory data
+\item Use \link{resize_to_shared_individuals_from_files}
+to resize the data in files
 }
 }
 \author{

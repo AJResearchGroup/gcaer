@@ -4,17 +4,12 @@
 #' @inheritParams default_params_doc
 #' @return the `gcae_input_data` with only shared individuals
 #' @seealso
-#' Related checking functions:
+#' Related resize functions:
 #'
-#'  * Use \link{check_gcae_input_data} to check the in-memory GCAE input data
-#'    extensively
-#'  * Use \link{check_gcae_input_data_data_type} to check the
-#'    data type of the in-memory GCAE input data
-#'  * Use \link{check_gcae_input_files} to check the
-#'    files to be used by GCAE as input,
-#'    i.e. `GCAE` can run these
-#'  * Use \link{check_gcae_input_filenames} to check the
-#'    filenames (and not the files' content) to be GCAE input files
+#'  * Use \link{resize_to_shared_individuals_from_data}
+#'    to resize the data in in-memory data
+#'  * Use \link{resize_to_shared_individuals_from_files}
+#'    to resize the data in files
 #'
 #' @examples
 #' gcae_input_data <- create_test_gcae_input_data()
@@ -110,7 +105,7 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   )
   if (verbose) {
     message("head(new_fam_table):")
-    message(paste0(knitr::kable(head(new_fam_table)), collapse = "\n"))
+    message(paste0(knitr::kable(utils::head(new_fam_table)), collapse = "\n"))
   }
   plinkr::check_fam_table(new_fam_table)
 
@@ -119,7 +114,9 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   ]
   if (verbose) {
     message("head(new_labels_table):")
-    message(paste0(knitr::kable(head(new_labels_table)), collapse = "\n"))
+    message(
+      paste0(knitr::kable(utils::head(new_labels_table)), collapse = "\n")
+    )
   }
   gcaer::check_labels_table(new_labels_table)
 
@@ -131,7 +128,7 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   )
   if (verbose) {
     message("head(new_phe_table):")
-    message(paste0(knitr::kable(head(new_phe_table)), collapse = "\n"))
+    message(paste0(knitr::kable(utils::head(new_phe_table)), collapse = "\n"))
   }
   plinkr::check_phe_table(new_phe_table)
 
@@ -142,8 +139,5 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
     labels_table = new_labels_table,
     phe_table = new_phe_table
   )
-  # Temporarily
-  # gcaer::check_gcae_input_data(new_gcae_input_data)
-
   new_gcae_input_data
 }

@@ -3,7 +3,10 @@ test_that("use", {
 
   # Create the files
   gcae_input_filenames <- create_gcae_input_files_1(
-    base_input_filename = gcaer::get_gcaer_tempfilename()
+    base_input_filename = file.path(
+      get_gcaer_tempfilename(),
+      "check_gcae_input_files"
+    )
   )
 
   # Check the files

@@ -2,7 +2,10 @@ test_that("use, resize phe_table", {
   if (!plinkr::is_plink_installed()) return()
   skip("WIP")
   gcae_input_filenames <- create_gcae_input_files_1(
-    base_input_filename = get_gcaer_tempfilename()
+    base_input_filename = file.path(
+      get_gcaer_tempfilename(),
+      "resize_to_shared_individuals_from_files"
+    )
   )
 
   # Modify the phenotype table

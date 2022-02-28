@@ -3,7 +3,12 @@ test_that("minimal use", {
   if (!plinkr::is_on_ci()) return()
   if (!plinkr::is_plink_installed()) return()
 
-  gcae_input_filenames <- create_gcae_input_files_1()
+  gcae_input_filenames <- create_gcae_input_files_1(
+    base_input_filename = file.path(
+      get_gcaer_tempfilename(),
+      "check_gcae_input_data_1"
+    )
+  )
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
   expect_silent(check_gcae_input_data(gcae_input_data))
 
@@ -16,7 +21,12 @@ test_that("abuse", {
   if (!plinkr::is_on_ci()) return()
   if (!plinkr::is_plink_installed()) return()
 
-  gcae_input_filenames <- create_gcae_input_files_1()
+  gcae_input_filenames <- create_gcae_input_files_1(
+    base_input_filename = file.path(
+      get_gcaer_tempfilename(),
+      "check_gcae_input_data_2"
+    )
+  )
   good_gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
   expect_silent(check_gcae_input_data(good_gcae_input_data))
 

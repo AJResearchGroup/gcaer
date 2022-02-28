@@ -7,6 +7,10 @@ test_that("use", {
   n_traits <- 3
   n_snps_per_trait <- 2
   gcae_input_filenames <- create_gcae_input_files_1(
+    base_input_filename = file.path(
+      get_gcaer_tempfilename(),
+      "create_gcae_input_files_1"
+    ),
     n_individuals = n_individuals,
     n_traits = n_traits,
     n_snps_per_trait = n_snps_per_trait
