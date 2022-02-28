@@ -1,16 +1,29 @@
-test_that("use", {
+test_that("use, resize phe_table", {
   if (!plinkr::is_plink_installed()) return()
   skip("WIP")
   gcae_input_filenames <- create_gcae_input_files_1(
     base_input_filename = get_gcaer_tempfilename()
   )
-  before <- summarise_gcae_input_files(gcae_input_filenames)
 
-  resize_to_shared_individuals_from_files(gcae_input_filenames)
+  # Modify the phenotype table
+  phe_table <- plinkr::read_plink_phe_file(gcae_input_filenames$phe_filename)
+  new_phe_table <- phe_table[seq(1, 2), ]
+  plinkr::save_phe_table(
+    phe_table = new_phe_table,
+    phe_filename = gcae_input_filenames$phe_filename
+  )
+
+
+
+  before <- summarise_gcae_input_files(gcae_input_filenames)
+  before
+
+  resize_to_shared_individuals_from_files(gcae_input_filenames, verbose = TRUE)
 
   after <- summarise_gcae_input_files(gcae_input_filenames)
+  after
 
-  expect_true(after != before)
+  expect_true(any(as.integer(after) != as.integer(before)))
 
   file.remove(as.character(unlist(gcae_input_filenames)))
 })

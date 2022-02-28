@@ -34,10 +34,8 @@ resize_to_shared_individuals_from_files <- function(
 ) { # nolint indeed a long function name
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
 
-  gcae_input_data <- gcaer::read_gcae_input_files(gcae_input_filenames)
-
-  gcaer::resize_to_shared_individuals_from_data(
-    gcae_input_data = gcae_input_data,
+  gcae_input_data <- gcaer::resize_to_shared_individuals_from_data(
+    gcae_input_data = gcaer::read_gcae_input_files(gcae_input_filenames),
     verbose = verbose
   )
 
