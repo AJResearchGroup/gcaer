@@ -46,22 +46,9 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   #  * labels
   #  * phe
 
-  # These labels are added from the .fam table, so
-  # the .bed table can be ignored
-  # bed_table_individuals <- colnames(gcae_input_data$bed_table)                # nolint indeed, do not use this code :-)
-
-  fam_table_individuals <- plinkr::get_sample_ids_from_fam_table(
-    fam_table = gcae_input_data$fam_table
-  )
-  phe_table_individuals <- plinkr::get_sample_ids_from_phe_table(
-    phe_table = gcae_input_data$phe_table
-  )
-  # We don't need it, but we keep it here for symmetry
-  # labels_table_individuals <- gcae_input_data$labels_table$population         # nolint indeed, do not use this code
-
   # Do the FID + IID first, in the fam_table and phe_table
   common_fid_and_idds <- tibble::as_tibble(
-    dplyr::right_join(
+    dplyr::inner_join(
       gcae_input_data$fam_table[, c(1, 2)],
       gcae_input_data$phe_table[, c(1, 2)],
       by = c("fam" = "FID", "id" = "IID")
@@ -71,7 +58,26 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   common_fid_and_idds <- common_fid_and_idds[
     common_fid_and_idds$fam %in% unique(gcae_input_data$labels_table$population),
   ]
-  if (nrow(common_fid_and_idds) == 0) {
+  if (1 == 1) {
+    testthat::expect_true(
+      all(common_fid_and_idds$fam %in% gcae_input_data$fam_table$fam)
+    )
+    testthat::expect_true(
+      all(common_fid_and_idds$id %in% gcae_input_data$fam_table$id)
+    )
+    testthat::expect_true(
+      all(common_fid_and_idds$fam %in% gcae_input_data$phe_table$FID)
+    )
+    testthat::expect_true(
+      all(common_fid_and_idds$id %in% gcae_input_data$phe_table$IID)
+    )
+    testthat::expect_true(
+      all(common_fid_and_idds$fam %in% gcae_input_data$labels_table$population)
+    )
+  }
+  n_shared_samples <- nrow(common_fid_and_idds)
+
+  if (n_shared_samples == 0) {
     stop(
       "Empty common IDs set. \n",
       "head(gcae_input_data$fam_table): \n",
@@ -94,11 +100,12 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
 
   fam_tables_indices <- gcae_input_data$fam_table[, c(1, 2)]
   fam_tables_indices$index <- seq_len(nrow(fam_tables_indices))
-  fam_tables_indices <- dplyr::left_join(
+  fam_tables_indices <- dplyr::inner_join(
     fam_tables_indices,
     common_fid_and_idds,
     by = c("fam", "id")
   )
+  testthat::expect_equal(n_shared_samples, nrow(fam_tables_indices))
   fam_tables_indices <- fam_tables_indices[
     fam_tables_indices$fam %in% gcae_input_data$labels_table$population,
   ]

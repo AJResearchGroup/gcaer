@@ -13,8 +13,8 @@ test_that("use", {
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
   gcae_input_data <- create_test_gcae_input_data()
 
-  # select the first 10
-  gcae_input_data$labels_table <- gcae_input_data$labels_table[seq(1, 10), ]
+  # select the first 2
+  gcae_input_data$labels_table <- gcae_input_data$labels_table[seq(1, 2), ]
   gcae_input_data_before <- resize_to_shared_individuals_from_data(
     gcae_input_data
   )

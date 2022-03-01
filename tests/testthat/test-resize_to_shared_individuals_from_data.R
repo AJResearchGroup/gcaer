@@ -60,7 +60,6 @@ test_that("use, resize phe_table", {
   after <- summarise_gcae_input_data(gcae_input_data)
   expect_equal(n_individuals, after$n_individuals_in_bed_table)
   expect_equal(n_individuals, after$n_individuals_in_fam_table)
-  expect_equal(n_individuals, after$n_individuals_in_labels_table)
   expect_equal(n_individuals, after$n_individuals_in_phe_table)
   expect_true(any(as.integer(after) != as.integer(before)))
 })
@@ -105,7 +104,10 @@ test_that("use, resize all tables", {
 
 test_that("fails if there is are common IDs with the labels", {
   gcae_input_data <- create_test_gcae_input_data()
-  gcae_input_data$labels_table$population <- tempfile() # Unique labels :-)
+  gcae_input_data$labels_table$population <-
+    paste0(gcae_input_data$labels_table$population, "X")
+  check_labels_table(gcae_input_data$labels_table)
+
   expect_error(
     resize_to_shared_individuals_from_data(gcae_input_data),
     "Empty common IDs set"
