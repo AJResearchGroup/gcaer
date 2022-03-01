@@ -1,3 +1,9 @@
+test_that("minimal", {
+  gcae_input_data <- create_test_gcae_input_data()
+  expect_silent(resize_to_shared_individuals_from_data(gcae_input_data))
+})
+
+
 test_that("use, resize fam table", {
   gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(gcae_input_data))
@@ -9,11 +15,11 @@ test_that("use, resize fam table", {
   ]
 
   before <- summarise_gcae_input_data(gcae_input_data)
+  before
   gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
   after <- summarise_gcae_input_data(gcae_input_data)
   expect_equal(n_individuals, after$n_individuals_in_bed_table)
   expect_equal(n_individuals, after$n_individuals_in_fam_table)
-  expect_equal(n_individuals, after$n_individuals_in_labels_table)
   expect_equal(n_individuals, after$n_individuals_in_phe_table)
   expect_true(any(as.integer(after) != as.integer(before)))
 })
@@ -22,19 +28,20 @@ test_that("use, resize labels_table", {
   gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(gcae_input_data))
 
-  # Keep only the first half of the labels_table
-  n_individuals <- 3
+  before <- summarise_gcae_input_data(gcae_input_data)
+
+  # Remove the first population from thelabels_table
+  population_to_remove <- gcae_input_data$labels_table$population[1]
   gcae_input_data$labels_table <- gcae_input_data$labels_table[
-    seq(1, n_individuals),
+    gcae_input_data$labels_table$population != population_to_remove ,
   ]
 
-  before <- summarise_gcae_input_data(gcae_input_data)
   gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
   after <- summarise_gcae_input_data(gcae_input_data)
-  expect_equal(n_individuals, after$n_individuals_in_bed_table)
-  expect_equal(n_individuals, after$n_individuals_in_fam_table)
-  expect_equal(n_individuals, after$n_individuals_in_labels_table)
-  expect_equal(n_individuals, after$n_individuals_in_phe_table)
+  expect_equal(
+    before$n_populations_in_labels_table,
+    after$n_populations_in_labels_table + 1
+  )
   expect_true(any(as.integer(after) != as.integer(before)))
 })
 

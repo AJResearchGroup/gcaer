@@ -101,16 +101,18 @@ create_gcae_input_files_1 <- function(
     "South America"
   )
 
-  labels <- tibble::tibble(
-    population = assoc_qt_data$phenotype_data$phe_table$FID,
+  populations <- unique(assoc_qt_data$phenotype_data$phe_table$FID)
+  labels_table <- tibble::tibble(
+    population = populations,
     super_population = sample(
       continents,
-      size = nrow(assoc_qt_data$phenotype_data$phe_table),
+      size = length(populations),
       replace = TRUE
     )
   )
-  save_labels_table(
-    labels_table = labels,
+  gcaer::check_labels_table(labels_table)
+  gcaer::save_labels_table(
+    labels_table = labels_table,
     labels_filename = labels_filename
   )
   filenames$labels_filename <- labels_filename

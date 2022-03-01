@@ -59,50 +59,67 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   # We don't need it, but we keep it here for symmetry
   # labels_table_individuals <- gcae_input_data$labels_table$population         # nolint indeed, do not use this code
 
-  iids_from_fam_table <- gcae_input_data$fam_table$id
-  iids_from_labels <- gcae_input_data$labels_table$population
-  iids_from_phe_table <- gcae_input_data$phe_table$IID
-  # The readable way from https://stackoverflow.com/a/3695700,
-  # thanks https://stackoverflow.com/users/233293/bnaul
-  common_iids <- intersect(
-    intersect(iids_from_fam_table, iids_from_labels),
-    iids_from_phe_table
+  # Do the FID + IID first, in the fam_table and phe_table
+  common_fid_and_idds <- tibble::as_tibble(
+    dplyr::right_join(
+      gcae_input_data$fam_table[, c(1, 2)],
+      gcae_input_data$phe_table[, c(1, 2)],
+      by = c("fam" = "FID", "id" = "IID")
+    )
   )
-  if (length(common_iids) == 0) {
+  # Only keep the FIDs that are in the label_tables
+  common_fid_and_idds <- common_fid_and_idds[
+    common_fid_and_idds$fam %in% unique(gcae_input_data$labels_table$population),
+  ]
+  if (nrow(common_fid_and_idds) == 0) {
     stop(
       "Empty common IDs set. \n",
-      "head(iids_from_fam_table): ",
-        paste0(utils::head(iids_from_fam_table), collapse = ","), " \n",
-      "head(iids_from_labels): ",
-        paste0(utils::head(iids_from_labels), collapse = ","), " \n",
-      "head(iids_from_phe_table): ",
-        paste0(utils::head(iids_from_phe_table), collapse = ","), " \n"
+      "head(gcae_input_data$fam_table): \n",
+      paste0(
+        knitr::kable(utils::head(gcae_input_data$fam_table)),
+        collapse = "\n"
+      ), " \n",
+      "head(gcae_input_data$labels_table): \n",
+      paste0(
+        knitr::kable(utils::head(gcae_input_data$labels_table)),
+        collapse = "\n"
+      ), " \n",
+      "head(gcae_input_data$phe_table): \n",
+      paste0(
+        knitr::kable(utils::head(gcae_input_data$phe_table)),
+        collapse = "\n"
+      ), " \n"
     )
   }
-  sample_ids <- plinkr::get_sample_ids_from_fam_table(
-    fam_table = gcae_input_data$fam_table
+
+  fam_tables_indices <- gcae_input_data$fam_table[, c(1, 2)]
+  fam_tables_indices$index <- seq_len(nrow(fam_tables_indices))
+  fam_tables_indices <- dplyr::left_join(
+    fam_tables_indices,
+    common_fid_and_idds,
+    by = c("fam", "id")
   )
-  keep_ids <- sample_ids$id %in% common_iids
-  common_sample_ids <- sample_ids[keep_ids, ]
-  plinkr::check_sample_ids(common_sample_ids)
+  fam_tables_indices <- fam_tables_indices[
+    fam_tables_indices$fam %in% gcae_input_data$labels_table$population,
+  ]
+
 
   #
   # Resize to the new size
   #
   new_bed_table <- matrix(
-    data = gcae_input_data$bed_table[, which(keep_ids)],
+    data = gcae_input_data$bed_table[, fam_tables_indices$index],
     nrow = nrow(gcae_input_data$bed_table),
-    ncol = sum(keep_ids),
+    ncol = length(fam_tables_indices$index),
     dimnames = list(
       rownames(gcae_input_data$bed_table),
-      colnames(gcae_input_data$bed_table)[which(keep_ids)]
+      colnames(gcae_input_data$bed_table)[fam_tables_indices$index]
     )
   )
   plinkr::check_bed_table(new_bed_table)
 
-  new_fam_table <- tibble::as_tibble(
-    merge(gcae_input_data$fam_table, common_sample_ids)
-  )
+  new_fam_table <- gcae_input_data$fam_table[fam_tables_indices$index, ]
+
   if (verbose) {
     message("head(new_fam_table):")
     message(paste0(knitr::kable(utils::head(new_fam_table)), collapse = "\n"))
@@ -110,7 +127,7 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   plinkr::check_fam_table(new_fam_table)
 
   new_labels_table <- gcae_input_data$labels_table[
-    gcae_input_data$labels_table$population %in% common_iids,
+    gcae_input_data$labels_table$population %in% unique(fam_tables_indices$fam),
   ]
   if (verbose) {
     message("head(new_labels_table):")
@@ -120,11 +137,10 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   }
   gcaer::check_labels_table(new_labels_table)
 
-  new_phe_table <- tibble::as_tibble(
-    merge(gcae_input_data$phe_table,
-    common_sample_ids,
-    by.x = c("FID", "IID"),
-    by.y = c("fam", "id"))
+  new_phe_table <- dplyr::inner_join(
+    gcae_input_data$phe_table,
+    fam_tables_indices,
+    by = c("FID" = "fam", "IID" = "id")
   )
   if (verbose) {
     message("head(new_phe_table):")
@@ -139,5 +155,6 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
     labels_table = new_labels_table,
     phe_table = new_phe_table
   )
+  gcaer::check_gcae_input_data(new_gcae_input_data)
   new_gcae_input_data
 }

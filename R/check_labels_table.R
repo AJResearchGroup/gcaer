@@ -23,4 +23,15 @@ check_labels_table <- function(
     names(labels_table),
     c("population", "super_population")
   )
+  t <- table(labels_table$population)
+  is_duplicate <- as.integer(t) != 1
+  if (any(is_duplicate)) {
+    stop(
+      "All populations must be unique. \n",
+      "Duplicated populations: ",
+      paste0(names(t)[is_duplicate], collapse = ", "), " \n",
+      "Counts: ",
+      paste0(as.integer(t)[is_duplicate], collapse = ", ")
+    )
+  }
 }

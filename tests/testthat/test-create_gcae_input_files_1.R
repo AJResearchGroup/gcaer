@@ -31,12 +31,10 @@ test_that("use", {
 
   expect_true(
     all(
-      gcae_input_data$labels_table$super_population %in%
-        LETTERS[1:3]
+      gcae_input_data$labels_table$population %in%
+        gcae_input_data$fam_table$fam
     )
   )
-  expect_true(all(gcae_input_data$labels_table$population %in% seq(1, 5)))
-
   file.remove(as.character(unlist(gcae_input_filenames)))
 })
 

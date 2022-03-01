@@ -19,8 +19,8 @@ summarise_gcae_input_data <- function(
     n_snps_in_bed_table = nrow(gcae_input_data$bed_table),
     n_snps_in_bim_table = nrow(gcae_input_data$bim_table),
     n_individuals_in_fam_table = nrow(gcae_input_data$fam_table),
-    n_individuals_in_labels_table = nrow(gcae_input_data$labels_table),
-    n_groups_in_labels_table = length(
+    n_populations_in_labels_table = nrow(gcae_input_data$labels_table),
+    n_superpopulations_in_labels_table = length(
       unique(gcae_input_data$labels_table$super_population)
     ),
     n_individuals_in_phe_table = nrow(gcae_input_data$phe_table)
