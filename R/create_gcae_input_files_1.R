@@ -91,9 +91,23 @@ create_gcae_input_files_1 <- function(
   )
   filenames$phe_filename <- phe_filename
 
+  continents <- c(
+    "Africa",
+    "Antarctica",
+    "Asia",
+    "Australia",
+    "Europe",
+    "North America",
+    "South America"
+  )
+
   labels <- tibble::tibble(
-    population = assoc_qt_data$phenotype_data$phe_table$IID,
-    super_population = assoc_qt_data$phenotype_data$phe_table$FID
+    population = assoc_qt_data$phenotype_data$phe_table$FID,
+    super_population = sample(
+      continents,
+      size = nrow(assoc_qt_data$phenotype_data$phe_table),
+      replace = TRUE
+    )
   )
   save_labels_table(
     labels_table = labels,

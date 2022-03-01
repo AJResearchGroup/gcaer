@@ -16,6 +16,7 @@ test_that("minimal use", {
   expect_error(check_gcae_input_data(gcae_input_data = list(x = "nonsense")))
 })
 
+
 test_that("abuse", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
