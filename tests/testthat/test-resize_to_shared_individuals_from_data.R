@@ -65,7 +65,7 @@ test_that("use, resize phe_table", {
 })
 
 test_that("use, resize all tables", {
-  set.seed(42)
+  set.seed(314)
   gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(gcae_input_data))
 
@@ -73,17 +73,20 @@ test_that("use, resize all tables", {
 
   # Keep only half of each table
   get_random_indices <- function(t) {
-    sample(
-      x = seq(1, nrow(t)),
-      size = nrow(t) / 2,
-      replace = FALSE
+    sort(
+      sample(
+        x = seq(1, nrow(t)),
+        size = nrow(t) / 2,
+        replace = FALSE
+      )
     )
   }
   gcae_input_data$fam_table <- gcae_input_data$fam_table[
     get_random_indices(gcae_input_data$fam_table),
   ]
+  # Remove first out of three lines
   gcae_input_data$labels_table <- gcae_input_data$labels_table[
-    get_random_indices(gcae_input_data$labels_table),
+    -1,
   ]
   gcae_input_data$phe_table <- gcae_input_data$phe_table[
     get_random_indices(gcae_input_data$phe_table),
@@ -95,10 +98,13 @@ test_that("use, resize all tables", {
   # We took random individuals from 3 tables, hence (0.5^3 = ) 1/8th will
   # be shared individuals
   n_individuals <- after$n_individuals_in_bed_table
-  expect_equal(all_individuals / 8, n_individuals, tolerance = 10)
+  expect_equal(
+    all_individuals * (1 / 2) * (1 / 3) * (1 / 2),
+    n_individuals,
+    tolerance = 10
+  )
   expect_equal(n_individuals, after$n_individuals_in_bed_table)
   expect_equal(n_individuals, after$n_individuals_in_fam_table)
-  expect_equal(n_individuals, after$n_individuals_in_labels_table)
   expect_equal(n_individuals, after$n_individuals_in_phe_table)
 })
 
