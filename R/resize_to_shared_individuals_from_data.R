@@ -56,7 +56,8 @@ resize_to_shared_individuals_from_data <- function( # nolint indeed a long funct
   )
   # Only keep the FIDs that are in the label_tables
   common_fid_and_idds <- common_fid_and_idds[
-    common_fid_and_idds$fam %in% unique(gcae_input_data$labels_table$population),
+    common_fid_and_idds$fam %in%
+      unique(gcae_input_data$labels_table$population),
   ]
   if (1 == 1) {
     testthat::expect_true(
