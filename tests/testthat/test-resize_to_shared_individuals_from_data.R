@@ -33,7 +33,7 @@ test_that("use, resize labels_table", {
   # Remove the first population from thelabels_table
   population_to_remove <- gcae_input_data$labels_table$population[1]
   gcae_input_data$labels_table <- gcae_input_data$labels_table[
-    gcae_input_data$labels_table$population != population_to_remove ,
+    gcae_input_data$labels_table$population != population_to_remove,
   ]
 
   gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
