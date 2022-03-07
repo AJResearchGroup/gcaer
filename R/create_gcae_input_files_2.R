@@ -32,8 +32,18 @@ create_gcae_input_files_2 <- function(
   plink_options = plinkr::create_plink_options()
 ) {
   set.seed(1)
-  traits <- rep(
-    list(
+  traits <- NA
+  if (n_random_snps == 0) {
+    traits <- list(
+      plinkr::create_additive_trait(
+        mafs = 0.499999,
+        base_phenotype_value = pi,
+        phenotype_increase = pi,
+        n_snps = 1
+      )
+    )
+  } else {
+    traits <- list(
       plinkr::create_additive_trait(
         mafs = 0.499999,
         base_phenotype_value = pi,
@@ -45,7 +55,7 @@ create_gcae_input_files_2 <- function(
         mafs = 0.499999
       )
     )
-  )
+  }
   assoc_qt_data <- plinkr::create_demo_assoc_qt_data(
     n_individuals = n_individuals,
     traits = traits
