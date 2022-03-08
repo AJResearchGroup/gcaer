@@ -103,7 +103,7 @@ test_that("abuse", {
   bad_gcae_input_data$labels_table$population[1] <- "X"
   expect_error(
     check_gcae_input_data(gcae_input_data = bad_gcae_input_data),
-    "All within-family IDs must be populations within the labels table"
+    "All family IDs must be populations within the labels table"
   )
 
   ###############
