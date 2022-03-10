@@ -4,7 +4,7 @@
 \alias{gcae_evaluate}
 \title{Use \code{GCAE} its evaluate}
 \usage{
-gcae_evaluate(gcae_setup, gcae_options, verbose = FALSE)
+gcae_evaluate(gcae_setup, gcae_options, metrics, epoch, verbose = FALSE)
 }
 \description{
 Use \code{GCAE} its evaluate

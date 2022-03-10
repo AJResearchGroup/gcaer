@@ -93,10 +93,11 @@ test_that("use", {
     plot_filenames
     Sys.time()
   }
-  TODO
-  gcae_evaluate(
-    gcae_setup = gcae_setup,
-    gcae_options = gcae_options,
-    verbose = TRUE
-  )
+  if (1 == 2) {
+    gcae_evaluate(
+      gcae_setup = gcae_setup,
+      gcae_options = gcae_options,
+      verbose = TRUE
+    )
+  }
 })

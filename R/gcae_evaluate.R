@@ -4,13 +4,18 @@
 gcae_evaluate <- function(
   gcae_setup,
   gcae_options,
+  metrics,
+  epoch,
   verbose = FALSE
 ) {
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_gcae_options(gcae_options)
+  gcaer::check_metrics(metrics)
+  gcaer::check_epoch(epoch)
   args <- gcaer::create_gcae_evaluate_args(
     gcae_setup = gcae_setup,
-    gcae_options = gcae_options
+    metrics = metrics,
+    epoch = epoch
   )
   if (verbose) {
     message(
