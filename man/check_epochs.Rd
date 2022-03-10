@@ -16,6 +16,9 @@ Nothing. Will \link{stop} if \code{epochs} is invalid.
 Check if the \code{epochs} is valid
 Will \link{stop} if not.
 }
+\examples{
+check_epochs(100)
+}
 \author{
 Richèl J.C. Bilderbeek
 }

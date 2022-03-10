@@ -4,6 +4,8 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `epochs` is invalid.
+#' @examples
+#' check_epochs(100)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_epochs <- function(

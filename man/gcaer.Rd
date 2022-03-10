@@ -31,7 +31,7 @@ This is a list of functions to run or with with \code{GCAE}:
 \item \link{project}: run \code{GCAE} \code{project}
 \item \link{gcae_plot}: run \code{GCAE} \code{plot}
 \item \link{gcae_animate}: run \code{GCAE} \code{animate}
-\item \link{evaluate}: run \code{GCAE} \code{evaluate}
+\item \link{gcae_evaluate}: run \code{GCAE} \code{evaluate}
 }
 
 This is a list of functions to create simulated data for \code{GCAE}:

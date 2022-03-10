@@ -6,7 +6,11 @@ Newest versions at top.
 
 ### NEW FEATURES
 
- * None
+ * Add 'check_epoch'
+ * Add 'check_metric'
+ * Add 'check_metrics'
+ * Add 'create_gcae_evaluate_args'
+ * Add 'gcae_evaluate'
 
 ### MINOR IMPROVEMENTS
 

@@ -17,6 +17,7 @@ test_that("use", {
   gcae_options <- create_gcae_options()
   datadir <- get_test_datadir()
   data <- "gcae_input_files_1"
+  trainedmodeldir <- normalizePath(get_gcaer_tempfilename(), mustWork = FALSE)
   data_opts_id <- "b_0_4"
   model_id <- "M1"
   train_opts_id <- "ex3"
@@ -28,7 +29,7 @@ test_that("use", {
     data_opts_id = data_opts_id,
     train_opts_id = train_opts_id,
     pheno_model_id = "p2",
-    trainedmodeldir = normalizePath(get_gcaer_tempfilename(), mustWork = FALSE)
+    trainedmodeldir = trainedmodeldir
   )
 
   expect_true(
@@ -68,7 +69,6 @@ test_that("use", {
   expect_true(all(file.exists(train_filenames)))
 
   # 3. Project
-  skip("Not now")
   Sys.time()
   project_filenames <- gcae_project(
     gcae_setup = gcae_setup,
@@ -84,12 +84,19 @@ test_that("use", {
   )
 
   # 4. Plot
-  plot_filenames <- gcae_plot(
-    superpops = superpops,
+  if (1 == 2) {
+    plot_filenames <- gcae_plot(
+      superpops = superpops,
+      gcae_setup = gcae_setup,
+      verbose = TRUE
+    )
+    plot_filenames
+    Sys.time()
+  }
+  TODO
+  gcae_evaluate(
     gcae_setup = gcae_setup,
+    gcae_options = gcae_options,
     verbose = TRUE
   )
-  plot_filenames
-  Sys.time()
-
 })

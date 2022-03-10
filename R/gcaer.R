@@ -24,7 +24,7 @@
 #' * \link{project}: run \code{GCAE} \code{project}
 #' * \link{gcae_plot}: run \code{GCAE} \code{plot}
 #' * \link{gcae_animate}: run \code{GCAE} \code{animate}
-#' * \link{evaluate}: run \code{GCAE} \code{evaluate}
+#' * \link{gcae_evaluate}: run \code{GCAE} \code{evaluate}
 #'
 #' This is a list of functions to create simulated data for `GCAE`:
 #'
