@@ -32,11 +32,17 @@ analyse_qt_prediction <- function(
   # Take the predicted phenotypes
   input_phe_table <- plinkr::read_plink_phe_file(input_phe_filename)
   if (verbose) {
-    message("head(input_phe_table): \n", paste0(knitr::kable(head(input_phe_table)), collapse = "\n"))
+    message(
+      "head(input_phe_table): \n",
+      paste0(knitr::kable(utils::head(input_phe_table)), collapse = "\n")
+    )
   }
 
   results_phe_table <- plinkr::read_plink_phe_file(results_phe_filename)
-  message("head(results_phe_table): \n", paste0(knitr::kable(head(results_phe_table)), collapse = "\n"))
+  message(
+    "head(results_phe_table): \n",
+    paste0(knitr::kable(utils::head(results_phe_table)), collapse = "\n")
+  )
 
   testthat::expect_equal(
     input_phe_table$FID,

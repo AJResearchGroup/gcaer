@@ -15,6 +15,7 @@ default_params_doc(
   data,
   datadir,
   data_opts_id,
+  epoch,
   epochs,
   example_filename,
   fam_filename,
@@ -34,6 +35,8 @@ default_params_doc(
   losses_from_project_filename,
   losses_from_train_t_filename,
   losses_from_train_v_filename,
+  metric,
+  metrics,
   model_id,
   ormr_folder_name,
   os,
@@ -86,7 +89,9 @@ and does not start with a full stop (\code{.})}
 corresponding to a file data_opts/data_opts_id.json
 The data options affect how data is input to the model.}
 
-\item{epochs}{number of epochs to train}
+\item{epoch}{the epoch, as checked by \link{check_epoch}}
+
+\item{epochs}{number of epochs, as checked by \link{check_epochs}}
 
 \item{example_filename}{name of the example file}
 
@@ -158,6 +163,10 @@ for convenience}
 
 \item{losses_from_train_v_filename}{path to the
 \code{losses_from_train_v.csv} file}
+
+\item{metric}{the metric, as checked by \link{check_metric}}
+
+\item{metrics}{the metrics, as checked by \link{check_metrics}}
 
 \item{model_id}{model id, corresponding to a file models/model_id.json}
 

@@ -22,7 +22,8 @@
 #' @param data_opts_id data options id,
 #' corresponding to a file data_opts/data_opts_id.json
 #' The data options affect how data is input to the model.
-#' @param epochs number of epochs to train
+#' @param epoch the epoch, as checked by \link{check_epoch}
+#' @param epochs number of epochs, as checked by \link{check_epochs}
 #' @param example_filename name of the example file
 #' @param fam_filename name of a PLINK `.fam` file
 #' as can be read using \link[plinkr]{read_plink_fam_file}
@@ -74,6 +75,8 @@
 #' `losses_from_train_t.csv` file
 #' @param losses_from_train_v_filename path to the
 #' `losses_from_train_v.csv` file
+#' @param metric the metric, as checked by \link{check_metric}
+#' @param metrics the metrics, as checked by \link{check_metrics}
 #' @param model_id model id, corresponding to a file models/model_id.json
 #' @param ormr_folder_name folder where the link[ormr]{ormr} R package
 #' installs the Python packages
@@ -124,6 +127,7 @@ default_params_doc <- function(
   data,
   datadir,
   data_opts_id,
+  epoch,
   epochs,
   example_filename,
   fam_filename,
@@ -143,6 +147,8 @@ default_params_doc <- function(
   losses_from_project_filename,
   losses_from_train_t_filename,
   losses_from_train_v_filename,
+  metric,
+  metrics,
   model_id,
   ormr_folder_name,
   os,

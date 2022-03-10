@@ -1,4 +1,5 @@
 #' Use `GCAE` its evaluate
+#' @inheritParams default_params_doc
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_evaluate <- function(

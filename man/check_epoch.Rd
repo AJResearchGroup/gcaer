@@ -6,6 +6,9 @@
 \usage{
 check_epoch(epoch)
 }
+\arguments{
+\item{epoch}{the epoch, as checked by \link{check_epoch}}
+}
 \value{
 Nothing. Will \link{stop} if \code{epoch} is invalid.
 }

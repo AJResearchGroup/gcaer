@@ -9,6 +9,10 @@ create_gcae_evaluate_args(gcae_setup, metrics, epoch)
 \arguments{
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
+
+\item{metrics}{the metrics, as checked by \link{check_metrics}}
+
+\item{epoch}{the epoch, as checked by \link{check_epoch}}
 }
 \value{
 the CLI arguments

@@ -7,7 +7,7 @@
 check_epochs(epochs)
 }
 \arguments{
-\item{epochs}{number of epochs to train}
+\item{epochs}{number of epochs, as checked by \link{check_epochs}}
 }
 \value{
 Nothing. Will \link{stop} if \code{epochs} is invalid.

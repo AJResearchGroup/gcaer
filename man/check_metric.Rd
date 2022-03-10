@@ -6,6 +6,9 @@
 \usage{
 check_metric(metric)
 }
+\arguments{
+\item{metric}{the metric, as checked by \link{check_metric}}
+}
 \value{
 Nothing. Will \link{stop} if \code{metric} is invalid.
 }

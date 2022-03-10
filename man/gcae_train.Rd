@@ -16,7 +16,7 @@ gcae_train(
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup}}
 
-\item{epochs}{number of epochs to train}
+\item{epochs}{number of epochs, as checked by \link{check_epochs}}
 
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}

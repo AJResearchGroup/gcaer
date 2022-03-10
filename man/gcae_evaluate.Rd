@@ -6,6 +6,21 @@
 \usage{
 gcae_evaluate(gcae_setup, gcae_options, metrics, epoch, verbose = FALSE)
 }
+\arguments{
+\item{gcae_setup}{GCAE model setup,
+as created by \link{create_gcae_setup}}
+
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
+
+\item{metrics}{the metrics, as checked by \link{check_metrics}}
+
+\item{epoch}{the epoch, as checked by \link{check_epoch}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
+}
 \description{
 Use \code{GCAE} its evaluate
 }
