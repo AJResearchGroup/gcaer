@@ -60,14 +60,60 @@ analyse_qt_prediction <- function(
     names(results_phe_table)[-3],
     "predicted_phenotype"
   )
-  full_phe_table <- dplyr::full_join(input_phe_table, results_phe_table)
+  full_phe_table <- dplyr::full_join(
+    input_phe_table,
+    results_phe_table,
+    by = c("FID", "IID")
+  )
+  HIERO
+  full_phe_table$predicted_phenotype_squared <-
+    full_phe_table$predicted_phenotype ^ 2
+  full_phe_table$predicted_phenotype_cubed <-
+    full_phe_table$predicted_phenotype ^ 3
+
+  linear_model <- lm(
+    true_phenotype ~ predicted_phenotype,
+    data = full_phe_table
+  )
+  t_linear <- broom::tidy(linear_model)
+  t_linear$model <- "linear"
+  quadratic_model <- lm(
+    true_phenotype ~ predicted_phenotype + predicted_phenotype_squared,
+    data = full_phe_table
+  )
+  t_quadratic <- broom::tidy(quadratic_model)
+  t_quadratic$model <- "quadratic"
+  cubic_model <- lm(
+    true_phenotype ~ predicted_phenotype +
+      predicted_phenotype_squared +
+      predicted_phenotype_cubed,
+    data = full_phe_table
+  )
+  t_cubic <- broom::tidy(cubic_model)
+  t_cubic$model <- "cubic"
+  t <- dplyr::bind_rows(t_linear, t_quadratic, t_cubic)
+
+  correlation::correlation(full_phe_table)
+  correlation::correlation(full_phe_table, method = "distance")
+  model <- lm(
+    predicted_phenotype~true_phenotype,
+    data = full_phe_table
+  )
+  summary(model)
+  model <- lm(
+    predicted_phenotype^2~true_phenotype,
+    data = full_phe_table
+  )
 
   ggplot2::ggplot(
     full_phe_table,
     ggplot2::aes(x = true_phenotype, y = predicted_phenotype)
   ) + ggplot2::geom_point() +
     ggplot2::geom_abline(slope = 1, lty = "dashed") +
-    ggplot2::geom_smooth(method = "lm", se = TRUE, col = "red")
+    ggplot2::geom_smooth(method = "lm", se = TRUE, col = "red") +
+    ggplot2::geom_smooth(method = "lm", formula = y ~ x + I(x^2), se = TRUE, col = "blue") +
+    ggplot2::geom_smooth(method = "lm", formula = y ~ x + I(x^3), se = TRUE, col = "green")
+
   ggplot2::ggsave("~/20220304_issue_122.png", width = 7, height = 7)
 
 }
