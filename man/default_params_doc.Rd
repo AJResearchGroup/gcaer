@@ -44,6 +44,7 @@ default_params_doc(
   phe_filename,
   plink_options,
   pheno_model_id,
+  png_filename,
   project_filenames,
   python_bin_path,
   python_version,
@@ -54,6 +55,7 @@ default_params_doc(
   train_times_filename,
   trainedmodeldir,
   trainedmodelname,
+  unique_id,
   url,
   verbose
 )
@@ -189,6 +191,8 @@ as created by \link[plinkr]{create_plink_options}}
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
 
+\item{png_filename}{name of the \code{PNG} file to be produced}
+
 \item{project_filenames}{path to the files
 as created (and returned) by \link{gcae_project}}
 
@@ -216,6 +220,8 @@ train_opts/train_opts_id.json}
 
 \item{trainedmodelname}{name of the trained model,
 which is \code{ae_out} by default}
+
+\item{unique_id}{the unique identifier of a setting}
 
 \item{url}{\code{GCAE} download URL}
 

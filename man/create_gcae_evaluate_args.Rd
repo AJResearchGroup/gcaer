@@ -23,7 +23,9 @@ Create the CLI arguments to evaluate the \code{GCAE} training
 \examples{
 gcae_setup <- create_test_gcae_setup()
 args <- create_gcae_evaluate_args(
-  gcae_setup = gcae_setup
+  gcae_setup = gcae_setup,
+  metrics = "f1_score_3",
+  epoch = 123
 )
 # 'python3' is the path to Python3
 # 'run_gcae.py' is the path to the GenoCAE Python script

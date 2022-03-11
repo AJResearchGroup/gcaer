@@ -4,7 +4,7 @@
 \alias{analyse_qt_prediction}
 \title{Determine how well the quantitative trait prediction worked}
 \usage{
-analyse_qt_prediction(datadir, trainedmodeldir, unique_id, verbose = FALSE)
+analyse_qt_prediction(datadir, trainedmodeldir, png_filename, verbose = FALSE)
 }
 \arguments{
 \item{datadir}{directory where sample data is stored.
@@ -14,14 +14,14 @@ and does not start with a full stop (\code{.})}
 
 \item{trainedmodeldir}{name of the folder to save the trained model to.}
 
-\item{unique_id}{the unique identifier of that setting}
+\item{png_filename}{name of the \code{PNG} file to be produced}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
-Nothing. Will create some files.
+Nothing. Will create a PNG file.
 }
 \description{
 Determine how well the quantitative trait prediction worked

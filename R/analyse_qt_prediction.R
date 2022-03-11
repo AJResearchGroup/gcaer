@@ -1,23 +1,28 @@
 #' Determine how well the quantitative trait prediction worked
 #'
 #' @inheritParams default_params_doc
-#' @param unique_id the unique identifier of that setting
-#' @return Nothing. Will create some files.
+#' @return Nothing. Will create a PNG file.
 #' @author Richèl J.C. Bilderbeek
 #' @export
 analyse_qt_prediction <- function(
   datadir,
   trainedmodeldir,
-  unique_id,
+  png_filename,
   verbose = FALSE
 ) {
+  true_phenotype <- NULL; rm(true_phenotype) # nolint, fixes warning: no visible binding for global variable
+  predicted_phenotype <- NULL; rm(predicted_phenotype) # nolint, fixes warning: no visible binding for global variable
+  ..eq.label.. <- NULL; rm(..eq.label..) # nolint, fixes warning: no visible binding for global variable
+  ..rr.label.. <- NULL; rm(..rr.label..) # nolint, fixes warning: no visible binding for global variable
 
   input_phe_filename <- list.files(
     path = datadir,
     pattern = "\\.phe$",
     full.names = TRUE
   )
-  message("input_phe_filename: ", input_phe_filename)
+  if (verbose) {
+    message("input_phe_filename: ", input_phe_filename)
+  }
   testthat::expect_equal(length(input_phe_filename), 1)
   testthat::expect_true(file.exists(input_phe_filename))
   results_phe_filename <- list.files(
@@ -31,7 +36,8 @@ analyse_qt_prediction <- function(
 
   # Take the predicted phenotypes
   input_phe_table <- plinkr::read_plink_phe_file(input_phe_filename)
-  if (verbose) {
+  if (verbose && "never show" == "this") {
+    # Never show this, because this can be sensitive data
     message(
       "head(input_phe_table): \n",
       paste0(knitr::kable(utils::head(input_phe_table)), collapse = "\n")
@@ -39,10 +45,12 @@ analyse_qt_prediction <- function(
   }
 
   results_phe_table <- plinkr::read_plink_phe_file(results_phe_filename)
-  message(
-    "head(results_phe_table): \n",
-    paste0(knitr::kable(utils::head(results_phe_table)), collapse = "\n")
-  )
+  if (verbose) {
+    message(
+      "head(results_phe_table): \n",
+      paste0(knitr::kable(utils::head(results_phe_table)), collapse = "\n")
+    )
+  }
 
   testthat::expect_equal(
     input_phe_table$FID,
@@ -65,55 +73,63 @@ analyse_qt_prediction <- function(
     results_phe_table,
     by = c("FID", "IID")
   )
-  HIERO
-  full_phe_table$predicted_phenotype_squared <-
-    full_phe_table$predicted_phenotype ^ 2
-  full_phe_table$predicted_phenotype_cubed <-
-    full_phe_table$predicted_phenotype ^ 3
+  if (verbose) {
+    full_phe_table$predicted_phenotype_squared <-
+      full_phe_table$predicted_phenotype ^ 2
+    full_phe_table$predicted_phenotype_cubed <-
+      full_phe_table$predicted_phenotype ^ 3
 
-  linear_model <- lm(
-    true_phenotype ~ predicted_phenotype,
-    data = full_phe_table
-  )
-  t_linear <- broom::tidy(linear_model)
-  t_linear$model <- "linear"
-  quadratic_model <- lm(
-    true_phenotype ~ predicted_phenotype + predicted_phenotype_squared,
-    data = full_phe_table
-  )
-  t_quadratic <- broom::tidy(quadratic_model)
-  t_quadratic$model <- "quadratic"
-  cubic_model <- lm(
-    true_phenotype ~ predicted_phenotype +
-      predicted_phenotype_squared +
-      predicted_phenotype_cubed,
-    data = full_phe_table
-  )
-  t_cubic <- broom::tidy(cubic_model)
-  t_cubic$model <- "cubic"
-  t <- dplyr::bind_rows(t_linear, t_quadratic, t_cubic)
+    linear_model <- stats::lm(
+      true_phenotype ~ predicted_phenotype,
+      data = full_phe_table
+    )
+    t_linear <- broom::tidy(linear_model)
+    t_linear$model <- "linear"
+    quadratic_model <- stats::lm(
+      true_phenotype ~ predicted_phenotype + predicted_phenotype_squared,
+      data = full_phe_table
+    )
+    t_quadratic <- broom::tidy(quadratic_model)
+    t_quadratic$model <- "quadratic"
+    cubic_model <- stats::lm(
+      true_phenotype ~ predicted_phenotype +
+        predicted_phenotype_squared +
+        predicted_phenotype_cubed,
+      data = full_phe_table
+    )
+    t_cubic <- broom::tidy(cubic_model)
+    t_cubic$model <- "cubic"
+    t <- dplyr::bind_rows(t_linear, t_quadratic, t_cubic)
+    message(paste0(knitr::kable(t), collapse = "\n"))
+  }
+  if (verbose) {
+    t_r_squareds = tibble::tibble(
+      model = c("linear", "quadratic", "cubic"),
+      r_squared = c(
+        summary(linear_model)$r.squared,
+        summary(quadratic_model)$r.squared,
+        summary(cubic_model)$r.squared
+      )
+    )
+    message(paste0(knitr::kable(t_r_squareds), collapse = "\n"))
+  }
 
-  correlation::correlation(full_phe_table)
-  correlation::correlation(full_phe_table, method = "distance")
-  model <- lm(
-    predicted_phenotype~true_phenotype,
-    data = full_phe_table
-  )
-  summary(model)
-  model <- lm(
-    predicted_phenotype^2~true_phenotype,
-    data = full_phe_table
-  )
-
-  ggplot2::ggplot(
-    full_phe_table,
-    ggplot2::aes(x = true_phenotype, y = predicted_phenotype)
-  ) + ggplot2::geom_point() +
-    ggplot2::geom_abline(slope = 1, lty = "dashed") +
-    ggplot2::geom_smooth(method = "lm", se = TRUE, col = "red") +
-    ggplot2::geom_smooth(method = "lm", formula = y ~ x + I(x^2), se = TRUE, col = "blue") +
-    ggplot2::geom_smooth(method = "lm", formula = y ~ x + I(x^3), se = TRUE, col = "green")
-
-  ggplot2::ggsave("~/20220304_issue_122.png", width = 7, height = 7)
-
+  trendline_formula <- y ~ x
+  p <- ggplot2::ggplot(full_phe_table, ggplot2::aes(x = true_phenotype, y = predicted_phenotype)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(
+      method = "lm",
+      formula = trendline_formula
+    ) +
+    ggpmisc::stat_poly_eq(
+      formula = trendline_formula,
+      geom = "label",
+      ggplot2::aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),
+      parse = TRUE,
+      position = ggplot2::position_nudge(
+        x = mean(full_phe_table$true_phenotype) - min(full_phe_table$true_phenotype)
+      )
+    )
+  ggplot2::ggsave(png_filename, width = 7, height = 7)
+  png_filename
 }

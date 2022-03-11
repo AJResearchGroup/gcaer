@@ -6,11 +6,14 @@ Newest versions at top.
 
 ### NEW FEATURES
 
+ * Add 'analyse_qt_prediction'
+ * Add 'analyse_qt_prediction_depersonalized'
  * Add 'check_epoch'
  * Add 'check_metric'
  * Add 'check_metrics'
  * Add 'create_gcae_evaluate_args'
  * Add 'gcae_evaluate'
+ * Depend on 'broom' and 'ggpmisc'
 
 ### MINOR IMPROVEMENTS
 

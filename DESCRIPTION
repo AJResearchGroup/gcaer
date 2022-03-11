@@ -14,9 +14,11 @@ RoxygenNote: 7.1.2
 Depends:
     R (>= 3.5.0)
 Imports:
+    broom,
     devtools,
     dplyr,
     gert,
+    ggpmisc,
     ormr (>= 0.6.2.2),
     plinkr (>= 0.19.1),
     rappdirs,

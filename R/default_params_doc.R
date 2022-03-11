@@ -91,6 +91,7 @@
 #' as checked by \link{check_pheno_model_id}
 #' @param plink_options PLINK options,
 #' as created by \link[plinkr]{create_plink_options}
+#' @param png_filename name of the `PNG` file to be produced
 #' @param project_filenames path to the files
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
@@ -109,6 +110,7 @@
 #' @param trainedmodeldir name of the folder to save the trained model to.
 #' @param trainedmodelname name of the trained model,
 #'   which is `ae_out` by default
+#' @param unique_id the unique identifier of a setting
 #' @param url \code{GCAE} download URL
 #' @param verbose the verbosity of a function.
 #' Set to \link{TRUE} for more output.
@@ -156,6 +158,7 @@ default_params_doc <- function(
   phe_filename,
   plink_options,
   pheno_model_id,
+  png_filename,
   project_filenames,
   python_bin_path,
   python_version,
@@ -166,6 +169,7 @@ default_params_doc <- function(
   train_times_filename,
   trainedmodeldir,
   trainedmodelname,
+  unique_id,
   url,
   verbose
 ) {
