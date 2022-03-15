@@ -48,10 +48,7 @@ test_that("use", {
         gcae_input_data$phe_table
       )
     ),
-    assoc_qt_params = plinkr::create_assoc_qt_params(
-      data = data,
-      phe_table = gcae_input_data$phe_table
-    )
+    assoc_qt_params = plinkr::create_assoc_qt_params()
   )
   # The first p value must be lowest
   expect_equal(1, which.min(t$qassoc_table$P))
@@ -111,10 +108,7 @@ test_that("use, 0 random SNPs", {
         gcae_input_data$phe_table
       )
     ),
-    assoc_qt_params = plinkr::create_assoc_qt_params(
-      data = data,
-      phe_table = gcae_input_data$phe_table
-    )
+    assoc_qt_params = plinkr::create_assoc_qt_params()
   )
   # The first p value must be lowest
   expect_equal(1, which.min(t$qassoc_table$P))
