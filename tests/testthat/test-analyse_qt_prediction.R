@@ -8,14 +8,15 @@ test_that("analyse_qt_prediction", {
   trainedmodeldir <- "/home/richel/GitHubs/richel/issue_127/sim_data_2_richel_issue_127_ae"
   unique_id <- "richel_issue_127"
 
-  datadir <-         "/home/richel/GitHubs/richel/issue_141/sim_data_1_richel_issue_140"
-  trainedmodeldir <- "/home/richel/GitHubs/richel/issue_141/sim_data_1_richel_issue_140_ae"
+  datadir <-         "/home/richel/GitHubs/richel/issue_141/richel_issue_140/home/richel/sim_data_1_richel_issue_140"
+  trainedmodeldir <- "/home/richel/GitHubs/richel/issue_141/richel_issue_140/home/richel/sim_data_1_richel_issue_140_ae"
   unique_id <- "richel_issue_141"
 
-  png_filename <- analyse_qt_prediction(
+  png_filename <- paste0("~/", unique_id, ".png")
+  analyse_qt_prediction(
     datadir = datadir,
     trainedmodeldir = trainedmodeldir,
-    unique_id = unique_id,
+    png_filename = png_filename,
     verbose = FALSE
   )
   expect_true(file.exists(png_filename))

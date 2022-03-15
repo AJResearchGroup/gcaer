@@ -115,7 +115,10 @@ analyse_qt_prediction <- function(
   }
 
   trendline_formula <- y ~ x
-  p <- ggplot2::ggplot(full_phe_table, ggplot2::aes(x = true_phenotype, y = predicted_phenotype)) +
+  p <- ggplot2::ggplot(
+    full_phe_table,
+    ggplot2::aes(x = true_phenotype, y = predicted_phenotype)
+  ) + ggplot2::geom_abline(slope = 1, intercept = 0, lty = "dashed") +
     ggplot2::geom_point() +
     ggplot2::geom_smooth(
       method = "lm",
@@ -130,6 +133,7 @@ analyse_qt_prediction <- function(
         x = mean(full_phe_table$true_phenotype) - min(full_phe_table$true_phenotype)
       )
     )
+  p
   ggplot2::ggsave(png_filename, width = 7, height = 7)
-  png_filename
+  p
 }
