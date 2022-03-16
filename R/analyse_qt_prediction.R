@@ -8,6 +8,7 @@ analyse_qt_prediction <- function(
   datadir,
   trainedmodeldir,
   png_filename,
+  csv_filename,
   verbose = FALSE
 ) {
   true_phenotype <- NULL; rm(true_phenotype) # nolint, fixes warning: no visible binding for global variable
@@ -38,6 +39,7 @@ analyse_qt_prediction <- function(
   input_phe_table <- plinkr::read_plink_phe_file(input_phe_filename)
   if (verbose && "never show" == "this") {
     # Never show this, because this can be sensitive data
+    # Also, don't scramble, it is hard to depersonalize these
     message(
       "head(input_phe_table): \n",
       paste0(knitr::kable(utils::head(input_phe_table)), collapse = "\n")
@@ -56,6 +58,7 @@ analyse_qt_prediction <- function(
     input_phe_table$FID,
     results_phe_table$FID
   )
+  HIERO
   testthat::expect_equal(
     input_phe_table$IID,
     results_phe_table$IID
@@ -73,7 +76,13 @@ analyse_qt_prediction <- function(
     results_phe_table,
     by = c("FID", "IID")
   )
-  if (verbose) {
+  mse <- calc_mse_from_identity_line(
+    true_values = full_phe_table$true_phenotype,
+    estimated_values = full_phe_table$predicted_phenotype
+  )
+
+
+  if (verbose && 1 == 2) {
     full_phe_table$predicted_phenotype_squared <-
       full_phe_table$predicted_phenotype ^ 2
     full_phe_table$predicted_phenotype_cubed <-
@@ -102,7 +111,7 @@ analyse_qt_prediction <- function(
     t <- dplyr::bind_rows(t_linear, t_quadratic, t_cubic)
     message(paste0(knitr::kable(t), collapse = "\n"))
   }
-  if (verbose) {
+  if (verbose && 1 == 2) {
     t_r_squareds = tibble::tibble(
       model = c("linear", "quadratic", "cubic"),
       r_squared = c(

@@ -2,6 +2,7 @@
 
 export(analyse_qt_prediction)
 export(analyse_qt_prediction_depersonalized)
+export(calc_mse_from_identity_line)
 export(check_data)
 export(check_data_opts_id)
 export(check_datadir)

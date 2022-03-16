@@ -4,7 +4,13 @@
 \alias{analyse_qt_prediction}
 \title{Determine how well the quantitative trait prediction worked}
 \usage{
-analyse_qt_prediction(datadir, trainedmodeldir, png_filename, verbose = FALSE)
+analyse_qt_prediction(
+  datadir,
+  trainedmodeldir,
+  png_filename,
+  csv_filename,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{datadir}{directory where sample data is stored.
