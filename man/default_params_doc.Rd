@@ -12,6 +12,10 @@ default_params_doc(
   base_phenotype_value,
   bed_filename,
   bim_filename,
+  csv_filename,
+  csv_filename_for_fits,
+  csv_filename_for_mse,
+  csv_filename_for_r_squareds,
   data,
   datadir,
   data_opts_id,
@@ -77,6 +81,22 @@ as can be read using \link[plinkr]{read_plink_bed_file}}
 
 \item{bim_filename}{name of a PLINK \code{.bim} file
 as can be read using \link[plinkr]{read_plink_bim_file}}
+
+\item{csv_filename}{name of the comma-seperated (\code{.csv}) file to be produced,
+as checked by \link{check_csv_filename}}
+
+\item{csv_filename_for_fits}{name for the comma-seperated file
+(as checked by \link{check_csv_filename})
+to store the fits of linear, quadratic and cubic models to}
+
+\item{csv_filename_for_mse}{name for the comma-seperated file
+(as checked by \link{check_csv_filename})
+to store the mean square error compared to the identity line to}
+
+\item{csv_filename_for_r_squareds}{name for the comma-seperated file
+(as checked by \link{check_csv_filename})
+to store the multiple values of R squared
+(i.e. of linear, quadratic and cubic models) to}
 
 \item{data}{file prefix, not including path, of the data files.
 The data files must be in EIGENSTRAT
@@ -191,7 +211,8 @@ as created by \link[plinkr]{create_plink_options}}
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
 
-\item{png_filename}{name of the \code{PNG} file to be produced}
+\item{png_filename}{name of the \code{PNG} file to be produced,
+as checked by \link{check_png_filename}}
 
 \item{project_filenames}{path to the files
 as created (and returned) by \link{gcae_project}}

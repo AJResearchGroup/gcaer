@@ -12,6 +12,18 @@
 #' as can be read using \link[plinkr]{read_plink_bed_file}
 #' @param bim_filename name of a PLINK `.bim` file
 #' as can be read using \link[plinkr]{read_plink_bim_file}
+#' @param csv_filename name of the comma-seperated (`.csv`) file to be produced,
+#' as checked by \link{check_csv_filename}
+#' @param csv_filename_for_fits name for the comma-seperated file
+#' (as checked by \link{check_csv_filename})
+#' to store the fits of linear, quadratic and cubic models to
+#' @param csv_filename_for_mse name for the comma-seperated file
+#' (as checked by \link{check_csv_filename})
+#' to store the mean square error compared to the identity line to
+#' @param csv_filename_for_r_squareds name for the comma-seperated file
+#' (as checked by \link{check_csv_filename})
+#' to store the multiple values of R squared
+#' (i.e. of linear, quadratic and cubic models) to
 #' @param data file prefix, not including path, of the data files.
 #' The data files must be in EIGENSTRAT
 #' or PLINK binary (`.bed`, `.bim`, `.fam`) format)
@@ -91,7 +103,8 @@
 #' as checked by \link{check_pheno_model_id}
 #' @param plink_options PLINK options,
 #' as created by \link[plinkr]{create_plink_options}
-#' @param png_filename name of the `PNG` file to be produced
+#' @param png_filename name of the `PNG` file to be produced,
+#' as checked by \link{check_png_filename}
 #' @param project_filenames path to the files
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
@@ -126,6 +139,10 @@ default_params_doc <- function(
   base_phenotype_value,
   bed_filename,
   bim_filename,
+  csv_filename,
+  csv_filename_for_fits,
+  csv_filename_for_mse,
+  csv_filename_for_r_squareds,
   data,
   datadir,
   data_opts_id,

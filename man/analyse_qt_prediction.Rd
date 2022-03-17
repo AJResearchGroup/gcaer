@@ -8,7 +8,9 @@ analyse_qt_prediction(
   datadir,
   trainedmodeldir,
   png_filename,
-  csv_filename,
+  csv_filename_for_mse,
+  csv_filename_for_fits,
+  csv_filename_for_r_squareds,
   verbose = FALSE
 )
 }
@@ -20,14 +22,28 @@ and does not start with a full stop (\code{.})}
 
 \item{trainedmodeldir}{name of the folder to save the trained model to.}
 
-\item{png_filename}{name of the \code{PNG} file to be produced}
+\item{png_filename}{name of the \code{PNG} file to be produced,
+as checked by \link{check_png_filename}}
+
+\item{csv_filename_for_mse}{name for the comma-seperated file
+(as checked by \link{check_csv_filename})
+to store the mean square error compared to the identity line to}
+
+\item{csv_filename_for_fits}{name for the comma-seperated file
+(as checked by \link{check_csv_filename})
+to store the fits of linear, quadratic and cubic models to}
+
+\item{csv_filename_for_r_squareds}{name for the comma-seperated file
+(as checked by \link{check_csv_filename})
+to store the multiple values of R squared
+(i.e. of linear, quadratic and cubic models) to}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
-Nothing. Will create a PNG file.
+the plot
 }
 \description{
 Determine how well the quantitative trait prediction worked
