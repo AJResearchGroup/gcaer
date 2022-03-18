@@ -3,11 +3,10 @@ test_that("show help", {
   if (!plinkr::is_on_ci()) return()
   gcae_options <- create_gcae_options(ormr_folder_name = "python3")
   if (!is_gcae_installed(gcae_options)) return()
-  expect_silent(
-    text <- run_gcae(
-      args = "--help",
-      gcae_options = gcae_options
-    )
+
+  text <- run_gcae(
+    args = "--help",
+    gcae_options = gcae_options
   )
   expect_true(
     any(

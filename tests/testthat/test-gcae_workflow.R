@@ -86,7 +86,7 @@ test_that("use", {
   # 4. Plot
   if (1 == 2) {
     plot_filenames <- gcae_plot(
-      superpops = superpops,
+      superpops = gcae_setup$superpops,
       gcae_setup = gcae_setup,
       verbose = TRUE
     )

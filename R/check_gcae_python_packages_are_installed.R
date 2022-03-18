@@ -6,7 +6,7 @@
 #' @return Nothing
 #' @author Richèl J.C. Bilderbeek
 #' @export
-check_gcae_python_packages_are_installed <- function( # nolint indeed a long function name
+check_gcae_python_packages_are_installed <- function(# nolint indeed a long function name
   gcae_options = create_gcae_options()
 ) {
   packages <- gcaer::get_gcae_required_python_packages(

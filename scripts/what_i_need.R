@@ -20,7 +20,7 @@ install_conda <- function(folder_name) {
   # ...
 }
 install_conda(folder_name = folder_name)
-testthat::expect_true(is_conda_installed(folder_name = folder_name))
+testthat::expect_true(ormr::is_conda_installed(folder_name = folder_name))
 
 # Get a list of the installed Python packages
 # (or more likely: a tibble)

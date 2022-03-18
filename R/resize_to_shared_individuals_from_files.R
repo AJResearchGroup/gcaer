@@ -23,7 +23,7 @@
 #' summarise_gcae_input_data(gcae_input_data)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-resize_to_shared_individuals_from_files <- function( # nolint indeed a long function name
+resize_to_shared_individuals_from_files <- function(# nolint indeed a long function name
   gcae_input_filenames,
   verbose = FALSE
 ) { # nolint indeed a long function name

@@ -4,7 +4,7 @@
 #'  * `package`
 #'  * `version`
 #' @export
-get_gcae_required_python_packages <- function( # nolint indeed a long function name
+get_gcae_required_python_packages <- function(# nolint indeed a long function name
   gcae_options = create_gcae_options()
 ) {
   if (!gcaer::has_cloned_gcae_repo(gcae_options = gcae_options)) {

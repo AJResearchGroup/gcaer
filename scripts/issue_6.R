@@ -12,9 +12,9 @@ library(plinkr)
 
 # Simulate data in PLINK1 text format
 set.seed(42)
-assoc_qt_data <- create_demo_assoc_qt_data(
+assoc_qt_data <- plinkr::create_demo_assoc_qt_data(
   n_individuals = 166,
-  traits = create_demo_traits()
+  traits = plinkr::create_demo_traits()
 )
 
 # Get the IDs
@@ -97,9 +97,9 @@ plinkr::save_phe_table(
 # But hey, if you want to inspect the data:
 ped_filename <- paste0(base_input_filename, ".ped")
 map_filename <- paste0(base_input_filename, ".map")
-bim_table <- read_plink_bim_file(plink_bin_filenames$bim_filename)
-fam_table <- read_plink_fam_file(plink_bin_filenames$fam_filename)
-bed_table <- read_plink_bed_file(
+bim_table <- plinkr::read_plink_bim_file(plink_bin_filenames$bim_filename)
+fam_table <- plinkr::read_plink_fam_file(plink_bin_filenames$fam_filename)
+bed_table <- plinkr::read_plink_bed_file(
   bed_filename = plink_bin_filenames$bed_filename,
   names_loci = bim_table$id,
   names_ind = fam_table$id
