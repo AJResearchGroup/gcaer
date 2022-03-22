@@ -15,7 +15,7 @@ get_gcae_model_filename <- function(
   model_id = "M0",
   gcae_options = create_gcae_options()
 ) {
-
+  gcaer::check_model_id(model_id)
   file.path(
     gcae_options$gcae_folder,
     "models",

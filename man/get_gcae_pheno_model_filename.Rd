@@ -23,6 +23,16 @@ full paths to the created files
 Get the filename to the \code{GCAE} model.
 This function is named after the GCAE \code{pheno_model_id} flag.
 }
+\examples{
+get_gcae_pheno_model_filename()
+get_gcae_pheno_model_filename(pheno_model_id = "p0")
+get_gcae_pheno_model_filename(pheno_model_id = "p1")
+get_gcae_pheno_model_filename(pheno_model_id = "p2")
+}
+\seealso{
+use \link{get_gcae_model_filename} to get the filename
+to a model.
+}
 \author{
 Richèl J.C. Bilderbeek
 }

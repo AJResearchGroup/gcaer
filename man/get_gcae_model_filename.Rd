@@ -4,7 +4,7 @@
 \alias{get_gcae_model_filename}
 \title{Get the filename to the GCAE model}
 \usage{
-get_gcae_model_filename(model_id = "M1", gcae_options = create_gcae_options())
+get_gcae_model_filename(model_id = "M0", gcae_options = create_gcae_options())
 }
 \arguments{
 \item{model_id}{model id, corresponding to a file models/model_id.json}
@@ -18,6 +18,14 @@ full paths to the created files
 \description{
 Get the filename to the GCAE model.
 This function is named after the GCAE \code{models} folder.
+}
+\examples{
+get_gcae_model_filename()
+get_gcae_model_filename(model_id = "M0")
+}
+\seealso{
+use \link{get_gcae_pheno_model_filename} to get the filename
+to a phenotype model.
 }
 \author{
 Richèl J.C. Bilderbeek
