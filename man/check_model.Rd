@@ -6,6 +6,11 @@
 \usage{
 check_model(model)
 }
+\arguments{
+\item{model}{the \code{GCAE} architecture,
+as checked by \link{check_model}.
+Use \link{read_model_file} to read a \code{GCAE} architecture from file.}
+}
 \value{
 Nothing. Will \link{stop} if \code{model} is invalid.
 }

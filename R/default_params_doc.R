@@ -89,7 +89,15 @@
 #' `losses_from_train_v.csv` file
 #' @param metric the metric, as checked by \link{check_metric}
 #' @param metrics the metrics, as checked by \link{check_metrics}
+#' @param model the `GCAE` architecture,
+#' as checked by \link{check_model}.
+#' Use \link{read_model_file} to read a `GCAE` architecture from file.
+#' @param model_filename name of a file that stores a `GCAE` architecture,
+#' as checked by \link{check_model_filename}.
+#' Use \link{read_model_file} to read a `GCAE` architecture from that file.
 #' @param model_id model id, corresponding to a file models/model_id.json
+#' @param n_neurons the number of neurons,
+#' as checked by \link{check_n_neurons}
 #' @param ormr_folder_name folder where the link[ormr]{ormr} R package
 #' installs the Python packages
 #' @param os name of the operating system,
@@ -168,7 +176,10 @@ default_params_doc <- function(
   losses_from_train_v_filename,
   metric,
   metrics,
+  model,
+  model_filename,
   model_id,
+  n_neurons,
   ormr_folder_name,
   os,
   out,

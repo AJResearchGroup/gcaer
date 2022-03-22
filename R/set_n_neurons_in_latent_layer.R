@@ -15,6 +15,8 @@ set_n_neurons_in_latent_layer <- function(
   n_neurons
 ) {
   gcaer::check_model(model)
+  gcaer::check_n_neurons(n_neurons)
+
   if (length(model$layers) == 1) {
     model$layers[[1]]$args$units <- n_neurons
     return(model)

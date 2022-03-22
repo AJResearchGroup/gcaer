@@ -6,6 +6,11 @@
 \usage{
 read_model_file(model_filename)
 }
+\arguments{
+\item{model_filename}{name of a file that stores a \code{GCAE} architecture,
+as checked by \link{check_model_filename}.
+Use \link{read_model_file} to read a \code{GCAE} architecture from that file.}
+}
 \value{
 a \code{labels_table}, as can be checked by \link{check_labels_table}
 }

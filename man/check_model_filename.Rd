@@ -6,6 +6,11 @@
 \usage{
 check_model_filename(model_filename)
 }
+\arguments{
+\item{model_filename}{name of a file that stores a \code{GCAE} architecture,
+as checked by \link{check_model_filename}.
+Use \link{read_model_file} to read a \code{GCAE} architecture from that file.}
+}
 \value{
 Nothing. Will \link{stop} if \code{model_filename} is invalid.
 }

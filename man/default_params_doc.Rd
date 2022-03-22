@@ -41,7 +41,10 @@ default_params_doc(
   losses_from_train_v_filename,
   metric,
   metrics,
+  model,
+  model_filename,
   model_id,
+  n_neurons,
   ormr_folder_name,
   os,
   out,
@@ -190,7 +193,18 @@ for convenience}
 
 \item{metrics}{the metrics, as checked by \link{check_metrics}}
 
+\item{model}{the \code{GCAE} architecture,
+as checked by \link{check_model}.
+Use \link{read_model_file} to read a \code{GCAE} architecture from file.}
+
+\item{model_filename}{name of a file that stores a \code{GCAE} architecture,
+as checked by \link{check_model_filename}.
+Use \link{read_model_file} to read a \code{GCAE} architecture from that file.}
+
 \item{model_id}{model id, corresponding to a file models/model_id.json}
+
+\item{n_neurons}{the number of neurons,
+as checked by \link{check_n_neurons}}
 
 \item{ormr_folder_name}{folder where the link[ormr]{ormr} R package
 installs the Python packages}

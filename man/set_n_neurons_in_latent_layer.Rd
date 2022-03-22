@@ -6,6 +6,14 @@
 \usage{
 set_n_neurons_in_latent_layer(model, n_neurons)
 }
+\arguments{
+\item{model}{the \code{GCAE} architecture,
+as checked by \link{check_model}.
+Use \link{read_model_file} to read a \code{GCAE} architecture from file.}
+
+\item{n_neurons}{the number of neurons,
+as checked by \link{check_n_neurons}}
+}
 \value{
 the model with the desired number of neurons in the latent layer
 }
