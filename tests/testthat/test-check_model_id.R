@@ -1,5 +1,9 @@
 test_that("use", {
-  expect_silent(check_model_id("my_model_id"))
+  expect_silent(check_model_id("M0"))
+  expect_silent(check_model_id("M1"))
+  expect_silent(check_model_id("M3d"))
+  expect_silent(check_model_id("M3e"))
+  expect_silent(check_model_id("M3f"))
   expect_error(check_model_id(c(1, 1)))
   expect_error(check_model_id(0))
   expect_error(check_model_id(-1))

@@ -1,10 +1,10 @@
 test_that("use", {
   model_filename <- get_gcae_model_filename("M1")
   expect_true(file.exists(model_filename))
-  skip("WIP")
   model <- read_model_file(model_filename)
   n_neurons_before <- get_n_neurons_in_latent_layer(model)
-  expect_equal(75, n_neurons_before)
+  expect_equal(2, n_neurons_before)
+  skip("WIP")
   new_model <- set_n_neurons_in_latent_layer(
     model = model,
     n_neurons = 1
