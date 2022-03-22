@@ -1,6 +1,6 @@
 test_that("use", {
-  skip("WIP")
   pheno_model_filename <- gcaer::get_gcae_pheno_model_filename("p1")
+  skip("WIP")
   pheno_model <- gcaer::read_pheno_model(pheno_model_filename)
   n_neurons_before <- get_n_neurons_in_latent_layer(pheno_model)
   expect_equal(75, n_neurons_before)

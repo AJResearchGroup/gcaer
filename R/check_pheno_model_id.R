@@ -15,4 +15,5 @@ check_pheno_model_id <- function(
   testthat::expect_equal(1, length(pheno_model_id))
   testthat::expect_true(is.character(pheno_model_id))
   testthat::expect_true(nchar(pheno_model_id) > 1)
+  testthat::expect_equal("p", substr(pheno_model_id, 1, 1))
 }

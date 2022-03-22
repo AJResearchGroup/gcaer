@@ -2,6 +2,7 @@ test_that("use", {
   expect_silent(check_pheno_model_id("p1"))
   expect_silent(check_pheno_model_id("p2"))
   expect_error(check_pheno_model_id(c("p1", "p2")))
+  expect_error(check_pheno_model_id("x2"))
   expect_error(check_pheno_model_id(0))
   expect_error(check_pheno_model_id(-1))
   expect_error(check_pheno_model_id(""))

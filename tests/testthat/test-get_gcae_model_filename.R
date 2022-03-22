@@ -1,3 +1,4 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("use", {
+  model_filename <- get_gcae_model_filename("M0")
+  expect_true(file.exists(model_filename))
 })
