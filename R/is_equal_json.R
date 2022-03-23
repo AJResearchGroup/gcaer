@@ -1,5 +1,6 @@
 #' Determine if two JSON objects are the same
-#' @inheritParams default_params_doc
+#' @param json_1 a JSON object, as returned by \link[jsonlite]{read_json}
+#' @param json_2 a JSON object, as returned by \link[jsonlite]{read_json}
 #' @return \link{TRUE} if the objects are the same
 #' @examples
 #' m0 <- read_model_file(get_gcae_model_filename("M0"))

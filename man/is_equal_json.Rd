@@ -6,6 +6,11 @@
 \usage{
 is_equal_json(json_1, json_2)
 }
+\arguments{
+\item{json_1}{a JSON object, as returned by \link[jsonlite]{read_json}}
+
+\item{json_2}{a JSON object, as returned by \link[jsonlite]{read_json}}
+}
 \value{
 \link{TRUE} if the objects are the same
 }
