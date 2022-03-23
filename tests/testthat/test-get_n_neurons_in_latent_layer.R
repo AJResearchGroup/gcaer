@@ -2,7 +2,7 @@ test_that("M0", {
   model_filename <- get_gcae_model_filename("M0")
   model <- read_model_file(model_filename)
   n_neurons <- get_n_neurons_in_latent_layer(model)
-  expect_equal(1, n_neurons)
+  expect_equal(2, n_neurons)
 })
 
 test_that("M1", {
