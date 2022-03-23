@@ -19,8 +19,10 @@ as can be checked by \link{check_model}
 Read a \code{GCAE} autoencoder architecture file
 }
 \examples{
-model_filename <- get_gcae_model_filename("M1")
-model <- read_model_file(model_filename)
+if (is_gcae_installed()) {
+  model_filename <- get_gcae_model_filename("M1")
+  model <- read_model_file(model_filename)
+}
 }
 \seealso{
 use \link{save_model} to save a \code{model}

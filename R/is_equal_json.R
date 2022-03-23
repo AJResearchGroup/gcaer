@@ -3,9 +3,11 @@
 #' @param json_2 a JSON object, as returned by \link[jsonlite]{read_json}
 #' @return \link{TRUE} if the objects are the same
 #' @examples
-#' m0 <- read_model_file(get_gcae_model_filename("M0"))
-#' m1 <- read_model_file(get_gcae_model_filename("M1"))
-#' is_equal_json(m0, m1)
+#' if (is_gcae_installed()) {
+#'   m0 <- read_model_file(get_gcae_model_filename("M0"))
+#'   m1 <- read_model_file(get_gcae_model_filename("M1"))
+#'   is_equal_json(m0, m1)
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 is_equal_json <- function(json_1, json_2) {

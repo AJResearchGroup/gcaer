@@ -2,12 +2,14 @@
 #' @inheritParams default_params_doc
 #' @return the model with the desired number of neurons in the latent layer
 #' @examples
-#' model_filename <- get_gcae_model_filename("M1")
-#' model <- read_model_file(model_filename)
-#' model <- set_n_neurons_in_latent_layer(
-#'   model = model,
-#'   n_neurons = 1
-#' )
+#' if (is_gcae_installed()) {
+#'   model_filename <- get_gcae_model_filename("M1")
+#'   model <- read_model_file(model_filename)
+#'   model <- set_n_neurons_in_latent_layer(
+#'     model = model,
+#'     n_neurons = 1
+#'   )
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 set_n_neurons_in_latent_layer <- function(

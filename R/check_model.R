@@ -6,13 +6,15 @@
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `model` is invalid.
 #' @examples
-#' model_filename <- get_gcae_model_filename("M0")
-#' model <- read_model_file(model_filename)
-#' check_model(model)
+#' if (is_gcae_installed()) {
+#'   model_filename <- get_gcae_model_filename("M0")
+#'   model <- read_model_file(model_filename)
+#'   check_model(model)
 #'
-#' model_filename <- get_gcae_model_filename("M1")
-#' model <- read_model_file(model_filename)
-#' check_model(model)
+#'   model_filename <- get_gcae_model_filename("M1")
+#'   model <- read_model_file(model_filename)
+#'   check_model(model)
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_model <- function(model) {
