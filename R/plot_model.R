@@ -7,12 +7,11 @@
 plot_model <- function(model) {
   gcaer::check_model(model)
 
+  # STUB: use those from the model
   links <- data.frame(
     source = c("A","A", "A", "A", "A","F", "B"),
     target = c("B","B", "C", "D", "F","A", "E")
   )
-
-  # create the network object
   network <- igraph::graph_from_data_frame(d = links, directed = TRUE)
 
   igraph::plot.igraph(network)

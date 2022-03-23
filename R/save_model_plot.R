@@ -13,7 +13,6 @@ save_model_plot <- function(
 
   grDevices::png(png_filename, 600, 600)
   gcaer::plot_model(model = model)
-  igraph::plot.igraph(network)
   grDevices::dev.off()
   invisible(NULL)
 }
