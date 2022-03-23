@@ -155,10 +155,17 @@ analyse_qt_prediction <- function(
     ggpmisc::stat_poly_eq(
       formula = trendline_formula,
       geom = "label",
-      ggplot2::aes(label = paste(..eq.label.., ..rr.label.., "MSE: ", mse_from_identity_line, sep = "~~~")),
+      ggplot2::aes(
+        label = paste(
+          ..eq.label.., ..rr.label..,
+          "MSE: ", mse_from_identity_line,
+          sep = "~~~"
+        )
+      ),
       parse = TRUE,
       position = ggplot2::position_nudge(
-        x = mean(full_phe_table$true_phenotype) - min(full_phe_table$true_phenotype)
+        x = mean(full_phe_table$true_phenotype) -
+          min(full_phe_table$true_phenotype)
       )
     )
   p

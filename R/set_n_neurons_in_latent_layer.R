@@ -24,7 +24,10 @@ set_n_neurons_in_latent_layer <- function(
     return(model)
   }
   is_dense <- purrr::map_lgl(model$layers, function(e) e$class == "Dense")
-  has_name <- purrr::map_lgl(model$layers, function(e) "name" %in% names(e$args))
+  has_name <- purrr::map_lgl(
+    model$layers,
+    function(e) "name" %in% names(e$args)
+  )
   layer_index <- which(is_dense & has_name)
   testthat::expect_equal(1, length(layer_index))
   model$layers[[layer_index]]$args$units <- n_neurons

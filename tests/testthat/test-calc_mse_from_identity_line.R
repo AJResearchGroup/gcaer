@@ -23,4 +23,3 @@ test_that("calculated error", {
     )
   )
 })
-
