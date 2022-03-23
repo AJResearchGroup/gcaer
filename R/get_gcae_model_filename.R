@@ -16,9 +16,13 @@ get_gcae_model_filename <- function(
   gcae_options = create_gcae_options()
 ) {
   gcaer::check_model_id(model_id)
-  file.path(
-    gcae_options$gcae_folder,
-    "models",
-    paste0(model_id, ".json")
+  gcaer::check_gcae_options(gcae_options)
+  normalizePath(
+    file.path(
+      gcae_options$gcae_folder,
+      "models",
+      paste0(model_id, ".json")
+    ),
+    mustWork = FALSE
   )
 }

@@ -11,5 +11,8 @@
 read_model_file <- function(model_filename) {
   testthat::expect_true(file.exists(model_filename))
   gcaer::check_model_filename(model_filename)
-  jsonlite::fromJSON(model_filename, simplifyVector = FALSE)
+  jsonlite::fromJSON(
+    normalizePath(model_filename),
+    simplifyVector = FALSE
+  )
 }
