@@ -10,9 +10,8 @@ test_that("use", {
   )
   n_neurons_after <- get_n_neurons_in_latent_layer(new_model)
   expect_equal(1, n_neurons_after)
-  skip("WIP")
   new_model_filename <- get_gcaer_tempfilename(
-    pattern = "p314_",
+    pattern = "M314_",
     fileext = ".json"
   )
   save_model(
@@ -20,6 +19,9 @@ test_that("use", {
     model_filename = new_model_filename
   )
 
-  new_model_again <- gcaer::read_model(new_model_filename)
-  expect_identical(new_model_again, new_model)
+  new_model_again <- read_model_file(new_model_filename)
+
+  expect_true(is_equal_json(new_model, new_model_again))
+  n_neurons_after_again <- get_n_neurons_in_latent_layer(new_model_again)
+  expect_equal(n_neurons_after, n_neurons_after_again)
 })

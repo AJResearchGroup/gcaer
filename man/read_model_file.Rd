@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_model_file.R
 \name{read_model_file}
 \alias{read_model_file}
-\title{Read a \code{GCAE} labels file}
+\title{Read a \code{GCAE} autoencoder architecture file}
 \usage{
 read_model_file(model_filename)
 }
@@ -12,20 +12,18 @@ as checked by \link{check_model_filename}.
 Use \link{read_model_file} to read a \code{GCAE} architecture from that file.}
 }
 \value{
-a \code{labels_table}, as can be checked by \link{check_labels_table}
+the \code{model} as a JSON object,
+as can be checked by \link{check_model}
 }
 \description{
-Read a \code{GCAE} labels file
-}
-\note{
-\code{GCAE} does not save this data with column names.
+Read a \code{GCAE} autoencoder architecture file
 }
 \examples{
-labels_filename <- get_gcaer_filename("gcae_input_files_1_labels.csv")
-read_labels_file(labels_filename)
+model_filename <- get_gcae_model_filename("M1")
+model <- read_model_file(model_filename)
 }
 \seealso{
-use \link{save_labels_table} to save a \code{labels_table}
+use \link{save_model} to save a \code{model}
 }
 \author{
 Richèl J.C. Bilderbeek
