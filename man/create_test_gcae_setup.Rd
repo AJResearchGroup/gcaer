@@ -12,7 +12,7 @@ create_test_gcae_setup(
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
   pheno_model_id = "p2",
-  trainedmodeldir = get_gcaer_tempfilename(pattern = "ae_out")
+  trainedmodeldir = paste0(get_gcaer_tempfilename(pattern = "ae_out"), "/")
 )
 }
 \arguments{

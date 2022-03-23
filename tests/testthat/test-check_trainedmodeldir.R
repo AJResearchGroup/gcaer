@@ -1,5 +1,6 @@
 test_that("use", {
-  expect_silent(check_trainedmodeldir("my_trainedmodeldir"))
+  expect_silent(check_trainedmodeldir("my_trainedmodeldir/"))
+  expect_error(check_trainedmodeldir("my_trainedmodeldir"))
   expect_error(check_trainedmodeldir(c(1, 1)))
   expect_error(check_trainedmodeldir(0))
   expect_error(check_trainedmodeldir(-1))

@@ -9,7 +9,10 @@ get_n_neurons_in_latent_layer(model)
 \arguments{
 \item{model}{the \code{GCAE} architecture,
 as checked by \link{check_model}.
-Use \link{read_model_file} to read a \code{GCAE} architecture from file.}
+Use \link{read_model_file} to read a \code{GCAE} architecture from file.
+Use \link{save_model} to save the \code{model} to a JSON file.
+Use \link{plot_model} to plot the \code{model}.
+Use \link{save_model_plot} to save a plot of the \code{model} to file.}
 }
 \value{
 the number of neurons in the latent layer

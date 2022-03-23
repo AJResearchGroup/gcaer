@@ -1,7 +1,9 @@
 #' Save a `GCAE` autoencoder architecture file
 #' @inheritParams default_params_doc
 #' @return Nothing
-#' @seealso use \link{read_model_file} to read a `model` from file
+#' @seealso
+#' Use \link{read_model_file} to read a `model` from file
+#' Use \link{save_model_plot} to save the `model` plot.
 #' @author Richèl J.C. Bilderbeek
 #' @export
 save_model <- function(

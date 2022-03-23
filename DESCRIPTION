@@ -19,6 +19,7 @@ Imports:
     dplyr,
     gert,
     ggpmisc,
+    igraph,
     jsonlite,
     ormr (>= 0.6.2.2),
     plinkr (>= 0.19.2),

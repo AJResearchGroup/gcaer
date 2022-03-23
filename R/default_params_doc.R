@@ -93,6 +93,9 @@
 #' @param model the `GCAE` architecture,
 #' as checked by \link{check_model}.
 #' Use \link{read_model_file} to read a `GCAE` architecture from file.
+#' Use \link{save_model} to save the `model` to a JSON file.
+#' Use \link{plot_model} to plot the `model`.
+#' Use \link{save_model_plot} to save a plot of the `model` to file.
 #' @param model_filename name of a file that stores a `GCAE` architecture,
 #' as checked by \link{check_model_filename}.
 #' Use \link{read_model_file} to read a `GCAE` architecture from that file.
