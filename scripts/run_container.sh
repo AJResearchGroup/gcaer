@@ -14,7 +14,6 @@ echo "Show default help from '/opt/gcae'"
 singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif run_gcae.py --help
 
 echo "Show help from local 'run_gcae.py'"
-rm run_gcae.py
 wget https://raw.githubusercontent.com/richelbilderbeek/GenoCAE/Pheno/run_gcae.py
 sed -i 's/GenoCAE./This local version of GenoCAE./g' run_gcae.py
 head run_gcae.py
