@@ -108,7 +108,8 @@ or PLINK binary (\code{.bed}, \code{.bim}, \code{.fam}) format)}
 \item{datadir}{directory where sample data is stored.
 If not absolute: assumed relative to \verb{GenoCAE/} directory.
 A valid \code{datadir} ends with a slash (\code{/})
-and does not start with a full stop (\code{.})}
+and does not start with a full stop (\code{.}),
+as to mimic the \code{GCAE} interface}
 
 \item{data_opts_id}{data options id,
 corresponding to a file data_opts/data_opts_id.json
@@ -251,7 +252,9 @@ train_opts/train_opts_id.json}
 
 \item{train_times_filename}{path to the \code{train_times.csv} file}
 
-\item{trainedmodeldir}{name of the folder to save the trained model to.}
+\item{trainedmodeldir}{name of the folder to save the trained model to.
+A valid \code{trainedmodeldir} ends with a slash (\code{/})
+as to mimic the \code{GCAE} interface}
 
 \item{trainedmodelname}{name of the trained model,
 which is \code{ae_out} by default}

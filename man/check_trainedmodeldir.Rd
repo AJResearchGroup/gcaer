@@ -2,23 +2,24 @@
 % Please edit documentation in R/check_trainedmodeldir.R
 \name{check_trainedmodeldir}
 \alias{check_trainedmodeldir}
-\title{Check if the \code{trainedmodelname} is valid}
+\title{Check if the \code{trainedmodeldir} is valid}
 \usage{
-check_trainedmodeldir(trainedmodelname)
+check_trainedmodeldir(trainedmodeldir)
 }
 \arguments{
-\item{trainedmodelname}{name of the trained model,
-which is \code{ae_out} by default}
+\item{trainedmodeldir}{name of the folder to save the trained model to.
+A valid \code{trainedmodeldir} ends with a slash (\code{/})
+as to mimic the \code{GCAE} interface}
 }
 \value{
-Nothing. Will \link{stop} if \code{trainedmodelname} is invalid.
+Nothing. Will \link{stop} if \code{trainedmodeldir} is invalid.
 }
 \description{
-Check if the \code{trainedmodelname} is valid
+Check if the \code{trainedmodeldir} is valid
 Will \link{stop} if not.
 }
 \examples{
-check_trainedmodeldir("ae_out")
+check_trainedmodeldir("ae_out/")
 }
 \author{
 Richèl J.C. Bilderbeek

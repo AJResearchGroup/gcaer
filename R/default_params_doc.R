@@ -30,7 +30,8 @@
 #' @param datadir directory where sample data is stored.
 #' If not absolute: assumed relative to `GenoCAE/` directory.
 #' A valid `datadir` ends with a slash (`/`)
-#' and does not start with a full stop (`.`)
+#' and does not start with a full stop (`.`),
+#' as to mimic the `GCAE` interface
 #' @param data_opts_id data options id,
 #' corresponding to a file data_opts/data_opts_id.json
 #' The data options affect how data is input to the model.
@@ -129,6 +130,8 @@
 #' train_opts/train_opts_id.json
 #' @param train_times_filename path to the `train_times.csv` file
 #' @param trainedmodeldir name of the folder to save the trained model to.
+#' A valid `trainedmodeldir` ends with a slash (`/`)
+#' as to mimic the `GCAE` interface
 #' @param trainedmodelname name of the trained model,
 #'   which is `ae_out` by default
 #' @param unique_id the unique identifier of a setting

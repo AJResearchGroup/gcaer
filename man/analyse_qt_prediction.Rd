@@ -18,9 +18,12 @@ analyse_qt_prediction(
 \item{datadir}{directory where sample data is stored.
 If not absolute: assumed relative to \verb{GenoCAE/} directory.
 A valid \code{datadir} ends with a slash (\code{/})
-and does not start with a full stop (\code{.})}
+and does not start with a full stop (\code{.}),
+as to mimic the \code{GCAE} interface}
 
-\item{trainedmodeldir}{name of the folder to save the trained model to.}
+\item{trainedmodeldir}{name of the folder to save the trained model to.
+A valid \code{trainedmodeldir} ends with a slash (\code{/})
+as to mimic the \code{GCAE} interface}
 
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
