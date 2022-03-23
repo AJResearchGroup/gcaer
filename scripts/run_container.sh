@@ -10,6 +10,11 @@
 # --bind $PWD/scripts/ : bind the folder, so that it works on GitHub Actions as well
 singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif scripts/demo_container.R
 
+echo "Show default help from '/opt/gcae'"
+singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif run_gcae.py --help
+
+echo "Show help from '/opt/gcae'"
 wget https://raw.githubusercontent.com/richelbilderbeek/GenoCAE/Pheno/run_gcae.py
-singularity run gcaer.sif scripts/demo_container.R run_gcae.py
+sed -i 's/GenoCAE./This local version of GenoCAE./g' run_gcae.py
+singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif run_gcae.py --help
 
