@@ -142,33 +142,20 @@ analyse_qt_prediction <- function(
   }
   readr::write_csv(x = t_r_squareds, file = csv_filename_for_r_squareds)
 
+  x_axis_min <- min(0.0, min(full_phe_table$true_phenotype))
+  x_axis_max <- max(0.0, max(full_phe_table$true_phenotype))
+  y_axis_min <- min(0.0, min(full_phe_table$predicted_phenotype))
+  y_axis_max <- max(0.0, max(full_phe_table$predicted_phenotype))
+
   trendline_formula <- y ~ x
   p <- ggplot2::ggplot(
     full_phe_table,
     ggplot2::aes(x = true_phenotype, y = predicted_phenotype)
   ) + ggplot2::geom_abline(slope = 1, intercept = 0, lty = "dashed") +
     ggplot2::geom_point() +
-    ggplot2::geom_smooth(
-      method = "lm",
-      formula = trendline_formula
-    ) +
-    ggpmisc::stat_poly_eq(
-      formula = trendline_formula,
-      geom = "label",
-      ggplot2::aes(
-        label = paste(
-          ..eq.label.., ..rr.label..,
-          "MSE: ", mse_from_identity_line,
-          sep = "~~~"
-        )
-      ),
-      parse = TRUE,
-      position = ggplot2::position_nudge(
-        x = mean(full_phe_table$true_phenotype) -
-          min(full_phe_table$true_phenotype)
-      )
-    )
-  p
+    ggplot2::scale_x_continuous(limits = c(x_axis_min, x_axis_max)) +
+    ggplot2::scale_y_continuous(limits = c(y_axis_min, y_axis_max))
+    p
   ggplot2::ggsave(png_filename, width = 7, height = 7)
   p
 }
