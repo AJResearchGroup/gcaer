@@ -38,6 +38,15 @@ calc_nmse_from_identity_line <- function(
   testthat::expect_equal(length(true_values), length(estimated_values))
   mean <- mean(true_values)
   sd <- sd(true_values)
+  if (sd == 0) {
+    stop(
+      "The distribution of 'true_value' must have ",
+        "a non-zero standard deviation, \n",
+      "as these values will be transformed ",
+        "to have a standard deviation of 1.0. \n"
+    )
+  }
+  testthat::expect_true(sd > 0.0)
   normalized_true_values <- (true_values - mean) / sd
   normalized_estimated_values <- (estimated_values - mean) / sd
   calc_mse_from_identity_line(

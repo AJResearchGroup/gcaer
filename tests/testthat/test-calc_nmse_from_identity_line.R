@@ -15,13 +15,14 @@ test_that("calculated error", {
 
   true_values <- c(0, 0)
   estimated_values <- c(1, 2)
-  expect_equal(
-    mean(c(1.0 ^ 2, 2.0 ^ 2)),
+  expect_error(
     calc_nmse_from_identity_line(
       true_values = true_values,
       estimated_values = estimated_values
-    )
+    ),
+    "The distribution of 'true_value' must have a non-zero standard deviation"
   )
+
 })
 
 test_that("show that scale does not matters anymore", {
