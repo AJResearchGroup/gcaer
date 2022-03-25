@@ -13,9 +13,7 @@ default_params_doc(
   bed_filename,
   bim_filename,
   csv_filename,
-  csv_filename_for_fits,
-  csv_filename_for_mse,
-  csv_filename_for_r_squareds,
+  csv_filename_for_nmse,
   data,
   datadir,
   data_opts_id,
@@ -88,18 +86,9 @@ as can be read using \link[plinkr]{read_plink_bim_file}}
 \item{csv_filename}{name of the comma-seperated (\code{.csv}) file to be produced,
 as checked by \link{check_csv_filename}}
 
-\item{csv_filename_for_fits}{name for the comma-seperated file
+\item{csv_filename_for_nmse}{name for the comma-seperated file
 (as checked by \link{check_csv_filename})
-to store the fits of linear, quadratic and cubic models to}
-
-\item{csv_filename_for_mse}{name for the comma-seperated file
-(as checked by \link{check_csv_filename})
-to store the mean square error compared to the identity line to}
-
-\item{csv_filename_for_r_squareds}{name for the comma-seperated file
-(as checked by \link{check_csv_filename})
-to store the multiple values of R squared
-(i.e. of linear, quadratic and cubic models) to}
+to store the normalized mean square error compared to the identity line}
 
 \item{data}{file prefix, not including path, of the data files.
 The data files must be in EIGENSTRAT

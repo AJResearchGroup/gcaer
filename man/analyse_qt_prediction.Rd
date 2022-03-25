@@ -8,9 +8,7 @@ analyse_qt_prediction(
   datadir,
   trainedmodeldir,
   png_filename,
-  csv_filename_for_mse,
-  csv_filename_for_fits,
-  csv_filename_for_r_squareds,
+  csv_filename_for_nmse,
   verbose = FALSE
 )
 }
@@ -28,18 +26,9 @@ as to mimic the \code{GCAE} interface}
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 
-\item{csv_filename_for_mse}{name for the comma-seperated file
+\item{csv_filename_for_nmse}{name for the comma-seperated file
 (as checked by \link{check_csv_filename})
-to store the mean square error compared to the identity line to}
-
-\item{csv_filename_for_fits}{name for the comma-seperated file
-(as checked by \link{check_csv_filename})
-to store the fits of linear, quadratic and cubic models to}
-
-\item{csv_filename_for_r_squareds}{name for the comma-seperated file
-(as checked by \link{check_csv_filename})
-to store the multiple values of R squared
-(i.e. of linear, quadratic and cubic models) to}
+to store the normalized mean square error compared to the identity line}
 
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.

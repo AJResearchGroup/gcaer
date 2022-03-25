@@ -2,6 +2,7 @@
 
 export(analyse_qt_prediction)
 export(calc_mse_from_identity_line)
+export(calc_nmse_from_identity_line)
 export(check_csv_filename)
 export(check_data)
 export(check_data_opts_id)

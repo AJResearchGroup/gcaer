@@ -8,17 +8,13 @@ analyse_qt_prediction <- function(
   datadir,
   trainedmodeldir,
   png_filename,
-  csv_filename_for_mse,
-  csv_filename_for_fits,
-  csv_filename_for_r_squareds,
+  csv_filename_for_nmse,
   verbose = FALSE
 ) {
   gcaer::check_datadir(datadir)
   gcaer::check_trainedmodeldir(trainedmodeldir)
   gcaer::check_png_filename(png_filename)
-  gcaer::check_csv_filename(csv_filename_for_mse)
-  gcaer::check_csv_filename(csv_filename_for_fits)
-  gcaer::check_csv_filename(csv_filename_for_r_squareds)
+  gcaer::check_csv_filename(csv_filename_for_nmse)
   plinkr::check_verbose(verbose)
 
   testthat::expect_true(dir.exists(datadir))
@@ -88,59 +84,14 @@ analyse_qt_prediction <- function(
     results_phe_table,
     by = c("FID", "IID")
   )
-  mse_from_identity_line <- calc_mse_from_identity_line(
+  nmse_from_identity_line <- calc_nmse_from_identity_line(
     true_values = full_phe_table$true_phenotype,
     estimated_values = full_phe_table$predicted_phenotype
   )
   t_mse <- tibble::tibble(
-    mse = mse_from_identity_line
+    nmse = nmse_from_identity_line
   )
-  readr::write_csv(x = t_mse, file = csv_filename_for_mse)
-
-  # Calculate the firs
-  full_phe_table$predicted_phenotype_squared <-
-    full_phe_table$predicted_phenotype ^ 2
-  full_phe_table$predicted_phenotype_cubed <-
-    full_phe_table$predicted_phenotype ^ 3
-
-  linear_model <- stats::lm(
-    true_phenotype ~ predicted_phenotype,
-    data = full_phe_table
-  )
-  t_linear <- broom::tidy(linear_model)
-  t_linear$model <- "linear"
-  quadratic_model <- stats::lm(
-    true_phenotype ~ predicted_phenotype + predicted_phenotype_squared,
-    data = full_phe_table
-  )
-  t_quadratic <- broom::tidy(quadratic_model)
-  t_quadratic$model <- "quadratic"
-  cubic_model <- stats::lm(
-    true_phenotype ~ predicted_phenotype +
-      predicted_phenotype_squared +
-      predicted_phenotype_cubed,
-    data = full_phe_table
-  )
-  t_cubic <- broom::tidy(cubic_model)
-  t_cubic$model <- "cubic"
-  t_fits <- dplyr::bind_rows(t_linear, t_quadratic, t_cubic)
-  if (verbose) {
-    message(paste0(knitr::kable(t_fits), collapse = "\n"))
-  }
-  readr::write_csv(x = t_fits, file = csv_filename_for_fits)
-
-  t_r_squareds <- tibble::tibble(
-    model = c("linear", "quadratic", "cubic"),
-    r_squared = c(
-      summary(linear_model)$r.squared,
-      summary(quadratic_model)$r.squared,
-      summary(cubic_model)$r.squared
-    )
-  )
-  if (verbose) {
-    message(paste0(knitr::kable(t_r_squareds), collapse = "\n"))
-  }
-  readr::write_csv(x = t_r_squareds, file = csv_filename_for_r_squareds)
+  readr::write_csv(x = t_mse, file = csv_filename_for_nmse)
 
   x_axis_min <- min(0.0, min(full_phe_table$true_phenotype))
   x_axis_max <- max(0.0, max(full_phe_table$true_phenotype))

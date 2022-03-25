@@ -5,20 +5,14 @@ test_that("analyse_qt_prediction", {
   unique_id <- "richel_issue_141"
 
   png_filename <- paste0("~/", unique_id, ".png")
-  csv_filename_for_mse <- paste0("~/", unique_id, "_mse.csv")
-  csv_filename_for_fits <- paste0("~/", unique_id, "_fits.csv")
-  csv_filename_for_r_squareds <- paste0("~/", unique_id, "_r_squareds.csv")
+  csv_filename_for_nmse <- paste0("~/", unique_id, "_nmse.csv")
   analyse_qt_prediction(
     datadir = datadir,
     trainedmodeldir = trainedmodeldir,
     png_filename = png_filename,
-    csv_filename_for_fits = csv_filename_for_fits,
-    csv_filename_for_mse = csv_filename_for_mse,
-    csv_filename_for_r_squareds = csv_filename_for_r_squareds,
+    csv_filename_for_nmse = csv_filename_for_nmse,
     verbose = FALSE
   )
   expect_true(file.exists(png_filename))
-  expect_true(file.exists(csv_filename_for_mse))
-  expect_true(file.exists(csv_filename_for_fits))
-  expect_true(file.exists(csv_filename_for_r_squareds))
+  expect_true(file.exists(csv_filename_for_nmse))
 })

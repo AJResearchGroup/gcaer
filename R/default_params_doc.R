@@ -14,16 +14,9 @@
 #' as can be read using \link[plinkr]{read_plink_bim_file}
 #' @param csv_filename name of the comma-seperated (`.csv`) file to be produced,
 #' as checked by \link{check_csv_filename}
-#' @param csv_filename_for_fits name for the comma-seperated file
+#' @param csv_filename_for_nmse name for the comma-seperated file
 #' (as checked by \link{check_csv_filename})
-#' to store the fits of linear, quadratic and cubic models to
-#' @param csv_filename_for_mse name for the comma-seperated file
-#' (as checked by \link{check_csv_filename})
-#' to store the mean square error compared to the identity line to
-#' @param csv_filename_for_r_squareds name for the comma-seperated file
-#' (as checked by \link{check_csv_filename})
-#' to store the multiple values of R squared
-#' (i.e. of linear, quadratic and cubic models) to
+#' to store the normalized mean square error compared to the identity line
 #' @param data file prefix, not including path, of the data files.
 #' The data files must be in EIGENSTRAT
 #' or PLINK binary (`.bed`, `.bim`, `.fam`) format)
@@ -154,9 +147,7 @@ default_params_doc <- function(
   bed_filename,
   bim_filename,
   csv_filename,
-  csv_filename_for_fits,
-  csv_filename_for_mse,
-  csv_filename_for_r_squareds,
+  csv_filename_for_nmse,
   data,
   datadir,
   data_opts_id,
