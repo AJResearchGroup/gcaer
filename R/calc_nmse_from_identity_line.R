@@ -49,7 +49,7 @@ calc_nmse_from_identity_line <- function(
   testthat::expect_true(sd > 0.0)
   normalized_true_values <- (true_values - mean) / sd
   normalized_estimated_values <- (estimated_values - mean) / sd
-  calc_mse_from_identity_line(
+  gcaer::calc_mse_from_identity_line(
     true_values = normalized_true_values,
     estimated_values = normalized_estimated_values
   )
