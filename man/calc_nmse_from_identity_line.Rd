@@ -21,7 +21,7 @@ If the estimated values are equal to the true values, the MSE is zero.
 }
 \examples{
 true_values_degrees <- seq(1, 360)
-estimated_values_degrees <- true_values + stats::runif(n = 360)
+estimated_values_degrees <- true_values_degrees + stats::runif(n = 360)
 nmse_degrees <- calc_nmse_from_identity_line(
   true_values = true_values_degrees,
   estimated_values = estimated_values_degrees
