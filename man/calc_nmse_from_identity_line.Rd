@@ -22,7 +22,7 @@ If the estimated values are equal to the true values, the MSE is zero.
 \examples{
 true_values_degrees <- seq(1, 360)
 estimated_values_degrees <- true_values + stats::runif(n = 360)
-mse_degrees <- calc_nmse_from_identity_line(
+nmse_degrees <- calc_nmse_from_identity_line(
   true_values = true_values_degrees,
   estimated_values = estimated_values_degrees
 )
@@ -31,7 +31,7 @@ nmse_degrees
 # Convert degrees to radians
 true_values_radians <- 2.0 * pi * true_values_degrees / 360
 estimated_values_radians <- 2.0 * pi * estimated_values_degrees / 360
-mse_radians <- calc_nmse_from_identity_line(
+nmse_radians <- calc_nmse_from_identity_line(
   true_values = true_values_radians,
   estimated_values = estimated_values_radians
 )
