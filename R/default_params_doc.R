@@ -52,6 +52,8 @@
 #'     as can be read by \link{read_labels_file}
 #' @param gcae_options options to run GCAE,
 #' as created by \link{create_gcae_options}
+#' @param gcae_options_filename name of a file to save/load a `gcae_options`
+#' to/from
 #' @param gcae_setup GCAE model setup,
 #' as created by \link{create_gcae_setup},
 #' read from file by \link{read_gcae_setup_file},
@@ -164,6 +166,7 @@ default_params_doc <- function(
   gcae_input_data,
   gcae_input_filenames,
   gcae_options,
+  gcae_options_filename,
   gcae_setup,
   gcae_setup_filename,
   gcae_version,

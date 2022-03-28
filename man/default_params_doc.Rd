@@ -25,6 +25,7 @@ default_params_doc(
   gcae_input_data,
   gcae_input_filenames,
   gcae_options,
+  gcae_options_filename,
   gcae_setup,
   gcae_setup_filename,
   gcae_version,
@@ -138,6 +139,9 @@ as can be read by \link{read_labels_file}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{gcae_options_filename}{name of a file to save/load a \code{gcae_options}
+to/from}
 
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup},
