@@ -34,6 +34,8 @@ This is a list of functions to run or with with \code{GCAE}:
 \item \link{gcae_evaluate}: run \code{GCAE} \code{evaluate}
 }
 
+These steps are all combined in the function \link{do_full_experiment}.
+
 This is a list of functions to create simulated data for \code{GCAE}:
 \itemize{
 \item \link{create_gcae_input_files_1}: create \code{GCAE} input files

@@ -29,5 +29,4 @@ check_datadir <- function(
       "datadir: ", datadir
     )
   }
-
 }

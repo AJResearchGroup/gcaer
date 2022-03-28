@@ -8,7 +8,10 @@ check_gcae_train_files_are_present(gcae_setup)
 }
 \arguments{
 \item{gcae_setup}{GCAE model setup,
-as created by \link{create_gcae_setup}}
+as created by \link{create_gcae_setup},
+read from file by \link{read_gcae_setup_file},
+checked by \link{check_gcae_setup},
+and saved to file by \link{save_gcae_setup}.}
 }
 \value{
 nothing

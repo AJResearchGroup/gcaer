@@ -62,7 +62,7 @@ create_gcae_setup(
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",
   pheno_model_id = "p2",
-  trainedmodeldir = "ae_out"
+  trainedmodeldir = "ae_out/"
 )
 }
 \author{

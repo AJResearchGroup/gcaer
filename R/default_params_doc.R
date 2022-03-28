@@ -53,7 +53,12 @@
 #' @param gcae_options options to run GCAE,
 #' as created by \link{create_gcae_options}
 #' @param gcae_setup GCAE model setup,
-#' as created by \link{create_gcae_setup}
+#' as created by \link{create_gcae_setup},
+#' read from file by \link{read_gcae_setup_file},
+#' checked by \link{check_gcae_setup},
+#' and saved to file by \link{save_gcae_setup}.
+#' @param gcae_setup_filename name of a file to save/load a `gcae_setup`
+#' to/from
 #' @param gcae_version version of GCAE, e.g. \code{"1.0"}
 #' Use \link{get_gcae_version} to get the \code{GCAE} version.
 #' @param gcaer_folder name of the folder where \link{gcaer}
@@ -160,6 +165,7 @@ default_params_doc <- function(
   gcae_input_filenames,
   gcae_options,
   gcae_setup,
+  gcae_setup_filename,
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,

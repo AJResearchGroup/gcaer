@@ -12,7 +12,7 @@
 #'   train_opts_id = "ex3",
 #'   data_opts_id = "b_0_4",
 #'   pheno_model_id = "p2",
-#'   trainedmodeldir = "ae_out"
+#'   trainedmodeldir = "ae_out/"
 #' )
 #' @author Richèl J.C. Bilderbeek
 #' @export
@@ -33,6 +33,8 @@ create_gcae_setup <- function(
   gcaer::check_train_opts_id(train_opts_id)
   gcaer::check_data_opts_id(data_opts_id)
   gcaer::check_pheno_model_id(pheno_model_id)
+  gcaer::check_trainedmodeldir(trainedmodeldir)
+
   list(
     datadir = datadir,
     data = data,
