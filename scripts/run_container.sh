@@ -11,7 +11,7 @@
 singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif scripts/demo_container.R
 
 echo "Show default help from '/opt/gcae'"
-singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif run_gcae.py --help
+singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif --help
 
 echo "Show help from local 'run_gcae.py'"
 wget https://raw.githubusercontent.com/richelbilderbeek/GenoCAE/Pheno/run_gcae.py
