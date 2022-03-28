@@ -29,7 +29,7 @@ test_that("show that scale does not matters anymore", {
 
   true_values_degrees <- seq(1, 360)
   estimated_values_degrees <- true_values_degrees + runif(n = 360)
-  expect_equal(length(true_values), length(estimated_values))
+  expect_equal(length(true_values_degrees), length(estimated_values_degrees))
   mse_degrees <- calc_nmse_from_identity_line(
     true_values = true_values_degrees,
     estimated_values = estimated_values_degrees
