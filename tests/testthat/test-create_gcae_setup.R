@@ -7,7 +7,7 @@ test_that("use", {
   data_opts_id <- "b_0_4"
   pheno_model_id <- "p2"
   superpops <- "path_to_superpops"
-  trainedmodeldir <- get_gcaer_tempfilename(pattern = "ae_out")
+  trainedmodeldir <- paste0(get_gcaer_tempfilename(pattern = "ae_out"), "/")
   gcae_setup <- create_gcae_setup(
     datadir = datadir,
     data = data,
