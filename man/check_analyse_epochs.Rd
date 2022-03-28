@@ -14,7 +14,9 @@ Check if the \code{analyse_epochs} is valid
 Will \link{stop} if not.
 }
 \examples{
+check_analyse_epochs(1)
 check_analyse_epochs(c(1, 2))
+check_analyse_epochs(seq(1, 3))
 }
 \author{
 Richèl J.C. Bilderbeek
