@@ -23,5 +23,5 @@ echo "Show the head of the downloaded 'run_gcae.py':"
 head run_gcae.py
 
 echo "Get the help using the downloaded 'run_gcae.py':"
-singularity run --cleanenv gcaer.sif run_gcae.py --help
+singularity run --cleanenv --bind $PWD gcaer.sif run_gcae.py --help
 

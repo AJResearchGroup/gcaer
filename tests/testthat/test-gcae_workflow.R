@@ -17,7 +17,9 @@ test_that("use", {
   gcae_options <- create_gcae_options()
   datadir <- get_test_datadir()
   data <- "gcae_input_files_1"
-  trainedmodeldir <- normalizePath(get_gcaer_tempfilename(), mustWork = FALSE)
+  trainedmodeldir <- paste0(
+    normalizePath(get_gcaer_tempfilename(), mustWork = FALSE), "/"
+  )
   data_opts_id <- "b_0_4"
   model_id <- "M1"
   train_opts_id <- "ex3"
