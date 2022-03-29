@@ -29,7 +29,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_train <- function(
-  gcae_setup = create_gcae_setup(),
+  gcae_setup,
   epochs = 1,
   save_interval = 1,
   gcae_options = create_gcae_options(),
@@ -37,14 +37,17 @@ gcae_train <- function(
 ) {
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_epochs(epochs)
+  testthat::expect_true(epochs >= 1)
   gcaer::check_save_interval(save_interval)
   gcaer::check_gcae_options(gcae_options)
   plinkr::check_verbose(verbose)
 
   #- name: Train models with phenotype
   # run: python3 run_gcae.py train --datadir example_tiny --data issue_6_bin --model_id M1  --epochs 20 --save_interval 2  --train_opts_id ex3  --data_opts_id b_0_4 --pheno_model_id=p1 # nolint indeed a long line
-  gcaer::check_gcae_train_files_are_present(gcae_setup = gcae_setup)
-
+  gcaer::check_gcae_train_files_are_present(
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options
+  )
 
   args <- create_gcae_train_args(
     gcae_setup = gcae_setup,

@@ -16,7 +16,13 @@ Nothing. Will \link{stop} if \code{epochs} is invalid.
 Check if the \code{epochs} is valid
 Will \link{stop} if not.
 }
+\details{
+Note that in some contexts, \code{epochs} cannot be zero.
+That condition will be checked in that context.
+}
 \examples{
+check_epochs(0)
+check_epochs(1)
 check_epochs(100)
 }
 \author{

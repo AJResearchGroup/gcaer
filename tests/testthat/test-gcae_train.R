@@ -7,15 +7,10 @@ test_that("abuse", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
-  gcae_setup <- create_gcae_setup(
-    datadir = file.path(get_gcae_folder(), "example_tiny/"),
-    data = "HumanOrigins249_tiny"
-  )
   expect_error(
     gcae_train(
       gcae_setup = "nonsense"
     ),
     "'gcae_setup' must be a list"
   )
-
 })

@@ -10,7 +10,7 @@ test_that("use", {
       model_id = "M1",
       superpops = get_gcaer_filename("gcae_input_files_1_labels.csv")
     ),
-    analyse_epochs = seq(1, 2, 3)
+    analyse_epochs = c(1, 2)
   )
   gcae_experiment_results <- do_gcae_experiment(
     gcae_experiment_params = gcae_experiment_params

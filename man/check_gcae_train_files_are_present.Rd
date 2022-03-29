@@ -4,7 +4,7 @@
 \alias{check_gcae_train_files_are_present}
 \title{Check if the files to run \link{gcae_train} are present.}
 \usage{
-check_gcae_train_files_are_present(gcae_setup)
+check_gcae_train_files_are_present(gcae_setup, gcae_options)
 }
 \arguments{
 \item{gcae_setup}{GCAE model setup,
@@ -12,6 +12,9 @@ as created by \link{create_gcae_setup},
 read from file by \link{read_gcae_setup_file},
 checked by \link{check_gcae_setup},
 and saved to file by \link{save_gcae_setup}.}
+
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
 }
 \value{
 nothing
@@ -19,6 +22,22 @@ nothing
 \description{
 Check if the files to run \link{gcae_train} are present.
 Will \link{stop} if not.
+}
+\details{
+These files are:
+\itemize{
+\item The PLINK (\code{.bed}, \code{.bim}, \code{.fam}) binary files
+\item The PLINK (\code{.phe}) phenotype file
+\item A labels (\code{.csv}) file
+\item A \code{GCAE} architecture setup file,
+for example, \verb{M[x].json}, where \verb{[x]} is a number
+\item A \code{GCAE} data options setup file,
+for example, \verb{b_[x]_[y].json}, where \verb{[x]} and \verb{[y]} are numbers
+\item A \code{GCAE} training options setup file,
+for example, \verb{ex[x].json}, where \verb{[x]} is a number
+}
+
+The files will not be checked if their content is valid
 }
 \author{
 Richèl J.C. Bilderbeek

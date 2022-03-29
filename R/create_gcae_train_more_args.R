@@ -1,12 +1,13 @@
-#' Create the CLI arguments to train with GCAE
+#' Create the CLI arguments to resume training the `GCAE`
 #'
-#' Create the CLI arguments to train with GCAE
+#' Create the CLI arguments to resume training the `GCAE`
 #' @inheritParams default_params_doc
 #' @return the CLI arguments
 #' @examples
 #' gcae_setup <- create_test_gcae_setup()
-#' args <- create_gcae_train_args(
+#' args <- create_gcae_train_more_args(
 #'   gcae_setup = gcae_setup,
+#'   resume_from = 0,
 #'   epochs = 1,
 #'   save_interval = 1
 #' )
@@ -16,8 +17,9 @@
 #' cat(full_args)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_gcae_train_args <- function(
+create_gcae_train_more_args <- function(
   gcae_setup,
+  resume_from,
   epochs,
   save_interval
 ) {
@@ -29,6 +31,7 @@ create_gcae_train_args <- function(
     "--datadir", gcae_setup$datadir,
     "--data", gcae_setup$data,
     "--model_id", gcae_setup$model_id,
+    "--resume_from", resume_from, # Unique
     "--epochs", epochs,
     "--save_interval", save_interval,
     "--train_opts_id", gcae_setup$train_opts_id,

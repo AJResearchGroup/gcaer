@@ -11,14 +11,32 @@ do_gcae_experiment <- function(
 ) {
   gcaer::check_gcae_experiment_params(gcae_experiment_params)
 
+  if ("you just want to get the" == "command-line arguments") {
+    cat(
+      gcaer::create_gcae_train_more_args(
+        gcae_setup = gcae_setup, resume_from = 0, epochs = 1, save_interval = 1
+      )
+    )
+    cat(
+      gcaer::create_gcae_train_more_args(
+        gcae_setup = gcae_setup, resume_from = 1, epochs = 1, save_interval = 1
+      )
+    )
+  }
 
-  testthat::expect_true(length(gcae_experiment_params$analyse_epochs) == 1)
-  for (epochs in gcae_experiment_params$analyse_epochs) {
+  analyse_epochs <- gcae_experiment_params$analyse_epochs
+  resume_froms <- c(0, analyse_epochs[-length(analyse_epochs)])
+  n_epochs <- analyse_epochs - resume_froms
+  train_filenameses <- list() # Reduplicated plural
+  HIERO
+
+  for (i in seq_along(n_epochs)) {
+    if (verbose) message(i, "/", length(analyse_epochs))
     # Train to this 'epochs'
-    train_filenames <- gcae_train_more(
+    train_filenameses[[i]] <- gcae_train_more(
       gcae_setup = gcae_experiment_params$gcae_setup,
-      resume_from = 0,
-      epochs = epochs,
+      resume_from = resume_froms[i],
+      epochs = n_epochs[i],
       save_interval = epochs,
       verbose = verbose
     )

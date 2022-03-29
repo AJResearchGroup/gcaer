@@ -1,11 +1,13 @@
 test_that("use", {
 
   gcae_setup <- create_test_gcae_setup()
-  epochs <- 1
+  resume_from <- 10
+  epochs <- 20
   save_interval <- 1
 
-  created <- create_gcae_train_args(
+  created <- create_gcae_train_more_args(
     gcae_setup = gcae_setup,
+    resume_from = resume_from,
     epochs = epochs,
     save_interval = save_interval
   )
@@ -14,6 +16,7 @@ test_that("use", {
     "--datadir", gcae_setup$datadir,
     "--data", gcae_setup$data,
     "--model_id", gcae_setup$model_id,
+    "--resume_from", resume_from, # Unique
     "--epochs", epochs,
     "--save_interval", save_interval,
     "--train_opts_id", gcae_setup$train_opts_id,

@@ -35,7 +35,7 @@ check_gcae_args <- function(args) {
     "--metrics|",
     "--model_id|",
     "--pdata|",
-    "--pheno_model_id",
+    "--pheno_model_id|",
     "--resume_from|",
     "--superpops|",
     "--save_interval|",

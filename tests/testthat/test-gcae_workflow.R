@@ -15,50 +15,18 @@ test_that("use", {
   # 1. Setup
   Sys.time()
   gcae_options <- create_gcae_options()
-  datadir <- get_test_datadir()
-  data <- "gcae_input_files_1"
-  trainedmodeldir <- paste0(
-    normalizePath(get_gcaer_tempfilename(), mustWork = FALSE), "/"
-  )
-  data_opts_id <- "b_0_4"
-  model_id <- "M1"
-  train_opts_id <- "ex3"
   gcae_setup <- create_gcae_setup(
-    datadir = datadir,
-    data = data,
+    datadir = get_test_datadir(),
+    data = "gcae_input_files_1",
     superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"),
-    model_id = model_id,
-    data_opts_id = data_opts_id,
-    train_opts_id = train_opts_id,
+    model_id = "M1",
+    data_opts_id = "b_0_4",
+    train_opts_id = "ex3",
     pheno_model_id = "p2",
-    trainedmodeldir = trainedmodeldir
-  )
-
-  expect_true(
-    file.exists(
-      get_gcae_data_opts_filename(
-        data_opts_id = data_opts_id,
-        gcae_options = gcae_options
-      )
+    trainedmodeldir = paste0(
+      normalizePath(get_gcaer_tempfilename(), mustWork = FALSE), "/"
     )
   )
-  expect_true(
-    file.exists(
-      get_gcae_model_filename(
-        model_id = model_id,
-        gcae_options = gcae_options
-      )
-    )
-  )
-  expect_true(
-    file.exists(
-      get_gcae_train_opts_filename(
-        train_opts_id = train_opts_id,
-        gcae_options = gcae_options
-      )
-    )
-  )
-
 
   # 2. Train, approx 3 mins
   Sys.time()

@@ -1,8 +1,8 @@
 test_that("use", {
   expect_silent(check_epochs(42))
   expect_silent(check_epochs(1))
+  expect_silent(check_epochs(0))
   expect_error(check_epochs(c(1, 1)))
-  expect_error(check_epochs(0))
   expect_error(check_epochs(-1))
   expect_error(check_epochs("nonsense"))
   expect_error(check_epochs(""))

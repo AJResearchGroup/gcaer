@@ -16,7 +16,13 @@ Nothing. Will \link{stop} if \code{epoch} is invalid.
 Check if the \code{epoch} is valid
 Will \link{stop} if not.
 }
+\details{
+Note that in some contexts, \code{epoch} cannot be zero.
+That condition will be checked in that context.
+}
 \examples{
+check_epoch(0) # For example, before the experiment start
+check_epoch(1) # For example, after a first training epoch
 check_epoch(100)
 }
 \author{
