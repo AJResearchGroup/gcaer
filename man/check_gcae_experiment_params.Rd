@@ -20,7 +20,11 @@ that folder, similar to \link{normalizePath}
 with \code{mustWork} set to \link{FALSE}
 }
 \examples{
-gcae_experiment_params <- create_test_gcae_experiment_params()
+gcae_experiment_params <- create_gcae_experiment_params(
+  gcae_options = create_gcae_options(),
+  gcae_setup = create_test_gcae_setup(),
+  analyse_epochs = seq(1, 2, 3)
+)
 check_gcae_experiment_params(gcae_experiment_params)
 }
 \author{

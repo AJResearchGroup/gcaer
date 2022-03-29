@@ -10,7 +10,11 @@
 #' @return the GCAE options,
 #' as can be checked by \link{check_gcae_experiment_params}
 #' @examples
-#' gcae_experiment_params <- create_test_gcae_experiment_params()
+#' gcae_experiment_params <- create_gcae_experiment_params(
+#'   gcae_options = create_gcae_options(),
+#'   gcae_setup = create_test_gcae_setup(),
+#'   analyse_epochs = seq(1, 2, 3)
+#' )
 #' check_gcae_experiment_params(gcae_experiment_params)
 #' @author Richèl J.C. Bilderbeek
 #' @export

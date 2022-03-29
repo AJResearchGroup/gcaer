@@ -11,17 +11,3 @@
 
 echo "Demo the container"
 singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif scripts/demo_container.R
-
-echo "Show default help from '/opt/gcae'"
-singularity run --cleanenv --bind $PWD/scripts/ gcaer.sif --help
-
-echo "Show help from local 'run_gcae.py'"
-echo "Download 'run_gcae.py'"
-wget https://raw.githubusercontent.com/richelbilderbeek/GenoCAE/Pheno/run_gcae.py
-
-echo "Show the head of the downloaded 'run_gcae.py':"
-head run_gcae.py
-
-echo "Get the help using the downloaded 'run_gcae.py':"
-singularity run --cleanenv --bind $PWD gcaer.sif run_gcae.py --help
-

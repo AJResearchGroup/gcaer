@@ -23,15 +23,10 @@ full paths to the created files
 Create the GCAE setup
 }
 \examples{
-create_gcae_setup(
-  datadir = "my_datadir/",
-  data = "HumanOrigins249_tiny",
-  superpops = "HO_superpopulations",
-  model_id = "M1",
-  train_opts_id = "ex3",
-  data_opts_id = "b_0_4",
-  pheno_model_id = "p2",
-  trainedmodeldir = "ae_out/"
+create_gcae_experiment_params(
+  gcae_options = create_gcae_options(),
+  gcae_setup = create_test_gcae_setup(),
+  analyse_epochs = seq(1, 2, 3)
 )
 }
 \author{
