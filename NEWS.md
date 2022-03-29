@@ -16,6 +16,7 @@ Newest versions at top.
  * Add 'gcae_train_more'
  * Add 'read_gcae_options_file'
  * Add 'read_gcae_setup_file'
+ * Add 'rename_files'
  * Add 'save_gcae_options'
  * Add 'save_gcae_setup'
 

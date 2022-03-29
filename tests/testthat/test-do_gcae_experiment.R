@@ -3,11 +3,12 @@ test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
+  clean_gcaer_tempfolder()
   # 1. Setup
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
-      model_id = "M1",
+      model_id = "M0",
       superpops = get_gcaer_filename("gcae_input_files_1_labels.csv")
     ),
     analyse_epochs = c(1, 2)

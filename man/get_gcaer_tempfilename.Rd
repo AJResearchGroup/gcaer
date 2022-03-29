@@ -25,3 +25,11 @@ named \link{gcaer}.
 this function is added to make sure no temporary
 cache files are left undeleted
 }
+\examples{
+get_gcaer_tempfilename()
+get_gcaer_tempfilename(pattern = "my_file")
+get_gcaer_tempfilename(fileext = ".txt")
+}
+\author{
+Richèl J.C. Bilderbeek
+}

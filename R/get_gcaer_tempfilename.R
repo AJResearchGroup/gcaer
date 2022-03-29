@@ -10,6 +10,11 @@
 #' @param fileext	a non-empty character vector
 #'   giving the file extension
 #' @return name for a temporary file
+#' @examples
+#' get_gcaer_tempfilename()
+#' get_gcaer_tempfilename(pattern = "my_file")
+#' get_gcaer_tempfilename(fileext = ".txt")
+#' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcaer_tempfilename <- function(
   pattern = "file",

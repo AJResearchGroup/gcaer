@@ -11,74 +11,44 @@ do_gcae_experiment <- function(
 ) {
   gcaer::check_gcae_experiment_params(gcae_experiment_params)
 
-  if ("you just want to get the" == "command-line arguments") {
-    cat(
-      gcaer::create_gcae_train_more_args(
-        gcae_setup = gcae_setup, resume_from = 0, epochs = 1, save_interval = 1
-      )
-    )
-    cat(
-      gcaer::create_gcae_train_more_args(
-        gcae_setup = gcae_setup, resume_from = 1, epochs = 1, save_interval = 1
-      )
-    )
-  }
-
   analyse_epochs <- gcae_experiment_params$analyse_epochs
   resume_froms <- c(0, analyse_epochs[-length(analyse_epochs)])
   n_epochs <- analyse_epochs - resume_froms
-  train_filenameses <- list() # Reduplicated plural
-  HIERO
 
+  project_resultses <- list()
+  train_filenames <- NA # Will be overwritten by each last training session
   for (i in seq_along(n_epochs)) {
+
     if (verbose) message(i, "/", length(analyse_epochs))
     # Train to this 'epochs'
-    train_filenameses[[i]] <- gcae_train_more(
+    train_filenames <- gcae_train_more(
       gcae_setup = gcae_experiment_params$gcae_setup,
       resume_from = resume_froms[i],
       epochs = n_epochs[i],
-      save_interval = epochs,
+      save_interval = n_epochs[i],
       verbose = verbose
     )
-  }
-  expect_true(all(file.exists(train_filenames)))
-
-  if (1 == 2) {
-    Sys.time()
-
-    # 3. Project
-    Sys.time()
     project_filenames <- gcae_project(
-      gcae_setup = gcae_setup,
-      gcae_options = gcae_options,
+      gcae_setup = gcae_experiment_params$gcae_setup,
+      gcae_options = gcae_experiment_params$gcae_options,
+      verbose = verbose
+    )
+    project_resultses[[i]] <- parse_project_files(project_filenames)
+    filenames_from <- stringr::str_subset(project_filenames, pattern = "^.*.csv$")
+    filenames_to <- stringr::str_replace(
+      string = filenames_from,
+      pattern = ".csv",
+      replacement = paste0("_", analyse_epochs[i], ".csv")
+    )
+    gcaer::rename_files(filenames_from = filenames_from, filenames_to = filenames_to)
+
+    x <- gcaer::gcae_evaluate(
+      gcae_setup = gcae_experiment_params$gcae_setup,
+      gcae_options = gcae_experiment_params$gcae_options,
+      metrics = gcae_experiment_params$metrics,
+      epoch = analyse_epochs[i],
       verbose = TRUE
     )
-    Sys.time()
-
-    project_results <- parse_project_files(project_filenames)
-    expect_equal(
-      names(project_results),
-      c("losses_from_project_table", "genotype_concordances_table")
-    )
-
-    # 4. Plot
-    if (1 == 2) {
-      plot_filenames <- gcae_plot(
-        superpops = gcae_setup$superpops,
-        gcae_setup = gcae_setup,
-        verbose = TRUE
-      )
-      plot_filenames
-      Sys.time()
-    }
-    if (1 == 2) {
-      gcae_evaluate(
-        gcae_setup = gcae_setup,
-        gcae_options = gcae_options,
-        verbose = TRUE
-      )
-    }
-
   }
 
   gcae_experiment_results <- list(
