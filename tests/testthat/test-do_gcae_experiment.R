@@ -12,7 +12,8 @@ test_that("use", {
     ),
     analyse_epochs = seq(1, 2, 3)
   )
-  do_gcae_experiment(
+  gcae_experiment_results <- do_gcae_experiment(
     gcae_experiment_params = gcae_experiment_params
   )
+  expect_silent(check_gcae_experiment_results(gcae_experiment_results))
 })

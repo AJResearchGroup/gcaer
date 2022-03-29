@@ -1,6 +1,8 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
 #'
+#' @param analyse_epochs the epochs to analyse, e.g. `c(1, 2, 3)`,
+#' as checked by \link{check_analyse_epochs}
 #' @param args arguments for the \code{GCAE} executable
 #' @param base_input_filename the base of the filenames that are
 #' used as input for \code{GCAE}/\code{GCAE2}
@@ -33,6 +35,10 @@
 #' @param example_filename name of the example file
 #' @param fam_filename name of a PLINK `.fam` file
 #' as can be read using \link[plinkr]{read_plink_fam_file}
+#' @param gcae_experiment_params parameters to run a full
+#' `GCAE` experimenr (i.e. call \link{do_gcae_experiment}),
+#' as created by \link{create_gcae_experiment_params} and checked
+#' by \link{check_gcae_experiment_params}
 #' @param gcae_folder folder where \code{GCAE} is installed
 #' @param gcae_input_data in-memory data that can be used
 #' as input for `GCAE`. Use link{read_gcae_input_files}
@@ -147,6 +153,7 @@
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
 default_params_doc <- function(
+  analyse_epochs,
   args,
   base_input_filename,
   base_output_filename,
@@ -162,6 +169,7 @@ default_params_doc <- function(
   epochs,
   example_filename,
   fam_filename,
+  gcae_experiment_params,
   gcae_folder,
   gcae_input_data,
   gcae_input_filenames,

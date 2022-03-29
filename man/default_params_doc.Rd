@@ -6,6 +6,7 @@
 documentation.}
 \usage{
 default_params_doc(
+  analyse_epochs,
   args,
   base_input_filename,
   base_output_filename,
@@ -21,6 +22,7 @@ default_params_doc(
   epochs,
   example_filename,
   fam_filename,
+  gcae_experiment_params,
   gcae_folder,
   gcae_input_data,
   gcae_input_filenames,
@@ -68,6 +70,9 @@ default_params_doc(
 )
 }
 \arguments{
+\item{analyse_epochs}{the epochs to analyse, e.g. \code{c(1, 2, 3)},
+as checked by \link{check_analyse_epochs}}
+
 \item{args}{arguments for the \code{GCAE} executable}
 
 \item{base_input_filename}{the base of the filenames that are
@@ -114,6 +119,11 @@ The data options affect how data is input to the model.}
 
 \item{fam_filename}{name of a PLINK \code{.fam} file
 as can be read using \link[plinkr]{read_plink_fam_file}}
+
+\item{gcae_experiment_params}{parameters to run a full
+\code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
+as created by \link{create_gcae_experiment_params} and checked
+by \link{check_gcae_experiment_params}}
 
 \item{gcae_folder}{folder where \code{GCAE} is installed}
 

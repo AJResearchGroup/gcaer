@@ -17,7 +17,6 @@ Newest versions at top.
  * Add 'read_gcae_setup_file'
  * Add 'save_gcae_options'
  * Add 'save_gcae_setup'
- * Depend on 'broom' and 'ggpmisc'
 
 ### MINOR IMPROVEMENTS
 

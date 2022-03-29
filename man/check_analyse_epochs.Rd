@@ -6,6 +6,10 @@
 \usage{
 check_analyse_epochs(analyse_epochs)
 }
+\arguments{
+\item{analyse_epochs}{the epochs to analyse, e.g. \code{c(1, 2, 3)},
+as checked by \link{check_analyse_epochs}}
+}
 \value{
 Nothing. Will \link{stop} if \code{analyse_epochs} is invalid.
 }

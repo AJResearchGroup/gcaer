@@ -15,6 +15,9 @@ as created by \link{create_gcae_setup},
 read from file by \link{read_gcae_setup_file},
 checked by \link{check_gcae_setup},
 and saved to file by \link{save_gcae_setup}.}
+
+\item{analyse_epochs}{the epochs to analyse, e.g. \code{c(1, 2, 3)},
+as checked by \link{check_analyse_epochs}}
 }
 \value{
 full paths to the created files

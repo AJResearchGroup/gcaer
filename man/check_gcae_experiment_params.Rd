@@ -6,6 +6,12 @@
 \usage{
 check_gcae_experiment_params(gcae_experiment_params)
 }
+\arguments{
+\item{gcae_experiment_params}{parameters to run a full
+\code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
+as created by \link{create_gcae_experiment_params} and checked
+by \link{check_gcae_experiment_params}}
+}
 \value{
 the GCAE options,
 as can be checked by \link{check_gcae_experiment_params}
