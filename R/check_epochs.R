@@ -16,4 +16,5 @@ check_epochs <- function(
   testthat::expect_true(is.finite(epochs))
   testthat::expect_equal(epochs, round(epochs))
   testthat::expect_true(epochs >= 1)
+  invisible(epochs)
 }

@@ -1,41 +1,28 @@
-#' Train model, and save its state at certain epochs to disk.
+#' Continue training a model, and save its state at certain epochs to disk.
 #'
-#' Train model, and save its state at certain epochs to disk,
+#' Continue training a model, and save its state at certain epochs to disk.
 #' use the GCAE command-line interface.
 #'
-#' This will train the model from epoch zero. To resume training,
-#' use \link{gcae_train_more}
+#' To simply run the model from epoch zero,
+#' use \link{gcae_train}
 #' @inheritParams default_params_doc
 #' @return full paths to the created files
 #' @seealso
-#' Use \link{gcae_train_more} to continue training.
-#' Use \link{create_gcae_train_args} to get the command-line
+#' Use \link{gcae_train} to do train from epoch zero to end in one go.
+#' Use \link{create_gcae_train_more_args} to get the command-line
 #' arguments.
-#' @examples
-#' if (plinkr::is_on_ci() && is_gcae_installed()) {
-#'   gcae_options <- create_gcae_options()
-#'   gcae_setup <- create_gcae_setup(
-#'     datadir = file.path(gcae_options$gcae_folder, "example_tiny/"),
-#'     data = "issue_6_bin",
-#'     model_id = "M1",
-#'     pheno_model_id = "p2"
-#'   )
-#'   train_filenames <- gcae_train(
-#'     gcae_setup = gcae_setup,
-#'     epochs = 1,
-#'     save_interval = 1
-#'   )
-#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
-gcae_train <- function(
-  gcae_setup = create_gcae_setup(),
+gcae_train_more <- function(
+  gcae_setup = create_test_gcae_setup(),
+  resume_from = 0,
   epochs = 1,
   save_interval = 1,
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
   gcaer::check_gcae_setup(gcae_setup)
+  gcaer::check_resume_from(resume_from)
   gcaer::check_epochs(epochs)
   gcaer::check_save_interval(save_interval)
   gcaer::check_gcae_options(gcae_options)
@@ -82,3 +69,4 @@ gcae_train <- function(
   )
   train_filenames
 }
+

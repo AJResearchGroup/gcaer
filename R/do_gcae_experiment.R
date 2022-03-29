@@ -14,8 +14,10 @@ do_gcae_experiment <- function(
 
   testthat::expect_true(length(gcae_experiment_params$analyse_epochs) == 1)
   for (epochs in gcae_experiment_params$analyse_epochs) {
-    train_filenames <- gcae_train(
+    # Train to this 'epochs'
+    train_filenames <- gcae_train_more(
       gcae_setup = gcae_experiment_params$gcae_setup,
+      resume_from = 0,
       epochs = epochs,
       save_interval = epochs,
       verbose = verbose

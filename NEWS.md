@@ -13,6 +13,7 @@ Newest versions at top.
  * Add 'check_metrics'
  * Add 'create_gcae_evaluate_args'
  * Add 'gcae_evaluate'
+ * Add 'gcae_train_more'
  * Add 'read_gcae_options_file'
  * Add 'read_gcae_setup_file'
  * Add 'save_gcae_options'
