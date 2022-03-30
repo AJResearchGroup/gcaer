@@ -72,13 +72,20 @@ do_gcae_experiment <- function(
     scores_list[[i]] <- evaluate_results$t_scores
   }
 
+  losses_from_project_table
+  genotype_concordances_table
+  train_filenames
+
   scores_per_pops_tables <- dplyr::bind_rows(scores_per_pops_list)
   scores_tables <- dplyr::bind_rows(scores_list)
-  train_filenames <- NA # Will be overwritten by each last training session
+  train_results <- gcaer::parse_train_filenames(train_filenames = train_filenames)
 
   gcae_experiment_results <- list(
-    dimensionality_reduction_scores = tibble::tibble(),
-    phenotype_prediction_scores = tibble::tibble()
+    scores_per_pops_tables = scores_per_pops_tables,
+    scores_tables = scores_tables,
+    train_times_table = train_results$train_times_table,
+    losses_from_train_t_table = train_results$losses_from_train_t_table,
+    losses_from_train_v_table = train_results$losses_from_train_v_table
   )
 
   gcae_experiment_results
