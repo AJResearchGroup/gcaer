@@ -4,18 +4,25 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return nothing
-#' @examples
-#' gcae_setup <- create_test_gcae_setup()
-#' check_gcae_setup(gcae_setup)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_gcae_experiment_results <- function(gcae_experiment_results) {
+  names(gcae_experiment_results)
   testthat::expect_true(is.list(gcae_experiment_results))
   testthat::expect_true(
-    "dimensionality_reduction_scores" %in% names(gcae_experiment_results)
+    "scores_per_pops_tables" %in% names(gcae_experiment_results)
   )
   testthat::expect_true(
-    "phenotype_prediction_scores" %in% names(gcae_experiment_results)
+    "scores_tables" %in% names(gcae_experiment_results)
+  )
+  testthat::expect_true(
+    "train_times_table" %in% names(gcae_experiment_results)
+  )
+  testthat::expect_true(
+    "losses_from_train_t_table" %in% names(gcae_experiment_results)
+  )
+  testthat::expect_true(
+    "losses_from_train_v_table" %in% names(gcae_experiment_results)
   )
 
   invisible(gcae_experiment_results)
