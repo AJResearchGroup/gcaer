@@ -82,7 +82,9 @@ do_gcae_experiment <- function(
   genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
   scores_per_pops_tables <- dplyr::bind_rows(scores_per_pops_list)
   scores_tables <- dplyr::bind_rows(scores_list)
-  train_results <- gcaer::parse_train_filenames(train_filenames = train_filenames)
+  train_results <- gcaer::parse_train_filenames(
+    train_filenames = train_filenames
+  )
 
   gcae_experiment_results <- list(
     scores_per_pops_tables = scores_per_pops_tables,

@@ -25,7 +25,9 @@ parse_evaluate_filenames <- function(
   scoreses <- list() # Reduplicated plural
   for (i in seq_along(not_score_per_pop_filenames)) {
     not_score_per_pop_filename <- not_score_per_pop_filenames[i]
-    score_name <- tools::file_path_sans_ext(basename(not_score_per_pop_filename))
+    score_name <- tools::file_path_sans_ext(
+      basename(not_score_per_pop_filename)
+    )
     t <- readr::read_csv(not_score_per_pop_filename, show_col_types = FALSE)
     testthat::expect_equal(1, nrow(t))
     testthat::expect_equal(1, ncol(t))

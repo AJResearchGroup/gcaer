@@ -98,7 +98,6 @@ analyse_qt_prediction <- function(
   y_axis_min <- min(0.0, min(full_phe_table$predicted_phenotype))
   y_axis_max <- max(0.0, max(full_phe_table$predicted_phenotype))
 
-  trendline_formula <- y ~ x
   p <- ggplot2::ggplot(
     full_phe_table,
     ggplot2::aes(x = true_phenotype, y = predicted_phenotype)

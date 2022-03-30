@@ -37,7 +37,7 @@ parse_score_per_pop_file <- function(score_per_pop_filename) {
   t_per_pop_wide <- t_per_pop_raw[-nrow(t_per_pop_raw), ]
   testthat::expect_equal(
     names(t_per_pop_wide)[1:2],
-    c("Population","num samples") # Names from GCAE
+    c("Population", "num samples") # Names from GCAE
   )
   new_names <- names(t_per_pop_wide)
   new_names[1] <- "population"
