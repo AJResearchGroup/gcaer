@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## gcaer v0.6.4 (unreleased)
+## gcaer v0.6.4 (2022-03-30)
 
 ### NEW FEATURES
 
@@ -12,6 +12,7 @@ Newest versions at top.
  * Add 'check_metric'
  * Add 'check_metrics'
  * Add 'create_gcae_evaluate_args'
+ * Add 'do_gcae_experiment'
  * Add 'gcae_evaluate'
  * Add 'gcae_train_more'
  * Add 'read_gcae_options_file'
