@@ -136,7 +136,7 @@
 #' @param python_bin_path path to a `python` binary/executable
 #' @param python_version the Python version
 #' @param resume_from the epoch to resume from,
-#' as checked by \link{chgeck_resume_from}
+#' as checked by \link{check_resume_from}
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
 #' @param score_per_pop_filename name of a file containing the evaluation
