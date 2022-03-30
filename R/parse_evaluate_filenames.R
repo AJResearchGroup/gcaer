@@ -7,9 +7,14 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 parse_evaluate_filenames <- function(
-  evaluate_filenames
+  evaluate_filenames,
+  epoch
 ) {
-  score_per_pop_filename <- stringr::str_subset(evaluate_filenames, "_pops_")
+  gcaer::check_epoch(epoch)
+  score_per_pop_filename <- stringr::str_subset(
+    string = evaluate_filenames,
+    pattern = paste0("_pops_epoch_", epoch)
+  )
   testthat::expect_equal(1, length(score_per_pop_filename))
   testthat::expect_true(file.exists(score_per_pop_filename))
   not_score_per_pop_filenames <- stringr::str_subset(

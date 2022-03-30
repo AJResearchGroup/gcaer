@@ -4,7 +4,10 @@
 \alias{parse_evaluate_filenames}
 \title{Parse the data from the files produced by \link{gcae_evaluate}}
 \usage{
-parse_evaluate_filenames(evaluate_filenames)
+parse_evaluate_filenames(evaluate_filenames, epoch)
+}
+\arguments{
+\item{epoch}{the epoch, as checked by \link{check_epoch}}
 }
 \value{
 a list of tibbles

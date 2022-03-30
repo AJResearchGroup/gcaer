@@ -20,7 +20,9 @@ do_gcae_experiment <- function(
   train_filenames <- NA # Will be overwritten by each last training session
   for (i in seq_along(n_epochs)) {
 
-    if (verbose) message(i, "/", length(analyse_epochs))
+    if (verbose) {
+      message(i, "/", length(analyse_epochs))
+    }
     # Train to this 'epochs'
 
     # 'train_filenames' will overwrite/update the same files every epoch
@@ -52,14 +54,22 @@ do_gcae_experiment <- function(
       gcae_options = gcae_experiment_params$gcae_options,
       metrics = gcae_experiment_params$metrics,
       epoch = analyse_epochs[i],
-      verbose = TRUE
+      verbose = verbose
     )
-    evaluate_results <- gcaer::parse_evaluate_filenames(evaluate_filenames)
+    evaluate_results <- gcaer::parse_evaluate_filenames(
+      evaluate_filenames = evaluate_filenames,
+      epoch = analyse_epochs[i]
+    )
     evaluate_results$t_scores_per_pop$epoch <- analyse_epochs[i]
     evaluate_results$t_scores <- analyse_epochs[i]
     evaluate_resultses[[i]] <- evaluate_results
   }
-  "HIERO"
+
+  project_resultses <- list() # reduplicated plural indeed
+  evaluate_resultses <- list() # reduplicated plural indeed
+  train_filenames <- NA # Will be overwritten by each last training session
+
+
   gcae_experiment_results <- list(
     dimensionality_reduction_scores = tibble::tibble(),
     phenotype_prediction_scores = tibble::tibble()
