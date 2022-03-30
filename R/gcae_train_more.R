@@ -68,7 +68,9 @@ gcae_train_more <- function(
   train_filenames <- list.files(
     path = ae_out_subfolder,
     full.names = TRUE,
-    recursive = TRUE
+    recursive = FALSE,
+    include.dirs = FALSE,
+    pattern = ".*train.*\\.csv$"
   )
   train_filenames
 }

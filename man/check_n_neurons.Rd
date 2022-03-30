@@ -18,6 +18,8 @@ Check if the \code{n_neurons} is valid
 Will \link{stop} if not.
 }
 \examples{
+check_n_neurons(0)
+check_n_neurons(1)
 check_n_neurons(100)
 }
 \author{

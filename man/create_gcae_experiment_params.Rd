@@ -4,7 +4,12 @@
 \alias{create_gcae_experiment_params}
 \title{Create the GCAE setup}
 \usage{
-create_gcae_experiment_params(gcae_options, gcae_setup, analyse_epochs)
+create_gcae_experiment_params(
+  gcae_options,
+  gcae_setup,
+  analyse_epochs,
+  metrics
+)
 }
 \arguments{
 \item{gcae_options}{options to run GCAE,
@@ -18,6 +23,8 @@ and saved to file by \link{save_gcae_setup}.}
 
 \item{analyse_epochs}{the epochs to analyse, e.g. \code{c(1, 2, 3)},
 as checked by \link{check_analyse_epochs}}
+
+\item{metrics}{the metrics, as checked by \link{check_metrics}}
 }
 \value{
 full paths to the created files

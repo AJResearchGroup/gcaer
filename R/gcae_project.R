@@ -58,7 +58,8 @@ gcae_project <- function(
   project_filenames <- list.files(
     gcae_plot_subfolder,
     full.names = TRUE,
-    recursive = TRUE
+    recursive = TRUE,
+    pattern = ".*\\.csv$"
   )
   project_filenames
 }

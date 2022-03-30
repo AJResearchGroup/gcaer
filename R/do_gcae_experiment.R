@@ -21,6 +21,8 @@ do_gcae_experiment <- function(
 
     if (verbose) message(i, "/", length(analyse_epochs))
     # Train to this 'epochs'
+
+    # 'train_filenames' will overwrite/update the same files every epoch
     train_filenames <- gcae_train_more(
       gcae_setup = gcae_experiment_params$gcae_setup,
       resume_from = resume_froms[i],
@@ -42,7 +44,7 @@ do_gcae_experiment <- function(
     )
     gcaer::rename_files(filenames_from = filenames_from, filenames_to = filenames_to)
 
-    x <- gcaer::gcae_evaluate(
+    evaluate_filenames <- gcaer::gcae_evaluate(
       gcae_setup = gcae_experiment_params$gcae_setup,
       gcae_options = gcae_experiment_params$gcae_options,
       metrics = gcae_experiment_params$metrics,

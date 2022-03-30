@@ -31,10 +31,12 @@ check_gcae_experiment_params <- function(
   testthat::expect_true("gcae_options" %in% names(gcae_experiment_params))
   testthat::expect_true("gcae_setup" %in% names(gcae_experiment_params))
   testthat::expect_true("analyse_epochs" %in% names(gcae_experiment_params))
+  testthat::expect_true("metrics" %in% names(gcae_experiment_params))
 
   gcaer::check_gcae_options(gcae_experiment_params$gcae_options)
   gcaer::check_gcae_setup(gcae_experiment_params$gcae_setup)
   gcaer::check_analyse_epochs(gcae_experiment_params$analyse_epochs)
+  gcaer::check_metrics(gcae_experiment_params$metrics)
 
   invisible(gcae_experiment_params)
 }
