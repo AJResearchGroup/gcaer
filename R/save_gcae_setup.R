@@ -33,6 +33,11 @@ save_gcae_setup <- function(
     parameter = names(gcae_setup),
     value = as.character(unlist(gcae_setup))
   )
+  dir.create(
+    dirname(gcae_setup_filename),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
   readr::write_csv(x = t, file = gcae_setup_filename)
   invisible(gcae_setup)
 }
