@@ -15,3 +15,11 @@ test_that("use", {
   model_3 <- set_n_neurons_in_latent_layer(model = model, n_neurons = 3)
   expect_equal(3, get_n_neurons_in_latent_layer(model_3))
 })
+
+test_that("abuse", {
+  if (!is_gcae_installed()) return()
+
+  model_filename <- get_gcae_model_filename("M1")
+  model <- read_model_file(model_filename)
+  expect_error(set_n_neurons_in_latent_layer(model = model, n_neurons = 0))
+})
