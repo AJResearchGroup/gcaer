@@ -1,8 +1,8 @@
 test_that("use", {
   expect_silent(check_n_neurons(42))
   expect_silent(check_n_neurons(1))
+  expect_silent(check_n_neurons(0))
   expect_error(check_n_neurons(c(1, 1)))
-  expect_error(check_n_neurons(0))
   expect_error(check_n_neurons(-1))
   expect_error(check_n_neurons("nonsense"))
   expect_error(check_n_neurons(""))
