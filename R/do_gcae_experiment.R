@@ -16,8 +16,8 @@ do_gcae_experiment <- function(
   n_epochs <- analyse_epochs - resume_froms
 
   # Results
-  losses_from_project_list <- list()
-  genotype_concordances_list <- list()
+  losses_from_project_table <- NA # Will be overwritten by each last project
+  genotype_concordances_table <- NA # Will be overwritten by each last project
   scores_per_pops_list <- list()
   scores_list <- list()
   train_filenames <- NA # Will be overwritten by each last training session
@@ -51,8 +51,9 @@ do_gcae_experiment <- function(
     t_project_results <- gcaer::parse_project_files(project_filenames)
     t_project_results$losses_from_project_table$epoch <- analyse_epochs[i]
     t_project_results$genotype_concordances_table$epoch <- analyse_epochs[i]
-    losses_from_project_list[[i]] <- t_project_results$losses_from_project_table
-    genotype_concordances_list[[i]] <- t_project_results$genotype_concordances_table
+    # Will be overwritten each cycle, by tibbles with more info
+    losses_from_project_table <- t_project_results$losses_from_project_table
+    genotype_concordances_table <- t_project_results$genotype_concordances_table
 
     evaluate_filenames <- gcaer::gcae_evaluate(
       gcae_setup = gcae_experiment_params$gcae_setup,
@@ -66,13 +67,11 @@ do_gcae_experiment <- function(
       epoch = analyse_epochs[i]
     )
     evaluate_results$t_scores_per_pop$epoch <- analyse_epochs[i]
-    evaluate_results$t_scores <- analyse_epochs[i]
+    evaluate_results$t_scores$epoch <- analyse_epochs[i]
     scores_per_pops_list[[i]] <- evaluate_results$t_scores_per_pop
     scores_list[[i]] <- evaluate_results$t_scores
   }
 
-  losses_from_project_tables <- dplyr::bind_rows(losses_from_project_list)
-  genotype_concordances_tables <- dplyr::bind_rows(genotype_concordances_list)
   scores_per_pops_tables <- dplyr::bind_rows(scores_per_pops_list)
   scores_tables <- dplyr::bind_rows(scores_list)
   train_filenames <- NA # Will be overwritten by each last training session

@@ -4,7 +4,6 @@ test_that("use", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   clean_gcaer_tempfolder()
-  # 1. Setup
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
