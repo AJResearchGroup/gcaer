@@ -1,0 +1,12 @@
+test_that("use", {
+  skip("WIP #19")
+  gcae_experiment_params <- create_test_gcae_experiment_params()
+  gcae_experiment_params_filename <- get_gcaer_tempfilename(fileext = ".csv")
+  save_gcae_experiment_params(
+    gcae_experiment_params = gcae_experiment_params,
+    gcae_experiment_params_filename = gcae_experiment_params_filename
+  )
+  gcae_experiment_params_again <- read_gcae_experiment_params_file(gcae_experiment_params_filename)
+  expect_identical(gcae_experiment_params, gcae_experiment_params_again)
+  file.remove(gcae_experiment_params_filename)
+})
