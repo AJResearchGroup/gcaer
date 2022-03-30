@@ -32,5 +32,28 @@ gcae_evaluate <- function(
   if (verbose) {
     message("GCAE output: \n", paste0(output, collapse = "\n"))
   }
-  "TODO"
+
+  # writing F1 scores to:
+  #  * [trainingdir]/[datadir]/f1_scores_pops_epoch_1.csv
+  #  * [trainingdir]/[datadir]/f1_score_3.csv
+  # etcetera
+  #
+  # For example, to:
+  #  * full: /home/richel/.cache/gcaer/ae_out2b8b36b09a52/ae.M0.ex3.b_0_4.gcae_input_files_1.p2/gcae_input_files_1/f1_scores_pops_epoch_1.csv # nolint indeed a long line
+  #  * full: [temporary folder name  ]/ae.M0.ex3.b_0_4.gcae_input_files_1.p2/gcae_input_files_1/f1_scores_pops_epoch_1.csv # nolint indeed a long line
+
+  gcae_output_subfolder <- gcaer::get_gcae_output_subfolder(
+    gcae_setup = gcae_setup
+  )
+  testthat::expect_true(dir.exists(gcae_output_subfolder))
+  gcae_plot_subfolder <- file.path(gcae_output_subfolder, gcae_setup$data)
+  testthat::expect_true(dir.exists(gcae_plot_subfolder))
+
+  evaluate_filenames <- list.files(
+    gcae_plot_subfolder,
+    full.names = TRUE,
+    recursive = TRUE,
+    pattern = ".*f1_score.*\\.csv$"
+  )
+  evaluate_filenames
 }

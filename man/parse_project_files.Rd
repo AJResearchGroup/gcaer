@@ -11,9 +11,10 @@ parse_project_files(project_filenames)
 as created (and returned) by \link{gcae_project}}
 }
 \value{
-a list of tibbles
+a list of these tibbles:
 \itemize{
-\item \code{x}: x
+\item \code{losses_from_project_table}: losses from projection
+\item \code{genotype_concordances_table}: genotype concordances
 }
 }
 \description{

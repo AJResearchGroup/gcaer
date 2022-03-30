@@ -2,8 +2,11 @@
 #'
 #' Parse the data from the files produced by \link{gcae_project}
 #' @inheritParams default_params_doc
-#' @return a list of tibbles
-#'  * `x`: x
+#' @return a list of these tibbles:
+#'
+#'  * `losses_from_project_table`: losses from projection
+#'  * `genotype_concordances_table`: genotype concordances
+#'
 #' @author Richèl J.C. Bilderbeek
 #' @export
 parse_project_files <- function(project_filenames) {

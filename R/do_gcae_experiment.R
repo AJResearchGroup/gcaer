@@ -15,7 +15,8 @@ do_gcae_experiment <- function(
   resume_froms <- c(0, analyse_epochs[-length(analyse_epochs)])
   n_epochs <- analyse_epochs - resume_froms
 
-  project_resultses <- list()
+  project_resultses <- list() # reduplicated plural indeed
+  evaluate_resultses <- list() # reduplicated plural indeed
   train_filenames <- NA # Will be overwritten by each last training session
   for (i in seq_along(n_epochs)) {
 
@@ -30,19 +31,21 @@ do_gcae_experiment <- function(
       save_interval = n_epochs[i],
       verbose = verbose
     )
+    if (verbose) {
+      message(paste(train_filenames, collapse = "\n"))
+    }
     project_filenames <- gcae_project(
       gcae_setup = gcae_experiment_params$gcae_setup,
       gcae_options = gcae_experiment_params$gcae_options,
       verbose = verbose
     )
-    project_resultses[[i]] <- parse_project_files(project_filenames)
-    filenames_from <- stringr::str_subset(project_filenames, pattern = "^.*.csv$")
-    filenames_to <- stringr::str_replace(
-      string = filenames_from,
-      pattern = ".csv",
-      replacement = paste0("_", analyse_epochs[i], ".csv")
-    )
-    gcaer::rename_files(filenames_from = filenames_from, filenames_to = filenames_to)
+    if (verbose) {
+      message(paste(project_filenames, collapse = "\n"))
+    }
+    t_project_results <- gcaer::parse_project_files(project_filenames)
+    t_project_results$losses_from_project_table$epoch <- analyse_epochs[i]
+    t_project_results$genotype_concordances_table$epoch <- analyse_epochs[i]
+    project_resultses[[i]] <- t_project_results
 
     evaluate_filenames <- gcaer::gcae_evaluate(
       gcae_setup = gcae_experiment_params$gcae_setup,
@@ -51,8 +54,12 @@ do_gcae_experiment <- function(
       epoch = analyse_epochs[i],
       verbose = TRUE
     )
+    evaluate_results <- gcaer::parse_evaluate_filenames(evaluate_filenames)
+    evaluate_results$t_scores_per_pop$epoch <- analyse_epochs[i]
+    evaluate_results$t_scores <- analyse_epochs[i]
+    evaluate_resultses[[i]] <- evaluate_results
   }
-
+  "HIERO"
   gcae_experiment_results <- list(
     dimensionality_reduction_scores = tibble::tibble(),
     phenotype_prediction_scores = tibble::tibble()
