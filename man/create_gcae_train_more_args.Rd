@@ -13,6 +13,9 @@ read from file by \link{read_gcae_setup_file},
 checked by \link{check_gcae_setup},
 and saved to file by \link{save_gcae_setup}.}
 
+\item{resume_from}{the epoch to resume from,
+as checked by \link{chgeck_resume_from}}
+
 \item{epochs}{number of epochs, as checked by \link{check_epochs}}
 
 \item{save_interval}{epoch intervals at which to save state of model,

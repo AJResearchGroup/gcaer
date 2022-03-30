@@ -6,6 +6,11 @@
 \usage{
 check_evaluate_results(evaluate_results)
 }
+\arguments{
+\item{evaluate_results}{the results of a call to
+\link{parse_evaluate_filenames},
+as checked by \link{check_evaluate_results}}
+}
 \value{
 nothing
 }

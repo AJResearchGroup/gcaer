@@ -20,9 +20,12 @@ default_params_doc(
   data_opts_id,
   epoch,
   epochs,
+  evaluate_filenames,
+  evaluate_results,
   example_filename,
   fam_filename,
   gcae_experiment_params,
+  gcae_experiment_results,
   gcae_folder,
   gcae_input_data,
   gcae_input_filenames,
@@ -57,7 +60,9 @@ default_params_doc(
   project_filenames,
   python_bin_path,
   python_version,
+  resume_from,
   save_interval,
+  score_per_pop_filename,
   superpops,
   train_filenames,
   train_opts_id,
@@ -115,6 +120,13 @@ The data options affect how data is input to the model.}
 
 \item{epochs}{number of epochs, as checked by \link{check_epochs}}
 
+\item{evaluate_filenames}{names of the files returned by
+\link{gcae_evaluate}}
+
+\item{evaluate_results}{the results of a call to
+\link{parse_evaluate_filenames},
+as checked by \link{check_evaluate_results}}
+
 \item{example_filename}{name of the example file}
 
 \item{fam_filename}{name of a PLINK \code{.fam} file
@@ -124,6 +136,10 @@ as can be read using \link[plinkr]{read_plink_fam_file}}
 \code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
 as created by \link{create_gcae_experiment_params} and checked
 by \link{check_gcae_experiment_params}}
+
+\item{gcae_experiment_results}{the results of a call
+to \link{do_gcae_experiment},
+as checked by \link{check_gcae_experiment_results}}
 
 \item{gcae_folder}{folder where \code{GCAE} is installed}
 
@@ -249,8 +265,14 @@ as created (and returned) by \link{gcae_project}}
 
 \item{python_version}{the Python version}
 
+\item{resume_from}{the epoch to resume from,
+as checked by \link{chgeck_resume_from}}
+
 \item{save_interval}{epoch intervals at which to save state of model,
 and at which to calculate the valid loss}
+
+\item{score_per_pop_filename}{name of a file containing the evaluation
+scores from the dimensionality reduction}
 
 \item{superpops}{path to the \code{superpops} file,
 which contains the labels table and can be read

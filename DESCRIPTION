@@ -23,7 +23,8 @@ Imports:
     plinkr (>= 0.19.2),
     purrr,
     rappdirs,
-    stringr
+    stringr,
+    tidyr
 Suggests:
     ggplot2,
     markdown,

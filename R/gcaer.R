@@ -26,7 +26,7 @@
 #' * \link{gcae_animate}: run \code{GCAE} \code{animate}
 #' * \link{gcae_evaluate}: run \code{GCAE} \code{evaluate}
 #'
-#' These steps are all combined in the function \link{do_full_experiment}.
+#' These steps are all combined in the function \link{do_gcae_experiment}.
 #'
 #' This is a list of functions to create simulated data for `GCAE`:
 #'

@@ -6,6 +6,10 @@
 \usage{
 check_resume_from(resume_from)
 }
+\arguments{
+\item{resume_from}{the epoch to resume from,
+as checked by \link{chgeck_resume_from}}
+}
 \value{
 Nothing. Will \link{stop} if \code{resume_from} is invalid.
 }

@@ -32,6 +32,11 @@
 #' The data options affect how data is input to the model.
 #' @param epoch the epoch, as checked by \link{check_epoch}
 #' @param epochs number of epochs, as checked by \link{check_epochs}
+#' @param evaluate_filenames names of the files returned by
+#' \link{gcae_evaluate}
+#' @param evaluate_results the results of a call to
+#' \link{parse_evaluate_filenames},
+#' as checked by \link{check_evaluate_results}
 #' @param example_filename name of the example file
 #' @param fam_filename name of a PLINK `.fam` file
 #' as can be read using \link[plinkr]{read_plink_fam_file}
@@ -39,6 +44,9 @@
 #' `GCAE` experimenr (i.e. call \link{do_gcae_experiment}),
 #' as created by \link{create_gcae_experiment_params} and checked
 #' by \link{check_gcae_experiment_params}
+#' @param gcae_experiment_results the results of a call
+#' to \link{do_gcae_experiment},
+#' as checked by \link{check_gcae_experiment_results}
 #' @param gcae_folder folder where \code{GCAE} is installed
 #' @param gcae_input_data in-memory data that can be used
 #' as input for `GCAE`. Use link{read_gcae_input_files}
@@ -127,8 +135,12 @@
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
 #' @param python_version the Python version
+#' @param resume_from the epoch to resume from,
+#' as checked by \link{chgeck_resume_from}
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
+#' @param score_per_pop_filename name of a file containing the evaluation
+#' scores from the dimensionality reduction
 #' @param superpops path to the `superpops` file,
 #' which contains the labels table and can be read
 #' using \link{read_labels_file}.
@@ -167,9 +179,12 @@ default_params_doc <- function(
   data_opts_id,
   epoch,
   epochs,
+  evaluate_filenames,
+  evaluate_results,
   example_filename,
   fam_filename,
   gcae_experiment_params,
+  gcae_experiment_results,
   gcae_folder,
   gcae_input_data,
   gcae_input_filenames,
@@ -204,7 +219,9 @@ default_params_doc <- function(
   project_filenames,
   python_bin_path,
   python_version,
+  resume_from,
   save_interval,
+  score_per_pop_filename,
   superpops,
   train_filenames,
   train_opts_id,

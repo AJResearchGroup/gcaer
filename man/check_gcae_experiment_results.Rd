@@ -6,6 +6,11 @@
 \usage{
 check_gcae_experiment_results(gcae_experiment_results)
 }
+\arguments{
+\item{gcae_experiment_results}{the results of a call
+to \link{do_gcae_experiment},
+as checked by \link{check_gcae_experiment_results}}
+}
 \value{
 nothing
 }

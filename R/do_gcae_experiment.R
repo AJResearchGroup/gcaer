@@ -15,9 +15,13 @@ do_gcae_experiment <- function(
   resume_froms <- c(0, analyse_epochs[-length(analyse_epochs)])
   n_epochs <- analyse_epochs - resume_froms
 
-  project_resultses <- list() # reduplicated plural indeed
-  evaluate_resultses <- list() # reduplicated plural indeed
+  # Results
+  losses_from_project_list <- list()
+  genotype_concordances_list <- list()
+  scores_per_pops_list <- list()
+  scores_list <- list()
   train_filenames <- NA # Will be overwritten by each last training session
+
   for (i in seq_along(n_epochs)) {
 
     if (verbose) {
@@ -47,7 +51,8 @@ do_gcae_experiment <- function(
     t_project_results <- gcaer::parse_project_files(project_filenames)
     t_project_results$losses_from_project_table$epoch <- analyse_epochs[i]
     t_project_results$genotype_concordances_table$epoch <- analyse_epochs[i]
-    project_resultses[[i]] <- t_project_results
+    losses_from_project_list[[i]] <- t_project_results$losses_from_project_table
+    genotype_concordances_list[[i]] <- t_project_results$genotype_concordances_table
 
     evaluate_filenames <- gcaer::gcae_evaluate(
       gcae_setup = gcae_experiment_params$gcae_setup,
@@ -62,13 +67,15 @@ do_gcae_experiment <- function(
     )
     evaluate_results$t_scores_per_pop$epoch <- analyse_epochs[i]
     evaluate_results$t_scores <- analyse_epochs[i]
-    evaluate_resultses[[i]] <- evaluate_results
+    scores_per_pops_list[[i]] <- evaluate_results$t_scores_per_pop
+    scores_list[[i]] <- evaluate_results$t_scores
   }
 
-  project_resultses <- list() # reduplicated plural indeed
-  evaluate_resultses <- list() # reduplicated plural indeed
+  losses_from_project_tables <- dplyr::bind_rows(losses_from_project_list)
+  genotype_concordances_tables <- dplyr::bind_rows(genotype_concordances_list)
+  scores_per_pops_tables <- dplyr::bind_rows(scores_per_pops_list)
+  scores_tables <- dplyr::bind_rows(scores_list)
   train_filenames <- NA # Will be overwritten by each last training session
-
 
   gcae_experiment_results <- list(
     dimensionality_reduction_scores = tibble::tibble(),

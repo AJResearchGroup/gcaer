@@ -7,6 +7,10 @@ produced by \link{gcae_evaluate}}
 \usage{
 parse_score_per_pop_file(score_per_pop_filename)
 }
+\arguments{
+\item{score_per_pop_filename}{name of a file containing the evaluation
+scores from the dimensionality reduction}
+}
 \value{
 a \link[tibble]{tibble}
 }

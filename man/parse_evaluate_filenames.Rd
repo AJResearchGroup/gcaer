@@ -7,6 +7,9 @@
 parse_evaluate_filenames(evaluate_filenames, epoch)
 }
 \arguments{
+\item{evaluate_filenames}{names of the files returned by
+\link{gcae_evaluate}}
+
 \item{epoch}{the epoch, as checked by \link{check_epoch}}
 }
 \value{
