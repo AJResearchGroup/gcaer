@@ -20,7 +20,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v2
+      #- uses: actions/checkout@v2
 
       - name: Show singularity version
         run: singularity version
@@ -28,8 +28,14 @@ jobs:
       - name: Show present working directory
         run: echo $PWD
 
-      - name: Clone GenoCAE in sister folder
-        run: cd .. ; git clone -b Pheno https://github.com/richelbilderbeek/GenoCAE --depth=1 ; cd -
+      - name: Clone gcaer
+        run: git clone https://github.com/richelbilderbeek/gcaer --depth=1
+
+      - name: Clone GenoCAE
+        run: git clone -b Pheno https://github.com/richelbilderbeek/GenoCAE --depth=1
+
+      - name: Go into folder
+        run: cd gcaer
 
       - name: Create Singularity container
         run: ./scripts/build_singularity_container.sh
