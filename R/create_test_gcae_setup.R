@@ -11,7 +11,7 @@
 create_test_gcae_setup <- function(
   datadir = get_test_datadir(),
   data = get_test_data(),
-  superpops = "",
+  superpops = gcaer::get_gcaer_filename("gcae_input_files_1_labels.csv"),
   model_id = "M1",
   train_opts_id = "ex3",
   data_opts_id = "b_0_4",

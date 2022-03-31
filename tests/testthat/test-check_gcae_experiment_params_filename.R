@@ -1,0 +1,17 @@
+test_that("use", {
+  expect_silent(check_gcae_experiment_params_filename("my.csv"))
+  expect_silent(check_gcae_experiment_params_filename("~/my.csv"))
+  expect_silent(check_gcae_experiment_params_filename("/home/me/my.csv"))
+  expect_error(check_gcae_experiment_params_filename("my.txt"))
+  expect_error(check_gcae_experiment_params_filename(c("my.csv", "my.csv")))
+  expect_error(check_gcae_experiment_params_filename(0))
+  expect_error(check_gcae_experiment_params_filename(-1))
+  expect_error(check_gcae_experiment_params_filename(""))
+  expect_error(check_gcae_experiment_params_filename(c()))
+  expect_error(check_gcae_experiment_params_filename(NA))
+  expect_error(check_gcae_experiment_params_filename(NULL))
+  expect_error(check_gcae_experiment_params_filename(Inf))
+  expect_error(check_gcae_experiment_params_filename(42))
+  expect_error(check_gcae_experiment_params_filename(3.14))
+})
+

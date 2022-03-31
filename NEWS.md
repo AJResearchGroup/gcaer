@@ -6,7 +6,10 @@ Newest versions at top.
 
 ### NEW FEATURES
 
- * None
+ * Add 'check_gcae_experiment_params_filename'
+ * Add 'create_test_gcae_experiment_params'
+ * Add 'read_gcae_experiment_params_file'
+ * Add 'save_gcae_experiment_params'
 
 ### MINOR IMPROVEMENTS
 
