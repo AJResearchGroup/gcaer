@@ -28,6 +28,9 @@ jobs:
       - name: Show present working directory
         run: echo $PWD
 
+      - name: Clone GenoCAE in sister folder
+        run: cd .. ; git clone -b Pheno https://github.com/richelbilderbeek/GenoCAE --depth=1 ; cd -
+
       - name: Create Singularity container
         run: ./scripts/build_singularity_container.sh
 
