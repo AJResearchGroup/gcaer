@@ -11,7 +11,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcae_data_opts_filename <- function(
-  data_opts_id = "b_0_4",
+  data_opts_id,
   gcae_options = create_gcae_options()
 ) {
   file.path(

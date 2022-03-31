@@ -17,3 +17,18 @@ test_that("use", {
   )
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
 })
+
+
+test_that("use", {
+  expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!plinkr::is_on_ci()) return()
+  if (!is_gcae_installed()) return()
+  clean_gcaer_tempfolder()
+  gcae_experiment_params <- read_gcae_experiment_params_file("/home/richel/sim_data_issue_18/experiment_params.csv")
+  gcae_experiment_params$gcae_option$gcae_folder <- gcaer::get_gcae_folder()
+  gcae_experiment_results <- do_gcae_experiment(
+    gcae_experiment_params = gcae_experiment_params
+  )
+  expect_silent(check_gcae_experiment_results(gcae_experiment_results))
+})
+

@@ -35,7 +35,8 @@ do_gcae_experiment <- function(
       resume_from = resume_froms[i],
       epochs = n_epochs[i],
       save_interval = n_epochs[i],
-      verbose = verbose
+      verbose = verbose,
+      gcae_options = gcae_experiment_params$gcae_options
     )
     if (verbose) {
       message(paste(train_filenames, collapse = "\n"))

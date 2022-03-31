@@ -7,7 +7,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_gcae_train_opts_filename <- function(
-  train_opts_id = "ex3",
+  train_opts_id,
   gcae_options = create_gcae_options()
 ) {
   file.path(
