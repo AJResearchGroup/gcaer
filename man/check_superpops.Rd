@@ -21,6 +21,7 @@ Will \link{stop} if not.
 }
 \examples{
 check_superpops("HumanOrigins249_tiny")
+check_superpops("my_labels.csv")
 
 # For those that do not care about the labels
 check_superpops("")

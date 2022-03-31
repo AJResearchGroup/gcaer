@@ -25,6 +25,7 @@ default_params_doc(
   example_filename,
   fam_filename,
   gcae_experiment_params,
+  gcae_experiment_params_filename,
   gcae_experiment_results,
   gcae_folder,
   gcae_input_data,
@@ -136,6 +137,11 @@ as can be read using \link[plinkr]{read_plink_fam_file}}
 \code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
 as created by \link{create_gcae_experiment_params} and checked
 by \link{check_gcae_experiment_params}}
+
+\item{gcae_experiment_params_filename}{name of the file to
+save/read \code{gcae_experiment_params} to/from,
+using \link{read_gcae_experiment_params_file} and
+\link{save_gcae_experiment_params}}
 
 \item{gcae_experiment_results}{the results of a call
 to \link{do_gcae_experiment},

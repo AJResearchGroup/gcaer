@@ -14,6 +14,11 @@ save_gcae_experiment_params(
 \code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
 as created by \link{create_gcae_experiment_params} and checked
 by \link{check_gcae_experiment_params}}
+
+\item{gcae_experiment_params_filename}{name of the file to
+save/read \code{gcae_experiment_params} to/from,
+using \link{read_gcae_experiment_params_file} and
+\link{save_gcae_experiment_params}}
 }
 \value{
 Nothing

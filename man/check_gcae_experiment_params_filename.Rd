@@ -6,6 +6,12 @@
 \usage{
 check_gcae_experiment_params_filename(gcae_experiment_params_filename)
 }
+\arguments{
+\item{gcae_experiment_params_filename}{name of the file to
+save/read \code{gcae_experiment_params} to/from,
+using \link{read_gcae_experiment_params_file} and
+\link{save_gcae_experiment_params}}
+}
 \value{
 Nothing. Will \link{stop} if \code{gcae_experiment_params_filename} is invalid.
 }

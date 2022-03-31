@@ -6,6 +6,12 @@
 \usage{
 read_gcae_experiment_params_file(gcae_experiment_params_filename)
 }
+\arguments{
+\item{gcae_experiment_params_filename}{name of the file to
+save/read \code{gcae_experiment_params} to/from,
+using \link{read_gcae_experiment_params_file} and
+\link{save_gcae_experiment_params}}
+}
 \value{
 the \code{gcae_experiment_params}
 as can be checked by \link{check_gcae_experiment_params}
