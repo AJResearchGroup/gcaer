@@ -1,6 +1,8 @@
 test_that("use", {
   expect_silent(check_superpops(superpops = "some_file"))
+  expect_silent(check_superpops("some_file.csv"))
   expect_silent(check_superpops(""))
+  expect_error(check_superpops(superpops = "some file"))
   expect_error(check_superpops(1))
   expect_error(check_superpops(c(1, 1)))
   expect_error(check_superpops(0))

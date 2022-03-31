@@ -8,6 +8,7 @@
 #' hold the labels table, use \link{read_labels_file}
 #' @examples
 #' check_superpops("HumanOrigins249_tiny")
+#' check_superpops("my_labels.csv")
 #'
 #' # For those that do not care about the labels
 #' check_superpops("")
@@ -19,4 +20,5 @@ check_superpops <- function(
   testthat::expect_equal(1, length(superpops))
   testthat::expect_true(is.character(superpops))
   testthat::expect_true(nchar(superpops) >= 0)
+  testthat::expect_equal(1, stringr::str_count(superpops, "^[[:graph:]]*$"))
 }

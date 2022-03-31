@@ -3,6 +3,7 @@ test_that("use", {
   expect_silent(check_csv_filename("~/my.csv"))
   expect_silent(check_csv_filename("/home/me/my.csv"))
   expect_error(check_csv_filename("my.txt"))
+  expect_error(check_csv_filename("my file.txt"))
   expect_error(check_csv_filename(c("my.csv", "my.csv")))
   expect_error(check_csv_filename(0))
   expect_error(check_csv_filename(-1))

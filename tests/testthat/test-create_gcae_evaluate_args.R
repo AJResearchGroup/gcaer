@@ -11,7 +11,9 @@ test_that("use, with superpops", {
 })
 
 test_that("use, without superpops", {
-  gcae_setup <- create_test_gcae_setup()
+  gcae_setup <- create_test_gcae_setup(
+    superpops = ""
+  )
   metrics <- "hull_error"
   epoch <- 100
   args <- create_gcae_evaluate_args(

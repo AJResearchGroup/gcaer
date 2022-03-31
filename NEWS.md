@@ -13,7 +13,7 @@ Newest versions at top.
 
 ### MINOR IMPROVEMENTS
 
- * None
+ * 'check_superpops' also checks for spaces in the filename
 
 ### BUG FIXES
 
