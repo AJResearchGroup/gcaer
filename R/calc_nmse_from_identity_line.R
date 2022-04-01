@@ -33,24 +33,13 @@ calc_nmse_from_identity_line <- function(
   true_values,
   estimated_values
 ) {
-  testthat::expect_true(is.numeric(true_values))
-  testthat::expect_true(is.numeric(estimated_values))
-  testthat::expect_equal(length(true_values), length(estimated_values))
-  mean <- mean(true_values)
-  sd <- sd(true_values)
-  if (sd == 0) {
-    stop(
-      "The distribution of 'true_value' must have ",
-        "a non-zero standard deviation, \n",
-      "as these values will be transformed ",
-        "to have a standard deviation of 1.0. \n"
-    )
-  }
-  testthat::expect_true(sd > 0.0)
-  normalized_true_values <- (true_values - mean) / sd
-  normalized_estimated_values <- (estimated_values - mean) / sd
+  # 'normalize_true_and_estimated_values' checks input
+  normalized_values <- gcaer::normalize_true_and_estimated_values(
+    true_values = true_values,
+    estimated_values = estimated_values
+  )
   gcaer::calc_mse_from_identity_line(
-    true_values = normalized_true_values,
-    estimated_values = normalized_estimated_values
+    true_values = normalized_values$normalized_true_values,
+    estimated_values = normalized_values$normalized_estimated_values
   )
 }

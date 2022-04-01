@@ -5,7 +5,7 @@
 \title{Get the filename to the GCAE training options}
 \usage{
 get_gcae_train_opts_filename(
-  train_opts_id = "ex3",
+  train_opts_id,
   gcae_options = create_gcae_options()
 )
 }

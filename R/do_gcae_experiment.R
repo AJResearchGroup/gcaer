@@ -20,6 +20,7 @@ do_gcae_experiment <- function(
   genotype_concordances_table <- NA # Will be overwritten by each last project
   scores_per_pops_list <- list()
   scores_list <- list()
+  phenotype_predictions_list <- list()
   train_filenames <- NA # Will be overwritten by each last training session
 
   for (i in seq_along(n_epochs)) {
@@ -69,6 +70,15 @@ do_gcae_experiment <- function(
     evaluate_results$t_scores$epoch <- analyse_epochs[i]
     scores_per_pops_list[[i]] <- evaluate_results$t_scores_per_pop
     scores_list[[i]] <- evaluate_results$t_scores
+
+    # Evaluate the phenotype
+    phenotype_predictions_table <- gcaer::evaluate_phenotype_prediction(
+      gcae_experiment_params = gcae_experiment_params,
+      epoch = analyse_epochs[i],
+      verbose = verbose
+    )
+    phenotype_predictions_table$epoch <- analyse_epochs[i]
+    phenotype_predictions_list[[i]] <- phenotype_predictions_table
   }
 
   testthat::expect_equal(
@@ -81,15 +91,17 @@ do_gcae_experiment <- function(
   )
   losses_from_project_table$epoch <- gcae_experiment_params$analyse_epochs
   genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
-  scores_per_pops_tables <- dplyr::bind_rows(scores_per_pops_list)
-  scores_tables <- dplyr::bind_rows(scores_list)
+  scores_per_pops_table <- dplyr::bind_rows(scores_per_pops_list)
+  phenotype_predictions_table <- dplyr::bind_rows(phenotype_predictions_list)
+  scores_table <- dplyr::bind_rows(scores_list)
   train_results <- gcaer::parse_train_filenames(
     train_filenames = train_filenames
   )
 
   gcae_experiment_results <- list(
-    scores_per_pops_tables = scores_per_pops_tables,
-    scores_tables = scores_tables,
+    scores_per_pops_table = scores_per_pops_table,
+    scores_table = scores_table,
+    phenotype_predictions_table = phenotype_predictions_table,
     train_times_table = train_results$train_times_table,
     losses_from_train_t_table = train_results$losses_from_train_t_table,
     losses_from_train_v_table = train_results$losses_from_train_v_table

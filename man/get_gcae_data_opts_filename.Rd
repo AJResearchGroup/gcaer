@@ -4,10 +4,7 @@
 \alias{get_gcae_data_opts_filename}
 \title{Get the filename to the GCAE data options}
 \usage{
-get_gcae_data_opts_filename(
-  data_opts_id = "b_0_4",
-  gcae_options = create_gcae_options()
-)
+get_gcae_data_opts_filename(data_opts_id, gcae_options = create_gcae_options())
 }
 \arguments{
 \item{data_opts_id}{data options id,
