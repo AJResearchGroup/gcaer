@@ -14,8 +14,8 @@ analyse_gcae_experiment_results <- function(
   gcaer::check_gcae_experiment_params(gcae_experiment_params)
   trainedmodeldir <- gcae_experiment_params$gcae_setup$trainedmodeldir
   readr::write_csv(
-    gcae_experiment_results$scores_per_pops_table,
-    file = file.path(trainedmodeldir, "scores_per_pops.csv")
+    gcae_experiment_results$scores_per_pop_table,
+    file = file.path(trainedmodeldir, "scores_per_pop.csv")
   )
   readr::write_csv(
     gcae_experiment_results$scores_table,
@@ -43,6 +43,14 @@ analyse_gcae_experiment_results <- function(
     png_filename = file.path(
       gcae_experiment_params$gcae_setup$trainedmodeldir,
       "scores_through_time.png"
+    )
+  )
+
+  gcaer::create_scores_per_pop_through_time_png(
+    scores_per_pop_table = gcae_experiment_results$scores_per_pop_table,
+    png_filename = file.path(
+      gcae_experiment_params$gcae_setup$trainedmodeldir,
+      "scores_per_pop_through_time.png"
     )
   )
 

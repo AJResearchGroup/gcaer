@@ -10,7 +10,7 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   names(gcae_experiment_results)
   testthat::expect_true(is.list(gcae_experiment_results))
   testthat::expect_true(
-    "scores_per_pops_table" %in% names(gcae_experiment_results)
+    "scores_per_pop_table" %in% names(gcae_experiment_results)
   )
   testthat::expect_true(
     "scores_table" %in% names(gcae_experiment_results)

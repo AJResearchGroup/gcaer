@@ -18,7 +18,7 @@ test_that("use", {
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
 })
 
-test_that("use, M1", {
+test_that("use, M0", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
@@ -26,7 +26,8 @@ test_that("use, M1", {
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_setup = create_test_gcae_setup(
       model_id = "M0",
-      superpops = get_gcaer_filename("gcae_input_files_1_labels.csv")
+      superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"),
+      trainedmodeldir = "~/gcae_input_files_1_ae/"
     ),
     analyse_epochs = seq(10, 100, by = 10),
     metrics = paste0(paste0("f1_score_", seq(3, 19, by = 2)), collapse = ","),
@@ -38,22 +39,13 @@ test_that("use, M1", {
   )
   Sys.time() # "2022-03-31 22:43:05 CEST"
 
+  expect_silent(check_gcae_experiment_results(gcae_experiment_results))
+
   analyse_gcae_experiment_results(
     gcae_experiment_params = gcae_experiment_params,
     gcae_experiment_results = gcae_experiment_results
   )
 
-
-
-
-  gcae_experiment_results_filename = gcae_experiment_params$
-  save_gcae_experiment_results(
-    gcae_experiment_results = gcae_experiment_results
-    gcae_experiment_results_filename = gcae_experiment_params$
-  )
-  gcae_experiment_results
-
-  expect_silent(check_gcae_experiment_results(gcae_experiment_results))
 })
 
 test_that("profiling, M1", {

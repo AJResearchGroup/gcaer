@@ -91,7 +91,7 @@ do_gcae_experiment <- function(
   )
   losses_from_project_table$epoch <- gcae_experiment_params$analyse_epochs
   genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
-  scores_per_pops_table <- dplyr::bind_rows(scores_per_pops_list)
+  scores_per_pop_table <- dplyr::bind_rows(scores_per_pops_list)
   phenotype_predictions_table <- dplyr::bind_rows(phenotype_predictions_list)
   scores_table <- dplyr::bind_rows(scores_list)
   train_results <- gcaer::parse_train_filenames(
@@ -99,7 +99,7 @@ do_gcae_experiment <- function(
   )
 
   gcae_experiment_results <- list(
-    scores_per_pops_table = scores_per_pops_table,
+    scores_per_pop_table = scores_per_pop_table,
     scores_table = scores_table,
     phenotype_predictions_table = phenotype_predictions_table,
     train_times_table = train_results$train_times_table,
