@@ -34,11 +34,8 @@ jobs:
       - name: Clone GenoCAE
         run: git clone -b Pheno https://github.com/richelbilderbeek/GenoCAE --depth=1
 
-      - name: Go into folder
-        run: cd gcaer
-
       - name: Create Singularity container
-        run: ./scripts/build_singularity_container.sh
+        run: cd gcaer ; ./scripts/build_singularity_container.sh ; cd -
 
       - name: Test container, must detect GCAE
         run: singularity test gcaer.sif
