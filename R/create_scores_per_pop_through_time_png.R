@@ -39,4 +39,7 @@ create_scores_per_pop_through_time_png <- function(
     gcaer::get_gcaer_theme()
 
   plot
+  ggplot2::ggsave(png_filename, width = 7, height = 7)
+
+  plot
 }
