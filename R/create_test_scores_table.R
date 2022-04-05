@@ -1,0 +1,15 @@
+#' Create a `scores_table` to be used in testing
+#'
+#' Create a `scores_table` to be used in testing
+#' @return a `scores_table`
+#' @examples
+#' create_test_scores_table()
+#' @author Richèl J.C. Bilderbeek
+#' @export
+create_test_scores_table <- function() {
+  tibble::tibble(
+    score = "f1_score_3",
+    value = 0.12,
+    epoch = 1000
+  )
+}
