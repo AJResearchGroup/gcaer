@@ -1,3 +1,10 @@
+#' Normalize the true and estimated values
+#'
+#' Normalize the true and estimated values.
+#' @inheritParams default_params_doc
+#' @return the result of \link[gganimate]{animate}
+#' @author Richèl J.C. Bilderbeek
+#' @export
 normalize_true_and_estimated_values <- function(
   true_values,
   estimated_values
