@@ -1,7 +1,6 @@
 #' Create a `phenotype_predictions_table` to be used in testing
 #'
 #' Create a `phenotype_predictions_table` to be used in testing
-#' @inheritParams default_params_doc
 #' @return a `phenotype_predictions_table`
 #' @examples
 #' create_test_phenotype_predictions_table()
