@@ -35,7 +35,7 @@ jobs:
         run: git clone -b Pheno https://github.com/richelbilderbeek/GenoCAE --depth=1 gcae
 
       - name: Create Singularity container
-        run: cd gcaer ; ./scripts/build_singularity_container.sh ; cd -
+        run: cd gcaer ; ./scripts/build_singularity_container.sh ; mv gcaer.sif .. ; cd -
 
       - name: Test container, must detect GCAE
         run: singularity test gcaer.sif
