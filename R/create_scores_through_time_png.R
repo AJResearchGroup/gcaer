@@ -12,6 +12,7 @@ create_scores_through_time_png <- function(
   epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
   value <- NULL; rm(value) # nolint, fixes warning: no visible binding for global variable
   score <- NULL; rm(score) # nolint, fixes warning: no visible binding for global variable
+  num_neighbours <- NULL; rm(num_neighbours) # nolint, fixes warning: no visible binding for global variable
 
   gcaer::check_scores_table(scores_table)
   gcaer::check_png_filename(png_filename)

@@ -16,6 +16,8 @@ create_scores_per_pop_through_time_png <- function(
   epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
   value <- NULL; rm(value) # nolint, fixes warning: no visible binding for global variable
   score <- NULL; rm(score) # nolint, fixes warning: no visible binding for global variable
+  num_neighbours <- NULL; rm(num_neighbours) # nolint, fixes warning: no visible binding for global variable
+  population <- NULL; rm(population) # nolint, fixes warning: no visible binding for global variable
 
   scores_per_pop_table <- scores_per_pop_table[
     scores_per_pop_table$name != "n_samples",
