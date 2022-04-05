@@ -9,6 +9,14 @@ create_phenotype_prediction_through_time_gif(
   gif_filename
 )
 }
+\arguments{
+\item{phenotype_predictions_table}{a table of phenotype predictions
+with a true and estimated value for all individuals at a certain
+epoch}
+
+\item{gif_filename}{name of a GIF file,
+as checked by \link{check_gif_file}}
+}
 \value{
 the result of \link[gganimate]{animate}
 }

@@ -6,6 +6,11 @@
 \usage{
 normalize_true_and_estimated_values(true_values, estimated_values)
 }
+\arguments{
+\item{true_values}{the true/known values}
+
+\item{estimated_values}{estimated values}
+}
 \value{
 the result of \link[gganimate]{animate}
 }

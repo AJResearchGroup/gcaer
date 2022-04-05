@@ -20,6 +20,7 @@ default_params_doc(
   data_opts_id,
   epoch,
   epochs,
+  estimated_values,
   evaluate_filenames,
   evaluate_results,
   example_filename,
@@ -37,6 +38,7 @@ default_params_doc(
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,
+  gif_filename,
   github_repo_branch_name,
   github_repo_url,
   labels_filename,
@@ -57,6 +59,7 @@ default_params_doc(
   phe_filename,
   plink_options,
   pheno_model_id,
+  phenotype_predictions_table,
   png_filename,
   project_filenames,
   python_bin_path,
@@ -64,12 +67,15 @@ default_params_doc(
   resume_from,
   save_interval,
   score_per_pop_filename,
+  scores_per_pop_table,
+  scores_table,
   superpops,
   train_filenames,
   train_opts_id,
   train_times_filename,
   trainedmodeldir,
   trainedmodelname,
+  true_values,
   unique_id,
   url,
   verbose
@@ -120,6 +126,8 @@ The data options affect how data is input to the model.}
 \item{epoch}{the epoch, as checked by \link{check_epoch}}
 
 \item{epochs}{number of epochs, as checked by \link{check_epochs}}
+
+\item{estimated_values}{estimated values}
 
 \item{evaluate_filenames}{names of the files returned by
 \link{gcae_evaluate}}
@@ -193,6 +201,9 @@ stores its temporary files}
 \item{genotype_concordances_filename}{path to the
 \code{genotype_concordances.csv} file}
 
+\item{gif_filename}{name of a GIF file,
+as checked by \link{check_gif_file}}
+
 \item{github_repo_branch_name}{name of the \code{git} branch,
 e.g \code{master} or \code{Pheno}.
 Use \link{get_default_github_repo_branch_name} for the default value}
@@ -261,6 +272,10 @@ as created by \link[plinkr]{create_plink_options}}
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
 
+\item{phenotype_predictions_table}{a table of phenotype predictions
+with a true and estimated value for all individuals at a certain
+epoch}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 
@@ -279,6 +294,12 @@ and at which to calculate the valid loss}
 
 \item{score_per_pop_filename}{name of a file containing the evaluation
 scores from the dimensionality reduction}
+
+\item{scores_per_pop_table}{table that contains the dimensionality
+reduction scores per population}
+
+\item{scores_table}{table that contains the dimensionality
+reduction scores}
 
 \item{superpops}{path to the \code{superpops} file,
 which contains the labels table and can be read
@@ -299,6 +320,8 @@ as to mimic the \code{GCAE} interface}
 
 \item{trainedmodelname}{name of the trained model,
 which is \code{ae_out} by default}
+
+\item{true_values}{the true/known values}
 
 \item{unique_id}{the unique identifier of a setting}
 

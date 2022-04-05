@@ -32,6 +32,7 @@
 #' The data options affect how data is input to the model.
 #' @param epoch the epoch, as checked by \link{check_epoch}
 #' @param epochs number of epochs, as checked by \link{check_epochs}
+#' @param estimated_values estimated values
 #' @param evaluate_filenames names of the files returned by
 #' \link{gcae_evaluate}
 #' @param evaluate_results the results of a call to
@@ -85,6 +86,8 @@
 #' stores its temporary files
 #' @param genotype_concordances_filename path to the
 #' `genotype_concordances.csv` file
+#' @param gif_filename name of a GIF file,
+#' as checked by \link{check_gif_file}
 #' @param github_repo_branch_name name of the `git` branch,
 #' e.g `master` or `Pheno`.
 #' Use \link{get_default_github_repo_branch_name} for the default value
@@ -129,6 +132,9 @@
 #' \code{--out} flag
 #' @param phe_filename name of a PLINK phenotype (`.phe`) file
 #' as can be read using \link[plinkr]{read_plink_phe_file}
+#' @param phenotype_predictions_table a table of phenotype predictions
+#' with a true and estimated value for all individuals at a certain
+#' epoch
 #' @param pheno_model_id phenotype model ID,
 #' as checked by \link{check_pheno_model_id}
 #' @param plink_options PLINK options,
@@ -145,6 +151,10 @@
 #' and at which to calculate the valid loss
 #' @param score_per_pop_filename name of a file containing the evaluation
 #' scores from the dimensionality reduction
+#' @param scores_per_pop_table table that contains the dimensionality
+#' reduction scores per population
+#' @param scores_table table that contains the dimensionality
+#' reduction scores
 #' @param superpops path to the `superpops` file,
 #' which contains the labels table and can be read
 #' using \link{read_labels_file}.
@@ -159,6 +169,7 @@
 #' as to mimic the `GCAE` interface
 #' @param trainedmodelname name of the trained model,
 #'   which is `ae_out` by default
+#' @param true_values the true/known values
 #' @param unique_id the unique identifier of a setting
 #' @param url \code{GCAE} download URL
 #' @param verbose the verbosity of a function.
@@ -183,6 +194,7 @@ default_params_doc <- function(
   data_opts_id,
   epoch,
   epochs,
+  estimated_values,
   evaluate_filenames,
   evaluate_results,
   example_filename,
@@ -200,6 +212,7 @@ default_params_doc <- function(
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,
+  gif_filename,
   github_repo_branch_name,
   github_repo_url,
   labels_filename,
@@ -220,6 +233,7 @@ default_params_doc <- function(
   phe_filename,
   plink_options,
   pheno_model_id,
+  phenotype_predictions_table,
   png_filename,
   project_filenames,
   python_bin_path,
@@ -227,12 +241,15 @@ default_params_doc <- function(
   resume_from,
   save_interval,
   score_per_pop_filename,
+  scores_per_pop_table,
+  scores_table,
   superpops,
   train_filenames,
   train_opts_id,
   train_times_filename,
   trainedmodeldir,
   trainedmodelname,
+  true_values,
   unique_id,
   url,
   verbose

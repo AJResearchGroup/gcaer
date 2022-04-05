@@ -7,6 +7,9 @@
 create_scores_through_time_png(scores_table, png_filename)
 }
 \arguments{
+\item{scores_table}{table that contains the dimensionality
+reduction scores}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 }
