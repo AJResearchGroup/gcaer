@@ -15,7 +15,7 @@ with a true and estimated value for all individuals at a certain
 epoch}
 
 \item{gif_filename}{name of a GIF file,
-as checked by \link{check_gif_file}}
+as checked by \link{check_gif_filename}}
 }
 \value{
 the result of \link[gganimate]{animate}

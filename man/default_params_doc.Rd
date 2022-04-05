@@ -202,7 +202,7 @@ stores its temporary files}
 \code{genotype_concordances.csv} file}
 
 \item{gif_filename}{name of a GIF file,
-as checked by \link{check_gif_file}}
+as checked by \link{check_gif_filename}}
 
 \item{github_repo_branch_name}{name of the \code{git} branch,
 e.g \code{master} or \code{Pheno}.

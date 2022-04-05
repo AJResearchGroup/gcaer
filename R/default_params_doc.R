@@ -87,7 +87,7 @@
 #' @param genotype_concordances_filename path to the
 #' `genotype_concordances.csv` file
 #' @param gif_filename name of a GIF file,
-#' as checked by \link{check_gif_file}
+#' as checked by \link{check_gif_filename}
 #' @param github_repo_branch_name name of the `git` branch,
 #' e.g `master` or `Pheno`.
 #' Use \link{get_default_github_repo_branch_name} for the default value

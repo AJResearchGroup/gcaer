@@ -8,7 +8,7 @@ check_gif_filename(gif_filename)
 }
 \arguments{
 \item{gif_filename}{name of a GIF file,
-as checked by \link{check_gif_file}}
+as checked by \link{check_gif_filename}}
 }
 \value{
 Nothing. Will \link{stop} if \code{gif_filename} is invalid.
