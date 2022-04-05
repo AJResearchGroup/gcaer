@@ -17,6 +17,7 @@ Imports:
     devtools,
     dplyr,
     gert,
+    gganimate,
     igraph,
     jsonlite,
     ormr (>= 0.6.2.2),
