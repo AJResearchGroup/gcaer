@@ -1,84 +1,67 @@
 #' Save a `gcae_experiment_results` to file
 #' @inheritParams default_params_doc
 #' @return Nothing
-#' @seealso
-#' Use \link{read_gcae_experiment_results_file} to read
-#' a `gcae_experiment_results` from file
 #' @examples
 #' # Create a gcae_experiment_results
 #' gcae_experiment_results <- create_test_gcae_experiment_results()
 #'
 #' # Use a temporary file
-#' gcae_experiment_results_filename <- get_gcaer_tempfilename(fileext = ".csv")
+#' folder_name <- get_gcaer_tempfilename()
 #'
 #' # Save gcae_experiment_results to temporary file
-#' save_gcae_experiment_results(
+#' filenames <- save_gcae_experiment_results(
 #'   gcae_experiment_results = gcae_experiment_results,
-#'   gcae_experiment_results_filename = gcae_experiment_results_filename
-#' )
-#'
-#' # Load the temporary file to get a copy of the gcae_experiment_results
-#' gcae_experiment_results_again <- read_gcae_experiment_results_file(
-#'   gcae_experiment_results_filename
+#'  folder_name = folder_name
 #' )
 #'
 #' # Cleanup
-#' file.remove(gcae_experiment_results_filename)
+#' file.remove(unlist(filenames))
 #' @author Richèl J.C. Bilderbeek
 #' @export
 save_gcae_experiment_results <- function(
   gcae_experiment_results,
-  gcae_experiment_params
+  folder_name
 ) {
   gcaer::check_gcae_experiment_results(gcae_experiment_results)
-  gcaer::check_gcae_experiment_params(gcae_experiment_params)
+  gcaer::check_folder_name(folder_name)
+  filenames <- list(
+    scores_per_pop_filename = file.path(folder_name, "scores_per_pop.csv"),
+    scores_filename = file.path(folder_name, "scores.csv"),
+    genotype_concordances_filename = file.path(folder_name, "genotype_concordances.csv"),
+    phenotype_predictions_filename = file.path(folder_name, "phenotype_predictions.csv"),
+    train_times_filename = file.path(folder_name, "train_times.csv"),
+    losses_from_train_t_filename = file.path(folder_name, "losses_from_train_t.csv"),
+    losses_from_train_v_filename = file.path(folder_name, "losses_from_train_v.csv")
+  )
+
+  dir.create(folder_name, showWarnings = FALSE, recursive = TRUE)
   readr::write_csv(
     x = gcae_experiment_results$scores_per_pop_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "scores_per_pop.csv"
-    )
+    file = filenames$scores_per_pop_filename
   )
   readr::write_csv(
     gcae_experiment_results$scores_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "scores.csv"
-    )
+    file = filenames$scores_filename
   )
   readr::write_csv(
     gcae_experiment_results$genotype_concordances_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "genotype_concordances.csv"
-    )
+    file = filenames$genotype_concordances_filename
   )
   readr::write_csv(
     gcae_experiment_results$phenotype_predictions_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "phenotype_predictions.csv"
-    )
+    file = filenames$phenotype_predictions_filename
   )
   readr::write_csv(
     gcae_experiment_results$train_times_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "train_times.csv"
-    )
+    file = filenames$train_times_filename
   )
   readr::write_csv(
     gcae_experiment_results$losses_from_train_t_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "losses_from_train_t.csv"
-    )
+    file = filenames$losses_from_train_t_filename
   )
   readr::write_csv(
     gcae_experiment_results$losses_from_train_v_table,
-    file = file.path(
-      gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "losses_from_train_v.csv"
-    )
+    file = filenames$losses_from_train_v_filename
   )
+  filenames
 }

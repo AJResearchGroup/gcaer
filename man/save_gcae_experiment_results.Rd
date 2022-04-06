@@ -4,17 +4,12 @@
 \alias{save_gcae_experiment_results}
 \title{Save a \code{gcae_experiment_results} to file}
 \usage{
-save_gcae_experiment_results(gcae_experiment_results, gcae_experiment_params)
+save_gcae_experiment_results(gcae_experiment_results, folder_name)
 }
 \arguments{
 \item{gcae_experiment_results}{the results of a call
 to \link{do_gcae_experiment},
 as checked by \link{check_gcae_experiment_results}}
-
-\item{gcae_experiment_params}{parameters to run a full
-\code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
-as created by \link{create_gcae_experiment_params} and checked
-by \link{check_gcae_experiment_params}}
 }
 \value{
 Nothing
@@ -27,25 +22,16 @@ Save a \code{gcae_experiment_results} to file
 gcae_experiment_results <- create_test_gcae_experiment_results()
 
 # Use a temporary file
-gcae_experiment_results_filename <- get_gcaer_tempfilename(fileext = ".csv")
+folder_name <- get_gcaer_tempfilename()
 
 # Save gcae_experiment_results to temporary file
-save_gcae_experiment_results(
+filenames <- save_gcae_experiment_results(
   gcae_experiment_results = gcae_experiment_results,
-  gcae_experiment_results_filename = gcae_experiment_results_filename
-)
-
-# Load the temporary file to get a copy of the gcae_experiment_results
-gcae_experiment_results_again <- read_gcae_experiment_results_file(
-  gcae_experiment_results_filename
+ folder_name = folder_name
 )
 
 # Cleanup
-file.remove(gcae_experiment_results_filename)
-}
-\seealso{
-Use \link{read_gcae_experiment_results_file} to read
-a \code{gcae_experiment_results} from file
+file.remove(unlist(filenames))
 }
 \author{
 Richèl J.C. Bilderbeek
