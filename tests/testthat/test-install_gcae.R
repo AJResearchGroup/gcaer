@@ -2,10 +2,11 @@ test_that("un- or install", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (plinkr::get_os() == "win") return()
-  gcae_options <- create_gcae_options(ormr_folder_name = "python3")
-  if (!is_gcae_installed(gcae_options)) return()
-
-  skip("Nah, this is false")
+  gcae_options <- create_gcae_options(
+    gcae_folder = get_gcaer_tempfilename(),
+    ormr_folder_name = "python3"
+  )
+  if (is_gcae_installed(gcae_options)) return()
   expect_false(is_gcae_installed(gcae_options))
   # Cannot do expect_silent, as 'reticulate::py_install'
   # will always produce output
