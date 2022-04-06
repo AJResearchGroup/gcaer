@@ -97,15 +97,22 @@ do_gcae_experiment <- function(
   train_results <- gcaer::parse_train_filenames(
     train_filenames = train_filenames
   )
+  nmse_in_time_table <- gcaer::calc_nmse_from_phenotype_predictions(
+    phenotype_predictions_table
+  )
 
   gcae_experiment_results <- list(
     scores_per_pop_table = scores_per_pop_table,
     scores_table = scores_table,
+    genotype_concordances_table = genotype_concordances_table,
     phenotype_predictions_table = phenotype_predictions_table,
+    nmse_in_time_table = nmse_in_time_table,
     train_times_table = train_results$train_times_table,
     losses_from_train_t_table = train_results$losses_from_train_t_table,
     losses_from_train_v_table = train_results$losses_from_train_v_table
   )
+  # Temporarily
+  gcaer::check_gcae_experiment_results(gcae_experiment_results)
 
   gcae_experiment_results
 }

@@ -9,12 +9,23 @@
 check_gcae_experiment_results <- function(gcae_experiment_results) {
   names(gcae_experiment_results)
   testthat::expect_true(is.list(gcae_experiment_results))
+
   testthat::expect_true(
     "scores_per_pop_table" %in% names(gcae_experiment_results)
   )
   testthat::expect_true(
     "scores_table" %in% names(gcae_experiment_results)
   )
+  testthat::expect_true(
+    "genotype_concordances_table" %in% names(gcae_experiment_results)
+  )
+  testthat::expect_true(
+    "phenotype_predictions_table" %in% names(gcae_experiment_results)
+  )
+  testthat::expect_true(
+    "nmse_in_time_table" %in% names(gcae_experiment_results)
+  )
+
   testthat::expect_true(
     "train_times_table" %in% names(gcae_experiment_results)
   )
@@ -24,6 +35,5 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   testthat::expect_true(
     "losses_from_train_v_table" %in% names(gcae_experiment_results)
   )
-
   invisible(gcae_experiment_results)
 }

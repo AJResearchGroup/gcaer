@@ -17,15 +17,15 @@ create_gcae_experiment_params <- function(
   metrics,
   gcae_options = create_gcae_options()
 ) {
-  gcaer::check_gcae_options(gcae_options)
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_analyse_epochs(analyse_epochs)
   gcaer::check_metrics(metrics)
+  gcaer::check_gcae_options(gcae_options)
 
   list(
-    gcae_options = gcae_options,
     gcae_setup = gcae_setup,
     analyse_epochs = analyse_epochs,
-    metrics = metrics
+    metrics = metrics,
+    gcae_options = gcae_options
   )
 }
