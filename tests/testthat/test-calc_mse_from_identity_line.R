@@ -25,8 +25,6 @@ test_that("calculated error", {
 })
 
 test_that("show that scale matters", {
-  skip("Demo")
-
   true_values_degrees <- seq(1, 360)
   estimated_values_degrees <- true_values + runif(n = 360)
   expect_equal(length(true_values), length(estimated_values))

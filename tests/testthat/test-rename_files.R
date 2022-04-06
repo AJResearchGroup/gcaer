@@ -1,5 +1,4 @@
 test_that("use", {
-  skip("WIP")
   tempfile_1 <- gcaer::get_gcaer_tempfilename()
   tempfile_2 <- gcaer::get_gcaer_tempfilename()
   tempfile_3 <- gcaer::get_gcaer_tempfilename()

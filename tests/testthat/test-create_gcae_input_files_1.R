@@ -39,7 +39,6 @@ test_that("use", {
 })
 
 test_that("match inst/extdata/setting_1", {
-  skip("Does not need to match anymore")
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!plinkr::is_plink_installed()) return()

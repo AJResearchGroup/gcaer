@@ -1,6 +1,5 @@
 test_that("use, resize phe_table", {
   if (!plinkr::is_plink_installed()) return()
-  skip("WIP")
   gcae_input_filenames <- create_gcae_input_files_1(
     base_input_filename = file.path(
       get_gcaer_tempfilename(),
@@ -16,15 +15,11 @@ test_that("use, resize phe_table", {
     phe_filename = gcae_input_filenames$phe_filename
   )
 
-
-
   before <- summarise_gcae_input_files(gcae_input_filenames)
-  before
 
-  resize_to_shared_individuals_from_files(gcae_input_filenames, verbose = TRUE)
+  resize_to_shared_individuals_from_files(gcae_input_filenames)
 
   after <- summarise_gcae_input_files(gcae_input_filenames)
-  after
 
   expect_true(any(as.integer(after) != as.integer(before)))
 
