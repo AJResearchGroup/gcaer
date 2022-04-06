@@ -3,6 +3,7 @@
 export(analyse_gcae_experiment_results)
 export(calc_mse_from_identity_line)
 export(calc_nmse_from_identity_line)
+export(calc_nmse_from_phenotype_predictions)
 export(check_analyse_epochs)
 export(check_csv_filename)
 export(check_data)
