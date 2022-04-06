@@ -2,7 +2,8 @@
 #' @inheritParams default_params_doc
 #' @return the `gcae_experiment_params`
 #' as can be checked by \link{check_gcae_experiment_params}
-#' @seealso use \link{save_gcae_experiment_params} to save a `gcae_experiment_params`
+#' @seealso use \link{save_gcae_experiment_params}
+#' to save a `gcae_experiment_params`
 #' @examples
 #' # Create a gcae_experiment_params
 #' gcae_experiment_params <- create_test_gcae_experiment_params()
@@ -17,13 +18,15 @@
 #' )
 #'
 #' # Load the temporary file to get a copy of the gcae_experiment_params
-#' gcae_experiment_params_again <- read_gcae_experiment_params_file(gcae_experiment_params_filename)
+#' gcae_experiment_params_again <- read_gcae_experiment_params_file(
+#'   gcae_experiment_params_filename
+#' )
 #'
 #' # Cleanup
 #' file.remove(gcae_experiment_params_filename)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-read_gcae_experiment_params_file <- function(gcae_experiment_params_filename) {
+read_gcae_experiment_params_file <- function(gcae_experiment_params_filename) { # nolint indeed a long function name
 
   testthat::expect_true(file.exists(gcae_experiment_params_filename))
   gcaer::check_gcae_experiment_params_filename(gcae_experiment_params_filename)

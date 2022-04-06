@@ -6,7 +6,7 @@
 #' check_scores_per_pop_table(create_test_scores_per_pop_table())
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_test_scores_per_pop_table <- function() {
+create_test_scores_per_pop_table <- function() { # nolint indeed a long function name
   tibble::tibble(
     population = "A",
     name = c("f1_score_3", "f1_score_5"),

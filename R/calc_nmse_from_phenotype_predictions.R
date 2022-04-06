@@ -14,7 +14,7 @@
 #' )
 #' @author Richèl J.C. Bilderbeek
 #' @export
-calc_nmse_from_phenotype_predictions <- function(phenotype_predictions_table) {
+calc_nmse_from_phenotype_predictions <- function(phenotype_predictions_table) { # nolint indeed a long function name
   gcaer::check_phenotype_predictions_table(phenotype_predictions_table)
 
   epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable

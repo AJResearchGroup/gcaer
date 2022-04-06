@@ -10,12 +10,16 @@
 #' check_phenotype_predictions_table(phenotype_predictions_table)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-check_phenotype_predictions_table <- function(phenotype_predictions_table) {
+check_phenotype_predictions_table <- function(phenotype_predictions_table) { # nolint indeed a long function name
   testthat::expect_true(tibble::is_tibble(phenotype_predictions_table))
   testthat::expect_true("FID" %in% names(phenotype_predictions_table))
   testthat::expect_true("IID" %in% names(phenotype_predictions_table))
-  testthat::expect_true("true_phenotype" %in% names(phenotype_predictions_table))
-  testthat::expect_true("predicted_phenotype" %in% names(phenotype_predictions_table))
+  testthat::expect_true(
+    "true_phenotype" %in% names(phenotype_predictions_table)
+  )
+  testthat::expect_true(
+    "predicted_phenotype" %in% names(phenotype_predictions_table)
+  )
   testthat::expect_true("epoch" %in% names(phenotype_predictions_table))
   invisible(phenotype_predictions_table)
 }

@@ -5,7 +5,7 @@
 #' @return the result of \link[gganimate]{animate}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_phenotype_prediction_quality_png <- function(
+create_phenotype_prediction_quality_png <- function( # nolint indeed a long function name
   phenotype_predictions_table,
   png_filename
 ) {
@@ -30,7 +30,9 @@ create_phenotype_prediction_quality_png <- function(
     ggplot2::aes(true_phenotype, predicted_phenotype, color = FID)
   ) +
     ggplot2::geom_point() +
-    ggplot2::geom_abline(ggplot2::aes(slope = 1, intercept = 0), lty = "dashed") +
+    ggplot2::geom_abline(
+      ggplot2::aes(slope = 1, intercept = 0), lty = "dashed"
+    ) +
     ggplot2::scale_x_continuous(limits = c(x_axis_min, x_axis_max)) +
     ggplot2::scale_y_continuous(limits = c(y_axis_min, y_axis_max)) +
     gcaer::get_gcaer_theme()

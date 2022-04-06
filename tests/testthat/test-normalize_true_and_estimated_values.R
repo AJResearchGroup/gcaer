@@ -1,7 +1,7 @@
 test_that("no error", {
   true_values <- c(0, 1)
   estimated_values <- true_values
-  normalized_true_and_estimated_values <- normalize_true_and_estimated_values(
+  normalized_true_and_estimated_values <- normalize_true_and_estimated_values( # nolint indeed a long variable name
     true_values = true_values,
     estimated_values = estimated_values
   )

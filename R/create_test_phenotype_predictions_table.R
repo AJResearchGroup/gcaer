@@ -6,7 +6,7 @@
 #' create_test_phenotype_predictions_table()
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_test_phenotype_predictions_table <- function() {
+create_test_phenotype_predictions_table <- function() { # nolint indeed a long function name
   true_phenotype <- seq(11, 15)
   first_epoch <- tibble::tibble(
     FID = "A",

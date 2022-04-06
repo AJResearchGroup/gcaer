@@ -5,7 +5,7 @@
 #' @return a \link[ggplot2]{ggplot2}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_scores_per_pop_through_time_png <- function(
+create_scores_per_pop_through_time_png <- function( # nolint indeed a long function name
   scores_per_pop_table,
   png_filename
 ) {

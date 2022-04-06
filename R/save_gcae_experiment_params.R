@@ -18,7 +18,9 @@
 #' )
 #'
 #' # Load the temporary file to get a copy of the gcae_experiment_params
-#' gcae_experiment_params_again <- read_gcae_experiment_params_file(gcae_experiment_params_filename)
+#' gcae_experiment_params_again <- read_gcae_experiment_params_file(
+#'   gcae_experiment_params_filename
+#' )
 #'
 #' # Cleanup
 #' file.remove(gcae_experiment_params_filename)
@@ -26,7 +28,7 @@
 #' @export
 save_gcae_experiment_params <- function(
   gcae_experiment_params,
-  gcae_experiment_params_filename
+  gcae_experiment_params_filename # nolint indeed a long variable name
 ) {
   gcaer::check_gcae_experiment_params(gcae_experiment_params)
   gcaer::check_gcae_experiment_params_filename(gcae_experiment_params_filename)

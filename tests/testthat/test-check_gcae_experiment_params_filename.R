@@ -14,4 +14,3 @@ test_that("use", {
   expect_error(check_gcae_experiment_params_filename(42))
   expect_error(check_gcae_experiment_params_filename(3.14))
 })
-

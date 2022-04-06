@@ -7,7 +7,7 @@
 #' create_test_gcae_experiment_params()
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_test_gcae_experiment_params <- function(
+create_test_gcae_experiment_params <- function( # nolint indeed a long function name
   gcae_options = create_gcae_options(),
   gcae_setup = create_test_gcae_setup(),
   analyse_epochs = c(1, 2),

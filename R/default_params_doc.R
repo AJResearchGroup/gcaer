@@ -200,7 +200,7 @@ default_params_doc <- function(
   example_filename,
   fam_filename,
   gcae_experiment_params,
-  gcae_experiment_params_filename,
+  gcae_experiment_params_filename,  # nolint indeed a long variable name
   gcae_experiment_results,
   gcae_folder,
   gcae_input_data,

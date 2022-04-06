@@ -5,7 +5,7 @@
 #' @return the result of \link[gganimate]{animate}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-normalize_true_and_estimated_values <- function(
+normalize_true_and_estimated_values <- function( # nolint indeed a long function name
   true_values,
   estimated_values
 ) {

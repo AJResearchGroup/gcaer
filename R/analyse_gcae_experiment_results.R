@@ -6,7 +6,7 @@
 #' @return the result of \link[gganimate]{animate}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-analyse_gcae_experiment_results <- function(
+analyse_gcae_experiment_results <- function( # nolint indeed a long function name
   gcae_experiment_results,
   gcae_experiment_params
 ) {
@@ -55,14 +55,16 @@ analyse_gcae_experiment_results <- function(
   )
 
   gcaer::create_phenotype_prediction_through_time_gif(
-    phenotype_predictions_table = gcae_experiment_results$phenotype_predictions_table,
+    phenotype_predictions_table =
+      gcae_experiment_results$phenotype_predictions_table,
     gif_filename = file.path(
       gcae_experiment_params$gcae_setup$trainedmodeldir,
       "phenotype_prediction_through_time.gif"
     )
   )
   gcaer::create_phenotype_prediction_quality_png(
-    phenotype_predictions_table = gcae_experiment_results$phenotype_predictions_table,
+    phenotype_predictions_table =
+      gcae_experiment_results$phenotype_predictions_table,
     png_filename = file.path(
       gcae_experiment_params$gcae_setup$trainedmodeldir,
       "phenotype_prediction.png"
