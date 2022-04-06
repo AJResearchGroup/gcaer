@@ -7,9 +7,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_gcae_experiment_results <- function(gcae_experiment_results) {
-  names(gcae_experiment_results)
   testthat::expect_true(is.list(gcae_experiment_results))
-
   testthat::expect_true(
     "scores_per_pop_table" %in% names(gcae_experiment_results)
   )
@@ -34,6 +32,30 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   )
   testthat::expect_true(
     "losses_from_train_v_table" %in% names(gcae_experiment_results)
+  )
+  gcaer::check_scores_per_pop_table(
+    gcae_experiment_results$scores_per_pop_table
+  )
+  gcaer::check_scores_table(
+    gcae_experiment_results$scores_table
+  )
+  gcaer::check_genotype_concordances_table(
+    gcae_experiment_results$genotype_concordances_table
+  )
+  gcaer::check_phenotype_predictions_table(
+    gcae_experiment_results$phenotype_predictions_table
+  )
+  gcaer::check_nmse_in_time_table(
+    gcae_experiment_results$nmse_in_time_table
+  )
+  gcaer::check_train_times_table(
+    gcae_experiment_results$train_times_table
+  )
+  gcaer::check_losses_from_train_t_table(
+    gcae_experiment_results$losses_from_train_t_table
+  )
+  gcaer::check_losses_from_train_v_table(
+    gcae_experiment_results$losses_from_train_v_table
   )
   invisible(gcae_experiment_results)
 }

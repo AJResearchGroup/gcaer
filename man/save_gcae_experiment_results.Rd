@@ -36,7 +36,9 @@ save_gcae_experiment_results(
 )
 
 # Load the temporary file to get a copy of the gcae_experiment_results
-gcae_experiment_results_again <- read_gcae_experiment_results_file(gcae_experiment_results_filename)
+gcae_experiment_results_again <- read_gcae_experiment_results_file(
+  gcae_experiment_results_filename
+)
 
 # Cleanup
 file.remove(gcae_experiment_results_filename)

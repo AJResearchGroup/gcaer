@@ -13,7 +13,8 @@ using \link{read_gcae_experiment_params_file} and
 \link{save_gcae_experiment_params}}
 }
 \value{
-Nothing. Will \link{stop} if \code{gcae_experiment_params_filename} is invalid.
+Nothing.
+Will \link{stop} if \code{gcae_experiment_params_filename} is invalid.
 }
 \description{
 Check if the \code{gcae_experiment_params_filename} is valid

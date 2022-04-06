@@ -15,7 +15,7 @@ parse_train_times_file <- function(train_times_filename) {
   ncol(text_matrix)
   t <- tibble::tibble(
     epoch = as.numeric(text_matrix[1, ]),
-    train_times_sec = as.numeric(text_matrix[2, ])
+    train_time_sec = as.numeric(text_matrix[2, ])
   )
   t
 }

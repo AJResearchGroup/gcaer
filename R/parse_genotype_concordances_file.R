@@ -14,7 +14,7 @@ parse_genotype_concordances_file <- function(genotype_concordances_filename) { #
   testthat::expect_equal(2, nrow(text_matrix))
   t <- tibble::tibble(
     epoch = as.numeric(text_matrix[1, ]),
-    genotype_concordances = as.numeric(text_matrix[2, ])
+    genotype_concordance = as.numeric(text_matrix[2, ])
   )
   t
 }

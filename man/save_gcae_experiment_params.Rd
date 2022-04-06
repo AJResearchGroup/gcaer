@@ -40,7 +40,9 @@ save_gcae_experiment_params(
 )
 
 # Load the temporary file to get a copy of the gcae_experiment_params
-gcae_experiment_params_again <- read_gcae_experiment_params_file(gcae_experiment_params_filename)
+gcae_experiment_params_again <- read_gcae_experiment_params_file(
+  gcae_experiment_params_filename
+)
 
 # Cleanup
 file.remove(gcae_experiment_params_filename)

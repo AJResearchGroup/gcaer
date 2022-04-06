@@ -243,7 +243,7 @@ Training times:
 if (good_to_go) {
   ggplot2::ggplot(
     train_results$train_times_table,
-    ggplot2::aes(x = epoch, y = train_times_sec)
+    ggplot2::aes(x = epoch, y = train_time_sec)
   ) + ggplot2::geom_line()
 }
 ```
@@ -306,7 +306,7 @@ if (good_to_go) {
 if (good_to_go) {
   ggplot2::ggplot(
     project_results$genotype_concordances_table,
-    ggplot2::aes(x = epoch, y = genotype_concordances)
+    ggplot2::aes(x = epoch, y = genotype_concordance)
   ) + ggplot2::geom_line() +
     ggplot2::scale_y_continuous(limits = c(0.0, 1.0))
 }
