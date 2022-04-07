@@ -24,8 +24,8 @@ get_gcae_experiment_results_filenames <- function( # nolint indeed a long functi
       file.path(folder_name, "phenotype_predictions.csv"),
     scores_filename =
       file.path(folder_name, "scores.csv"),
-    scores_per_pop_filename =
-      file.path(folder_name, "scores_per_pop.csv"),
+    score_per_pop_filename =
+      file.path(folder_name, "score_per_pop.csv"),
     train_times_filename =
       file.path(folder_name, "train_times.csv")
   )

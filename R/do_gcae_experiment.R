@@ -18,7 +18,7 @@ do_gcae_experiment <- function(
   # Results
   losses_from_project_table <- NA # Will be overwritten by each last project
   genotype_concordances_table <- NA # Will be overwritten by each last project
-  scores_per_pops_list <- list()
+  score_per_pops_list <- list()
   scores_list <- list()
   phenotype_predictions_list <- list()
   train_filenames <- NA # Will be overwritten by each last training session
@@ -66,9 +66,9 @@ do_gcae_experiment <- function(
       evaluate_filenames = evaluate_filenames,
       epoch = analyse_epochs[i]
     )
-    evaluate_results$t_scores_per_pop$epoch <- analyse_epochs[i]
+    evaluate_results$t_score_per_pop$epoch <- analyse_epochs[i]
     evaluate_results$t_scores$epoch <- analyse_epochs[i]
-    scores_per_pops_list[[i]] <- evaluate_results$t_scores_per_pop
+    score_per_pops_list[[i]] <- evaluate_results$t_score_per_pop
     scores_list[[i]] <- evaluate_results$t_scores
 
     # Evaluate the phenotype
@@ -91,7 +91,7 @@ do_gcae_experiment <- function(
   )
   losses_from_project_table$epoch <- gcae_experiment_params$analyse_epochs
   genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
-  scores_per_pop_table <- dplyr::bind_rows(scores_per_pops_list)
+  score_per_pop_table <- dplyr::bind_rows(score_per_pops_list)
   phenotype_predictions_table <- dplyr::bind_rows(phenotype_predictions_list)
   scores_table <- dplyr::bind_rows(scores_list)
   train_results <- gcaer::parse_train_filenames(
@@ -102,7 +102,7 @@ do_gcae_experiment <- function(
   )
 
   gcae_experiment_results <- list(
-    scores_per_pop_table = scores_per_pop_table,
+    score_per_pop_table = score_per_pop_table,
     scores_table = scores_table,
     genotype_concordances_table = genotype_concordances_table,
     phenotype_predictions_table = phenotype_predictions_table,

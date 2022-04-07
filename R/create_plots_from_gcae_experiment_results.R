@@ -15,10 +15,10 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
   filenames <- gcaer::get_gcae_experiment_results_filenames(
     folder_name = folder_name
   )
-  gcaer::plot_scores_per_pop_from_file(
-    scores_per_pop_filename = filenames$scores_per_pop_filename,
+  gcaer::plot_score_per_pop_from_file(
+    score_per_pop_filename = filenames$score_per_pop_filename,
     png_filename = stringr::str_replace(
-      filenames$scores_per_pop_filename, ".csv", ".png"
+      filenames$score_per_pop_filename, ".csv", ".png"
     )
   )
   gcaer::plot_scores_from_file(

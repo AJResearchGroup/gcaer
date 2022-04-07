@@ -28,8 +28,8 @@ save_gcae_experiment_results <- function(
   filenames <- gcaer::get_gcae_experiment_results_filenames(folder_name)
   dir.create(folder_name, showWarnings = FALSE, recursive = TRUE)
   readr::write_csv(
-    x = gcae_experiment_results$scores_per_pop_table,
-    file = filenames$scores_per_pop_filename
+    x = gcae_experiment_results$score_per_pop_table,
+    file = filenames$score_per_pop_filename
   )
   readr::write_csv(
     gcae_experiment_results$scores_table,

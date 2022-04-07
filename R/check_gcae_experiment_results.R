@@ -9,7 +9,7 @@
 check_gcae_experiment_results <- function(gcae_experiment_results) {
   testthat::expect_true(is.list(gcae_experiment_results))
   testthat::expect_true(
-    "scores_per_pop_table" %in% names(gcae_experiment_results)
+    "score_per_pop_table" %in% names(gcae_experiment_results)
   )
   testthat::expect_true(
     "scores_table" %in% names(gcae_experiment_results)
@@ -33,8 +33,8 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   testthat::expect_true(
     "losses_from_train_v_table" %in% names(gcae_experiment_results)
   )
-  gcaer::check_scores_per_pop_table(
-    gcae_experiment_results$scores_per_pop_table
+  gcaer::check_score_per_pop_table(
+    gcae_experiment_results$score_per_pop_table
   )
   gcaer::check_scores_table(
     gcae_experiment_results$scores_table

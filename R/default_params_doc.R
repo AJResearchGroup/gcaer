@@ -166,9 +166,10 @@
 #' as checked by \link{check_resume_from}
 #' @param save_interval epoch intervals at which to save state of model,
 #' and at which to calculate the valid loss
+#' @param scores_filename name of the files for F1 scores through time
 #' @param score_per_pop_filename name of a file containing the evaluation
 #' scores from the dimensionality reduction
-#' @param scores_per_pop_table table that contains the dimensionality
+#' @param score_per_pop_table table that contains the dimensionality
 #' reduction scores per population
 #' @param scores_table table that contains the dimensionality
 #' reduction scores
@@ -267,7 +268,7 @@ default_params_doc <- function(
   resume_from,
   save_interval,
   score_per_pop_filename,
-  scores_per_pop_table,
+  score_per_pop_table,
   scores_filename,
   scores_table,
   superpops,

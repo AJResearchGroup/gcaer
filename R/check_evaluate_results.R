@@ -20,7 +20,7 @@
 #' @export
 check_evaluate_results <- function(evaluate_results) {
   testthat::expect_true(is.list(evaluate_results))
-  testthat::expect_true("t_scores_per_pop" %in% names(evaluate_results))
+  testthat::expect_true("t_score_per_pop" %in% names(evaluate_results))
   testthat::expect_true("t_scores" %in% names(evaluate_results))
   invisible(evaluate_results)
 }

@@ -6,6 +6,9 @@
 \usage{
 read_scores_file(scores_filename)
 }
+\arguments{
+\item{scores_filename}{name of the files for F1 scores through time}
+}
 \value{
 the \code{scores_table},
 as checked by \link{check_scores_table}

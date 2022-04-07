@@ -7,6 +7,8 @@
 plot_scores_from_file(scores_filename, png_filename)
 }
 \arguments{
+\item{scores_filename}{name of the files for F1 scores through time}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 }

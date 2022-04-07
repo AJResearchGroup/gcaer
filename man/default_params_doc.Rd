@@ -74,7 +74,7 @@ default_params_doc(
   resume_from,
   save_interval,
   score_per_pop_filename,
-  scores_per_pop_table,
+  score_per_pop_table,
   scores_filename,
   scores_table,
   superpops,
@@ -328,8 +328,10 @@ and at which to calculate the valid loss}
 \item{score_per_pop_filename}{name of a file containing the evaluation
 scores from the dimensionality reduction}
 
-\item{scores_per_pop_table}{table that contains the dimensionality
+\item{score_per_pop_table}{table that contains the dimensionality
 reduction scores per population}
+
+\item{scores_filename}{name of the files for F1 scores through time}
 
 \item{scores_table}{table that contains the dimensionality
 reduction scores}

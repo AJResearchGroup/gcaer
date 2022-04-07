@@ -5,15 +5,15 @@
 #' @return the filename where the plot is stored
 #' @author Richèl J.C. Bilderbeek
 #' @export
-plot_scores_per_pop_from_file <- function(
-  scores_per_pop_filename,
+plot_score_per_pop_from_file <- function(
+  score_per_pop_filename,
   png_filename
 ) {
-  scores_per_pop_table <- gcaer::read_scores_per_pop_file(
-    scores_per_pop_filename
+  score_per_pop_table <- gcaer::read_score_per_pop_file(
+    score_per_pop_filename
   )
-  gcaer::create_scores_per_pop_through_time_png(
-    scores_per_pop_table = scores_per_pop_table,
+  gcaer::create_score_per_pop_through_time_png(
+    score_per_pop_table = score_per_pop_table,
     png_filename = png_filename
   )
 }

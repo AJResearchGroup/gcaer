@@ -39,9 +39,9 @@ parse_evaluate_filenames <- function(
     scoreses[[i]] <- t
   }
   t_scores <- dplyr::bind_rows(scoreses)
-  t_scores_per_pop <- gcaer::parse_score_per_pop_file(score_per_pop_filename)
+  t_score_per_pop <- gcaer::parse_score_per_pop_file(score_per_pop_filename)
   list(
-    t_scores_per_pop = t_scores_per_pop,
+    t_score_per_pop = t_score_per_pop,
     t_scores = t_scores
   )
 }

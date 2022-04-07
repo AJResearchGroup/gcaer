@@ -14,8 +14,8 @@ analyse_gcae_experiment_results <- function( # nolint indeed a long function nam
   gcaer::check_gcae_experiment_params(gcae_experiment_params)
   trainedmodeldir <- gcae_experiment_params$gcae_setup$trainedmodeldir
   readr::write_csv(
-    gcae_experiment_results$scores_per_pop_table,
-    file = file.path(trainedmodeldir, "scores_per_pop.csv")
+    gcae_experiment_results$score_per_pop_table,
+    file = file.path(trainedmodeldir, "score_per_pop.csv")
   )
   readr::write_csv(
     gcae_experiment_results$scores_table,
@@ -46,11 +46,11 @@ analyse_gcae_experiment_results <- function( # nolint indeed a long function nam
     )
   )
 
-  gcaer::create_scores_per_pop_through_time_png(
-    scores_per_pop_table = gcae_experiment_results$scores_per_pop_table,
+  gcaer::create_score_per_pop_through_time_png(
+    score_per_pop_table = gcae_experiment_results$score_per_pop_table,
     png_filename = file.path(
       gcae_experiment_params$gcae_setup$trainedmodeldir,
-      "scores_per_pop_through_time.png"
+      "score_per_pop_through_time.png"
     )
   )
 

@@ -5,13 +5,13 @@
 #' @return a \link[ggplot2]{ggplot2}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_scores_per_pop_through_time_png <- function( # nolint indeed a long function name
-  scores_per_pop_table,
+create_score_per_pop_through_time_png <- function( # nolint indeed a long function name
+  score_per_pop_table,
   png_filename
 ) {
-  gcaer::check_scores_per_pop_table(scores_per_pop_table)
+  gcaer::check_score_per_pop_table(score_per_pop_table)
   gcaer::check_png_filename(png_filename)
-  scores_per_pop_table
+  score_per_pop_table
 
   epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
   value <- NULL; rm(value) # nolint, fixes warning: no visible binding for global variable
@@ -19,20 +19,20 @@ create_scores_per_pop_through_time_png <- function( # nolint indeed a long funct
   num_neighbours <- NULL; rm(num_neighbours) # nolint, fixes warning: no visible binding for global variable
   population <- NULL; rm(population) # nolint, fixes warning: no visible binding for global variable
 
-  scores_per_pop_table <- scores_per_pop_table[
-    scores_per_pop_table$name != "n_samples",
+  score_per_pop_table <- score_per_pop_table[
+    score_per_pop_table$name != "n_samples",
   ]
 
-  scores_per_pop_table$num_neighbours <- as.factor(
+  score_per_pop_table$num_neighbours <- as.factor(
     as.numeric(stringr::str_replace(
-        string = scores_per_pop_table$name,
+        string = score_per_pop_table$name,
         pattern = "f1_score_",
         replacement = ""
       )
     )
   )
   plot <- ggplot2::ggplot(
-    scores_per_pop_table,
+    score_per_pop_table,
     ggplot2::aes(epoch, value, color = num_neighbours, shape = population)
   ) +
     ggplot2::geom_line() +

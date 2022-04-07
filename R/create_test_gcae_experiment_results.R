@@ -9,7 +9,7 @@
 #' @export
 create_test_gcae_experiment_results <- function() { # nolint indeed a long function name
   list(
-    scores_per_pop_table = gcaer::create_test_scores_per_pop_table(),
+    score_per_pop_table = gcaer::create_test_score_per_pop_table(),
     scores_table = gcaer::create_test_scores_table(),
     genotype_concordances_table
       = gcaer::create_test_genotype_concordances_table(),
