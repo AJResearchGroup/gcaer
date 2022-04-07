@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_model.R
 \name{plot_model}
 \alias{plot_model}
-\title{Save a \code{GCAE} autoencoder architecture file}
+\title{Plot a \code{GCAE} autoencoder architecture, from file}
 \usage{
 plot_model(model)
 }
@@ -18,7 +18,7 @@ Use \link{save_model_plot} to save a plot of the \code{model} to file.}
 Nothing
 }
 \description{
-Save a \code{GCAE} autoencoder architecture file
+Plot a \code{GCAE} autoencoder architecture, from file
 }
 \seealso{
 use \link{read_model_file} to read a \code{model} from file

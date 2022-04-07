@@ -24,20 +24,8 @@ save_gcae_experiment_results <- function(
 ) {
   gcaer::check_gcae_experiment_results(gcae_experiment_results)
   gcaer::check_folder_name(folder_name)
-  filenames <- list(
-    scores_per_pop_filename = file.path(folder_name, "scores_per_pop.csv"),
-    scores_filename = file.path(folder_name, "scores.csv"),
-    genotype_concordances_filename =
-      file.path(folder_name, "genotype_concordances.csv"),
-    phenotype_predictions_filename =
-      file.path(folder_name, "phenotype_predictions.csv"),
-    train_times_filename = file.path(folder_name, "train_times.csv"),
-    losses_from_train_t_filename =
-      file.path(folder_name, "losses_from_train_t.csv"),
-    losses_from_train_v_filename =
-      file.path(folder_name, "losses_from_train_v.csv")
-  )
 
+  filenames <- gcaer::get_gcae_experiment_results_filenames(folder_name)
   dir.create(folder_name, showWarnings = FALSE, recursive = TRUE)
   readr::write_csv(
     x = gcae_experiment_results$scores_per_pop_table,
@@ -67,5 +55,10 @@ save_gcae_experiment_results <- function(
     gcae_experiment_results$losses_from_train_v_table,
     file = filenames$losses_from_train_v_filename
   )
+  readr::write_csv(
+    gcae_experiment_results$nmse_in_time_table,
+    file = filenames$nmse_in_time_filename
+  )
+
   filenames
 }

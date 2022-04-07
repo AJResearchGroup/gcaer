@@ -17,6 +17,13 @@ test_that("use", {
     gcae_experiment_params = gcae_experiment_params
   )
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
+  save_gcae_experiment_results(
+    gcae_experiment_results = gcae_experiment_results,
+    folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
+  )
+  create_plot_from_gcae_experiment_results(
+    folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
+  )
 })
 
 test_that("profiling, M1", {

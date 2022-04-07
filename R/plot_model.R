@@ -1,4 +1,4 @@
-#' Save a `GCAE` autoencoder architecture file
+#' Plot a `GCAE` autoencoder architecture, from file
 #' @inheritParams default_params_doc
 #' @return Nothing
 #' @seealso use \link{read_model_file} to read a `model` from file
