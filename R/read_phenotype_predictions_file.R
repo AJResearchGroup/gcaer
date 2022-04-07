@@ -12,8 +12,11 @@ read_phenotype_predictions_file <- function(phenotype_predictions_filename) {
   phenotype_predictions_table <- readr::read_csv(
     phenotype_predictions_filename,
     col_types = readr::cols(
-      epoch = readr::col_double(),
-      genotype_concordance = readr::col_double()
+      FID = readr::col_character(),
+      IID = readr::col_character(),
+      true_phenotype = readr::col_double(),
+      predicted_phenotype = readr::col_double(),
+      epoch = readr::col_double()
     )
   )
   gcaer::check_phenotype_predictions_table(phenotype_predictions_table)

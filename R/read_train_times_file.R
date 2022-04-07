@@ -13,7 +13,7 @@ read_train_times_file <- function(train_times_filename) {
     train_times_filename,
     col_types = readr::cols(
       epoch = readr::col_double(),
-      genotype_concordance = readr::col_double()
+      train_time_sec = readr::col_double()
     )
   )
   gcaer::check_train_times_table(train_times_table)

@@ -7,7 +7,7 @@
 #' @export
 plot_scores_from_file <- function(
   scores_filename,
-  png_filename = stringr::str_replace(scores_filename, ".csv$", ".png")
+  png_filename
 ) {
   scores_table <- gcaer::read_scores_file(scores_filename)
   gcaer::create_scores_through_time_png(

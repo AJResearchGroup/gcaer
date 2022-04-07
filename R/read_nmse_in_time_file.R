@@ -13,7 +13,7 @@ read_nmse_in_time_file <- function(nmse_in_time_filename) {
     nmse_in_time_filename,
     col_types = readr::cols(
       epoch = readr::col_double(),
-      genotype_concordance = readr::col_double()
+      nmse = readr::col_double()
     )
   )
   gcaer::check_nmse_in_time_table(nmse_in_time_table)

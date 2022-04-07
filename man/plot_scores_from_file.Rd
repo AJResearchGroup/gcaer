@@ -4,10 +4,7 @@
 \alias{plot_scores_from_file}
 \title{Plot the F1 scores in time, from file}
 \usage{
-plot_scores_from_file(
-  scores_filename,
-  png_filename = stringr::str_replace(scores_filename, ".csv$", ".png")
-)
+plot_scores_from_file(scores_filename, png_filename)
 }
 \arguments{
 \item{png_filename}{name of the \code{PNG} file to be produced,

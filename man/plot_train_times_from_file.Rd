@@ -4,10 +4,7 @@
 \alias{plot_train_times_from_file}
 \title{Plot the train times, from file}
 \usage{
-plot_train_times_from_file(
-  train_times_filename,
-  png_filename = stringr::str_replace(train_times_filename, ".csv$", ".png")
-)
+plot_train_times_from_file(train_times_filename, png_filename)
 }
 \arguments{
 \item{train_times_filename}{path to the \code{train_times.csv} file}

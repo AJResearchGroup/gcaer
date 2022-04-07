@@ -4,10 +4,7 @@
 \alias{plot_scores_per_pop_from_file}
 \title{Plot the scores per population in time, from file}
 \usage{
-plot_scores_per_pop_from_file(
-  scores_per_pop_filename,
-  png_filename = stringr::str_replace(scores_per_pop_filename, ".csv$", ".png")
-)
+plot_scores_per_pop_from_file(scores_per_pop_filename, png_filename)
 }
 \arguments{
 \item{png_filename}{name of the \code{PNG} file to be produced,

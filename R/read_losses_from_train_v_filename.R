@@ -13,7 +13,7 @@ read_losses_from_train_v_file <- function(losses_from_train_v_filename) {
     losses_from_train_v_filename,
     col_types = readr::cols(
       epoch = readr::col_double(),
-      genotype_concordance = readr::col_double()
+      losses_from_train_v = readr::col_double()
     )
   )
   gcaer::check_losses_from_train_v_table(losses_from_train_v_table)

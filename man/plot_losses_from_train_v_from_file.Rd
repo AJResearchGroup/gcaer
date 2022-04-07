@@ -4,10 +4,7 @@
 \alias{plot_losses_from_train_v_from_file}
 \title{Plot the losses from training in time, for the validation set, from file}
 \usage{
-plot_losses_from_train_v_from_file(
-  losses_from_train_v_filename,
-  png_filename = stringr::str_replace(losses_from_train_v_filename, ".csv$", ".png")
-)
+plot_losses_from_train_v_from_file(losses_from_train_v_filename, png_filename)
 }
 \arguments{
 \item{losses_from_train_v_filename}{path to the

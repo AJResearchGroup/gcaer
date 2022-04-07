@@ -7,7 +7,7 @@
 #' @export
 plot_scores_per_pop_from_file <- function(
   scores_per_pop_filename,
-  png_filename = stringr::str_replace(scores_per_pop_filename, ".csv$", ".png")
+  png_filename
 ) {
   scores_per_pop_table <- gcaer::read_scores_per_pop_file(
     scores_per_pop_filename

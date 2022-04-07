@@ -21,7 +21,7 @@ test_that("use", {
     gcae_experiment_results = gcae_experiment_results,
     folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
   )
-  create_plot_from_gcae_experiment_results(
+  create_plots_from_gcae_experiment_results(
     folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
   )
 })

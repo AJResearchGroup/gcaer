@@ -7,10 +7,10 @@
 #' @export
 plot_losses_from_train_v_from_file <- function(
   losses_from_train_v_filename,
-  png_filename = stringr::str_replace(losses_from_train_v_filename, ".csv$", ".png") # nolint indeed a long line
+  png_filename
 
 ) {
-  losses_from_train_v_table <- gcaer::read_losses_from_train_v_filename(
+  losses_from_train_v_table <- gcaer::read_losses_from_train_v_file(
     losses_from_train_v_filename
   )
   gcaer::create_losses_from_train_v_through_time_png(

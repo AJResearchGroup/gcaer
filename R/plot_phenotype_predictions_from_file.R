@@ -7,7 +7,7 @@
 #' @export
 plot_phenotype_predictions_from_file <- function(
   phenotype_predictions_filename,
-  png_filename = stringr::str_replace(phenotype_predictions_filename, ".csv$", ".png") # nolint indeed a long line
+  png_filename
 ) {
   phenotype_predictions_table <- gcaer::read_phenotype_predictions_file(
     phenotype_predictions_filename

@@ -6,7 +6,7 @@
 \usage{
 plot_genotype_concordances_from_file(
   genotype_concordances_filename,
-  png_filename = stringr::str_replace(genotype_concordances_filename, ".csv$", ".png")
+  png_filename
 )
 }
 \arguments{

@@ -6,7 +6,7 @@
 \usage{
 plot_phenotype_predictions_from_file(
   phenotype_predictions_filename,
-  png_filename = stringr::str_replace(phenotype_predictions_filename, ".csv$", ".png")
+  png_filename
 )
 }
 \arguments{

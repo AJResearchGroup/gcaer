@@ -4,10 +4,7 @@
 \alias{plot_nmse_in_time_from_file}
 \title{Plot the NMSE in time, from file}
 \usage{
-plot_nmse_in_time_from_file(
-  nmse_in_time_filename,
-  png_filename = stringr::str_replace(nmse_in_time_filename, ".csv$", ".png")
-)
+plot_nmse_in_time_from_file(nmse_in_time_filename, png_filename)
 }
 \arguments{
 \item{png_filename}{name of the \code{PNG} file to be produced,

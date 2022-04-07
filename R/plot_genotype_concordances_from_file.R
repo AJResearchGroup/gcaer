@@ -7,12 +7,12 @@
 #' @export
 plot_genotype_concordances_from_file <- function(
   genotype_concordances_filename,
-  png_filename = stringr::str_replace(genotype_concordances_filename, ".csv$", ".png") # nolint indeed a long line
+  png_filename
 ) {
   genotype_concordances_table <- gcaer::read_genotype_concordances_file(
     genotype_concordances_filename
   )
-  gcaer::create_genotype_concordances_through_time_png(
+    gcaer::create_genotype_concordances_through_time_png(
     genotype_concordances_table = genotype_concordances_table,
     png_filename = png_filename
   )

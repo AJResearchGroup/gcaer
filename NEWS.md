@@ -7,9 +7,11 @@ Newest versions at top.
 ### NEW FEATURES
 
  * Add 'check_gcae_experiment_params_filename'
+ * Add 'create_plots_from_gcae_experiment_results'
  * Add 'create_test_gcae_experiment_params'
  * Add 'read_gcae_experiment_params_file'
  * Add 'save_gcae_experiment_params'
+ * Add 'save_gcae_experiment_results'
 
 ### MINOR IMPROVEMENTS
 
