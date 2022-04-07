@@ -25,6 +25,7 @@ default_params_doc(
   evaluate_results,
   example_filename,
   fam_filename,
+  folder_name,
   gcae_experiment_params,
   gcae_experiment_params_filename,
   gcae_experiment_results,
@@ -38,6 +39,7 @@ default_params_doc(
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,
+  genotype_concordances_table,
   gif_filename,
   github_repo_branch_name,
   github_repo_url,
@@ -46,13 +48,16 @@ default_params_doc(
   log_filename,
   losses_from_project_filename,
   losses_from_train_t_filename,
+  losses_from_train_t_table,
   losses_from_train_v_filename,
+  losses_from_train_v_table,
   metric,
   metrics,
   model,
   model_filename,
   model_id,
   n_neurons,
+  nmse_in_time_table,
   ormr_folder_name,
   os,
   out,
@@ -71,6 +76,7 @@ default_params_doc(
   scores_table,
   superpops,
   train_filenames,
+  train_times_table,
   train_opts_id,
   train_times_filename,
   trainedmodeldir,
@@ -141,6 +147,9 @@ as checked by \link{check_evaluate_results}}
 \item{fam_filename}{name of a PLINK \code{.fam} file
 as can be read using \link[plinkr]{read_plink_fam_file}}
 
+\item{folder_name}{name of a folder,
+as checked by \link{check_folder_name}}
+
 \item{gcae_experiment_params}{parameters to run a full
 \code{GCAE} experimenr (i.e. call \link{do_gcae_experiment}),
 as created by \link{create_gcae_experiment_params} and checked
@@ -201,6 +210,10 @@ stores its temporary files}
 \item{genotype_concordances_filename}{path to the
 \code{genotype_concordances.csv} file}
 
+\item{genotype_concordances_table}{genotype concordances
+in time,
+as can be checked by \link{check_genotype_concordances_table}}
+
 \item{gif_filename}{name of a GIF file,
 as checked by \link{check_gif_filename}}
 
@@ -230,8 +243,16 @@ for convenience}
 \item{losses_from_train_t_filename}{path to the
 \code{losses_from_train_t.csv} file}
 
+\item{losses_from_train_t_table}{losses from training, measured
+in the training step,
+as can be checked by \link{check_losses_from_train_t_table}}
+
 \item{losses_from_train_v_filename}{path to the
 \code{losses_from_train_v.csv} file}
+
+\item{losses_from_train_v_table}{losses from training, measured
+in the validation step,
+as can be checked by \link{check_losses_from_train_v_table}}
 
 \item{metric}{the metric, as checked by \link{check_metric}}
 
@@ -252,6 +273,9 @@ Use \link{read_model_file} to read a \code{GCAE} architecture from that file.}
 
 \item{n_neurons}{the number of neurons,
 as checked by \link{check_n_neurons}}
+
+\item{nmse_in_time_table}{normalized mean squared error in time,
+as can be checked by \link{check_nmse_in_time_table}}
 
 \item{ormr_folder_name}{folder where the link[ormr]{ormr} R package
 installs the Python packages}
@@ -308,6 +332,9 @@ This argument is named after the GCAE \code{--superpops} CLI flag.}
 
 \item{train_filenames}{path to the files
 as created (and returned) by \link{gcae_train}}
+
+\item{train_times_table}{a table with training time per epoch,
+as can be checked with \link{check_train_times_table}}
 
 \item{train_opts_id}{train options id, corresponding to a file
 train_opts/train_opts_id.json}

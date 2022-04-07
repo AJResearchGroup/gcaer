@@ -41,6 +41,8 @@
 #' @param example_filename name of the example file
 #' @param fam_filename name of a PLINK `.fam` file
 #' as can be read using \link[plinkr]{read_plink_fam_file}
+#' @param folder_name name of a folder,
+#' as checked by \link{check_folder_name}
 #' @param gcae_experiment_params parameters to run a full
 #' `GCAE` experimenr (i.e. call \link{do_gcae_experiment}),
 #' as created by \link{create_gcae_experiment_params} and checked
@@ -86,6 +88,9 @@
 #' stores its temporary files
 #' @param genotype_concordances_filename path to the
 #' `genotype_concordances.csv` file
+#' @param genotype_concordances_table genotype concordances
+#' in time,
+#' as can be checked by \link{check_genotype_concordances_table}
 #' @param gif_filename name of a GIF file,
 #' as checked by \link{check_gif_filename}
 #' @param github_repo_branch_name name of the `git` branch,
@@ -107,8 +112,14 @@
 #' `losses_from_project.csv` file
 #' @param losses_from_train_t_filename path to the
 #' `losses_from_train_t.csv` file
+#' @param losses_from_train_t_table losses from training, measured
+#' in the training step,
+#' as can be checked by \link{check_losses_from_train_t_table}
 #' @param losses_from_train_v_filename path to the
 #' `losses_from_train_v.csv` file
+#' @param losses_from_train_v_table losses from training, measured
+#' in the validation step,
+#' as can be checked by \link{check_losses_from_train_v_table}
 #' @param metric the metric, as checked by \link{check_metric}
 #' @param metrics the metrics, as checked by \link{check_metrics}
 #' @param model the `GCAE` architecture,
@@ -123,6 +134,8 @@
 #' @param model_id model id, corresponding to a file models/model_id.json
 #' @param n_neurons the number of neurons,
 #' as checked by \link{check_n_neurons}
+#' @param nmse_in_time_table normalized mean squared error in time,
+#' as can be checked by \link{check_nmse_in_time_table}
 #' @param ormr_folder_name folder where the link[ormr]{ormr} R package
 #' installs the Python packages
 #' @param os name of the operating system,
@@ -164,6 +177,8 @@
 #' @param train_opts_id train options id, corresponding to a file
 #' train_opts/train_opts_id.json
 #' @param train_times_filename path to the `train_times.csv` file
+#' @param train_times_table a table with training time per epoch,
+#' as can be checked with \link{check_train_times_table}
 #' @param trainedmodeldir name of the folder to save the trained model to.
 #' A valid `trainedmodeldir` ends with a slash (`/`)
 #' as to mimic the `GCAE` interface
@@ -199,6 +214,7 @@ default_params_doc <- function(
   evaluate_results,
   example_filename,
   fam_filename,
+  folder_name,
   gcae_experiment_params,
   gcae_experiment_params_filename,  # nolint indeed a long variable name
   gcae_experiment_results,
@@ -212,6 +228,7 @@ default_params_doc <- function(
   gcae_version,
   gcaer_folder,
   genotype_concordances_filename,
+  genotype_concordances_table,
   gif_filename,
   github_repo_branch_name,
   github_repo_url,
@@ -220,13 +237,16 @@ default_params_doc <- function(
   log_filename,
   losses_from_project_filename,
   losses_from_train_t_filename,
+  losses_from_train_t_table,
   losses_from_train_v_filename,
+  losses_from_train_v_table,
   metric,
   metrics,
   model,
   model_filename,
   model_id,
   n_neurons,
+  nmse_in_time_table,
   ormr_folder_name,
   os,
   out,
@@ -245,6 +265,7 @@ default_params_doc <- function(
   scores_table,
   superpops,
   train_filenames,
+  train_times_table,
   train_opts_id,
   train_times_filename,
   trainedmodeldir,

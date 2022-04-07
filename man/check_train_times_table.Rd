@@ -6,6 +6,10 @@
 \usage{
 check_train_times_table(train_times_table)
 }
+\arguments{
+\item{train_times_table}{a table with training time per epoch,
+as can be checked with \link{check_train_times_table}}
+}
 \value{
 Nothing.
 Will \link{stop} if \code{train_times_table} is invalid.

@@ -6,6 +6,11 @@
 \usage{
 check_losses_from_train_t_table(losses_from_train_t_table)
 }
+\arguments{
+\item{losses_from_train_t_table}{losses from training, measured
+in the training step,
+as can be checked by \link{check_losses_from_train_t_table}}
+}
 \value{
 Nothing.
 Will \link{stop} if \code{losses_from_train_t_table} is invalid.

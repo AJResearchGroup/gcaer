@@ -6,6 +6,10 @@
 \usage{
 check_nmse_in_time_table(nmse_in_time_table)
 }
+\arguments{
+\item{nmse_in_time_table}{normalized mean squared error in time,
+as can be checked by \link{check_nmse_in_time_table}}
+}
 \value{
 Nothing.
 Will \link{stop} if \code{nmse_in_time_table} is invalid.

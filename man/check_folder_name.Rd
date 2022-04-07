@@ -6,6 +6,10 @@
 \usage{
 check_folder_name(folder_name)
 }
+\arguments{
+\item{folder_name}{name of a folder,
+as checked by \link{check_folder_name}}
+}
 \value{
 Nothing. Will \link{stop} if \code{folder_name} is invalid.
 }
@@ -14,7 +18,11 @@ Check if the \code{folder_name} is valid
 Will \link{stop} if not.
 }
 \examples{
-check_folder_name("my.csv")
+check_folder_name(".")
+check_folder_name("~/my_folder")
+check_folder_name("~/my_folder/")
+check_folder_name("/home/my_folder")
+check_folder_name("/home/my_folder/")
 }
 \author{
 Richèl J.C. Bilderbeek

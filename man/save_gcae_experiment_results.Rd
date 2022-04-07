@@ -10,6 +10,9 @@ save_gcae_experiment_results(gcae_experiment_results, folder_name)
 \item{gcae_experiment_results}{the results of a call
 to \link{do_gcae_experiment},
 as checked by \link{check_gcae_experiment_results}}
+
+\item{folder_name}{name of a folder,
+as checked by \link{check_folder_name}}
 }
 \value{
 Nothing

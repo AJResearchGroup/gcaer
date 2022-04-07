@@ -2,6 +2,7 @@ test_that("un- or install", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (plinkr::get_os() == "win") return()
+  skip("Don't, as this, for example, assumes Tensorflow is installed")
   gcae_options <- create_gcae_options(
     gcae_folder = get_gcaer_tempfilename(),
     ormr_folder_name = "python3"

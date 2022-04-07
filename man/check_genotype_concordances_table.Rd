@@ -6,6 +6,11 @@
 \usage{
 check_genotype_concordances_table(genotype_concordances_table)
 }
+\arguments{
+\item{genotype_concordances_table}{genotype concordances
+in time,
+as can be checked by \link{check_genotype_concordances_table}}
+}
 \value{
 a \code{genotype_concordances_table}
 }
