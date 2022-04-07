@@ -6,6 +6,10 @@
 \usage{
 read_phenotype_predictions_file(phenotype_predictions_filename)
 }
+\arguments{
+\item{phenotype_predictions_filename}{name of a file for
+phenotype predictions}
+}
 \value{
 the \code{phenotype_predictions_table},
 as checked by \link{check_phenotype_predictions_table}

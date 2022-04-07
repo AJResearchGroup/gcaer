@@ -10,6 +10,9 @@ plot_phenotype_predictions_from_file(
 )
 }
 \arguments{
+\item{phenotype_predictions_filename}{name of a file for
+phenotype predictions}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 }

@@ -57,6 +57,7 @@ default_params_doc(
   model_filename,
   model_id,
   n_neurons,
+  nmse_in_time_filename,
   nmse_in_time_table,
   ormr_folder_name,
   os,
@@ -64,6 +65,7 @@ default_params_doc(
   phe_filename,
   plink_options,
   pheno_model_id,
+  phenotype_predictions_filename,
   phenotype_predictions_table,
   png_filename,
   project_filenames,
@@ -73,6 +75,7 @@ default_params_doc(
   save_interval,
   score_per_pop_filename,
   scores_per_pop_table,
+  scores_filename,
   scores_table,
   superpops,
   train_filenames,
@@ -274,6 +277,9 @@ Use \link{read_model_file} to read a \code{GCAE} architecture from that file.}
 \item{n_neurons}{the number of neurons,
 as checked by \link{check_n_neurons}}
 
+\item{nmse_in_time_filename}{name of the file for
+the normalized mean squared error in time.}
+
 \item{nmse_in_time_table}{normalized mean squared error in time,
 as can be checked by \link{check_nmse_in_time_table}}
 
@@ -296,7 +302,10 @@ as created by \link[plinkr]{create_plink_options}}
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}
 
-\item{phenotype_predictions_table}{a table of phenotype predictions
+\item{phenotype_predictions_filename}{name of a file for
+phenotype predictions}
+
+\item{phenotype_predictions_table}{a table of phenotype predictions,
 with a true and estimated value for all individuals at a certain
 epoch}
 

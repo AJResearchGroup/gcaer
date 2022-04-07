@@ -6,6 +6,10 @@
 \usage{
 read_nmse_in_time_file(nmse_in_time_filename)
 }
+\arguments{
+\item{nmse_in_time_filename}{name of the file for
+the normalized mean squared error in time.}
+}
 \value{
 the \code{nmse_in_time_table},
 as checked by \link{check_nmse_in_time_table}

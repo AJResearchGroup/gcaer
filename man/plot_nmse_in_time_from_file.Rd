@@ -7,6 +7,9 @@
 plot_nmse_in_time_from_file(nmse_in_time_filename, png_filename)
 }
 \arguments{
+\item{nmse_in_time_filename}{name of the file for
+the normalized mean squared error in time.}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 }

@@ -134,6 +134,8 @@
 #' @param model_id model id, corresponding to a file models/model_id.json
 #' @param n_neurons the number of neurons,
 #' as checked by \link{check_n_neurons}
+#' @param nmse_in_time_filename name of the file for
+#' the normalized mean squared error in time.
 #' @param nmse_in_time_table normalized mean squared error in time,
 #' as can be checked by \link{check_nmse_in_time_table}
 #' @param ormr_folder_name folder where the link[ormr]{ormr} R package
@@ -145,7 +147,9 @@
 #' \code{--out} flag
 #' @param phe_filename name of a PLINK phenotype (`.phe`) file
 #' as can be read using \link[plinkr]{read_plink_phe_file}
-#' @param phenotype_predictions_table a table of phenotype predictions
+#' @param phenotype_predictions_filename name of a file for
+#' phenotype predictions
+#' @param phenotype_predictions_table a table of phenotype predictions,
 #' with a true and estimated value for all individuals at a certain
 #' epoch
 #' @param pheno_model_id phenotype model ID,
@@ -246,6 +250,7 @@ default_params_doc <- function(
   model_filename,
   model_id,
   n_neurons,
+  nmse_in_time_filename,
   nmse_in_time_table,
   ormr_folder_name,
   os,
@@ -253,6 +258,7 @@ default_params_doc <- function(
   phe_filename,
   plink_options,
   pheno_model_id,
+  phenotype_predictions_filename,
   phenotype_predictions_table,
   png_filename,
   project_filenames,
@@ -262,6 +268,7 @@ default_params_doc <- function(
   save_interval,
   score_per_pop_filename,
   scores_per_pop_table,
+  scores_filename,
   scores_table,
   superpops,
   train_filenames,

@@ -10,7 +10,7 @@ create_phenotype_prediction_quality_png(
 )
 }
 \arguments{
-\item{phenotype_predictions_table}{a table of phenotype predictions
+\item{phenotype_predictions_table}{a table of phenotype predictions,
 with a true and estimated value for all individuals at a certain
 epoch}
 

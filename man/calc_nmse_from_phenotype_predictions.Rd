@@ -8,7 +8,7 @@ from the phenotype predictions}
 calc_nmse_from_phenotype_predictions(phenotype_predictions_table)
 }
 \arguments{
-\item{phenotype_predictions_table}{a table of phenotype predictions
+\item{phenotype_predictions_table}{a table of phenotype predictions,
 with a true and estimated value for all individuals at a certain
 epoch}
 }
