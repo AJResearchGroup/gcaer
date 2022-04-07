@@ -6,7 +6,7 @@
 #' as checked by \link{check_genotype_concordances_table}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-read_genotype_concordances_file <- function(genotype_concordances_filename) {
+read_genotype_concordances_file <- function(genotype_concordances_filename) { # nolint indeed a long function name
   gcaer::check_csv_filename(genotype_concordances_filename)
   testthat::expect_true(file.exists(genotype_concordances_filename))
   genotype_concordances_table <- readr::read_csv(

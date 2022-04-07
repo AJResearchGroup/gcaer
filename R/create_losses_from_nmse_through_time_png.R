@@ -1,4 +1,11 @@
-create_losses_from_nmse_through_time_png <- function(
+#' Create a PNG file of the NMSE through time
+#'
+#' Create a PNG file of the NMSE through time
+#' @inheritParams default_params_doc
+#' @return a \link[ggplot2]{ggplot2}
+#' @author Richèl J.C. Bilderbeek
+#' @export
+create_losses_from_nmse_through_time_png <- function( # nolint indeed a long function name
   nmse_in_time_table,
   png_filename
 ) {

@@ -6,7 +6,7 @@
 #' as checked by \link{check_phenotype_predictions_table}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-read_phenotype_predictions_file <- function(phenotype_predictions_filename) {
+read_phenotype_predictions_file <- function(phenotype_predictions_filename) { # nolint indeed a long function name
   gcaer::check_csv_filename(phenotype_predictions_filename)
   testthat::expect_true(file.exists(phenotype_predictions_filename))
   phenotype_predictions_table <- readr::read_csv(

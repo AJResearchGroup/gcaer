@@ -5,7 +5,7 @@
 #' @return a \link[ggplot2]{ggplot2}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_genotype_concordances_through_time_png <- function(
+create_genotype_concordances_through_time_png <- function( # nolint indeed a long function name
   genotype_concordances_table,
   png_filename
 ) {
@@ -20,7 +20,9 @@ create_genotype_concordances_through_time_png <- function(
   ) +
     ggplot2::geom_line() +
     ggplot2::geom_point() +
-    ggplot2::scale_y_continuous(name = "genotype concordance", limits = c(0, 1)) +
+    ggplot2::scale_y_continuous(
+      name = "genotype concordance", limits = c(0, 1)
+    ) +
     gcaer::get_gcaer_theme()
 
   plot

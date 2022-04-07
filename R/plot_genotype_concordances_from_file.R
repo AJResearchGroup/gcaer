@@ -5,7 +5,7 @@
 #' @return the filename where the plot is stored
 #' @author Richèl J.C. Bilderbeek
 #' @export
-plot_genotype_concordances_from_file <- function(
+plot_genotype_concordances_from_file <- function( # nolint indeed a long function name
   genotype_concordances_filename,
   png_filename
 ) {

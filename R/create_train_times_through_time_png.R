@@ -1,4 +1,11 @@
-create_train_times_through_time_png <- function(
+#' Create a PNG file of the training times through time
+#'
+#' Create a PNG file of the training times through time
+#' @inheritParams default_params_doc
+#' @return a \link[ggplot2]{ggplot2}
+#' @author Richèl J.C. Bilderbeek
+#' @export
+create_train_times_through_time_png <- function( # nolint indeed a long function name
   train_times_table,
   png_filename
 ) {

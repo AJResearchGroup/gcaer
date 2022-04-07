@@ -1,12 +1,22 @@
-create_phenotype_predictions_through_time_png <- function(
+#' Create a PNG file of the phenotypic predictions through time
+#'
+#' Create a PNG file of the phenotypic predictions through time
+#' @inheritParams default_params_doc
+#' @return a \link[ggplot2]{ggplot2}
+#' @author Richèl J.C. Bilderbeek
+#' @export
+create_phenotype_predictions_through_time_png <- function( # nolint indeed a long function name
   phenotype_predictions_table,
   png_filename
 ) {
   gcaer::check_phenotype_predictions_table(phenotype_predictions_table)
   gcaer::check_png_filename(png_filename)
-  phenotype_predictions_table$color <- as.factor(phenotype_predictions_table$epoch)
+  phenotype_predictions_table$color <- as.factor(
+    phenotype_predictions_table$epoch
+  )
   phenotype_predictions_table$size <- phenotype_predictions_table$epoch
-  phenotype_predictions_table$size <- 10.0 * phenotype_predictions_table$size / max(phenotype_predictions_table$size)
+  phenotype_predictions_table$size <- 10.0 * phenotype_predictions_table$size /
+    max(phenotype_predictions_table$size)
 
   x_axis_min <- min(0.0, min(phenotype_predictions_table$true_phenotype))
   x_axis_max <- max(0.0, max(phenotype_predictions_table$true_phenotype))

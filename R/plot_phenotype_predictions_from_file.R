@@ -5,7 +5,7 @@
 #' @return the filename where the plot is stored
 #' @author Richèl J.C. Bilderbeek
 #' @export
-plot_phenotype_predictions_from_file <- function(
+plot_phenotype_predictions_from_file <- function( # nolint indeed a long function name
   phenotype_predictions_filename,
   png_filename
 ) {

@@ -1,4 +1,13 @@
-create_losses_from_train_v_through_time_png <- function(
+#' Create a PNG file of the losses from training through time,
+#' based on the validation set.
+#'
+#' Create a PNG file of the losses from training through time,
+#' based on the validation set.
+#' @inheritParams default_params_doc
+#' @return a \link[ggplot2]{ggplot2}
+#' @author Richèl J.C. Bilderbeek
+#' @export
+create_losses_from_train_v_through_time_png <- function( # nolint indeed a long function name
   losses_from_train_v_table,
   png_filename
 ) {

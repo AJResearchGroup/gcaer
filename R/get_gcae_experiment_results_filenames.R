@@ -7,7 +7,7 @@
 #' get_gcae_experiment_results_filenames(folder_name = tempdir())
 #' @author Richèl J.C. Bilderbeek
 #' @export
-get_gcae_experiment_results_filenames <- function(
+get_gcae_experiment_results_filenames <- function( # nolint indeed a long function name
   folder_name
 ) {
   gcaer::check_folder_name(folder_name)
