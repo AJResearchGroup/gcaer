@@ -9,6 +9,12 @@ create_phenotype_predictions_through_time_png <- function( # nolint indeed a lon
   phenotype_predictions_table,
   png_filename
 ) {
+  epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
+  true_phenotype <- NULL; rm(true_phenotype) # nolint, fixes warning: no visible binding for global variable
+  predicted_phenotype <- NULL; rm(predicted_phenotype) # nolint, fixes warning: no visible binding for global variable
+  color <- NULL; rm(color) # nolint, fixes warning: no visible binding for global variable
+  size <- NULL; rm(size) # nolint, fixes warning: no visible binding for global variable
+
   gcaer::check_phenotype_predictions_table(phenotype_predictions_table)
   gcaer::check_png_filename(png_filename)
   phenotype_predictions_table$color <- as.factor(

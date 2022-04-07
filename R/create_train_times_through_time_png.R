@@ -9,6 +9,9 @@ create_train_times_through_time_png <- function( # nolint indeed a long function
   train_times_table,
   png_filename
 ) {
+  epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
+  train_time_sec <- NULL; rm(train_time_sec) # nolint, fixes warning: no visible binding for global variable
+
   gcaer::check_train_times_table(train_times_table)
   gcaer::check_png_filename(png_filename)
   plot <- ggplot2::ggplot(

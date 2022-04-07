@@ -11,6 +11,10 @@ create_losses_from_train_v_through_time_png <- function( # nolint indeed a long 
   losses_from_train_v_table,
   png_filename
 ) {
+  epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
+  losses_from_train_v <- NULL; rm(losses_from_train_v) # nolint, fixes warning: no visible binding for global variable
+
+
   gcaer::check_losses_from_train_v_table(losses_from_train_v_table)
   gcaer::check_png_filename(png_filename)
   plot <- ggplot2::ggplot(

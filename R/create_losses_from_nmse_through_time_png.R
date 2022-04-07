@@ -9,6 +9,9 @@ create_losses_from_nmse_through_time_png <- function( # nolint indeed a long fun
   nmse_in_time_table,
   png_filename
 ) {
+  epoch <- NULL; rm(epoch) # nolint, fixes warning: no visible binding for global variable
+  nmse <- NULL; rm(nmse) # nolint, fixes warning: no visible binding for global variable
+
   gcaer::check_nmse_in_time_table(nmse_in_time_table)
   gcaer::check_png_filename(png_filename)
   plot <- ggplot2::ggplot(
