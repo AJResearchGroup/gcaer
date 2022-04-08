@@ -144,4 +144,4 @@ for example:
 
     URL https://github.com/richelbilderbeek/gcaer
 
-    VERSION 0.6.5
+    VERSION 0.6.6
