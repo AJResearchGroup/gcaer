@@ -26,7 +26,6 @@ parse_evaluate_filenames <- function(
         paste0(evaluate_filenames, collapse = "\n * ")
     )
   }
-  testthat::expect_equal(1, )
   testthat::expect_true(file.exists(score_per_pop_filename))
   not_score_per_pop_filenames <- stringr::str_subset(
     evaluate_filenames,
