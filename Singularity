@@ -91,16 +91,16 @@ From: richelbilderbeek/default/ormr:0.6.2.2
     python3 -m pip list
     python3 /opt/gcae/run_gcae.py --help
 
-    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcae", ormr_folder_name = "python3"))'
+    Rscript -e 'gcaer::install_gcae(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcae_richel", ormr_folder_name = "python3"))'
 
 %runscript
 echo "'gcaer.sif' running with arguments '$@'"
 exec "$@"
 
 %test
-    Rscript -e 'plinkr::plinkr_report(plink_optionses = plinkr::create_plink_optionses(plink_folder = "/opt/plinkr"))'
-    Rscript -e 'ormr::ormr_report(ormr_folder_name = "python3", verbose = TRUE)'
-    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcae", ormr_folder_name = "python3"))'
+    #Rscript -e 'plinkr::plinkr_report(plink_optionses = plinkr::create_plink_optionses(plink_folder = "/opt/plinkr"))'
+    # Rscript -e 'ormr::ormr_report(ormr_folder_name = "python3", verbose = TRUE)'
+    Rscript -e 'gcaer::gcaer_report(gcae_options = gcaer::create_gcae_options(gcae_folder = "/opt/gcae_richel", ormr_folder_name = "python3"))'
 
 %help
 
