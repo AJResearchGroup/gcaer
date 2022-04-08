@@ -38,8 +38,7 @@ library(gcaer)
 These are the GCAE options:
 
 ```{r gcae_options}
-# We will use the local Python, instead of a Conda environment
-gcae_options <- create_gcae_options(ormr_folder_name = "python3")
+gcae_options <- create_gcae_options()
 gcae_options
 ```
 
@@ -57,7 +56,7 @@ While developing this package, for now, we set `good_to_go` to `FALSE`
 regardless. In that way, the GHA CI will show us the result of the test suite.
 
 ```{r}
-good_to_go <- FALSE
+good_to_go <- TRUE
 ```
 
 The GCAE options allow a user to select a GCAE version at a custom location.
@@ -129,9 +128,9 @@ if (good_to_go) {
 
 ```{r model_id}
 if (good_to_go) {
-  model_filename <- get_gcae_model_filename(gcae_setup$model_id)
-  # testthat::expect_true(file.exists(model_filename))
-  # readr::read_lines(model_filename)
+  model_filename <- get_gcae_model_filename(model_id = gcae_setup$model_id)
+  testthat::expect_true(file.exists(model_filename))
+  readr::read_lines(model_filename)
 }
 ```
 
@@ -140,8 +139,8 @@ if (good_to_go) {
 ```{r train_opts_id}
 if (good_to_go) {
   train_opts_filename <- get_gcae_train_opts_filename(gcae_setup$train_opts_id)
-  # testthat::expect_true(file.exists(train_opts_filename))
-  # readr::read_lines(train_opts_filename)
+  testthat::expect_true(file.exists(train_opts_filename))
+  readr::read_lines(train_opts_filename)
 }
 ```
 
@@ -150,8 +149,8 @@ if (good_to_go) {
 ```{r data_opts_id}
 if (good_to_go) {
   data_opts_filename <- get_gcae_data_opts_filename(gcae_setup$data_opts_id)
-  #testthat::expect_true(file.exists(data_opts_filename))
-  #readr::read_lines(data_opts_filename)
+  testthat::expect_true(file.exists(data_opts_filename))
+  readr::read_lines(data_opts_filename)
 }
 ```
 
@@ -159,11 +158,11 @@ if (good_to_go) {
 
 ```{r pheno_model_id}
 if (good_to_go) {
-  # pheno_model_id_filename <- get_gcae_pheno_model_filename(
-  #   gcae_setup$pheno_model_id
-  # )
-  # testthat::expect_true(file.exists(pheno_model_id_filename))
-  # readr::read_lines(pheno_model_id_filename)
+  pheno_model_id_filename <- get_gcae_pheno_model_filename(
+    gcae_setup$pheno_model_id
+  )
+  testthat::expect_true(file.exists(pheno_model_id_filename))
+  readr::read_lines(pheno_model_id_filename)
 }
 ```
 
@@ -219,7 +218,7 @@ if (good_to_go) {
 
 Here we train the auto-encoder:
 
-```{r gcae_train,cache=FALSE}
+```{r gcae_train}
 if (good_to_go) {
   epochs <- 3
   train_filenames <- gcae_train(
@@ -231,7 +230,7 @@ if (good_to_go) {
 }
 ```
 
-```{r parse_train_filenames,cache=FALSE}
+```{r parse_train_filenames}
 if (good_to_go) {
   train_results <- parse_train_filenames(train_filenames)
 }
@@ -272,7 +271,7 @@ if (good_to_go) {
 
 ## Project
 
-```{r gcae_project,cache=FALSE}
+```{r gcae_project}
 good_to_go <- FALSE
 
 if (good_to_go) {
@@ -284,7 +283,7 @@ if (good_to_go) {
 
 Parse the results:
 
-```{r cache=FALSE}
+```{r}
 if (good_to_go) {
   project_results <- parse_project_files(project_filenames)
 }
@@ -292,7 +291,7 @@ if (good_to_go) {
 
 Show the results:
 
-```{r cache=FALSE}
+```{r}
 if (good_to_go) {
   ggplot2::ggplot(
     project_results$losses_from_project_table,
@@ -302,7 +301,7 @@ if (good_to_go) {
 }
 ```
 
-```{r cache=FALSE}
+```{r}
 if (good_to_go) {
   ggplot2::ggplot(
     project_results$genotype_concordances_table,
@@ -316,7 +315,7 @@ if (good_to_go) {
 
 Here we let GCAE create all plots:
 
-```{r gcae_plot,cache=FALSE}
+```{r gcae_plot}
 if (good_to_go) {
   plot_filenames <- gcae_plot(
     superpops = superpops,

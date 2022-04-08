@@ -157,8 +157,6 @@ if (good_to_go) {
 }
 ```
 
-
-
 ## See the GCAE model
 
 
