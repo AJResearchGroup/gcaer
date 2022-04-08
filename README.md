@@ -47,51 +47,87 @@ library(gcaer)
 run_gcae("--help")
 ```
 
-### Full workflow
+### Full experiment
 
-All that needs to be supplied is:
+Instead of using the multiple steps by `GenoCAE`,
+`do_gcae_experiment` does all of these for you.
 
- * `datadir`: the folder that holds PLINK1 binary files
- * `data`: the PLINK1 binary files basename
- * optional: `superpops`: a file with labeled data
+Here is an example of a full experiment: 
 
 ```
-datadir <- file.path(get_gcae_folder(), "example_tiny/")
-data <- "issue_6_bin"
-gcae_setup <- create_gcae_setup(
-  datadir = datadir,
-  data = data,
-  model_id = "M1",
-  pheno_model_id = "p2"
+# Create the parameters for the experiment
+gcae_experiment_params <- create_gcae_experiment_params(
+  gcae_options = create_gcae_options(),
+  gcae_setup = create_test_gcae_setup(
+    model_id = "M0",
+    superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"),
+    pheno_model_id = "p0"
+  ),
+  analyse_epochs = c(1, 2),
+  metrics = "f1_score_3,f1_score_5"
 )
-superpops <- clean_file_path(file.path(datadir, "HO_superpopulations"))
+
+# Do the experiment
+gcae_experiment_results <- do_gcae_experiment(
+  gcae_experiment_params = gcae_experiment_params
+)
+
+# Save the experiment's results
+save_gcae_experiment_results(
+  gcae_experiment_results = gcae_experiment_results,
+  folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
+)
+
+# Create the plots for the experiment's results
+create_plots_from_gcae_experiment_results(
+  folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
+)
+```
+
+### Workflow
+
+To do the full GCAE workflow, a `gcae_setup` is needed,
+from which the respective `gcae_[x]` functions are called,
+where `[x]` matches the first GCAE CLI argument (for
+example, use `gcaer`'s `gcae_train` to do the same as `run_gcae.py train`)
+
+```
+gcae_setup <- create_gcae_setup(
+  datadir = file.path(get_gcae_folder(), "example_tiny/"),
+  data = "issue_6_bin",
+  model_id = "M1",
+  pheno_model_id = "p2",
+  superpops = file.path(datadir, "HO_superpopulations")
+)
 
 # 2. Train, approx 3 mins
 train_filenames <- gcae_train(
   gcae_setup = gcae_setup,
-  epochs = 1,
+  epochs = 3,
   save_interval = 1
 )
 
 # 3. Project
 project_filenames <- gcae_project(
-  superpops = superpops,
-  gcae_setup = gcae_setup,
-  verbose = TRUE
+  gcae_setup = gcae_setup
 )
 project_results <- parse_project_files(project_filenames)
 
-# 4. Plot
-plot_filenames <- gcae_plot(
-  superpops = superpops,
-  gcae_setup = gcae_setup,
-  verbose = TRUE
+# 4. Evaluate
+evaluate_filenames <- gcae_evaluate(
+  gcae_setup,
+  metrics = "f1_score_3,f1_score_5",
+  epoch = 3
 )
-plot_filenames
+
+evaluate_results <- parse_evaluate_filenames(
+  evaluate_filenames, 
+  epoch = 3
+)
+
 ```
 
 ## Links
 
  * [GCAE GitHub repository](https://github.com/richelbilderbeek/genocae/tree/Pheno)
-
 
