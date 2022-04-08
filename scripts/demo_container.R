@@ -13,7 +13,7 @@ message("--------------------")
 message("Get the GCAE options")
 message("--------------------")
 gcae_options <- gcaer::create_gcae_options(
-  gcae_folder = "/opt/GenoCAE",
+  gcae_folder = "/opt/gcae_richel",
   ormr_folder_name = "python3"
 )
 
