@@ -52,13 +52,6 @@ if (!good_to_go) {
 }
 ```
 
-While developing this package, for now, we set `good_to_go` to `FALSE`
-regardless. In that way, the GHA CI will show us the result of the test suite.
-
-```{r}
-good_to_go <- TRUE
-```
-
 The GCAE options allow a user to select a GCAE version at a custom location.
 Or: the GCAE options allows a user to **run** GenoCAE.
 
