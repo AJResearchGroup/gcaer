@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## gcaer v0.6.5 (unreleased)
+## gcaer v0.6.5 (2022-04-08)
 
 ### NEW FEATURES
 
