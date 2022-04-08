@@ -11,7 +11,17 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 parse_score_per_pop_file <- function(score_per_pop_filename) {
-  testthat::expect_equal(1, length(score_per_pop_filename))
+
+  if (length(score_per_pop_filename) != 1) {
+    stop(
+      "'score_per_pop_filename' must have length 1. \n",
+      "Length: ", length(score_per_pop_filename), " \n",
+      "'score_per_pop_filename': \n * ",
+      paste0(score_per_pop_filename, collapse = "\n * "),
+      " \n"
+    )
+  }
+
   testthat::expect_true(file.exists(score_per_pop_filename))
 
   population <- NULL; rm(population) # nolint, fixes warning: no visible binding for global variable
