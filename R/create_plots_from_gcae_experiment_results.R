@@ -28,13 +28,15 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
     )
   )
   gcaer::plot_genotype_concordances_from_file(
-    genotype_concordances_filename = csv_filenames$genotype_concordances_filename,
+    genotype_concordances_filename =
+      csv_filenames$genotype_concordances_filename,
     png_filename = stringr::str_replace(
       csv_filenames$genotype_concordances_filename, ".csv", ".png"
     )
   )
   gcaer::plot_phenotype_predictions_from_file(
-    phenotype_predictions_filename = csv_filenames$phenotype_predictions_filename,
+    phenotype_predictions_filename =
+      csv_filenames$phenotype_predictions_filename,
     png_filename = stringr::str_replace(
       csv_filenames$phenotype_predictions_filename, ".csv", ".png"
     )

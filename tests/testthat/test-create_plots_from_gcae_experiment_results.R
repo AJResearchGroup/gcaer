@@ -7,4 +7,3 @@ test_that("use", {
   expect_true(all(file.exists(unlist(png_filenames))))
   file.remove(unlist(png_filenames))
 })
-

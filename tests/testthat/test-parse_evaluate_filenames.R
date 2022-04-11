@@ -25,4 +25,3 @@ test_that("abuse", {
     "Must detect exactly one filename containing '_pops_epoch_'"
   )
 })
-

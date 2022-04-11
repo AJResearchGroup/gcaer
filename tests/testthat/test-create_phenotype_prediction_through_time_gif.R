@@ -7,5 +7,3 @@ test_that("use", {
   expect_true(file.exists(gif_filename))
   file.remove(gif_filename)
 })
-
-
