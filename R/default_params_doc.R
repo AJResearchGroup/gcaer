@@ -41,6 +41,8 @@
 #' @param example_filename name of the example file
 #' @param fam_filename name of a PLINK `.fam` file
 #' as can be read using \link[plinkr]{read_plink_fam_file}
+#' @param file_extension a file extension, for example `.R`
+#' or `.csv`.
 #' @param folder_name name of a folder,
 #' as checked by \link{check_folder_name}
 #' @param gcae_experiment_params parameters to run a full
@@ -219,6 +221,7 @@ default_params_doc <- function(
   evaluate_results,
   example_filename,
   fam_filename,
+  file_extension,
   folder_name,
   gcae_experiment_params,
   gcae_experiment_params_filename,  # nolint indeed a long variable name

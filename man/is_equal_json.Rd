@@ -18,6 +18,11 @@ is_equal_json(json_1, json_2)
 Determine if two JSON objects are the same
 }
 \examples{
+# Using an example file
+example_model <- read_model_file(get_gcaer_filename("M0.json"))
+is_equal_json(example_model, example_model)
+
+# Using GCAE files
 if (is_gcae_installed()) {
   m0 <- read_model_file(get_gcae_model_filename("M0"))
   m1 <- read_model_file(get_gcae_model_filename("M1"))

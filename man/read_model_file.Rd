@@ -20,9 +20,13 @@ Read a \code{GCAE} autoencoder architecture file
 }
 \examples{
 if (is_gcae_installed()) {
+  # A real GCAE file
   model_filename <- get_gcae_model_filename("M1")
-  model <- read_model_file(model_filename)
+} else {
+  # An example file
+  model_filename <- get_gcaer_filename("M0.json")
 }
+read_model_file(model_filename)
 }
 \seealso{
 use \link{save_model} to save a \code{model}

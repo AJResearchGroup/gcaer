@@ -25,6 +25,7 @@ default_params_doc(
   evaluate_results,
   example_filename,
   fam_filename,
+  file_extension,
   folder_name,
   gcae_experiment_params,
   gcae_experiment_params_filename,
@@ -149,6 +150,9 @@ as checked by \link{check_evaluate_results}}
 
 \item{fam_filename}{name of a PLINK \code{.fam} file
 as can be read using \link[plinkr]{read_plink_fam_file}}
+
+\item{file_extension}{a file extension, for example \code{.R}
+or \code{.csv}.}
 
 \item{folder_name}{name of a folder,
 as checked by \link{check_folder_name}}

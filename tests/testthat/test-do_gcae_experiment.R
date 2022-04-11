@@ -26,6 +26,15 @@ test_that("use", {
   )
 })
 
+test_that("abuse", {
+  expect_error(
+    do_gcae_experiment(gcae_experiment_params = "nonsense"),
+    "'gcae_experiment_params' must be a list"
+  )
+})
+
+
+
 test_that("profiling, M1", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()

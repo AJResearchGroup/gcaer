@@ -4,11 +4,14 @@
 \alias{get_gcae_experiment_results_filenames}
 \title{Get a list of filenames the GCAE results will be saved to}
 \usage{
-get_gcae_experiment_results_filenames(folder_name)
+get_gcae_experiment_results_filenames(folder_name, file_extension = ".csv")
 }
 \arguments{
 \item{folder_name}{name of a folder,
 as checked by \link{check_folder_name}}
+
+\item{file_extension}{a file extension, for example \code{.R}
+or \code{.csv}.}
 }
 \value{
 Nothing
