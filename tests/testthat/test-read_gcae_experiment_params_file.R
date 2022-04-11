@@ -1,6 +1,4 @@
 test_that("use", {
-  if (!is_gcae_installed()) return()
-
   gcae_experiment_params <- create_test_gcae_experiment_params()
   gcae_experiment_params_filename <- get_gcaer_tempfilename(fileext = ".csv") # nolint indeed a long variable name
   save_gcae_experiment_params(
