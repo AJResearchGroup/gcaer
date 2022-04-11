@@ -1,9 +1,5 @@
 test_that("use", {
-  expect_silent(check_model(read_model_file(get_gcae_model_filename("M0"))))
-  expect_silent(check_model(read_model_file(get_gcae_model_filename("M1"))))
-  expect_silent(check_model(read_model_file(get_gcae_model_filename("M3d"))))
-  expect_silent(check_model(read_model_file(get_gcae_model_filename("M3e"))))
-  expect_silent(check_model(read_model_file(get_gcae_model_filename("M3f"))))
+  expect_silent(check_model(read_model_file(get_gcaer_filename("M0.json"))))
   expect_error(check_model("my_data"))
   expect_error(check_model(c(1, 1)))
   expect_error(check_model(0))
@@ -15,4 +11,11 @@ test_that("use", {
   expect_error(check_model(Inf))
   expect_error(check_model(42))
   expect_error(check_model(3.14))
+
+  if (!is_gcae_installed()) return()
+  expect_silent(check_model(read_model_file(get_gcae_model_filename("M0"))))
+  expect_silent(check_model(read_model_file(get_gcae_model_filename("M1"))))
+  expect_silent(check_model(read_model_file(get_gcae_model_filename("M3d"))))
+  expect_silent(check_model(read_model_file(get_gcae_model_filename("M3e"))))
+  expect_silent(check_model(read_model_file(get_gcae_model_filename("M3f"))))
 })
