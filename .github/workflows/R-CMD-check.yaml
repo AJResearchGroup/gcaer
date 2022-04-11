@@ -46,7 +46,12 @@ jobs:
           remotes::install_github("MangoTheCat/goodpractice")
         shell: Rscript {0}
 
-      - name: Install GCAE
+      - name: Install GCAE prerequisistes
+        env:
+          install_gcae: ${{ matrix.install_gcae }}
+        run: if [[ "$install_gcae" == true ]]; then sudo scripts/install_gcae_prerequisites.sh; fi
+
+      - name: Install GCAE using gcaer
         env:
           install_gcae: ${{ matrix.install_gcae }}
         run: if [[ "$install_gcae" == true ]]; then ./scripts/install_gcae.sh; fi

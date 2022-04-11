@@ -14,7 +14,7 @@
 cat R/*.R > tempscript.R
 echo "install_gcae()" >> tempscript.R
 sed -i'.orginal' "s/gcaer:://g" tempscript.R
-cat tempscript.R
+# cat tempscript.R
 Rscript tempscript.R
 rm tempscript.R
 rm tempscript.R.orginal
