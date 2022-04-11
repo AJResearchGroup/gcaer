@@ -1,5 +1,4 @@
 test_that("use", {
-  if (!is_gcae_installed()) return()
   expect_silent(check_model(read_model_file(get_gcae_model_filename("M0"))))
   expect_silent(check_model(read_model_file(get_gcae_model_filename("M1"))))
   expect_silent(check_model(read_model_file(get_gcae_model_filename("M3d"))))

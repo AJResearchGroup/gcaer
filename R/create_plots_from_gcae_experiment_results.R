@@ -12,55 +12,58 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
   folder_name
 ) {
   gcaer::check_folder_name(folder_name)
-  filenames <- gcaer::get_gcae_experiment_results_filenames(
+  csv_filenames <- gcaer::get_gcae_experiment_results_csv_filenames(
     folder_name = folder_name
   )
   gcaer::plot_score_per_pop_from_file(
-    score_per_pop_filename = filenames$score_per_pop_filename,
+    score_per_pop_filename = csv_filenames$score_per_pop_filename,
     png_filename = stringr::str_replace(
-      filenames$score_per_pop_filename, ".csv", ".png"
+      csv_filenames$score_per_pop_filename, ".csv", ".png"
     )
   )
   gcaer::plot_scores_from_file(
-    scores_filename = filenames$scores_filename,
+    scores_filename = csv_filenames$scores_filename,
     png_filename = stringr::str_replace(
-      filenames$scores_filename, ".csv", ".png"
+      csv_filenames$scores_filename, ".csv", ".png"
     )
   )
   gcaer::plot_genotype_concordances_from_file(
-    genotype_concordances_filename = filenames$genotype_concordances_filename,
+    genotype_concordances_filename = csv_filenames$genotype_concordances_filename,
     png_filename = stringr::str_replace(
-      filenames$genotype_concordances_filename, ".csv", ".png"
+      csv_filenames$genotype_concordances_filename, ".csv", ".png"
     )
   )
   gcaer::plot_phenotype_predictions_from_file(
-    phenotype_predictions_filename = filenames$phenotype_predictions_filename,
+    phenotype_predictions_filename = csv_filenames$phenotype_predictions_filename,
     png_filename = stringr::str_replace(
-      filenames$phenotype_predictions_filename, ".csv", ".png"
+      csv_filenames$phenotype_predictions_filename, ".csv", ".png"
     )
   )
   gcaer::plot_train_times_from_file(
-    train_times_filename = filenames$train_times_filename,
+    train_times_filename = csv_filenames$train_times_filename,
     png_filename = stringr::str_replace(
-      filenames$train_times_filename, ".csv", ".png"
+      csv_filenames$train_times_filename, ".csv", ".png"
     )
   )
   gcaer::plot_losses_from_train_t_from_file(
-    losses_from_train_t_filename = filenames$losses_from_train_t_filename,
+    losses_from_train_t_filename = csv_filenames$losses_from_train_t_filename,
     png_filename = stringr::str_replace(
-      filenames$losses_from_train_t_filename, ".csv", ".png"
+      csv_filenames$losses_from_train_t_filename, ".csv", ".png"
     )
   )
   gcaer::plot_losses_from_train_v_from_file(
-    losses_from_train_v_filename = filenames$losses_from_train_v_filename,
+    losses_from_train_v_filename = csv_filenames$losses_from_train_v_filename,
     png_filename = stringr::str_replace(
-      filenames$losses_from_train_v_filename, ".csv", ".png"
+      csv_filenames$losses_from_train_v_filename, ".csv", ".png"
     )
   )
   gcaer::plot_nmse_in_time_from_file(
-    nmse_in_time_filename = filenames$nmse_in_time_filename,
+    nmse_in_time_filename = csv_filenames$nmse_in_time_filename,
     png_filename = stringr::str_replace(
-      filenames$nmse_in_time_filename, ".csv", ".png"
+      csv_filenames$nmse_in_time_filename, ".csv", ".png"
     )
   )
+  # STUB
+  png_filenames <- tempfile()
+  png_filenames
 }

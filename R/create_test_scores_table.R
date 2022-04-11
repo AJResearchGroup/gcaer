@@ -7,9 +7,15 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 create_test_scores_table <- function() {
-  tibble::tibble(
+  first_epoch <- tibble::tibble(
     score = "f1_score_3",
     value = 0.12,
     epoch = 1000
   )
+  second_epoch <- tibble::tibble(
+    score = "f1_score_3",
+    value = 0.23,
+    epoch = 2000
+  )
+  dplyr::bind_rows(first_epoch, second_epoch)
 }

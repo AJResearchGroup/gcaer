@@ -1,6 +1,6 @@
-#' Create a GIF file of the phenotype predictions through time
+#' Create a PNG file of the phenotype predictions at that time
 #'
-#' Create a GIF file of the phenotype predictions through time
+#' Create a PNG file of the phenotype predictions at that time
 #' @inheritParams default_params_doc
 #' @return the result of \link[gganimate]{animate}
 #' @author Richèl J.C. Bilderbeek
