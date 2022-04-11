@@ -3,13 +3,18 @@
 #' @return the model with the desired number of neurons in the latent layer
 #' @examples
 #' if (is_gcae_installed()) {
+#'   # A real GCAE file
 #'   model_filename <- get_gcae_model_filename("M1")
-#'   model <- read_model_file(model_filename)
-#'   model <- set_n_neurons_in_latent_layer(
-#'     model = model,
-#'     n_neurons = 1
-#'   )
+#' } else {
+#'   # An example file
+#'   model_filename <- get_gcaer_filename("M0.json")
 #' }
+#' model <- read_model_file(model_filename)
+#' new_model <- set_n_neurons_in_latent_layer(
+#'   model = model,
+#'   n_neurons = 1
+#' )
+#' get_n_neurons_in_latent_layer(new_model)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 set_n_neurons_in_latent_layer <- function(
@@ -18,7 +23,9 @@ set_n_neurons_in_latent_layer <- function(
 ) {
   gcaer::check_model(model)
   gcaer::check_n_neurons(n_neurons)
-  testthat::expect_true(n_neurons > 0)
+  if (n_neurons == 0) {
+    stop("Cannot set latent layer to zero neurons")
+  }
 
   if (length(model$layers) == 1) {
     model$layers[[1]]$args$units <- n_neurons

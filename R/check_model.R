@@ -6,7 +6,13 @@
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `model` is invalid.
 #' @examples
+#' # An example file
+#' model_filename <- get_gcaer_filename("M0.json")
+#' model <- read_model_file(model_filename)
+#' check_model(model)
+#'
 #' if (is_gcae_installed()) {
+#'   # A GCAE file
 #'   model_filename <- get_gcae_model_filename("M0")
 #'   model <- read_model_file(model_filename)
 #'   check_model(model)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_phenotype_prediction_quality_png.R
 \name{create_phenotype_prediction_quality_png}
 \alias{create_phenotype_prediction_quality_png}
-\title{Create a GIF file of the phenotype predictions through time}
+\title{Create a PNG file of the phenotype predictions at that time}
 \usage{
 create_phenotype_prediction_quality_png(
   phenotype_predictions_table,
@@ -21,7 +21,7 @@ as checked by \link{check_png_filename}}
 the result of \link[gganimate]{animate}
 }
 \description{
-Create a GIF file of the phenotype predictions through time
+Create a PNG file of the phenotype predictions at that time
 }
 \author{
 Richèl J.C. Bilderbeek
