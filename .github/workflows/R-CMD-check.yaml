@@ -23,7 +23,7 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v1
 
-      - uses: s-weigand/setup-conda@v1
+      #- uses: s-weigand/setup-conda@v1
 
       - name: Install libcurl4-openssl-dev
         run: sudo apt install -qq libcurl4-openssl-dev
