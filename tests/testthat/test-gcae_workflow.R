@@ -1,7 +1,7 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
 
   # This test goes through the full workflow.
   # It is not broken up into small pieces, as each 'small piece'

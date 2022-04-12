@@ -3,7 +3,7 @@ test_that("use", {
   # Only run locally
   return()
   if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
 
   # This test goes through the full workflow.
   # It is not broken up into small pieces, as each 'small piece'

@@ -12,7 +12,7 @@ test_that("use", {
   expect_error(check_model(42))
   expect_error(check_model(3.14))
 
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
   expect_silent(check_model(read_model_file(get_gcae_model_filename("M0"))))
   expect_silent(check_model(read_model_file(get_gcae_model_filename("M1"))))
   expect_silent(check_model(read_model_file(get_gcae_model_filename("M3d"))))

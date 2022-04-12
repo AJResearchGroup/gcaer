@@ -4,7 +4,7 @@ test_that("use, example file", {
 })
 
 test_that("use, GCAE file", {
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
   model_filename <- get_gcae_model_filename("M1")
   model <- read_model_file(model_filename)
 })

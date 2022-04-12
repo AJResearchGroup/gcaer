@@ -6,6 +6,7 @@ test_that("use", {
   expect_silent(check_folder_name("~/foldername/sub_foldername"))
   expect_silent(check_folder_name("/home"))
   expect_silent(check_folder_name("/home/"))
+  expect_error(check_folder_name("path with spaces home"), "must match regex")
   expect_error(check_folder_name(c("/home", "/home")))
   expect_error(check_folder_name(0))
   expect_error(check_folder_name(-1))

@@ -8,8 +8,7 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 gcae_plot <- function(
-  gcae_setup = create_gcae_setup(),
-  superpops = file.path(gcae_setup$datadir, "HO_superpopulations"),
+  gcae_setup,
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
@@ -23,8 +22,8 @@ gcae_plot <- function(
     "plot",
     "--datadir", gcae_setup$datadir,
     "--trainedmodelname", trainedmodelname,
-    "--superpops", superpops,
-    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
+    "--superpops", gcae_setup$superpops,
+    "--pheno_model_id", gcae_setup$pheno_model_id
   )
   gcaer::run_gcae(
     args = args,

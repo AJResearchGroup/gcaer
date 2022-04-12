@@ -1,7 +1,7 @@
 test_that("use", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
   clean_gcaer_tempfolder()
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
@@ -38,7 +38,7 @@ test_that("abuse", {
 test_that("profiling, M1", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
   clean_gcaer_tempfolder()
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_setup = create_test_gcae_setup(

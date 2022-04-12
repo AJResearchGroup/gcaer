@@ -21,7 +21,7 @@ test_that("show help", {
 test_that("error", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_installed()) return()
+  if (!is_gcae_script_fixed()) return()
   args <- c("--nonsense")
   expect_error(
     run_gcae(args),
