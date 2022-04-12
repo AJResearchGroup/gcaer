@@ -19,9 +19,6 @@ as created by \link{create_gcae_options}}
 \item{verbose}{the verbosity of a function.
 Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
-
-\item{superpops}{path to the superpops file.
-This argument is named after the GCAE \code{--superpops} CLI flag.}
 }
 \value{
 full paths to the created files

@@ -18,6 +18,7 @@ Imports:
     dplyr,
     gert,
     gganimate,
+    gifski,
     igraph,
     jsonlite,
     ormr (>= 0.6.2.2),

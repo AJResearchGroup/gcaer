@@ -2,8 +2,6 @@
 #'
 #' Plot, using the GCAE command-line interface
 #' @inheritParams default_params_doc
-#' @param superpops path to the superpops file.
-#' This argument is named after the GCAE `--superpops` CLI flag.
 #' @return full paths to the created files
 #' @author Richèl J.C. Bilderbeek
 #' @export
