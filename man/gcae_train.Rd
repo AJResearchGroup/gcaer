@@ -45,12 +45,7 @@ use \link{gcae_train_more}
 \examples{
 if (plinkr::is_on_ci() && is_gcae_installed()) {
   gcae_options <- create_gcae_options()
-  gcae_setup <- create_gcae_setup(
-    datadir = file.path(gcae_options$gcae_folder, "example_tiny/"),
-    data = "issue_6_bin",
-    model_id = "M1",
-    pheno_model_id = "p2"
-  )
+  gcae_setup <- create_test_gcae_setup()
   train_filenames <- gcae_train(
     gcae_setup = gcae_setup,
     epochs = 1,
