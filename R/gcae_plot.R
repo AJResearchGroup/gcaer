@@ -10,7 +10,6 @@ gcae_plot <- function(
   gcae_options = create_gcae_options(),
   verbose = FALSE
 ) {
-  testthat::expect_true(file.exists(superpops))
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_gcae_options(gcae_options)
   trainedmodelname <- gcaer::get_gcae_trainedmodelname(
