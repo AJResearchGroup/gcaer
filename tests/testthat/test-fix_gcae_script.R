@@ -3,7 +3,13 @@ test_that("use", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_installed()) return()
   gcae_options <- create_gcae_options(gcae_folder = get_gcaer_tempfilename())
-  expect_silent(clone_gcae_repo(gcae_options))
+  expect_silent(
+    clone_gcae_repo(
+      gcae_options,
+      github_repo_url = "https://github.com/cnettel/GenoCAE",
+      github_repo_branch_name = "Pheno"
+    )
+  )
   fix_gcae_script(gcae_options = gcae_options)
   unlink(gcae_options$gcae_folder, recursive = TRUE)
 })
