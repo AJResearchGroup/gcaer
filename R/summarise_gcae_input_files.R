@@ -16,7 +16,8 @@ summarise_gcae_input_files <- function(
 ) {
   gcaer::check_gcae_input_filenames(gcae_input_filenames = gcae_input_filenames)
   gcae_input_data <- gcaer::read_gcae_input_files(
-    gcae_input_filenames = gcae_input_filenames
+    gcae_input_filenames = gcae_input_filenames,
+    verbose = verbose
   )
   gcaer::summarise_gcae_input_data(
     gcae_input_data = gcae_input_data,

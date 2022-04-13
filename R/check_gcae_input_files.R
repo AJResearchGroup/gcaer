@@ -31,10 +31,14 @@
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
-check_gcae_input_files <- function(gcae_input_filenames) {
+check_gcae_input_files <- function(
+  gcae_input_filenames,
+  verbose = FALSE
+) {
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
   gcae_input_data <- gcaer::read_gcae_input_files(
-    gcae_input_filenames = gcae_input_filenames
+    gcae_input_filenames = gcae_input_filenames,
+    verbose = verbose
   )
   gcaer::check_gcae_input_data(gcae_input_data = gcae_input_data)
 }

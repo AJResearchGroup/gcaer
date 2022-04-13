@@ -11,8 +11,12 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 create_gcae_input_data <- function(
-  gcae_input_filenames
+  gcae_input_filenames,
+  verbose = FALSE
 ) {
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
-  gcaer::read_gcae_input_files(gcae_input_filenames)
+  gcaer::read_gcae_input_files(
+    gcae_input_filenames = gcae_input_filenames,
+    verbose = verbose
+  )
 }

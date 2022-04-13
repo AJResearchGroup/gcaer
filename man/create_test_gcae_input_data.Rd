@@ -5,7 +5,8 @@
 \title{Create a \code{gcae_input_data} to be used in testing.}
 \usage{
 create_test_gcae_input_data(
-  gcae_input_filenames = gcaer::create_test_gcae_input_filenames()
+  gcae_input_filenames = gcaer::create_test_gcae_input_filenames(),
+  verbose = FALSE
 )
 }
 \arguments{
@@ -23,6 +24,10 @@ as can be read by \link[plinkr]{read_plink_phe_file}
 \item \code{labels_filename}: path to a \code{.csv} file
 as can be read by \link{read_labels_file}
 }}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 a \code{gcae_input_data}

@@ -31,7 +31,10 @@
 #' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
-read_gcae_input_files <- function(gcae_input_filenames) {
+read_gcae_input_files <- function(
+  gcae_input_filenames,
+  verbose = TRUE
+) {
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
   testthat::expect_true(
     all(file.exists((as.character(unlist(gcae_input_filenames)))))
@@ -40,12 +43,27 @@ read_gcae_input_files <- function(gcae_input_filenames) {
   base_input_filename <- tools::file_path_sans_ext(
     gcae_input_filenames$bed_filename
   )
+  if (verbose) {
+    message("Reading PLINK binary data, with basename ", base_input_filename)
+  }
   gcae_input_data <- plinkr::read_plink_bin_data(
     base_input_filename = base_input_filename
   )
+  if (verbose) {
+    message(
+      "Reading the labels table, with filename ",
+      gcae_input_filenames$labels_filename
+    )
+  }
   gcae_input_data$labels_table <- gcaer::read_labels_file(
     gcae_input_filenames$labels_filename
   )
+  if (verbose) {
+    message(
+      "Reading the PLINK phenotype file, with filename ",
+      gcae_input_filenames$phe_filename
+    )
+  }
   gcae_input_data$phe_table <- plinkr::read_plink_phe_file(
     gcae_input_filenames$phe_filename
   )
