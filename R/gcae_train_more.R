@@ -41,6 +41,11 @@ gcae_train_more <- function(
     epochs = epochs,
     save_interval = save_interval
   )
+  dir.create(
+    gcae_setup$trainedmodeldir,
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
   if (verbose) {
     message(
       "Running GCAE with arguments: '", paste0(args, collapse = " "), " \n",
