@@ -20,7 +20,10 @@ test_that("use", {
     train_opts_id = "ex3",
     pheno_model_id = "p2",
     trainedmodeldir = paste0(
-      normalizePath(get_gcaer_tempfilename(), mustWork = FALSE), "/"
+      normalizePath(
+        file.path(get_gcaer_tempfilename(), "gcae_input_files_1_ae"),
+        mustWork = FALSE
+      ), "/"
     )
   )
 

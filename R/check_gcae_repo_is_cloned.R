@@ -17,7 +17,8 @@ check_gcae_repo_is_cloned <- function(
       "GCAE repository is not cloned: GCAE folder not found \n",
       "'gcae_options$gcae_folder': ", gcae_options$gcae_folder, " \n",
       paste0(
-        gcaer::gcae_options_to_str(gcae_options = gcae_options), collapse = "\n"
+        gcaer::gcae_options_to_str(gcae_options = gcae_options),
+        collapse = "\n"
       ), " \n",
       "Tip: run 'gcaer::clone_gcae_repo()'"
     )
@@ -28,7 +29,8 @@ check_gcae_repo_is_cloned <- function(
       "GCAE repository is not cloned: file not found \n",
       "Path to 'requirements.txt': ", filename, " \n",
       paste0(
-        gcaer::gcae_options_to_str(gcae_options = gcae_options), collapse = "\n"
+        gcaer::gcae_options_to_str(gcae_options = gcae_options),
+        collapse = "\n"
       ), " \n",
       "Tip: run 'gcaer::clone_gcae_repo()'"
     )

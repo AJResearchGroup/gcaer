@@ -64,8 +64,8 @@ gcae_train_more <- function(
   if (!dir.exists(ae_out_subfolder)) {
     stop(
       "'ae_out_subfolder' not found at path '", ae_out_subfolder, "' \n",
-      paste0(gcaer::gcae_setup_to_str(gcae_setup), collapse = "\n"),
-      paste0(gcaer::gcae_options_to_str(gcae_options), collapse = "\n"),
+      paste0(gcaer::gcae_setup_to_str(gcae_setup), collapse = "\n"), "\n",
+      paste0(gcaer::gcae_options_to_str(gcae_options), collapse = "\n"), "\n",
       "'args': '", paste0(args, collapse = " "), "' \n",
       "Tip: you should be able to copy-paste the args :-)"
     )
