@@ -12,5 +12,6 @@ gcae_setup_to_str <- function(gcae_setup) {
     parameter = names(gcae_setup),
     value = as.character(unlist(gcae_setup))
   )
-  paste0(t$parameter, ": ", t$value)
+
+  paste0("gcae_setup$", t$parameter, ": ", t$value)
 }

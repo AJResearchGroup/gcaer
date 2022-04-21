@@ -12,5 +12,5 @@ gcae_options_to_str <- function(gcae_options) {
     parameter = names(gcae_options),
     value = as.character(unlist(gcae_options))
   )
-  paste0(t$parameter, ": ", t$value)
+  paste0("gcae_options$", t$parameter, ": ", t$value)
 }
