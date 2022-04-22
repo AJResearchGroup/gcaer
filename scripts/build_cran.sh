@@ -11,6 +11,11 @@ cp -r ../vignettes build
 cp ../DESCRIPTION build
 cp ../NAMESPACE build
 
-cd build
+# SC2164: Use 'cd ... || exit' or 'cd ... || return' in case cd fails
+cd build || exit
+
 R CMD build .
-R CMD check --as-cran $(ls *.tar.gz)
+
+# SC2046: Quote this to prevent word splitting
+# SC2035: Use ./*glob* or -- *glob* so names with dashes won't become options
+R CMD check --as-cran "$(ls /*.tar.gz)"
