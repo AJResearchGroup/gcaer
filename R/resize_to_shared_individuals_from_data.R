@@ -30,6 +30,13 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
   # gcae_input_data can be invalid, which is _why_ we resize
   gcaer::check_gcae_input_data_data_type(gcae_input_data)
 
+  if (sum(is.na(gcae_input_data$phe_table)) != 0) {
+    stop(
+      "'gcae_input_data$phe_table' must not contain NAs. \n",
+      "Found ", sum(is.na(gcae_input_data$phe_table)), " NAs"
+    )
+  }
+
   # The data must at least be PLINK binary date, i.e.
   # the .bed, .bim and .fam tables must match sizes
   plink_bin_data <- plinkr::create_plink_bin_data(

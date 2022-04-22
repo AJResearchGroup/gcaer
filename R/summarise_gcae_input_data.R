@@ -14,6 +14,16 @@ summarise_gcae_input_data <- function(
   gcae_input_data,
   verbose = FALSE
 ) {
+  # gcae_input_data can be invalid, which is _why_ we resize
+  gcaer::check_gcae_input_data_data_type(gcae_input_data)
+
+  if (sum(is.na(gcae_input_data$phe_table)) != 0) {
+    stop(
+      "'gcae_input_data$phe_table' must not contain NAs. \n",
+      "Found ", sum(is.na(gcae_input_data$phe_table)), " NAs"
+    )
+  }
+  gcae_input_data$phe_table
   summary <- list(
     n_individuals_in_bed_table = ncol(gcae_input_data$bed_table),
     n_snps_in_bed_table = nrow(gcae_input_data$bed_table),

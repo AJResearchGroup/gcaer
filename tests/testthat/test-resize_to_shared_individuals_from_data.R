@@ -49,7 +49,7 @@ test_that("use, resize phe_table", {
   gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(gcae_input_data))
 
-  # Keep only the first half of the fam table
+  # Keep only the first half of the phe table
   n_individuals <- 3
   gcae_input_data$phe_table <- gcae_input_data$phe_table[
     seq(1, n_individuals),
@@ -62,6 +62,27 @@ test_that("use, resize phe_table", {
   expect_equal(n_individuals, after$n_individuals_in_fam_table)
   expect_equal(n_individuals, after$n_individuals_in_phe_table)
   expect_true(any(as.integer(after) != as.integer(before)))
+})
+
+test_that("cannot when NA's are in phe_table", {
+  gcae_input_data <- create_test_gcae_input_data()
+  expect_silent(check_gcae_input_data(gcae_input_data))
+
+  # Keep only the first half of the phe table
+  expect_true("phe_table" %in% names(gcae_input_data))
+  expect_true("additive" %in% names(gcae_input_data$phe_table))
+  n_individuals <- 3
+  gcae_input_data$phe_table$additive[
+    seq(from = n_individuals + 1, to = nrow(gcae_input_data$phe_table))
+  ] <- NA
+  expect_error(
+    summarise_gcae_input_data(gcae_input_data),
+    "'gcae_input_data.phe_table' must not contain NAs"
+  )
+  expect_error(
+    resize_to_shared_individuals_from_data(gcae_input_data),
+    "'gcae_input_data.phe_table' must not contain NAs"
+  )
 })
 
 test_that("use, resize all tables", {
