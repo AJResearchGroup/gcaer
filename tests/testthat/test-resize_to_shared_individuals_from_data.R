@@ -3,6 +3,12 @@ test_that("minimal", {
   expect_silent(resize_to_shared_individuals_from_data(gcae_input_data))
 })
 
+test_that("test dataset, test output", {
+  skip("https://github.com/richelbilderbeek/nsphs_ml_qt/issues/5")
+  gcae_input_data <- resize_to_shared_individuals_from_data(create_test_gcae_input_data())
+  expect_false("index" %in% names(gcae_input_data$phe_table))
+})
+
 
 test_that("use, resize fam table", {
   gcae_input_data <- create_test_gcae_input_data()
