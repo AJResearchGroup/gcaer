@@ -131,6 +131,7 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
       colnames(gcae_input_data$bed_table)[fam_tables_indices$index]
     )
   )
+  attributes(new_bed_table)$plinkr_datatype <- "bed_table"
   plinkr::check_bed_table(new_bed_table)
 
   new_fam_table <- gcae_input_data$fam_table[fam_tables_indices$index, ]
