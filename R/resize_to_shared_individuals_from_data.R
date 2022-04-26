@@ -158,6 +158,8 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
     fam_tables_indices,
     by = c("FID" = "fam", "IID" = "id")
   )
+  testthat::expect_true("index" %in% names(new_phe_table))
+  new_phe_table$index <- NULL
   if (verbose) {
     message("head(new_phe_table):")
     message(paste0(knitr::kable(utils::head(new_phe_table)), collapse = "\n"))
