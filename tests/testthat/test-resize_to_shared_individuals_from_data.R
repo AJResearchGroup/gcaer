@@ -4,8 +4,11 @@ test_that("minimal", {
 })
 
 test_that("test dataset, test output", {
-  gcae_input_data <- resize_to_shared_individuals_from_data(create_test_gcae_input_data())
+  gcae_input_data <- resize_to_shared_individuals_from_data(
+    create_test_gcae_input_data()
+  )
   expect_false("index" %in% names(gcae_input_data$phe_table))
+  head(gcae_input_data$labels_table)
 })
 
 
