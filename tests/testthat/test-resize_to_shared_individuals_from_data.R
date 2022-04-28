@@ -13,22 +13,21 @@ test_that("test dataset, test output", {
 
 
 test_that("use, resize fam table", {
-  gcae_input_data <- create_test_gcae_input_data()
-  expect_silent(check_gcae_input_data(gcae_input_data))
+  all_gcae_input_data <- create_test_gcae_input_data()
+  expect_silent(check_gcae_input_data(all_gcae_input_data))
 
   # Keep only the first half of the fam table
-  n_individuals <- 3
-  gcae_input_data$fam_table <- gcae_input_data$fam_table[
-    seq(1, n_individuals),
-  ]
-
+  gcae_input_data <- plinkr::select_samples(
+    data = all_gcae_input_data,
+    sample_selector = plinkr::create_random_samples_selector(
+      n_samples = 10
+    )
+  )
+  gcae_input_data$labels_table <- all_gcae_input_data$labels_table
+  gcae_input_data$phe_table <- all_gcae_input_data$phe_table
   before <- summarise_gcae_input_data(gcae_input_data)
-  before
   gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
   after <- summarise_gcae_input_data(gcae_input_data)
-  expect_equal(n_individuals, after$n_individuals_in_bed_table)
-  expect_equal(n_individuals, after$n_individuals_in_fam_table)
-  expect_equal(n_individuals, after$n_individuals_in_phe_table)
   expect_true(any(as.integer(after) != as.integer(before)))
 })
 
@@ -95,12 +94,20 @@ test_that("cannot when NA's are in phe_table", {
 
 test_that("use, resize all tables", {
   set.seed(314)
-  gcae_input_data <- create_test_gcae_input_data()
-  expect_silent(check_gcae_input_data(gcae_input_data))
+  all_gcae_input_data <- create_test_gcae_input_data()
+  expect_silent(check_gcae_input_data(all_gcae_input_data))
+  all_individuals <- nrow(all_gcae_input_data$phe_table)
 
-  all_individuals <- nrow(gcae_input_data$phe_table)
-
-  # Keep only half of each table
+  # .bed, .bim, .fam
+  gcae_input_data <- plinkr::select_samples(
+    data = all_gcae_input_data,
+    sample_selector = plinkr::create_random_samples_selector(
+      n_samples = all_individuals / 10
+    )
+  )
+  gcae_input_data$phe_table <- all_gcae_input_data$phe_table
+  gcae_input_data$labels_table <- all_gcae_input_data$labels_table
+  # Gets 50% of all indices, randomly chosen
   get_random_indices <- function(t) {
     sort(
       sample(
@@ -110,27 +117,19 @@ test_that("use, resize all tables", {
       )
     )
   }
-  gcae_input_data$fam_table <- gcae_input_data$fam_table[
-    get_random_indices(gcae_input_data$fam_table),
-  ]
-  # Remove first out of three lines
-  gcae_input_data$labels_table <- gcae_input_data$labels_table[
-    -1,
-  ]
-  gcae_input_data$phe_table <- gcae_input_data$phe_table[
+  gcae_input_data$phe_table <- all_gcae_input_data$phe_table[
     get_random_indices(gcae_input_data$phe_table),
   ]
 
   before <- summarise_gcae_input_data(gcae_input_data)
   gcae_input_data <- resize_to_shared_individuals_from_data(gcae_input_data)
   after <- summarise_gcae_input_data(gcae_input_data)
-  # We took random individuals from 3 tables, hence (0.5^3 = ) 1/8th will
-  # be shared individuals
+  # We took 10% of the PLINK data and 50% of the .phe data
   n_individuals <- after$n_individuals_in_bed_table
   expect_equal(
-    all_individuals * (1 / 2) * (1 / 3) * (1 / 2),
+    all_individuals * 0.1 * 0.5,
     n_individuals,
-    tolerance = 10
+    tolerance = 5
   )
   expect_equal(n_individuals, after$n_individuals_in_bed_table)
   expect_equal(n_individuals, after$n_individuals_in_fam_table)
