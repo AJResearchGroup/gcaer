@@ -55,21 +55,27 @@ do_gcae_experiment <- function(
     losses_from_project_table <- t_project_results$losses_from_project_table
     genotype_concordances_table <- t_project_results$genotype_concordances_table
 
-    evaluate_filenames <- gcaer::gcae_evaluate(
-      gcae_setup = gcae_experiment_params$gcae_setup,
-      gcae_options = gcae_experiment_params$gcae_options,
-      metrics = gcae_experiment_params$metrics,
-      epoch = analyse_epochs[i],
-      verbose = verbose
-    )
-    evaluate_results <- gcaer::parse_evaluate_filenames(
-      evaluate_filenames = evaluate_filenames,
-      epoch = analyse_epochs[i]
-    )
-    evaluate_results$t_score_per_pop$epoch <- analyse_epochs[i]
-    evaluate_results$t_scores$epoch <- analyse_epochs[i]
-    score_per_pops_list[[i]] <- evaluate_results$t_score_per_pop
-    scores_list[[i]] <- evaluate_results$t_scores
+    if (gcae_experiment_params$gcae_setup$superpops == "") {
+      if (verbose) {
+        message("No labels, hence no GCAE evaluate")
+      }
+    } else {
+      evaluate_filenames <- gcaer::gcae_evaluate(
+        gcae_setup = gcae_experiment_params$gcae_setup,
+        gcae_options = gcae_experiment_params$gcae_options,
+        metrics = gcae_experiment_params$metrics,
+        epoch = analyse_epochs[i],
+        verbose = verbose
+      )
+      evaluate_results <- gcaer::parse_evaluate_filenames(
+        evaluate_filenames = evaluate_filenames,
+        epoch = analyse_epochs[i]
+      )
+      evaluate_results$t_score_per_pop$epoch <- analyse_epochs[i]
+      evaluate_results$t_scores$epoch <- analyse_epochs[i]
+      score_per_pops_list[[i]] <- evaluate_results$t_score_per_pop
+      scores_list[[i]] <- evaluate_results$t_scores
+    }
 
     # Evaluate the phenotype
     phenotype_predictions_table <- gcaer::evaluate_phenotype_prediction(

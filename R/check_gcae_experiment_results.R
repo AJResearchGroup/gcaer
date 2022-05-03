@@ -33,12 +33,16 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   testthat::expect_true(
     "losses_from_train_v_table" %in% names(gcae_experiment_results)
   )
-  gcaer::check_score_per_pop_table(
-    gcae_experiment_results$score_per_pop_table
-  )
-  gcaer::check_scores_table(
-    gcae_experiment_results$scores_table
-  )
+  if (nrow(gcae_experiment_results$score_per_pop_table) > 0) {
+    gcaer::check_score_per_pop_table(
+      gcae_experiment_results$score_per_pop_table
+    )
+  }
+  if (nrow(gcae_experiment_results$scores_table) > 0) {
+    gcaer::check_scores_table(
+      gcae_experiment_results$scores_table
+    )
+  }
   gcaer::check_genotype_concordances_table(
     gcae_experiment_results$genotype_concordances_table
   )

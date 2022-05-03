@@ -39,5 +39,16 @@ check_gcae_experiment_params <- function(
   gcaer::check_analyse_epochs(gcae_experiment_params$analyse_epochs)
   gcaer::check_metrics(gcae_experiment_params$metrics)
 
+  if (gcae_experiment_params$gcae_setup$superpops != "" &&
+      gcae_experiment_params$metrics == ""
+  ) {
+    stop("Must define 'metrics' when using 'superpops'. \n")
+  }
+  if (gcae_experiment_params$gcae_setup$superpops == "" &&
+      gcae_experiment_params$metrics != ""
+  ) {
+    stop("Must define 'superpops' when using 'metrics'. \n")
+  }
+
   invisible(gcae_experiment_params)
 }

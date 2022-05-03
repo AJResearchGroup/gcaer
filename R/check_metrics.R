@@ -8,6 +8,7 @@
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `metrics` is invalid.
 #' @examples
+#' check_metrics("")
 #' check_metrics("hull_error")
 #' check_metrics("f1_score_3")
 #' check_metrics("hull_error,f1_score_3")
@@ -18,6 +19,7 @@ check_metrics <- function(
 ) {
   testthat::expect_equal(1, length(metrics))
   testthat::expect_true(is.character(metrics))
+  if (metrics == "") return(invisible(metrics))
   metric_vector <- stringr::str_split(metrics, pattern = ",")[[1]]
   for (metric in metric_vector) {
     gcaer::check_metric(metric)

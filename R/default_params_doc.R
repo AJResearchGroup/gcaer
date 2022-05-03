@@ -122,8 +122,10 @@
 #' @param losses_from_train_v_table losses from training, measured
 #' in the validation step,
 #' as can be checked by \link{check_losses_from_train_v_table}
-#' @param metric the metric, as checked by \link{check_metric}
-#' @param metrics the metrics, as checked by \link{check_metrics}
+#' @param metric the metric, as checked by \link{check_metric}.
+#' Use `""` to indicate not to use a clusting metric
+#' @param metrics the metrics, as checked by \link{check_metrics}.
+#' Use `""` to indicate not to use a clusting metric
 #' @param model the `GCAE` architecture,
 #' as checked by \link{check_model}.
 #' Use \link{read_model_file} to read a `GCAE` architecture from file.

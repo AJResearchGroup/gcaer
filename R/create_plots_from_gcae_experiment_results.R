@@ -20,14 +20,19 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
     folder_name = folder_name,
     file_extension = ".png"
   )
-  gcaer::plot_score_per_pop_from_file(
-    score_per_pop_filename = csv_filenames$score_per_pop_filename,
-    png_filename = png_filenames$score_per_pop_filename
-  )
-  gcaer::plot_scores_from_file(
-    scores_filename = csv_filenames$scores_filename,
-    png_filename = png_filenames$scores_filename
-  )
+
+  if (nrow(readr::read_csv(csv_filenames$score_per_pop_filename, show_col_types = FALSE)) > 0) {
+    gcaer::plot_score_per_pop_from_file(
+      score_per_pop_filename = csv_filenames$score_per_pop_filename,
+      png_filename = png_filenames$score_per_pop_filename
+    )
+  }
+  if (nrow(readr::read_csv(csv_filenames$scores_filename, show_col_types = FALSE)) > 0) {
+    gcaer::plot_scores_from_file(
+      scores_filename = csv_filenames$scores_filename,
+      png_filename = png_filenames$scores_filename
+    )
+  }
   gcaer::plot_genotype_concordances_from_file(
     genotype_concordances_filename =
       csv_filenames$genotype_concordances_filename,

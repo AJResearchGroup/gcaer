@@ -29,7 +29,9 @@ gcae_project <- function(
   verbose = FALSE
 ) {
   gcaer::check_gcae_setup(gcae_setup)
-  testthat::expect_true(file.exists(gcae_setup$superpops))
+  if (gcae_setup$superpops != "") {
+    testthat::expect_true(file.exists(gcae_setup$superpops))
+  }
   gcaer::check_gcae_options(gcae_options)
   plinkr::check_verbose(verbose)
   args <- c(
@@ -39,10 +41,12 @@ gcae_project <- function(
     "--model_id", gcae_setup$model_id,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
-    "--superpops", gcae_setup$superpops,
     "--trainedmodeldir", gcae_setup$trainedmodeldir,
-    paste0("--pheno_model_id=", gcae_setup$pheno_model_id)
+    "--pheno_model_id", gcae_setup$pheno_model_id
   )
+  if (gcae_setup$superpops != "") {
+    args <- c(args, "--superpops", gcae_setup$superpops)
+  }
   gcaer::run_gcae(
     args = args,
     gcae_options = gcae_options,

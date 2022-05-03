@@ -15,6 +15,7 @@ check_metric <- function(
 ) {
   testthat::expect_equal(1, length(metric))
   testthat::expect_true(is.character(metric))
+  if (metric == "") return(invisible(metric))
   if (metric == "hull_error") return(invisible(metric))
   if (stringr::str_count(metric, "^f1_score_[[:digit:]]+$") == 1) {
     return(invisible(metric))

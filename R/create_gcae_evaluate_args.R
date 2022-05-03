@@ -24,6 +24,9 @@ create_gcae_evaluate_args <- function(
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_metrics(metrics)
   gcaer::check_epoch(epoch)
+  if (gcae_setup$superpops == "") {
+    stop("To run GCAE's 'evaluate' function, one needs a file with labels")
+  }
   args <- c(
     "evaluate",
     "--datadir", gcae_setup$datadir,
@@ -31,16 +34,8 @@ create_gcae_evaluate_args <- function(
     "--data", gcae_setup$data,
     "--model_id", gcae_setup$model_id,
     "--train_opts_id", gcae_setup$train_opts_id,
-    "--data_opts_id", gcae_setup$data_opts_id
-  )
-  if (gcae_setup$superpops != "") {
-    args <- c(
-      args,
-      "--superpops", gcae_setup$superpops
-    )
-  }
-  args <- c(
-    args,
+    "--data_opts_id", gcae_setup$data_opts_id,
+    "--superpops", gcae_setup$superpops,
     "--epoch", epoch,
     "--trainedmodeldir", gcae_setup$trainedmodeldir,
     "--pheno_model_id", gcae_setup$pheno_model_id

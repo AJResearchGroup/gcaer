@@ -1,4 +1,5 @@
 test_that("use", {
+  expect_silent(check_metrics(""))
   expect_silent(check_metrics("hull_error"))
   expect_silent(check_metrics("f1_score_3"))
   expect_silent(check_metrics("hull_error,f1_score_3"))
@@ -7,7 +8,6 @@ test_that("use", {
   expect_error(check_metrics(0))
   expect_error(check_metrics(-1))
   expect_error(check_metrics("nonsense"))
-  expect_error(check_metrics(""))
   expect_error(check_metrics(c()))
   expect_error(check_metrics(NA))
   expect_error(check_metrics(NULL))
