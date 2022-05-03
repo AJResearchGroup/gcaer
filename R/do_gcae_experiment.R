@@ -59,7 +59,10 @@ do_gcae_experiment <- function(
       if (verbose) {
         message("No labels, hence no GCAE evaluate")
       }
+      # No sub/populations, hence no metrics
+      testthat::expect_true(gcae_experiment_params$metrics == "")
     } else {
+      testthat::expect_true(gcae_experiment_params$metrics != "")
       evaluate_filenames <- gcaer::gcae_evaluate(
         gcae_setup = gcae_experiment_params$gcae_setup,
         gcae_options = gcae_experiment_params$gcae_options,

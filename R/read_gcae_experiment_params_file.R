@@ -54,6 +54,7 @@ read_gcae_experiment_params_file <- function(gcae_experiment_params_filename) { 
 
   testthat::expect_true("metrics" %in% t$parameter)
   metrics <- t$value[which("metrics" == t$parameter)]
+  if (is.na(metrics)) metrics <- ""
 
   gcaer::create_gcae_experiment_params(
     gcae_options = gcae_options,

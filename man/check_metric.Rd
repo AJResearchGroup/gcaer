@@ -7,7 +7,8 @@
 check_metric(metric)
 }
 \arguments{
-\item{metric}{the metric, as checked by \link{check_metric}}
+\item{metric}{the metric, as checked by \link{check_metric}.
+Use \code{""} to indicate not to use a clusting metric}
 }
 \value{
 Nothing. Will \link{stop} if \code{metric} is invalid.

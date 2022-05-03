@@ -261,9 +261,11 @@ as can be checked by \link{check_losses_from_train_t_table}}
 in the validation step,
 as can be checked by \link{check_losses_from_train_v_table}}
 
-\item{metric}{the metric, as checked by \link{check_metric}}
+\item{metric}{the metric, as checked by \link{check_metric}.
+Use \code{""} to indicate not to use a clusting metric}
 
-\item{metrics}{the metrics, as checked by \link{check_metrics}}
+\item{metrics}{the metrics, as checked by \link{check_metrics}.
+Use \code{""} to indicate not to use a clusting metric}
 
 \item{model}{the \code{GCAE} architecture,
 as checked by \link{check_model}.

@@ -7,7 +7,8 @@
 check_metrics(metrics)
 }
 \arguments{
-\item{metrics}{the metrics, as checked by \link{check_metrics}}
+\item{metrics}{the metrics, as checked by \link{check_metrics}.
+Use \code{""} to indicate not to use a clusting metric}
 }
 \value{
 Nothing. Will \link{stop} if \code{metrics} is invalid.
@@ -21,6 +22,7 @@ Will \link{stop} if not.
 as checked by \link{check_metric}
 }
 \examples{
+check_metrics("")
 check_metrics("hull_error")
 check_metrics("f1_score_3")
 check_metrics("hull_error,f1_score_3")

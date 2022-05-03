@@ -21,7 +21,8 @@ and saved to file by \link{save_gcae_setup}.}
 \item{analyse_epochs}{the epochs to analyse, e.g. \code{c(1, 2, 3)},
 as checked by \link{check_analyse_epochs}}
 
-\item{metrics}{the metrics, as checked by \link{check_metrics}}
+\item{metrics}{the metrics, as checked by \link{check_metrics}.
+Use \code{""} to indicate not to use a clusting metric}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}

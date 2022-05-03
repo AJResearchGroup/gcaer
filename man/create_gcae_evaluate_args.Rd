@@ -13,7 +13,8 @@ read from file by \link{read_gcae_setup_file},
 checked by \link{check_gcae_setup},
 and saved to file by \link{save_gcae_setup}.}
 
-\item{metrics}{the metrics, as checked by \link{check_metrics}}
+\item{metrics}{the metrics, as checked by \link{check_metrics}.
+Use \code{""} to indicate not to use a clusting metric}
 
 \item{epoch}{the epoch, as checked by \link{check_epoch}}
 }
