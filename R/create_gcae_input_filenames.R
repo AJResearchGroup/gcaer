@@ -35,7 +35,11 @@ create_gcae_input_filenames <- function(
   plinkr::check_base_input_filename(bim_filename)
   plinkr::check_base_input_filename(fam_filename)
   plinkr::check_base_input_filename(phe_filename)
-  plinkr::check_base_input_filename(labels_filename)
+
+  # labels_filename can be an empty string
+  testthat::expect_equal(1, length(labels_filename))
+  testthat::expect_true(is.character(labels_filename))
+
   list(
     bed_filename = bed_filename,
     bim_filename = bim_filename,

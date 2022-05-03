@@ -8,3 +8,14 @@ test_that("use", {
   )
   expect_silent(check_gcae_input_filenames(gcae_input_filenames))
 })
+
+test_that("use, without labels", {
+  gcae_input_filenames <- create_gcae_input_filenames(
+    bed_filename = get_gcaer_filename("gcae_input_files_1.bed"),
+    bim_filename = get_gcaer_filename("gcae_input_files_1.bim"),
+    fam_filename = get_gcaer_filename("gcae_input_files_1.fam"),
+    phe_filename = get_gcaer_filename("gcae_input_files_1.phe"),
+    labels_filename = ""
+  )
+  expect_silent(check_gcae_input_filenames(gcae_input_filenames))
+})
