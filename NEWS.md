@@ -6,7 +6,7 @@ Newest versions at top.
 
 ### NEW FEATURES
 
- * None
+ * Can run 'do_gcae_experiment' without a 'superpops'
 
 ### MINOR IMPROVEMENTS
 
