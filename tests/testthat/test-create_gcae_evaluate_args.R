@@ -11,15 +11,14 @@ test_that("use, with superpops", {
 })
 
 test_that("use, without superpops", {
-  gcae_setup <- create_test_gcae_setup(
-    superpops = ""
+  expect_error(
+    create_gcae_evaluate_args(
+      gcae_setup = create_test_gcae_setup(
+        superpops = ""
+      ),
+      metrics = "f1_score_3",
+      epoch = 100
+    ),
+    "To run GCAE's 'evaluate' function, one needs a file with labels"
   )
-  metrics <- "hull_error"
-  epoch <- 100
-  args <- create_gcae_evaluate_args(
-    gcae_setup = gcae_setup,
-    metrics = metrics,
-    epoch = epoch
-  )
-  expect_equal(19, length(args))
 })
