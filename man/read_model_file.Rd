@@ -19,7 +19,7 @@ as can be checked by \link{check_model}
 Read a \code{GCAE} autoencoder architecture file
 }
 \examples{
-if (is_gcae_installed()) {
+if (is_gcae_repo_cloned()) {
   # A real GCAE file
   model_filename <- get_gcae_model_filename("M1")
 } else {

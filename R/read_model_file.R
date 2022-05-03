@@ -4,7 +4,7 @@
 #' as can be checked by \link{check_model}
 #' @seealso use \link{save_model} to save a `model`
 #' @examples
-#' if (is_gcae_installed()) {
+#' if (is_gcae_repo_cloned()) {
 #'   # A real GCAE file
 #'   model_filename <- get_gcae_model_filename("M1")
 #' } else {
