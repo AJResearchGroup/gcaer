@@ -35,7 +35,7 @@ evaluate_phenotype_prediction <- function(
   testthat::expect_true(
     dir.exists(gcae_experiment_params$gcae_setup$trainedmodeldir)
   )
-  pattern <- paste0(epoch, "\\.phe$")
+  pattern <- paste0("/", epoch, "\\.phe$")
   results_phe_filename <- list.files(
     path = gcae_experiment_params$gcae_setup$trainedmodeldir,
     pattern = pattern,
