@@ -20,7 +20,6 @@ evaluate_phenotype_prediction <- function(
   gcaer::check_epoch(epoch)
   plinkr::check_verbose(verbose)
 
-
   testthat::expect_true(dir.exists(gcae_experiment_params$gcae_setup$datadir))
   input_phe_filename <- list.files(
     path = gcae_experiment_params$gcae_setup$datadir,
@@ -36,12 +35,24 @@ evaluate_phenotype_prediction <- function(
   testthat::expect_true(
     dir.exists(gcae_experiment_params$gcae_setup$trainedmodeldir)
   )
+  pattern <- paste0(epoch, "\\.phe$")
   results_phe_filename <- list.files(
     path = gcae_experiment_params$gcae_setup$trainedmodeldir,
-    pattern = paste0(epoch, "\\.phe$"),
+    pattern = pattern,
     full.names = TRUE,
     recursive = TRUE
   )
+  if (length(results_phe_filename) != 1) {
+    stop(
+      "Must have exactly one phenotype file in 'trainedmodeldir'. \n",
+      "'trainedmodeldir': ",
+        gcae_experiment_params$gcae_setup$trainedmodeldir, " \n",
+      "pattern: ", pattern, " \n",
+      "Phenotype files found: ", length(results_phe_filename), " \n",
+      "Phenotype filenames: \n * ",
+        paste0(results_phe_filename, collapse = "\n * "), " \n"
+    )
+  }
   testthat::expect_equal(length(results_phe_filename), 1)
   testthat::expect_true(file.exists(results_phe_filename))
 
