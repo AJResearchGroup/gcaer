@@ -37,6 +37,8 @@ test_that("abuse", {
   # Remove a row from the bed table
   bad_gcae_input_data <- good_gcae_input_data
   bad_gcae_input_data$bed_table <- bad_gcae_input_data$bed_table[-1, ]
+  attributes(bad_gcae_input_data$bed_table)$plinkr_datatype <- "bed_table"
+
   expect_error(
     check_gcae_input_data(bad_gcae_input_data),
     "Must have an equal amount of SNPs in .bed and .bim table"
@@ -47,6 +49,7 @@ test_that("abuse", {
     bad_gcae_input_data$bed_table,
     bad_gcae_input_data$bed_table
   )
+  attributes(bad_gcae_input_data$bed_table)$plinkr_datatype <- "bed_table"
   expect_error(
     check_gcae_input_data(bad_gcae_input_data),
     "Must have an equal amount of individuals in .bed and .fam table"
