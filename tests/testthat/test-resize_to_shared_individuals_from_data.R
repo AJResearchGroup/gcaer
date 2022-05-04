@@ -13,6 +13,7 @@ test_that("test dataset, test output", {
 
 
 test_that("use, resize fam table", {
+  if (!plinkr::is_plink_installed()) return()
   all_gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(all_gcae_input_data))
 
@@ -93,6 +94,8 @@ test_that("cannot when NA's are in phe_table", {
 })
 
 test_that("use, resize all tables", {
+  if (!plinkr::is_plink_installed()) return()
+
   set.seed(314)
   all_gcae_input_data <- create_test_gcae_input_data()
   expect_silent(check_gcae_input_data(all_gcae_input_data))
