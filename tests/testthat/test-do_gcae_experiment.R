@@ -6,6 +6,13 @@ test_that("use, without labels", {
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
+      trainedmodeldir = paste0(
+        normalizePath(
+          "~/gcae_input_files_1_ae",
+          mustWork = FALSE
+        ),
+        "/"
+      ),
       model_id = "M0",
       superpops = "", # no labels
       pheno_model_id = "p0"
