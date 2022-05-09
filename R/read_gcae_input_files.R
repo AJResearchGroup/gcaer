@@ -54,7 +54,9 @@ read_gcae_input_files <- function(
   gcae_input_data <- plinkr::read_plink_bin_data(
     base_input_filename = base_input_filename
   )
-  if ("labels_filename" %in% names(gcae_input_filenames)) {
+  if ("labels_filename" %in% names(gcae_input_filenames) &&
+      gcae_input_filenames$labels_filename != ""
+      ) {
     if (verbose) {
       message(
         "Reading the labels table, with filename ",

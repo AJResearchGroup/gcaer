@@ -9,7 +9,12 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 read_labels_file <- function(labels_filename) {
-  testthat::expect_true(file.exists(labels_filename))
+  if (!file.exists(labels_filename)) {
+    stop(
+      "'read_labels_file' cannot find file at 'labels_filename'. \n",
+      "labels_filename: ", labels_filename
+    )
+  }
   plinkr::check_base_input_filename(labels_filename)
   testthat::expect_true(stringr::str_detect(labels_filename, "\\.csv$"))
   label_table <- readr::read_csv(
