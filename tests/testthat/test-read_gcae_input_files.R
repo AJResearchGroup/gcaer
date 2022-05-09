@@ -8,7 +8,7 @@ test_that("use, with labels", {
   expect_true(file.exists(gcae_input_filenames$labels_filename))
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
   expect_true("labels_table" %in% names(gcae_input_data))
-  check_gcae_input_data(gcae_input_data)
+  expect_silent(check_gcae_input_data(gcae_input_data))
 })
 
 test_that("use, without labels", {
@@ -21,7 +21,7 @@ test_that("use, without labels", {
   expect_false("labels_filename" %in% names(gcae_input_filenames))
   gcae_input_data <- read_gcae_input_files(gcae_input_filenames)
   expect_false("labels_table" %in% names(gcae_input_data))
-  check_gcae_input_data(gcae_input_data)
+  expect_silent(check_gcae_input_data(gcae_input_data))
 })
 
 
