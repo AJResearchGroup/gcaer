@@ -39,10 +39,11 @@ check_gcae_input_data_data_type <- function(gcae_input_data) { # nolint indeed a
   testthat::expect_true("bim_table" %in% names(gcae_input_data))
   testthat::expect_true("fam_table" %in% names(gcae_input_data))
   testthat::expect_true("phe_table" %in% names(gcae_input_data))
-  testthat::expect_true("labels_table" %in% names(gcae_input_data))
   plinkr::check_bed_table(gcae_input_data$bed_table)
   plinkr::check_bim_table(gcae_input_data$bim_table)
   plinkr::check_fam_table(gcae_input_data$fam_table)
   plinkr::check_phe_table(gcae_input_data$phe_table)
-  gcaer::check_labels_table(gcae_input_data$labels_table)
+  if ("labels_table" %in% names(gcae_input_data)) {
+    gcaer::check_labels_table(gcae_input_data$labels_table)
+  }
 }

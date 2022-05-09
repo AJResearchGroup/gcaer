@@ -109,21 +109,24 @@ check_gcae_input_data <- function(gcae_input_data) {
     )
   }
 
-  if (
-    !all(
-      gcae_input_data$fam_table$fam %in%
+  if ("labels_table" %in% names(gcae_input_data)) {
+    if (
+      !all(
+        gcae_input_data$fam_table$fam %in%
         gcae_input_data$labels_table$population
-    )
-  ) {
-    stop(
-      "All family IDs must be populations within the labels table. \n",
-      "First labels table's family IDs (i.e. the 'population' column)): ",
-      paste0(
-        utils::head(gcae_input_data$labels_table$population),
-        collapse = ", "
-      ), " \n",
-      "First .fam table family IDs (i.e. the 'fam' column)): ",
-      paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
-    )
+      )
+    ) {
+      stop(
+        "All family IDs must be populations within the labels table. \n",
+        "First labels table's family IDs (i.e. the 'population' column)): ",
+        paste0(
+          utils::head(gcae_input_data$labels_table$population),
+          collapse = ", "
+        ), " \n",
+        "First .fam table family IDs (i.e. the 'fam' column)): ",
+        paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
+      )
+    }
   }
+  invisible(gcae_input_data)
 }

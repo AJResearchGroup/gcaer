@@ -10,4 +10,8 @@ test_that("use", {
     )
   )
   check_gcae_input_filenames(gcae_input_filenames)
+
+  gcae_input_filenames_without_labels_filename <- gcae_input_filenames
+  gcae_input_filenames_without_labels_filename$labels_filename <- NULL
+  check_gcae_input_filenames(gcae_input_filenames_without_labels_filename)
 })

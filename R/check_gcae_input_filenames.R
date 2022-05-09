@@ -41,13 +41,14 @@ check_gcae_input_filenames <- function(gcae_input_filenames) {
   testthat::expect_true("bim_filename" %in% names(gcae_input_filenames))
   testthat::expect_true("fam_filename" %in% names(gcae_input_filenames))
   testthat::expect_true("phe_filename" %in% names(gcae_input_filenames))
-  testthat::expect_true("labels_filename" %in% names(gcae_input_filenames))
   plinkr::check_base_input_filename(gcae_input_filenames$bed_filename)
   plinkr::check_base_input_filename(gcae_input_filenames$bim_filename)
   plinkr::check_base_input_filename(gcae_input_filenames$fam_filename)
   plinkr::check_base_input_filename(gcae_input_filenames$phe_filename)
 
   # labels_filename can be an empty string
-  testthat::expect_equal(1, length(gcae_input_filenames$labels_filename))
-  testthat::expect_true(is.character(gcae_input_filenames$labels_filename))
+  if ("labels_filename" %in% names(gcae_input_filenames)) {
+    testthat::expect_equal(1, length(gcae_input_filenames$labels_filename))
+    testthat::expect_true(is.character(gcae_input_filenames$labels_filename))
+  }
 }

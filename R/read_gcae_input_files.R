@@ -44,9 +44,6 @@ read_gcae_input_files <- function(
       )
     }
   }
-  testthat::expect_true(
-    all(file.exists((as.character(unlist(gcae_input_filenames)))))
-  )
 
   base_input_filename <- tools::file_path_sans_ext(
     gcae_input_filenames$bed_filename
@@ -57,15 +54,21 @@ read_gcae_input_files <- function(
   gcae_input_data <- plinkr::read_plink_bin_data(
     base_input_filename = base_input_filename
   )
-  if (verbose) {
-    message(
-      "Reading the labels table, with filename ",
+  if ("labels_filename" %in% names(gcae_input_filenames$labels_filename)) {
+    if (verbose) {
+      message(
+        "Reading the labels table, with filename ",
+        gcae_input_filenames$labels_filename
+      )
+    }
+    gcae_input_data$labels_table <- gcaer::read_labels_file(
       gcae_input_filenames$labels_filename
     )
+  } else {
+    if (verbose) {
+      message("No labels table to read")
+    }
   }
-  gcae_input_data$labels_table <- gcaer::read_labels_file(
-    gcae_input_filenames$labels_filename
-  )
   if (verbose) {
     message(
       "Reading the PLINK phenotype file, with filename ",
