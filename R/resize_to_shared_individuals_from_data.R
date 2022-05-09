@@ -62,10 +62,13 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
     )
   )
   # Only keep the FIDs that are in the label_tables
-  common_fid_and_idds <- common_fid_and_idds[
-    common_fid_and_idds$fam %in%
-      unique(gcae_input_data$labels_table$population),
-  ]
+  if ("labels_table" %in% names(gcae_input_data)) {
+    common_fid_and_idds <- common_fid_and_idds[
+      common_fid_and_idds$fam %in%
+        unique(gcae_input_data$labels_table$population),
+    ]
+  }
+
   if (1 == 1) {
     testthat::expect_true(
       all(common_fid_and_idds$fam %in% gcae_input_data$fam_table$fam)
@@ -79,9 +82,11 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
     testthat::expect_true(
       all(common_fid_and_idds$id %in% gcae_input_data$phe_table$IID)
     )
-    testthat::expect_true(
-      all(common_fid_and_idds$fam %in% gcae_input_data$labels_table$population)
-    )
+    if ("labels_table" %in% names(gcae_input_data)) {
+      testthat::expect_true(
+        all(common_fid_and_idds$fam %in% gcae_input_data$labels_table$population)
+      )
+    }
   }
   n_shared_samples <- nrow(common_fid_and_idds)
 
@@ -142,16 +147,20 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
   }
   plinkr::check_fam_table(new_fam_table)
 
-  new_labels_table <- gcae_input_data$labels_table[
-    gcae_input_data$labels_table$population %in% unique(fam_tables_indices$fam),
-  ]
-  if (verbose) {
-    message("head(new_labels_table):")
-    message(
-      paste0(knitr::kable(utils::head(new_labels_table)), collapse = "\n")
-    )
+  if ("labels_table" %in% names(gcae_input_data)) {
+    new_labels_table <- gcae_input_data$labels_table[
+      gcae_input_data$labels_table$population %in% unique(fam_tables_indices$fam),
+    ]
+    if (verbose) {
+      message("head(new_labels_table):")
+      message(
+        paste0(knitr::kable(utils::head(new_labels_table)), collapse = "\n")
+      )
+    }
+    gcaer::check_labels_table(new_labels_table)
+  } else {
+    new_labels_table <- NULL
   }
-  gcaer::check_labels_table(new_labels_table)
 
   new_phe_table <- dplyr::inner_join(
     gcae_input_data$phe_table,
@@ -166,13 +175,22 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
   }
   plinkr::check_phe_table(new_phe_table)
 
-  new_gcae_input_data <- list(
-    bed_table = new_bed_table,
-    bim_table = gcae_input_data$bim_table,
-    fam_table = new_fam_table,
-    labels_table = new_labels_table,
-    phe_table = new_phe_table
-  )
+  if (is.null(new_labels_table)) {
+    new_gcae_input_data <- list(
+      bed_table = new_bed_table,
+      bim_table = gcae_input_data$bim_table,
+      fam_table = new_fam_table,
+      phe_table = new_phe_table
+    )
+  } else {
+    new_gcae_input_data <- list(
+      bed_table = new_bed_table,
+      bim_table = gcae_input_data$bim_table,
+      fam_table = new_fam_table,
+      labels_table = new_labels_table,
+      phe_table = new_phe_table
+    )
+  }
   gcaer::check_gcae_input_data(new_gcae_input_data)
   new_gcae_input_data
 }
