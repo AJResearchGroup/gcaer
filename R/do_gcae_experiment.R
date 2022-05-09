@@ -48,7 +48,10 @@ do_gcae_experiment <- function(
       verbose = verbose
     )
     if (verbose) {
-      message(paste(project_filenames, collapse = "\n"))
+      message(
+        "Start of 'parse_project_files', for 'project_filenames': \n * ",
+        paste(project_filenames, collapse = "\n * ")
+      )
     }
     t_project_results <- gcaer::parse_project_files(project_filenames)
     # Will be overwritten each cycle, by tibbles with more info

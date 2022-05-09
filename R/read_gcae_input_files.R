@@ -37,7 +37,7 @@ read_gcae_input_files <- function(
 ) {
   gcaer::check_gcae_input_filenames(gcae_input_filenames)
   for (filename in as.character(unlist(gcae_input_filenames))) {
-    if (!file.exists(filename)) {
+    if (filename != "" && !file.exists(filename)) {
       stop(
         "'read_gcae_input_files' cannot find file at path '",
         filename, "' \n"
