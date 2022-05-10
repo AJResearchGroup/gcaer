@@ -119,10 +119,11 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
     by = c("fam", "id")
   )
   testthat::expect_equal(n_shared_samples, nrow(fam_tables_indices))
-  fam_tables_indices <- fam_tables_indices[
-    fam_tables_indices$fam %in% gcae_input_data$labels_table$population,
-  ]
-
+  if ("labels_table" %in% names(gcae_input_data)) {
+    fam_tables_indices <- fam_tables_indices[
+      fam_tables_indices$fam %in% gcae_input_data$labels_table$population,
+    ]
+  }
 
   #
   # Resize to the new size

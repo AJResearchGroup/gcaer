@@ -1,6 +1,20 @@
 test_that("minimal", {
   gcae_input_data <- create_test_gcae_input_data()
-  expect_silent(resize_to_shared_individuals_from_data(gcae_input_data))
+  resize_to_shared_individuals_from_data(gcae_input_data))
+  suppressMessages(
+    expect_message(
+      resize_to_shared_individuals_from_data(gcae_input_data, verbose = TRUE)
+    )
+  )
+})
+
+test_that("no labels_table", {
+  gcae_input_data <- create_test_gcae_input_data()
+  gcae_input_data$labels_table <- NULL
+  resized_gcae_input_data <- resize_to_shared_individuals_from_data(
+    gcae_input_data
+  )
+  expect_equal(names(gcae_input_data), names(resized_gcae_input_data))
 })
 
 test_that("test dataset, test output", {
