@@ -7,3 +7,13 @@ test_that("use", {
     )
   )
 })
+
+test_that("use, no labels", {
+  gcae_input_data <- create_test_gcae_input_data()
+  gcae_input_data$labels_table <- NULL
+  expect_silent(
+    summarise_gcae_input_data(
+      gcae_input_data
+    )
+  )
+})
