@@ -1,6 +1,6 @@
 test_that("minimal", {
   gcae_input_data <- create_test_gcae_input_data()
-  resize_to_shared_individuals_from_data(gcae_input_data))
+  resize_to_shared_individuals_from_data(gcae_input_data)
   suppressMessages(
     expect_message(
       resize_to_shared_individuals_from_data(gcae_input_data, verbose = TRUE)
