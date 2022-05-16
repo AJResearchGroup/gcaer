@@ -20,7 +20,15 @@ Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 \description{
 Determine if \code{GCAE} is installed
 }
+\note{
+this is a slow function.
+
+A quicker, yet less accurate way to determine if \code{GCAE} is
+installed, is \link{has_cloned_gcae_repo}
+}
 \examples{
+# Tip: 'has_cloned_gcae_repo' is a a quicker, yet less accurate way
+# to determine if `GCAE` is installed
 is_gcae_installed()
 }
 \author{

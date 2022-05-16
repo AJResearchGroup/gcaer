@@ -24,7 +24,8 @@ Get the path to a gcaer file
 }
 \examples{
 if (plinkr::is_on_ci()) {
-  if (is_gcae_installed()) {
+
+  if (has_cloned_gcae_repo()) { # is_gcae_installed is too slow
     get_gcae_example_filename("HumanOrigins249_tiny.fam")
   }
 }

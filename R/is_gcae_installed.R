@@ -1,7 +1,13 @@
 #' Determine if `GCAE` is installed
 #' @inheritParams default_params_doc
 #' @return `TRUE` if `GCAE` is installed
+#' @note this is a slow function.
+#'
+#' A quicker, yet less accurate way to determine if `GCAE` is
+#' installed, is \link{has_cloned_gcae_repo}
 #' @examples
+#' # Tip: 'has_cloned_gcae_repo' is a a quicker, yet less accurate way
+#' # to determine if `GCAE` is installed
 #' is_gcae_installed()
 #' @author Richèl J.C. Bilderbeek
 #' @export

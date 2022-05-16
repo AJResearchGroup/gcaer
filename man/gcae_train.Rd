@@ -43,7 +43,7 @@ This will train the model from epoch zero. To resume training,
 use \link{gcae_train_more}
 }
 \examples{
-if (plinkr::is_on_ci() && is_gcae_installed()) {
+if (plinkr::is_on_ci() && has_cloned_gcae_repo()) {
   gcae_options <- create_gcae_options()
   gcae_setup <- create_test_gcae_setup()
   train_filenames <- gcae_train(

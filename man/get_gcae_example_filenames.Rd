@@ -18,7 +18,7 @@ Get the paths to all \code{GCAE} example files
 }
 \examples{
 if (plinkr::is_on_ci()) {
-  if (is_gcae_installed()) {
+  if (has_cloned_gcae_repo()) { # is_gcae_installed is too slow
     get_gcae_example_filenames()
   }
 }

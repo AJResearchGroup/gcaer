@@ -56,7 +56,9 @@ if (!plinkr::is_plink_tutorial_data_installed()) {
 If both requirements are met, we are good to go:
 
 ```{r good_to_go}
-good_to_go <- is_gcae_installed() && plinkr::is_plink_tutorial_data_installed()
+is_gcae_installed <- has_cloned_gcae_repo() # 'is_gcae_installed' is too slow
+is_plink_tutorial_installed <- plinkr::is_plink_tutorial_data_installed()
+good_to_go <- is_gcae_installed && is_plink_tutorial_installed
 ```
 
 Without these requirements met, this vignette will be rather dull :-)

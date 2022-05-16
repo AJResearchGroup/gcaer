@@ -42,11 +42,6 @@ This is a list of functions to create simulated data for \code{GCAE}:
 for a simple setting
 }
 }
-\examples{
-if (plinkr::is_on_ci()) {
-  is_gcae_installed()
-}
-}
 \author{
 Richèl J.C. Bilderbeek
 }

@@ -33,10 +33,6 @@
 #'  * \link{create_gcae_input_files_1}: create `GCAE` input files
 #'    for a simple setting
 #'
-#' @examples
-#' if (plinkr::is_on_ci()) {
-#'   is_gcae_installed()
-#' }
 #' @author Richèl J.C. Bilderbeek
 #' @docType package
 #' @name gcaer
