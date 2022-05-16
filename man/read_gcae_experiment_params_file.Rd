@@ -19,6 +19,15 @@ as can be checked by \link{check_gcae_experiment_params}
 \description{
 Read a \code{gcae_experiment_params} from file
 }
+\note{
+it is possible to add character values to
+the \code{gcae_experiment_params}, for example:\if{html}{\out{<div class="sourceCode r">}}\preformatted{gcae_experiment_params <- create_test_gcae_experiment_params()
+gcae_experiment_params$window_kb <- "1000"
+}\if{html}{\out{</div>}}
+
+\link{read_gcae_experiment_params_file} will always read these extra values
+as a character.
+}
 \examples{
 # Create a gcae_experiment_params
 gcae_experiment_params <- create_test_gcae_experiment_params()

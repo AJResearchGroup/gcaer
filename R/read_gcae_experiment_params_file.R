@@ -4,6 +4,16 @@
 #' as can be checked by \link{check_gcae_experiment_params}
 #' @seealso use \link{save_gcae_experiment_params}
 #' to save a `gcae_experiment_params`
+#' @note it is possible to add character values to
+#' the `gcae_experiment_params`, for example:
+#'
+#' ```r
+#' gcae_experiment_params <- create_test_gcae_experiment_params()
+#' gcae_experiment_params$window_kb <- "1000"
+#' ```
+#'
+#' \link{read_gcae_experiment_params_file} will always read these extra values
+#' as a character.
 #' @examples
 #' # Create a gcae_experiment_params
 #' gcae_experiment_params <- create_test_gcae_experiment_params()
@@ -51,15 +61,22 @@ read_gcae_experiment_params_file <- function(gcae_experiment_params_filename) { 
       pattern = ","
     )[[1]]
   )
-
   testthat::expect_true("metrics" %in% t$parameter)
   metrics <- t$value[which("metrics" == t$parameter)]
   if (is.na(metrics)) metrics <- ""
 
-  gcaer::create_gcae_experiment_params(
+  gcae_experiment_params <- gcaer::create_gcae_experiment_params(
     gcae_options = gcae_options,
     gcae_setup = gcae_setup,
     analyse_epochs = analyse_epochs,
     metrics = metrics
   )
+  names_already_stored <- c(
+    names(gcae_options), names(gcae_setup), "analyse_epochs", "metrics"
+  )
+  extra_indices <- which(!t$parameter %in% names_already_stored)
+  for (extra_index in extra_indices) {
+    gcae_experiment_params[[t$parameter[extra_index]]] <- t$value[extra_index]
+  }
+  gcae_experiment_params
 }
