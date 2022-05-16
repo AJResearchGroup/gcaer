@@ -26,8 +26,7 @@ save_gcae_input_data <- function(
     phe_table = gcae_input_data$phe_table,
     phe_filename = gcae_input_filenames$phe_filename
   )
-  if ("labels_table" %in% names(gcae_input_data) &&
-      gcae_input_data$labels_table != ""
+  if ("labels_table" %in% names(gcae_input_data)
   ) {
     gcaer::save_labels_table(
       labels_table = gcae_input_data$labels_table,
