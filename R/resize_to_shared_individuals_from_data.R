@@ -84,7 +84,10 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
     )
     if ("labels_table" %in% names(gcae_input_data)) {
       testthat::expect_true(
-        all(common_fid_and_idds$fam %in% gcae_input_data$labels_table$population)
+        all(
+          common_fid_and_idds$fam %in%
+            gcae_input_data$labels_table$population
+        )
       )
     }
   }

@@ -34,7 +34,7 @@ summarise_gcae_input_data <- function(
 
   if ("labels_table" %in% names(gcae_input_data)) {
     summary$n_populations_in_labels_table <- nrow(gcae_input_data$labels_table)
-    summary$n_superpopulations_in_labels_table <- length(
+    summary$n_superpopulations_in_labels_table <- length( # nolint indeed a long variable name
       unique(gcae_input_data$labels_table$super_population)
     )
   }

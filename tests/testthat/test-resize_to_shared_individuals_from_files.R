@@ -52,6 +52,7 @@ test_that("use, resize phe_table, without labels table", {
 
   expect_true(any(as.integer(after) != as.integer(before)))
 
-
-  file.remove(as.character(unlist(gcae_input_filenames)))
+  filenames <- as.character(unlist(gcae_input_filenames))
+  filenames <- filenames[filenames != ""]
+  file.remove(filenames)
 })
