@@ -34,19 +34,7 @@ gcae_project <- function(
   }
   gcaer::check_gcae_options(gcae_options)
   plinkr::check_verbose(verbose)
-  args <- c(
-    "project",
-    "--datadir", gcae_setup$datadir,
-    "--data", gcae_setup$data,
-    "--model_id", gcae_setup$model_id,
-    "--train_opts_id", gcae_setup$train_opts_id,
-    "--data_opts_id", gcae_setup$data_opts_id,
-    "--trainedmodeldir", gcae_setup$trainedmodeldir,
-    "--pheno_model_id", gcae_setup$pheno_model_id
-  )
-  if (gcae_setup$superpops != "") {
-    args <- c(args, "--superpops", gcae_setup$superpops)
-  }
+  args <- gcaer::create_gcae_project_args(gcae_setup = gcae_setup)
   gcaer::run_gcae(
     args = args,
     gcae_options = gcae_options,

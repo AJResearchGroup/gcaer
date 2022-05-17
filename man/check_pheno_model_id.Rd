@@ -17,10 +17,19 @@ Nothing. Will \link{stop} if \code{pheno_model_id} is invalid.
 Check if the \code{pheno_model_id} is valid
 Will \link{stop} if not.
 }
+\details{
+A \code{pheno_model_id} is valid, when
+\itemize{
+\item it is an empty string
+\item it starts with a \code{p} and has at least two characters
+}
+}
 \examples{
 check_pheno_model_id("p0")
 check_pheno_model_id("p1")
 check_pheno_model_id("p2")
+
+check_pheno_model_id("") # Use no phenotype prediction
 }
 \seealso{
 Use \link{check_model_id} to check if a \code{model_id}
