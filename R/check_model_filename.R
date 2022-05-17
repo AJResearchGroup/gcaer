@@ -4,6 +4,8 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `model_filename` is invalid.
+#' @seealso use \link{check_pheno_model_filename} to check if
+#' a phenotype model filename is correct
 #' @examples
 #' check_model_filename("M0.json")
 #' check_model_filename("~/M0.json")

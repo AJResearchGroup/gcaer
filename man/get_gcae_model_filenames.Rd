@@ -15,7 +15,12 @@ full paths to all the \code{GCAE} autoencoder architectures filenames
 }
 \description{
 Get the filenames for all the \code{GCAE} autoencoder architectures.
-This function is named after the GCAE \code{models} folder.
+}
+\details{
+This function is named after the GCAE \code{models} folder,
+although the phenotypic prediction models
+(that can be obtained using \link{get_gcae_pheno_model_filenames})
+are stored there as well.
 }
 \examples{
 get_gcae_model_filenames()
@@ -23,6 +28,9 @@ get_gcae_model_filenames()
 \seealso{
 use \link{get_gcae_model_filename} to get the filename
 of one \code{GCAE} autoencoder architecture
+
+Use \link{get_gcae_pheno_model_filenames} to get the filenames for the
+phenotypic models.
 }
 \author{
 Richèl J.C. Bilderbeek

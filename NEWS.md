@@ -6,7 +6,12 @@ Newest versions at top.
 
 ### NEW FEATURES
 
+ * Added 'check_pheno_model_filename'
  * Can run 'do_gcae_experiment' without a 'superpops'
+ * Added 'get_gcae_model_ids'
+ * Added 'get_gcae_pheno_model_ids'
+ * Added 'get_gcae_pheno_model_filenames'
+ * Added 'read_pheno_model_file'
 
 ### MINOR IMPROVEMENTS
 

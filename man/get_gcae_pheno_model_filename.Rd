@@ -30,8 +30,14 @@ get_gcae_pheno_model_filename(pheno_model_id = "p1")
 get_gcae_pheno_model_filename(pheno_model_id = "p2")
 }
 \seealso{
-use \link{get_gcae_model_filename} to get the filename
+Use \link{get_gcae_model_filename} to get the filename
 to a model.
+
+Use \link{get_gcae_pheno_model_filenames} to get the filenames
+of all phenotypic models.
+
+Use \link{get_gcae_pheno_model_ids} to get the IDs
+of all phenotypic models
 }
 \author{
 Richèl J.C. Bilderbeek

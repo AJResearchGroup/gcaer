@@ -18,8 +18,13 @@ Check if the \code{pheno_model_id} is valid
 Will \link{stop} if not.
 }
 \examples{
+check_pheno_model_id("p0")
 check_pheno_model_id("p1")
 check_pheno_model_id("p2")
+}
+\seealso{
+Use \link{check_model_id} to check if a \code{model_id}
+is valid
 }
 \author{
 Richèl J.C. Bilderbeek

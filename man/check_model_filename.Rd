@@ -23,6 +23,10 @@ check_model_filename("M0.json")
 check_model_filename("~/M0.json")
 check_model_filename("/home/me/M2.json")
 }
+\seealso{
+use \link{check_pheno_model_filename} to check if
+a phenotype model filename is correct
+}
 \author{
 Richèl J.C. Bilderbeek
 }

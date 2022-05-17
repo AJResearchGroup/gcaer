@@ -4,7 +4,10 @@
 #' Will \link{stop} if not.
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `pheno_model_id` is invalid.
+#' @seealso Use \link{check_model_id} to check if a `model_id`
+#' is valid
 #' @examples
+#' check_pheno_model_id("p0")
 #' check_pheno_model_id("p1")
 #' check_pheno_model_id("p2")
 #' @author Richèl J.C. Bilderbeek

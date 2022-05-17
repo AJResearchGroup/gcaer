@@ -19,6 +19,10 @@ Will \link{stop} if not.
 \examples{
 check_model_id("M1")
 }
+\seealso{
+Use \link{check_pheno_model_id} to check if a \code{pheno_model_id}
+is valid
+}
 \author{
 Richèl J.C. Bilderbeek
 }

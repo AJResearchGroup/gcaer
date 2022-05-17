@@ -29,7 +29,10 @@ if (is_gcae_repo_cloned()) {
 read_model_file(model_filename)
 }
 \seealso{
-use \link{save_model} to save a \code{model}
+\itemize{
+\item Use \link{save_model} to save a \code{model}
+\item Use \link{read_pheno_model_file} to read a \code{pheno_model}
+}
 }
 \author{
 Richèl J.C. Bilderbeek

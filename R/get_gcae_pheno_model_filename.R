@@ -4,8 +4,14 @@
 #' This function is named after the GCAE `pheno_model_id` flag.
 #' @inheritParams default_params_doc
 #' @return full paths to the created files
-#' @seealso use \link{get_gcae_model_filename} to get the filename
+#' @seealso Use \link{get_gcae_model_filename} to get the filename
 #' to a model.
+#'
+#' Use \link{get_gcae_pheno_model_filenames} to get the filenames
+#' of all phenotypic models.
+#'
+#' Use \link{get_gcae_pheno_model_ids} to get the IDs
+#' of all phenotypic models
 #' @examples
 #' get_gcae_pheno_model_filename()
 #' get_gcae_pheno_model_filename(pheno_model_id = "p0")

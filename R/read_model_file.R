@@ -2,7 +2,9 @@
 #' @inheritParams default_params_doc
 #' @return the `model` as a JSON object,
 #' as can be checked by \link{check_model}
-#' @seealso use \link{save_model} to save a `model`
+#' @seealso
+#'  * Use \link{save_model} to save a `model`
+#'  * Use \link{read_pheno_model_file} to read a `pheno_model`
 #' @examples
 #' if (is_gcae_repo_cloned()) {
 #'   # A real GCAE file
