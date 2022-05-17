@@ -24,7 +24,7 @@ get_gcae_output_subfolder <- function(
     )
   )
   if (gcae_setup$pheno_model_id != "") {
-    ae_out_subfolder <- c(
+    ae_out_subfolder <- paste0(
       ae_out_subfolder,
       ".",
       gcae_setup$pheno_model_id
