@@ -60,13 +60,12 @@ test_that("check M and p models work, without labels", {
         metrics = "" # no metrics
       )
       passes <- FALSE
-      tryCatch(
-        {
+      tryCatch({
           do_gcae_experiment(
             gcae_experiment_params = gcae_experiment_params
           )
           passes <- TRUE
-        }, error = function(e) {}
+        }, error = function(e) {} # nolint do not care about the braces
       )
       message(paste(model_id, pheno_model_id, passes))
     }

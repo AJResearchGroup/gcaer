@@ -23,7 +23,10 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
 
   if (
     nrow(
-      readr::read_csv(csv_filenames$score_per_pop_filename, show_col_types = FALSE)
+      readr::read_csv(
+        csv_filenames$score_per_pop_filename,
+        show_col_types = FALSE
+      )
     ) > 0
   ) {
     gcaer::plot_score_per_pop_from_file(

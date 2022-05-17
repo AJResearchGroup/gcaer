@@ -4,7 +4,13 @@ test_that("use", {
   if (1 == 2) {
     gcae_options <- create_gcae_options(gcae_folder = "~/GitHubs/gcae")
     model_ids <- get_gcae_model_ids(gcae_options = gcae_options)
-    cat(paste0("expect_silent(check_model_filename(\"", model_ids, ".json\"))\n"))
+    cat(
+      paste0(
+        "expect_silent(check_model_filename(\"",
+        model_ids,
+        ".json\"))\n"
+      )
+    )
   }
 
   expect_silent(check_model_filename("M0_1n.json"))

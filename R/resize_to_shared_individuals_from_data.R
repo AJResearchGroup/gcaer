@@ -150,7 +150,8 @@ resize_to_shared_individuals_from_data <- function(# nolint indeed a long functi
 
   if ("labels_table" %in% names(gcae_input_data)) {
     new_labels_table <- gcae_input_data$labels_table[
-      gcae_input_data$labels_table$population %in% unique(fam_tables_indices$fam),
+      gcae_input_data$labels_table$population %in%
+        unique(fam_tables_indices$fam),
     ]
     if (verbose) {
       message("head(new_labels_table):")
