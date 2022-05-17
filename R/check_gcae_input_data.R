@@ -124,7 +124,8 @@ check_gcae_input_data <- function(gcae_input_data) {
           collapse = ", "
         ), " \n",
         "First .fam table family IDs (i.e. the 'fam' column)): ",
-        paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "), " \n"
+        paste0(utils::head(gcae_input_data$fam_table$fam), collapse = ", "),
+        " \n"
       )
     }
   }
