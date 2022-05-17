@@ -21,6 +21,9 @@ evaluate_phenotype_prediction <- function(
   plinkr::check_verbose(verbose)
 
   testthat::expect_true(dir.exists(gcae_experiment_params$gcae_setup$datadir))
+  testthat::expect_true(
+    gcae_experiment_params$gcae_setup$pheno_model_id != ""
+  )
   input_phe_filename <- list.files(
     path = gcae_experiment_params$gcae_setup$datadir,
     pattern = paste0(gcae_experiment_params$gcae_setup$data, "\\.phe$"),

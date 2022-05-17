@@ -8,7 +8,7 @@ test_that("use, phenotypes, no labels", {
     gcae_setup = create_test_gcae_setup(
       trainedmodeldir = paste0(
         normalizePath(
-          "~/gcae_input_files_1_ae",
+          get_gcaer_tempfilename(),
           mustWork = FALSE
         ),
         "/"
@@ -38,19 +38,21 @@ test_that("use, no phenotypes, no labels, #26", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_script_fixed()) return()
   clean_gcaer_tempfolder()
+
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
       trainedmodeldir = paste0(
         normalizePath(
-          "~/gcae_input_files_1_ae",
+          get_gcaer_tempfilename(),
+          "gcae_input_files_1_ae",
           mustWork = FALSE
         ),
         "/"
       ),
       model_id = "M0",
       superpops = "", # no labels
-      pheno_model_id = ""
+      pheno_model_id = "" # no phenotype
     ),
     analyse_epochs = c(1, 2),
     metrics = "" # no metrics

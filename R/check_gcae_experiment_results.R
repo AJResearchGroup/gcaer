@@ -18,13 +18,6 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
     "genotype_concordances_table" %in% names(gcae_experiment_results)
   )
   testthat::expect_true(
-    "phenotype_predictions_table" %in% names(gcae_experiment_results)
-  )
-  testthat::expect_true(
-    "nmse_in_time_table" %in% names(gcae_experiment_results)
-  )
-
-  testthat::expect_true(
     "train_times_table" %in% names(gcae_experiment_results)
   )
   testthat::expect_true(
@@ -46,12 +39,17 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   gcaer::check_genotype_concordances_table(
     gcae_experiment_results$genotype_concordances_table
   )
-  gcaer::check_phenotype_predictions_table(
-    gcae_experiment_results$phenotype_predictions_table
-  )
-  gcaer::check_nmse_in_time_table(
-    gcae_experiment_results$nmse_in_time_table
-  )
+  if ("phenotype_predictions_table" %in% names(gcae_experiment_results)) {
+    gcaer::check_phenotype_predictions_table(
+      gcae_experiment_results$phenotype_predictions_table
+    )
+  }
+  if ("nmse_in_time_table" %in% names(gcae_experiment_results)) {
+    gcaer::check_nmse_in_time_table(
+      gcae_experiment_results$nmse_in_time_table
+    )
+  }
+
   gcaer::check_train_times_table(
     gcae_experiment_results$train_times_table
   )

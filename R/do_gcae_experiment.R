@@ -84,19 +84,23 @@ do_gcae_experiment <- function(
     }
 
     # Evaluate the phenotype
-    phenotype_predictions_table <- gcaer::evaluate_phenotype_prediction(
-      gcae_experiment_params = gcae_experiment_params,
-      epoch = analyse_epochs[i],
-      verbose = verbose
-    )
-    phenotype_predictions_table$epoch <- analyse_epochs[i]
-    phenotype_predictions_list[[i]] <- phenotype_predictions_table
+    if (gcae_experiment_params$gcae_setup$pheno_model_id != "") {
+      phenotype_predictions_table <- gcaer::evaluate_phenotype_prediction(
+        gcae_experiment_params = gcae_experiment_params,
+        epoch = analyse_epochs[i],
+        verbose = verbose
+      )
+      phenotype_predictions_table$epoch <- analyse_epochs[i]
+      phenotype_predictions_list[[i]] <- phenotype_predictions_table
+    }
   }
 
   if (nrow(losses_from_project_table) !=
       length(gcae_experiment_params$analyse_epochs)) {
     stop(
       "There is less projected then intended. \n",
+      "Tip 1: this is likely to be due to a continued run. \n",
+      "Tip 2: run 'gcaer::clean_gcaer_tempfolder()' \n",
       "nrow(losses_from_project_table): ", nrow(losses_from_project_table), " \n",
       "length(gcae_experiment_params$analyse_epochs): ", length(gcae_experiment_params$analyse_epochs), " \n",
       "head(losses_from_project_table): \n", paste0(knitr::kable(utils::head(losses_from_project_table)), "\n"),
@@ -114,14 +118,17 @@ do_gcae_experiment <- function(
   losses_from_project_table$epoch <- gcae_experiment_params$analyse_epochs
   genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
   score_per_pop_table <- dplyr::bind_rows(score_per_pops_list)
-  phenotype_predictions_table <- dplyr::bind_rows(phenotype_predictions_list)
+
+  phenotype_predictions_table <- NA
+  nmse_in_time_table <- NA
+  if (gcae_experiment_params$gcae_setup$pheno_model_id != "") {
+    phenotype_predictions_table <- dplyr::bind_rows(phenotype_predictions_list)
+    nmse_in_time_table <- gcaer::calc_nmse_from_phenotype_predictions(
+      phenotype_predictions_table
+    )
+  }
   scores_table <- dplyr::bind_rows(scores_list)
-  train_results <- gcaer::parse_train_filenames(
-    train_filenames = train_filenames
-  )
-  nmse_in_time_table <- gcaer::calc_nmse_from_phenotype_predictions(
-    phenotype_predictions_table
-  )
+  train_results <- gcaer::parse_train_filenames(train_filenames = train_filenames)
 
   gcae_experiment_results <- list(
     score_per_pop_table = score_per_pop_table,
@@ -133,6 +140,10 @@ do_gcae_experiment <- function(
     losses_from_train_t_table = train_results$losses_from_train_t_table,
     losses_from_train_v_table = train_results$losses_from_train_v_table
   )
+  if (gcae_experiment_params$gcae_setup$pheno_model_id != "") {
+    gcae_experiment_results$phenotype_predictions_table <- NULL
+    gcae_experiment_results$nmse_in_time_table <- NULL
+  }
   # Temporarily
   gcaer::check_gcae_experiment_results(gcae_experiment_results)
 
