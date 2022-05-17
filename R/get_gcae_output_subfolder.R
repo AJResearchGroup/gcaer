@@ -20,9 +20,15 @@ get_gcae_output_subfolder <- function(
       gcae_setup$model_id, ".",
       gcae_setup$train_opts_id, ".",
       gcae_setup$data_opts_id, ".",
-      gcae_setup$data, ".",
-      gcae_setup$pheno_model_id
+      gcae_setup$data
     )
   )
+  if (gcae_setup$pheno_model_id != "") {
+    ae_out_subfolder <- c(
+      ae_out_subfolder,
+      ".",
+      gcae_setup$pheno_model_id
+    )
+  }
   ae_out_subfolder
 }

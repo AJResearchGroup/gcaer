@@ -24,7 +24,7 @@ create_gcae_train_args <- function(
   gcaer::check_gcae_setup(gcae_setup)
   gcaer::check_epochs(epochs)
   gcaer::check_save_interval(save_interval)
-  c(
+  args <- c(
     "train",
     "--datadir", gcae_setup$datadir,
     "--data", gcae_setup$data,
@@ -33,7 +33,13 @@ create_gcae_train_args <- function(
     "--save_interval", save_interval,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
-    "--trainedmodeldir", gcae_setup$trainedmodeldir,
-    "--pheno_model_id", gcae_setup$pheno_model_id
+    "--trainedmodeldir", gcae_setup$trainedmodeldir
   )
+  if (gcae_setup$pheno_model_id != "") {
+    args <- c(
+      args,
+      "--pheno_model_id", gcae_setup$pheno_model_id
+    )
+  }
+  args
 }

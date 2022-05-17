@@ -2,6 +2,10 @@
 #'
 #' Check if the `pheno_model_id` is valid
 #' Will \link{stop} if not.
+#'
+#' A `pheno_model_id` is valid, when
+#'  * it is an empty string
+#'  * it starts with a `p` and has at least two characters
 #' @inheritParams default_params_doc
 #' @return Nothing. Will \link{stop} if `pheno_model_id` is invalid.
 #' @seealso Use \link{check_model_id} to check if a `model_id`
@@ -24,4 +28,5 @@ check_pheno_model_id <- function(
   if (pheno_model_id != "") {
     testthat::expect_equal("p", substr(pheno_model_id, 1, 1))
   }
+  invisible(pheno_model_id)
 }

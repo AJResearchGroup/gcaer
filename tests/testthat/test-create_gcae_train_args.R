@@ -23,3 +23,12 @@ test_that("use", {
   )
   expect_equal(created, expected)
 })
+
+test_that("no --pheno_model_id when it is an empty string, #26", {
+  args <- create_gcae_train_args(
+    gcae_setup = create_test_gcae_setup(pheno_model_id = ""),
+    epochs = 1,
+    save_interval = 1
+  )
+  expect_false("--pheno_model_id" %in% args)
+})

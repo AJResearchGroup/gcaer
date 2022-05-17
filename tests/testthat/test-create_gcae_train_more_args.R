@@ -26,3 +26,14 @@ test_that("use", {
   )
   expect_equal(created, expected)
 })
+
+test_that("use, no --pheno-model-id, #26", {
+  args <- create_gcae_train_more_args(
+    gcae_setup = create_test_gcae_setup(pheno_model_id = ""),
+    resume_from = 10,
+    epochs = 20,
+    save_interval = 1
+  )
+  expect_false("--pheno_model_id" %in% args)
+  expect_false("" %in% args)
+})
