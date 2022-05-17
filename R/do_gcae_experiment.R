@@ -93,6 +93,16 @@ do_gcae_experiment <- function(
     phenotype_predictions_list[[i]] <- phenotype_predictions_table
   }
 
+  if (nrow(losses_from_project_table) !=
+      length(gcae_experiment_params$analyse_epochs)) {
+    stop(
+      "There is less projected then intended. \n",
+      "nrow(losses_from_project_table): ", nrow(losses_from_project_table), " \n",
+      "length(gcae_experiment_params$analyse_epochs): ", length(gcae_experiment_params$analyse_epochs), " \n",
+      "head(losses_from_project_table): \n", paste0(knitr::kable(utils::head(losses_from_project_table)), "\n"),
+      "head(gcae_experiment_params$analyse_epochs): \n", paste0(head(gcae_experiment_params$analyse_epochs), "\n"), "\n"
+    )
+  }
   testthat::expect_equal(
     nrow(losses_from_project_table),
     length(gcae_experiment_params$analyse_epochs)

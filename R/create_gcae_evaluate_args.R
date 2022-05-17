@@ -35,10 +35,17 @@ create_gcae_evaluate_args <- function(
     "--model_id", gcae_setup$model_id,
     "--train_opts_id", gcae_setup$train_opts_id,
     "--data_opts_id", gcae_setup$data_opts_id,
-    "--superpops", gcae_setup$superpops,
     "--epoch", epoch,
-    "--trainedmodeldir", gcae_setup$trainedmodeldir,
-    "--pheno_model_id", gcae_setup$pheno_model_id
+    "--trainedmodeldir", gcae_setup$trainedmodeldir
   )
+  if (gcae_setup$superpops != "") {
+    args <- c(args, "--superpops", gcae_setup$superpops)
+  }
+  if (gcae_setup$pheno_model_id != "") {
+    args <- c(
+      args,
+      "--pheno_model_id", gcae_setup$pheno_model_id
+    )
+  }
   args
 }

@@ -22,7 +22,7 @@ check_gcae_args <- function(args) {
     )
   }
   # Cannot have empty strings
-  testthat::expect_equal(0, sum(args == ""))
+  testthat::expect_equal(sum(args == ""), 0)
 
   # Only detect incorrect dash arguments
   dash_arg_regex <- paste0(

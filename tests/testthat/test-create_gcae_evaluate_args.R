@@ -22,3 +22,17 @@ test_that("use, without superpops", {
     "To run GCAE's 'evaluate' function, one needs a file with labels"
   )
 })
+
+test_that("use, without pheno_model_id", {
+  expect_silent(
+    check_gcae_args(
+      create_gcae_evaluate_args(
+        gcae_setup = create_test_gcae_setup(
+          pheno_model_id = ""
+        ),
+        metrics = "f1_score_3",
+        epoch = 100
+      )
+    )
+  )
+})

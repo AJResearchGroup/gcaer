@@ -18,10 +18,17 @@ gcae_plot <- function(
   args <- c(
     "plot",
     "--datadir", gcae_setup$datadir,
-    "--trainedmodelname", trainedmodelname,
-    "--superpops", gcae_setup$superpops,
-    "--pheno_model_id", gcae_setup$pheno_model_id
+    "--trainedmodelname", trainedmodelname
   )
+  if (gcae_setup$superpops != "") {
+    args <- c(args, "--superpops", gcae_setup$superpops)
+  }
+  if (gcae_setup$pheno_model_id != "") {
+    args <- c(
+      args,
+      "--pheno_model_id", gcae_setup$pheno_model_id
+    )
+  }
   gcaer::run_gcae(
     args = args,
     gcae_options = gcae_options,
