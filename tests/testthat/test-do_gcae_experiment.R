@@ -33,53 +33,6 @@ test_that("use, without labels", {
   )
 })
 
-test_that("check M and p models work, without labels", {
-  expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
-  if (!plinkr::is_on_ci()) return()
-  if (!is_gcae_script_fixed()) return()
-  clean_gcaer_tempfolder()
-
-  for (model_id in gcaer::get_gcae_model_ids()) {
-    for (pheno_model_id in gcaer::get_pheno_model_ids()) {
-      gcae_experiment_params <- create_gcae_experiment_params(
-        gcae_options = create_gcae_options(),
-        gcae_setup = create_test_gcae_setup(
-          trainedmodeldir = paste0(
-            normalizePath(
-              gcaer::get_gcaer_tempfilename(),
-              paste0("test_model_", model_id, "_", pheno_model_id),
-              mustWork = FALSE
-            ),
-            "/"
-          ),
-          model_id = model_id,
-          superpops = "", # no labels
-          pheno_model_id = pheno_model_id
-        ),
-        analyse_epochs = c(1, 2),
-        metrics = "" # no metrics
-      )
-      passes <- FALSE
-      tryCatch({
-          do_gcae_experiment(
-            gcae_experiment_params = gcae_experiment_params
-          )
-          passes <- TRUE
-        }, error = function(e) {} # nolint do not care about the braces
-      )
-      message(paste(model_id, pheno_model_id, passes))
-    }
-  }
-  expect_silent(check_gcae_experiment_results(gcae_experiment_results))
-  save_gcae_experiment_results(
-    gcae_experiment_results = gcae_experiment_results,
-    folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
-  )
-  create_plots_from_gcae_experiment_results(
-    folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
-  )
-})
-
 test_that("use, with labels", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
