@@ -49,11 +49,15 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
       csv_filenames$genotype_concordances_filename,
     png_filename = png_filenames$genotype_concordances_filename
   )
-  gcaer::plot_phenotype_predictions_from_file(
-    phenotype_predictions_filename =
-      csv_filenames$phenotype_predictions_filename,
-    png_filename = png_filenames$phenotype_predictions_filename
-  )
+  if (file.exists(csv_filenames$phenotype_predictions_filename)) {
+    gcaer::plot_phenotype_predictions_from_file(
+      phenotype_predictions_filename =
+        csv_filenames$phenotype_predictions_filename,
+      png_filename = png_filenames$phenotype_predictions_filename
+    )
+  } else {
+    png_filenames$phenotype_predictions_filename <- NULL
+  }
   gcaer::plot_train_times_from_file(
     train_times_filename = csv_filenames$train_times_filename,
     png_filename = png_filenames$train_times_filename
@@ -66,9 +70,13 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
     losses_from_train_v_filename = csv_filenames$losses_from_train_v_filename,
     png_filename = png_filenames$losses_from_train_v_filename
   )
-  gcaer::plot_nmse_in_time_from_file(
-    nmse_in_time_filename = csv_filenames$nmse_in_time_filename,
-    png_filename = png_filenames$nmse_in_time_filename
-  )
+  if (file.exists(csv_filenames$nmse_in_time_filename)) {
+    gcaer::plot_nmse_in_time_from_file(
+      nmse_in_time_filename = csv_filenames$nmse_in_time_filename,
+      png_filename = png_filenames$nmse_in_time_filename
+    )
+  } else {
+    png_filenames$nmse_in_time_filename <- NULL
+  }
   png_filenames
 }
