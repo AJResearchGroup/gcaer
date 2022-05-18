@@ -39,7 +39,8 @@ check_input_files_are_present <- function(gcae_experiment_params) {
     pheno_model_id = gcae_experiment_params$gcae_setup$pheno_model_id,
     gcae_options = gcae_experiment_params$gcae_options
   )
-  if (!file.exists(pheno_model_filename)) {
+  if (gcae_experiment_params$gcae_setup$pheno_model_id != "" &&
+      !file.exists(pheno_model_filename)) {
     stop(
       "Phenotype prediction architecture file absent. \n",
       "gcae_experiment_params$gcae_setup$pheno_model_id: ",
@@ -107,5 +108,18 @@ check_input_files_are_present <- function(gcae_experiment_params) {
       "'gcae_experiment_params$gcae_options$gcae_folder'"
     )
   }
+
+  superpops_filename <- gcae_experiment_params$gcae_setup$superpops
+  if (superpops_filename != "" && !file.exists(superpops_filename)) {
+    stop(
+      "Superpopulations file is absent. \n",
+      "gcae_experiment_params$gcae_setup$superpops: ",
+      gcae_experiment_params$gcae_setup$superpops, "\n",
+      "gcae_experiment_params$gcae_options$gcae_folder: ",
+      gcae_experiment_params$gcae_options$gcae_folder
+    )
+  }
+
+
   invisible(gcae_experiment_params)
 }
