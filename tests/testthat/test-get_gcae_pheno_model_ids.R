@@ -23,3 +23,12 @@ test_that("use on experimental pheno_models", {
     expect_silent(check_pheno_model_id(pheno_model_id))
   }
 })
+
+test_that("use", {
+  pheno_model_ids <- get_gcae_pheno_model_ids(
+    gcae_options = create_gcae_options(
+      gcae_folder = get_gcaer_tempfilename()
+    )
+  )
+  expect_equal(length(pheno_model_ids), 0)
+})

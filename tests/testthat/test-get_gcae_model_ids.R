@@ -20,3 +20,12 @@ test_that("use on experimental models", {
     expect_silent(check_model_id(model_id))
   }
 })
+
+test_that("use in empty folder", {
+  model_ids <- get_gcae_model_ids(
+    gcae_options = create_gcae_options(
+      gcae_folder = get_gcaer_tempfilename()
+    )
+  )
+  expect_equal(length(model_ids), 0)
+})

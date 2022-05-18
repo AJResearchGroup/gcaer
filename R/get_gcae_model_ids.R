@@ -7,7 +7,8 @@
 #' (that can be obtained using \link{get_gcae_pheno_model_ids})
 #' are stored there as well.
 #' @inheritParams default_params_doc
-#' @return the model IDs of the `GCAE` autoencoder architectures
+#' @return zero, one or more model IDs of the `GCAE`
+#' autoencoder architectures available.
 #' @seealso use \link{get_gcae_model_id} to get the filename
 #' of one `GCAE` autoencoder architecture
 #'
@@ -24,6 +25,7 @@ get_gcae_model_ids <- function(
   gcae_model_filenames <- gcaer::get_gcae_model_filenames(
     gcae_options = gcae_options
   )
+  if (length(gcae_model_filenames) == 0) return(gcae_model_filenames)
   matches <- stringr::str_match(
     string = gcae_model_filenames,
     pattern = ".*models/(M.*)\\.json"

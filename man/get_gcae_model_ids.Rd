@@ -11,7 +11,8 @@ get_gcae_model_ids(gcae_options = create_gcae_options())
 as created by \link{create_gcae_options}}
 }
 \value{
-the model IDs of the \code{GCAE} autoencoder architectures
+zero, one or more model IDs of the \code{GCAE}
+autoencoder architectures available.
 }
 \description{
 Get the model IDs for all the \code{GCAE} autoencoder architectures.

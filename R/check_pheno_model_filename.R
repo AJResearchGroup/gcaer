@@ -7,9 +7,9 @@
 #' @seealso use \link{check_model_filename} to check if
 #' an autoencoder model filename is correct
 #' @examples
-#' check_model_filename("p0.json")
-#' check_model_filename("~/p0.json")
-#' check_model_filename("/home/me/p2.json")
+#' check_pheno_model_filename("p0.json")
+#' check_pheno_model_filename("~/p0.json")
+#' check_pheno_model_filename("/home/me/p2.json")
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_pheno_model_filename <- function(

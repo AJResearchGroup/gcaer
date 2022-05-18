@@ -9,7 +9,9 @@ do_gcae_experiment <- function(
   gcae_experiment_params,
   verbose = FALSE
 ) {
-  gcaer::check_gcae_experiment_params(gcae_experiment_params)
+  plinkr::check_verbose(verbose)
+  # 'gcae_experiment_params' is checked in this function
+  gcaer::check_input_files_are_present(gcae_experiment_params)
 
   analyse_epochs <- gcae_experiment_params$analyse_epochs
   resume_froms <- c(0, analyse_epochs[-length(analyse_epochs)])

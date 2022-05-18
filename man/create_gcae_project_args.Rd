@@ -4,7 +4,7 @@
 \alias{create_gcae_project_args}
 \title{Create the CLI arguments to project with \code{GCAE}}
 \usage{
-create_gcae_project_args(gcae_setup, epochs, save_interval)
+create_gcae_project_args(gcae_setup)
 }
 \arguments{
 \item{gcae_setup}{GCAE model setup,
@@ -12,11 +12,6 @@ as created by \link{create_gcae_setup},
 read from file by \link{read_gcae_setup_file},
 checked by \link{check_gcae_setup},
 and saved to file by \link{save_gcae_setup}.}
-
-\item{epochs}{number of epochs, as checked by \link{check_epochs}}
-
-\item{save_interval}{epoch intervals at which to save state of model,
-and at which to calculate the valid loss}
 }
 \value{
 the CLI arguments

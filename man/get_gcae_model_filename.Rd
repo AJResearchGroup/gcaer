@@ -4,7 +4,7 @@
 \alias{get_gcae_model_filename}
 \title{Get the filename to the GCAE model}
 \usage{
-get_gcae_model_filename(model_id = "M0", gcae_options = create_gcae_options())
+get_gcae_model_filename(model_id, gcae_options = create_gcae_options())
 }
 \arguments{
 \item{model_id}{model id, corresponding to a file models/model_id.json}
@@ -20,12 +20,19 @@ Get the filename to the GCAE model.
 This function is named after the GCAE \code{models} folder.
 }
 \examples{
-get_gcae_model_filename()
 get_gcae_model_filename(model_id = "M0")
 }
 \seealso{
-use \link{get_gcae_pheno_model_filename} to get the filename
-to a phenotype model.
+Use \link{get_gcae_model_filenames} to get all the
+files with autoencoder architectures.
+
+To obtain the paths to the files for the different \code{GCAE} features:
+\itemize{
+\item Autoencoder architecture: use \link{get_gcae_model_filename}
+\item Phenotypic preditcion: use \link{get_gcae_pheno_model_filename}
+\item Training options: use \link{get_gcae_train_opts_filename}
+\item File storage options: use \link{get_gcae_data_opts_filename}
+}
 }
 \author{
 Richèl J.C. Bilderbeek

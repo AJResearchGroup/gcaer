@@ -103,9 +103,13 @@ test_that("abuse", {
     do_gcae_experiment(gcae_experiment_params = "nonsense"),
     "'gcae_experiment_params' must be a list"
   )
+
+  gcae_experiment_params <- create_test_gcae_experiment_params()
+  gcae_experiment_params$gcae_setup$model_id <- "Mabsent"
+  expect_error(
+    do_gcae_experiment(gcae_experiment_params)
+  )
 })
-
-
 
 test_that("profiling, M1", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test

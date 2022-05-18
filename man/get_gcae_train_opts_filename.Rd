@@ -23,6 +23,18 @@ full paths to the created files
 Get the filename to the GCAE training options.
 This function is named after the GCAE \code{train_opts} folder.
 }
+\seealso{
+Use \link{get_gcae_train_opts_filenames} to get all the
+files with training options.
+
+To obtain the paths to the files for the different \code{GCAE} features:
+\itemize{
+\item Autoencoder architecture: use \link{get_gcae_model_filename}
+\item Phenotypic preditcion: use \link{get_gcae_pheno_model_filename}
+\item Training options: use \link{get_gcae_train_opts_filename}
+\item File storage options: use \link{get_gcae_data_opts_filename}
+}
+}
 \author{
 Richèl J.C. Bilderbeek
 }

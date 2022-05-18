@@ -14,9 +14,9 @@ Check if the \code{pheno_model_filename} is valid
 Will \link{stop} if not.
 }
 \examples{
-check_model_filename("p0.json")
-check_model_filename("~/p0.json")
-check_model_filename("/home/me/p2.json")
+check_pheno_model_filename("p0.json")
+check_pheno_model_filename("~/p0.json")
+check_pheno_model_filename("/home/me/p2.json")
 }
 \seealso{
 use \link{check_model_filename} to check if

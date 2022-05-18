@@ -20,6 +20,9 @@ get_gcae_pheno_model_ids <- function(
   gcae_pheno_model_filenames <- gcaer::get_gcae_pheno_model_filenames(
     gcae_options = gcae_options
   )
+  if (length(gcae_pheno_model_filenames) == 0) {
+    return(gcae_pheno_model_filenames)
+  }
   matches <- stringr::str_match(
     string = gcae_pheno_model_filenames,
     pattern = ".*models/(p.*)\\.json"
