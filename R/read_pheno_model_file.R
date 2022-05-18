@@ -1,10 +1,8 @@
 #' Read a `GCAE` phenotypic model file
 #' @inheritParams default_params_doc
-#' @return the `pheno_model` as a JSON object,
-#' as can be checked by \link{check_pheno_model}
+#' @return the `pheno_model` as a JSON object
 #' @seealso
-#'  * Use \link{save_pheno_model} to save a `pheno_model`
-#'  * Use \link{read_model_file} to read a `model`
+#' Use \link{read_model_file} to read a `model`
 #' @examples
 #' if (is_gcae_repo_cloned()) {
 #'   # A real GCAE file

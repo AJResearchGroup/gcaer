@@ -20,9 +20,6 @@ Get the \code{train_opts} IDs for all the \code{GCAE} phenotype architectures.
 get_gcae_train_opts_ids()
 }
 \seealso{
-use \link{get_gcae_train_opts_id} to get the filename
-of one \code{GCAE} phenotype architecture
-
 Use \link{get_gcae_model_ids} to get the IDs for the
 autoencoder models.
 }

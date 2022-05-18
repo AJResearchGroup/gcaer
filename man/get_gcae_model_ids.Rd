@@ -27,9 +27,6 @@ are stored there as well.
 get_gcae_model_ids()
 }
 \seealso{
-use \link{get_gcae_model_id} to get the filename
-of one \code{GCAE} autoencoder architecture
-
 Use \link{get_gcae_pheno_model_ids} to get the IDs for the
 phenotypic models.
 }

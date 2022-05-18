@@ -14,8 +14,7 @@ Use \link{read_pheno_model_file} to read a \code{GCAE}
 pehnotype prediction architecture from that file.}
 }
 \value{
-the \code{pheno_model} as a JSON object,
-as can be checked by \link{check_pheno_model}
+the \code{pheno_model} as a JSON object
 }
 \description{
 Read a \code{GCAE} phenotypic model file
@@ -31,10 +30,7 @@ if (is_gcae_repo_cloned()) {
 read_pheno_model_file(pheno_model_filename)
 }
 \seealso{
-\itemize{
-\item Use \link{save_pheno_model} to save a \code{pheno_model}
-\item Use \link{read_model_file} to read a \code{model}
-}
+Use \link{read_model_file} to read a \code{model}
 }
 \author{
 Richèl J.C. Bilderbeek

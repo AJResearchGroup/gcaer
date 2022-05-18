@@ -9,9 +9,7 @@
 #' @inheritParams default_params_doc
 #' @return zero, one or more model IDs of the `GCAE`
 #' autoencoder architectures available.
-#' @seealso use \link{get_gcae_model_id} to get the filename
-#' of one `GCAE` autoencoder architecture
-#'
+#' @seealso
 #' Use \link{get_gcae_pheno_model_ids} to get the IDs for the
 #' phenotypic models.
 #' @examples
