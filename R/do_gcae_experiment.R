@@ -103,10 +103,14 @@ do_gcae_experiment <- function(
       "There is less projected then intended. \n",
       "Tip 1: this is likely to be due to a continued run. \n",
       "Tip 2: run 'gcaer::clean_gcaer_tempfolder()' \n",
-      "nrow(losses_from_project_table): ", nrow(losses_from_project_table), " \n",
-      "length(gcae_experiment_params$analyse_epochs): ", length(gcae_experiment_params$analyse_epochs), " \n",
-      "head(losses_from_project_table): \n", paste0(knitr::kable(utils::head(losses_from_project_table)), "\n"),
-      "head(gcae_experiment_params$analyse_epochs): \n", paste0(head(gcae_experiment_params$analyse_epochs), "\n"), "\n"
+      "nrow(losses_from_project_table): ",
+        nrow(losses_from_project_table), " \n",
+      "length(gcae_experiment_params$analyse_epochs): ",
+        length(gcae_experiment_params$analyse_epochs), " \n",
+      "head(losses_from_project_table): \n",
+        paste0(knitr::kable(utils::head(losses_from_project_table)), "\n"),
+      "head(gcae_experiment_params$analyse_epochs): \n",
+        paste0(utils::head(gcae_experiment_params$analyse_epochs), "\n"), "\n"
     )
   }
   testthat::expect_equal(
@@ -130,7 +134,9 @@ do_gcae_experiment <- function(
     )
   }
   scores_table <- dplyr::bind_rows(scores_list)
-  train_results <- gcaer::parse_train_filenames(train_filenames = train_filenames)
+  train_results <- gcaer::parse_train_filenames(
+    train_filenames = train_filenames
+  )
 
   gcae_experiment_results <- list(
     score_per_pop_table = score_per_pop_table,

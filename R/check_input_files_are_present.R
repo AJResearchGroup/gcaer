@@ -28,7 +28,9 @@ check_input_files_are_present <- function(gcae_experiment_params) {
       "Tip 1: maybe use a different 'model_id', ",
       "'model_id's available are {",
         paste0(
-          gcaer::get_gcae_model_ids(gcae_options = gcae_experiment_params$gcae_options),
+          gcaer::get_gcae_model_ids(
+            gcae_options = gcae_experiment_params$gcae_options
+          ),
           collapse = ", "
         ), "} \n",
       "Tip 2: maybe use a different ",
@@ -51,7 +53,9 @@ check_input_files_are_present <- function(gcae_experiment_params) {
       "Tip 1: maybe use a different 'pheno_model_id', ",
       "'pheno_model_id's available are {",
       paste0(
-        gcaer::get_gcae_pheno_model_ids(gcae_options = gcae_experiment_params$gcae_options),
+        gcaer::get_gcae_pheno_model_ids(
+          gcae_options = gcae_experiment_params$gcae_options
+        ),
         collapse = ", "
       ), "}\n",
       "Tip 2: maybe use a different ",

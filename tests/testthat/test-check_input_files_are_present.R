@@ -25,7 +25,9 @@ test_that("use", {
     pheno_model_id = gcae_experiment_params$gcae_setup$pheno_model_id,
     gcae_options = gcae_experiment_params$gcae_options
   )
-  dir.create(dirname(pheno_model_filename), recursive = TRUE, showWarnings = FALSE)
+  dir.create(
+    dirname(pheno_model_filename), recursive = TRUE, showWarnings = FALSE
+  )
   file.create(pheno_model_filename)
   expect_error(
     check_input_files_are_present(gcae_experiment_params),
@@ -36,7 +38,9 @@ test_that("use", {
     train_opts_id = gcae_experiment_params$gcae_setup$train_opts_id,
     gcae_options = gcae_experiment_params$gcae_options
   )
-  dir.create(dirname(train_opts_filename), recursive = TRUE, showWarnings = FALSE)
+  dir.create(
+    dirname(train_opts_filename), recursive = TRUE, showWarnings = FALSE
+  )
   file.create(train_opts_filename)
   expect_error(
     check_input_files_are_present(gcae_experiment_params),
@@ -47,7 +51,9 @@ test_that("use", {
     data_opts_id = gcae_experiment_params$gcae_setup$data_opts_id,
     gcae_options = gcae_experiment_params$gcae_options
   )
-  dir.create(dirname(data_opts_filename), recursive = TRUE, showWarnings = FALSE)
+  dir.create(
+    dirname(data_opts_filename), recursive = TRUE, showWarnings = FALSE
+  )
   file.create(data_opts_filename)
   gcae_experiment_params$gcae_setup$superpops <- get_gcaer_tempfilename(
     pattern = "superpops_", fileext = ".csv"
@@ -59,7 +65,9 @@ test_that("use", {
   )
   # 'superpops' must exist, for all files to exist
   superpops_filename <- gcae_experiment_params$gcae_setup$superpops
-  dir.create(dirname(superpops_filename), recursive = TRUE, showWarnings = FALSE)
+  dir.create(
+    dirname(superpops_filename), recursive = TRUE, showWarnings = FALSE
+  )
   file.create(superpops_filename)
   expect_silent(
     check_input_files_are_present(gcae_experiment_params)

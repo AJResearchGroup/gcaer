@@ -65,6 +65,7 @@ default_params_doc(
   out,
   phe_filename,
   plink_options,
+  pheno_model_filename,
   pheno_model_id,
   phenotype_predictions_filename,
   phenotype_predictions_table,
@@ -304,6 +305,12 @@ as can be read using \link[plinkr]{read_plink_phe_file}}
 
 \item{plink_options}{PLINK options,
 as created by \link[plinkr]{create_plink_options}}
+
+\item{pheno_model_filename}{name of a file that stores
+the phenotype prediction \code{GCAE} architecture,
+as checked by \link{check_pheno_model_filename}.
+Use \link{read_pheno_model_file} to read a \code{GCAE}
+pehnotype prediction architecture from that file.}
 
 \item{pheno_model_id}{phenotype model ID,
 as checked by \link{check_pheno_model_id}}

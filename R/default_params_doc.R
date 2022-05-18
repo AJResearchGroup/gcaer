@@ -151,6 +151,11 @@
 #' \code{--out} flag
 #' @param phe_filename name of a PLINK phenotype (`.phe`) file
 #' as can be read using \link[plinkr]{read_plink_phe_file}
+#' @param pheno_model_filename name of a file that stores
+#' the phenotype prediction `GCAE` architecture,
+#' as checked by \link{check_pheno_model_filename}.
+#' Use \link{read_pheno_model_file} to read a `GCAE`
+#' pehnotype prediction architecture from that file.
 #' @param phenotype_predictions_filename name of a file for
 #' phenotype predictions
 #' @param phenotype_predictions_table a table of phenotype predictions,
@@ -263,6 +268,7 @@ default_params_doc <- function(
   out,
   phe_filename,
   plink_options,
+  pheno_model_filename,
   pheno_model_id,
   phenotype_predictions_filename,
   phenotype_predictions_table,

@@ -22,7 +22,7 @@ test_that("test dataset, test output", {
     create_test_gcae_input_data()
   )
   expect_false("index" %in% names(gcae_input_data$phe_table))
-  head(gcae_input_data$labels_table)
+  utils::head(gcae_input_data$labels_table)
 })
 
 

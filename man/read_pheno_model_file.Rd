@@ -6,6 +6,13 @@
 \usage{
 read_pheno_model_file(pheno_model_filename)
 }
+\arguments{
+\item{pheno_model_filename}{name of a file that stores
+the phenotype prediction \code{GCAE} architecture,
+as checked by \link{check_pheno_model_filename}.
+Use \link{read_pheno_model_file} to read a \code{GCAE}
+pehnotype prediction architecture from that file.}
+}
 \value{
 the \code{pheno_model} as a JSON object,
 as can be checked by \link{check_pheno_model}
