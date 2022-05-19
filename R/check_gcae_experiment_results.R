@@ -39,12 +39,14 @@ check_gcae_experiment_results <- function(gcae_experiment_results) {
   gcaer::check_genotype_concordances_table(
     gcae_experiment_results$genotype_concordances_table
   )
-  if ("phenotype_predictions_table" %in% names(gcae_experiment_results)) {
+  if ("phenotype_predictions_table" %in% names(gcae_experiment_results) &&
+      tibble::is_tibble(gcae_experiment_results$phenotype_predictions_table)) {
     gcaer::check_phenotype_predictions_table(
       gcae_experiment_results$phenotype_predictions_table
     )
   }
-  if ("nmse_in_time_table" %in% names(gcae_experiment_results)) {
+  if ("nmse_in_time_table" %in% names(gcae_experiment_results) &&
+      tibble::is_tibble(gcae_experiment_results$nmse_in_time_table)) {
     gcaer::check_nmse_in_time_table(
       gcae_experiment_results$nmse_in_time_table
     )

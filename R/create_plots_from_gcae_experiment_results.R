@@ -21,21 +21,23 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
     file_extension = ".png"
   )
 
-  if (
-    nrow(
-      readr::read_csv(
-        csv_filenames$score_per_pop_filename,
-        show_col_types = FALSE
-      )
-    ) > 0
+  if (file.exists(csv_filenames$score_per_pop_filename) &&
+      nrow(
+        readr::read_csv(
+          csv_filenames$score_per_pop_filename,
+          show_col_types = FALSE
+        )
+      ) > 0
   ) {
     gcaer::plot_score_per_pop_from_file(
       score_per_pop_filename = csv_filenames$score_per_pop_filename,
       png_filename = png_filenames$score_per_pop_filename
     )
+  } else {
+    png_filenames$score_per_pop_filename <- NULL
   }
-  if (
-    nrow(
+  if (file.exists(csv_filenames$scores_filename) &&
+      nrow(
       readr::read_csv(csv_filenames$scores_filename, show_col_types = FALSE)
     ) > 0
   ) {
@@ -43,6 +45,8 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
       scores_filename = csv_filenames$scores_filename,
       png_filename = png_filenames$scores_filename
     )
+  } else {
+    png_filenames$scores_filename <- NULL
   }
   gcaer::plot_genotype_concordances_from_file(
     genotype_concordances_filename =

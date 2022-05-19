@@ -11,7 +11,12 @@
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_phenotype_predictions_table <- function(phenotype_predictions_table) { # nolint indeed a long function name
-  testthat::expect_true(tibble::is_tibble(phenotype_predictions_table))
+  if (!tibble::is_tibble(phenotype_predictions_table)) {
+    stop(
+      "'phenotype_predictions_table' must be a 'tibble'. \n",
+      "class(phenotype_predictions_table): ", class(phenotype_predictions_table)
+    )
+  }
   testthat::expect_true("FID" %in% names(phenotype_predictions_table))
   testthat::expect_true("IID" %in% names(phenotype_predictions_table))
   testthat::expect_true(

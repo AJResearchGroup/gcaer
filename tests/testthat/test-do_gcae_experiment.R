@@ -38,7 +38,6 @@ test_that("use, no phenotypes, no labels, #26", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_script_fixed()) return()
   clean_gcaer_tempfolder()
-
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
