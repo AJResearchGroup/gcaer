@@ -40,7 +40,8 @@ save_gcae_experiment_results <- function(
     gcae_experiment_results$genotype_concordances_table,
     file = filenames$genotype_concordances_filename
   )
-  if ("phenotype_predictions_table" %in% names(gcae_experiment_results)) {
+  if ("phenotype_predictions_table" %in% names(gcae_experiment_results) &&
+      tibble::is_tibble(gcae_experiment_results$phenotype_predictions_table)) {
     readr::write_csv(
       gcae_experiment_results$phenotype_predictions_table,
       file = filenames$phenotype_predictions_filename
@@ -60,7 +61,8 @@ save_gcae_experiment_results <- function(
     gcae_experiment_results$losses_from_train_v_table,
     file = filenames$losses_from_train_v_filename
   )
-  if ("nmse_in_time_table" %in% names(gcae_experiment_results)) {
+  if ("nmse_in_time_table" %in% names(gcae_experiment_results) &&
+      tibble::is_tibble(gcae_experiment_results$nmse_in_time_table)) {
     readr::write_csv(
       gcae_experiment_results$nmse_in_time_table,
       file = filenames$nmse_in_time_filename
