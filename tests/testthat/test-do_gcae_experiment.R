@@ -69,6 +69,41 @@ test_that("use, no phenotypes, no labels, #26", {
   )
 })
 
+test_that("use, no phenotypes, no labels, M1_3n, #55", {
+  expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
+  if (!plinkr::is_on_ci()) return()
+  if (!is_gcae_script_fixed()) return()
+  clean_gcaer_tempfolder()
+  gcae_experiment_params <- create_gcae_experiment_params(
+    gcae_options = create_gcae_options(),
+    gcae_setup = create_test_gcae_setup(
+      trainedmodeldir = paste0(
+        normalizePath(
+          get_gcaer_tempfilename(),
+          mustWork = FALSE
+        ),
+        "/"
+      ),
+      model_id = "M1_3n",
+      superpops = "", # no labels
+      pheno_model_id = "" # no phenotype
+    ),
+    analyse_epochs = c(1, 2),
+    metrics = "" # no metrics
+  )
+  gcae_experiment_results <- do_gcae_experiment(
+    gcae_experiment_params = gcae_experiment_params
+  )
+  expect_silent(check_gcae_experiment_results(gcae_experiment_results))
+  save_gcae_experiment_results(
+    gcae_experiment_results = gcae_experiment_results,
+    folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
+  )
+  create_plots_from_gcae_experiment_results(
+    folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
+  )
+})
+
 test_that("use, phenotypes, labels", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
