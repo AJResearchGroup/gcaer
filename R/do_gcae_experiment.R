@@ -55,10 +55,12 @@ do_gcae_experiment <- function(
         paste(project_filenames, collapse = "\n * ")
       )
     }
-    t_project_results <- gcaer::parse_project_files(project_filenames)
-    # Will be overwritten each cycle, by tibbles with more info
-    losses_from_project_table <- t_project_results$losses_from_project_table
-    genotype_concordances_table <- t_project_results$genotype_concordances_table
+    if (length(project_filenames) > 0) {
+      t_project_results <- gcaer::parse_project_files(project_filenames)
+      # Will be overwritten each cycle, by tibbles with more info
+      losses_from_project_table <- t_project_results$losses_from_project_table
+      genotype_concordances_table <- t_project_results$genotype_concordances_table
+    }
 
     if (gcae_experiment_params$gcae_setup$superpops == "") {
       if (verbose) {
@@ -97,32 +99,37 @@ do_gcae_experiment <- function(
     }
   }
 
-  if (nrow(losses_from_project_table) !=
-      length(gcae_experiment_params$analyse_epochs)) {
-    stop(
-      "There is less projected then intended. \n",
-      "Tip 1: this is likely to be due to a continued run. \n",
-      "Tip 2: run 'gcaer::clean_gcaer_tempfolder()' \n",
-      "nrow(losses_from_project_table): ",
-        nrow(losses_from_project_table), " \n",
-      "length(gcae_experiment_params$analyse_epochs): ",
-        length(gcae_experiment_params$analyse_epochs), " \n",
-      "head(losses_from_project_table): \n",
-        paste0(knitr::kable(utils::head(losses_from_project_table)), "\n"),
-      "head(gcae_experiment_params$analyse_epochs): \n",
-        paste0(utils::head(gcae_experiment_params$analyse_epochs), "\n"), "\n"
+  if (tibble::is_tibble(losses_from_project_table)) {
+    if (nrow(losses_from_project_table) !=
+      length(gcae_experiment_params$analyse_epochs)
+    ) {
+      stop(
+        "There is less projected then intended. \n",
+        "Tip 1: this is likely to be due to a continued run. \n",
+        "Tip 2: run 'gcaer::clean_gcaer_tempfolder()' \n",
+        "nrow(losses_from_project_table): ",
+          nrow(losses_from_project_table), " \n",
+        "length(gcae_experiment_params$analyse_epochs): ",
+          length(gcae_experiment_params$analyse_epochs), " \n",
+        "head(losses_from_project_table): \n",
+          paste0(knitr::kable(utils::head(losses_from_project_table)), "\n"),
+        "head(gcae_experiment_params$analyse_epochs): \n",
+          paste0(utils::head(gcae_experiment_params$analyse_epochs), "\n"), "\n"
+      )
+    }
+    testthat::expect_equal(
+      nrow(losses_from_project_table),
+      length(gcae_experiment_params$analyse_epochs)
     )
+    losses_from_project_table$epoch <- gcae_experiment_params$analyse_epochs
   }
-  testthat::expect_equal(
-    nrow(losses_from_project_table),
-    length(gcae_experiment_params$analyse_epochs)
-  )
-  testthat::expect_equal(
-    nrow(genotype_concordances_table),
-    length(gcae_experiment_params$analyse_epochs)
-  )
-  losses_from_project_table$epoch <- gcae_experiment_params$analyse_epochs
-  genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
+  if (tibble::is_tibble(genotype_concordances_table)) {
+    testthat::expect_equal(
+      nrow(genotype_concordances_table),
+      length(gcae_experiment_params$analyse_epochs)
+    )
+    genotype_concordances_table$epoch <- gcae_experiment_params$analyse_epochs
+  }
   score_per_pop_table <- dplyr::bind_rows(score_per_pops_list)
 
   phenotype_predictions_table <- NA

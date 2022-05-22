@@ -75,6 +75,9 @@ test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_script_fixed()) return()
   clean_gcaer_tempfolder()
+
+  #get_gcae_model_filename("M1")
+  #readLines(get_gcae_model_filename("M1_3n"))
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
@@ -93,7 +96,8 @@ test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
     metrics = "" # no metrics
   )
   gcae_experiment_results <- do_gcae_experiment(
-    gcae_experiment_params = gcae_experiment_params
+    gcae_experiment_params = gcae_experiment_params,
+    verbose = TRUE
   )
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
   save_gcae_experiment_results(
