@@ -11,21 +11,7 @@ test_that("use", {
   #
   Sys.time()
   gcae_options <- create_gcae_options()
-  gcae_setup <- create_gcae_setup(
-    datadir = get_test_datadir(),
-    data = "gcae_input_files_1",
-    superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"),
-    model_id = "M1",
-    data_opts_id = "b_0_4",
-    train_opts_id = "ex3",
-    pheno_model_id = "p2",
-    trainedmodeldir = paste0(
-      normalizePath(
-        file.path(get_gcaer_tempfilename(), "gcae_input_files_1_ae"),
-        mustWork = FALSE
-      ), "/"
-    )
-  )
+  gcae_setup <- create_test_gcae_setup(superpops = "")
 
   # 2. Train, approx 3 mins
   Sys.time()
@@ -36,6 +22,7 @@ test_that("use", {
     save_interval = 1,
     verbose = TRUE
   )
+  expect_true(all(file.exists(train_filenames)))
   train_filenames <- gcae_train_more(
     gcae_setup = gcae_setup,
     resume_from = 1,
@@ -44,4 +31,6 @@ test_that("use", {
     verbose = TRUE
   )
   expect_true(all(file.exists(train_filenames)))
+
+
 })

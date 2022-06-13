@@ -70,5 +70,14 @@ save_gcae_experiment_results <- function(
   } else {
     filenames$nmse_in_time_filename <- NULL
   }
+  if ("r_squared_in_time_table" %in% names(gcae_experiment_results) &&
+      tibble::is_tibble(gcae_experiment_results$r_squared_in_time_table)) {
+    readr::write_csv(
+      gcae_experiment_results$r_squared_in_time_table,
+      file = filenames$r_squared_in_time_filename
+    )
+  } else {
+    filenames$r_squared_in_time_filename <- NULL
+  }
   filenames
 }
