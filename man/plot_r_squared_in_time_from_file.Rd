@@ -7,6 +7,9 @@
 plot_r_squared_in_time_from_file(r_squared_in_time_filename, png_filename)
 }
 \arguments{
+\item{r_squared_in_time_filename}{name of the file for
+the \code{r_squared} in time.}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 }

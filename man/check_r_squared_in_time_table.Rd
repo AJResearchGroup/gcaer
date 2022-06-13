@@ -6,6 +6,10 @@
 \usage{
 check_r_squared_in_time_table(r_squared_in_time_table)
 }
+\arguments{
+\item{r_squared_in_time_table}{\code{r_squared} in time,
+as can be checked by \link{check_r_squared_in_time_table}}
+}
 \value{
 Nothing.
 Will \link{stop} if \code{r_squared_in_time_table} is invalid.

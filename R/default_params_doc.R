@@ -171,6 +171,10 @@
 #' as created (and returned) by \link{gcae_project}
 #' @param python_bin_path path to a `python` binary/executable
 #' @param python_version the Python version
+#' @param r_squared_in_time_filename name of the file for
+#' the `r_squared` in time.
+#' @param r_squared_in_time_table `r_squared` in time,
+#' as can be checked by \link{check_r_squared_in_time_table}
 #' @param resume_from the epoch to resume from,
 #' as checked by \link{check_resume_from}
 #' @param save_interval epoch intervals at which to save state of model,
@@ -276,6 +280,8 @@ default_params_doc <- function(
   project_filenames,
   python_bin_path,
   python_version,
+  r_squared_in_time_filename,
+  r_squared_in_time_table,
   resume_from,
   save_interval,
   score_per_pop_filename,

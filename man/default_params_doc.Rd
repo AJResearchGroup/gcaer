@@ -73,6 +73,8 @@ default_params_doc(
   project_filenames,
   python_bin_path,
   python_version,
+  r_squared_in_time_filename,
+  r_squared_in_time_table,
   resume_from,
   save_interval,
   score_per_pop_filename,
@@ -331,6 +333,12 @@ as created (and returned) by \link{gcae_project}}
 \item{python_bin_path}{path to a \code{python} binary/executable}
 
 \item{python_version}{the Python version}
+
+\item{r_squared_in_time_filename}{name of the file for
+the \code{r_squared} in time.}
+
+\item{r_squared_in_time_table}{\code{r_squared} in time,
+as can be checked by \link{check_r_squared_in_time_table}}
 
 \item{resume_from}{the epoch to resume from,
 as checked by \link{check_resume_from}}

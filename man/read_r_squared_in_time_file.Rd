@@ -6,6 +6,10 @@
 \usage{
 read_r_squared_in_time_file(r_squared_in_time_filename)
 }
+\arguments{
+\item{r_squared_in_time_filename}{name of the file for
+the \code{r_squared} in time.}
+}
 \value{
 the \code{r_squared_in_time_table},
 as checked by \link{check_r_squared_in_time_table}

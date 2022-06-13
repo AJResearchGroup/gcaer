@@ -7,6 +7,9 @@
 create_r_squared_through_time_png(r_squared_in_time_table, png_filename)
 }
 \arguments{
+\item{r_squared_in_time_table}{\code{r_squared} in time,
+as can be checked by \link{check_r_squared_in_time_table}}
+
 \item{png_filename}{name of the \code{PNG} file to be produced,
 as checked by \link{check_png_filename}}
 }
