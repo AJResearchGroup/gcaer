@@ -20,7 +20,7 @@ create_r_squared_through_time_png <- function( # nolint indeed a long function n
   ) + ggplot2::geom_line() +
     ggplot2::scale_x_continuous(limits = c(0, NA)) +
     ggplot2::scale_y_continuous(
-      name = latex2exp::TeX(r"($R^{2}$)"),
+      name = latex2exp::TeX(r"($r^{2}$)"),
       limits = c(0, 1)
     ) +
     gcaer::get_gcaer_theme()
