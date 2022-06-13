@@ -27,10 +27,7 @@ set_n_neurons_in_latent_layer <- function(
     stop("Cannot set latent layer to zero neurons")
   }
 
-  if (length(model$layers) == 1) {
-    model$layers[[1]]$args$units <- n_neurons
-    return(model)
-  }
+  testthat::expect_true(length(model$layers) > 1)
   is_dense <- purrr::map_lgl(model$layers, function(e) e$class == "Dense")
   has_name <- purrr::map_lgl(
     model$layers,
