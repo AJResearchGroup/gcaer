@@ -5,7 +5,7 @@
 #' @return a `gcae_experiment_results`
 #' @author Richèl J.C. Bilderbeek
 #' @export
-do_gcae_experiment <- function(
+do_gcae_experiment <- function( # nolint indeed a function that is too complex
   gcae_experiment_params,
   verbose = FALSE
 ) {
@@ -59,7 +59,7 @@ do_gcae_experiment <- function(
       t_project_results <- gcaer::parse_project_files(project_filenames)
       # Will be overwritten each cycle, by tibbles with more info
       losses_from_project_table <- t_project_results$losses_from_project_table
-      genotype_concordances_table <- t_project_results$genotype_concordances_table
+      genotype_concordances_table <- t_project_results$genotype_concordances_table # nolint indeed a long line
     }
 
     if (gcae_experiment_params$gcae_setup$superpops == "") {
@@ -159,8 +159,9 @@ do_gcae_experiment <- function(
     gcae_experiment_results$phenotype_predictions_table <- NULL
     gcae_experiment_results$nmse_in_time_table <- NULL
   }
-  # Temporarily
-  #gcaer::check_gcae_experiment_results(gcae_experiment_results)
+  if ("check" == "very much") {
+    gcaer::check_gcae_experiment_results(gcae_experiment_results)
+  }
 
   gcae_experiment_results
 }
