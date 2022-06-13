@@ -19,7 +19,10 @@ create_r_squared_through_time_png <- function( # nolint indeed a long function n
     ggplot2::aes(epoch, r_squared)
   ) + ggplot2::geom_line() +
     ggplot2::scale_x_continuous(limits = c(0, NA)) +
-    ggplot2::scale_y_continuous(limits = c(0, NA)) +
+    ggplot2::scale_y_continuous(
+      name = latex2exp::TeX(r"($R^{2}$)"),
+      limits = c(0, 1)
+    ) +
     gcaer::get_gcaer_theme()
   plot
   ggplot2::ggsave(png_filename, width = 7, height = 7)
