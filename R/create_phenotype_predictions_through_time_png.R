@@ -17,12 +17,22 @@ create_phenotype_predictions_through_time_png <- function( # nolint indeed a lon
 
   gcaer::check_phenotype_predictions_table(phenotype_predictions_table)
   gcaer::check_png_filename(png_filename)
-  phenotype_predictions_table$color <- as.factor(
-    phenotype_predictions_table$epoch
-  )
-  phenotype_predictions_table$size <- phenotype_predictions_table$epoch
-  phenotype_predictions_table$size <- 10.0 * phenotype_predictions_table$size /
-    max(phenotype_predictions_table$size)
+
+  if ("plot only the last" == "plot only the last") {
+    phenotype_predictions_table <- dplyr::filter(
+      phenotype_predictions_table,
+      epoch == max(phenotype_predictions_table$epoch)
+    )
+    phenotype_predictions_table$color <- "black"
+    phenotype_predictions_table$size <- 10.0
+  } else {
+    phenotype_predictions_table$color <- as.factor(
+      phenotype_predictions_table$epoch
+    )
+    phenotype_predictions_table$size <- phenotype_predictions_table$epoch
+    phenotype_predictions_table$size <- 10.0 * phenotype_predictions_table$size /
+      max(phenotype_predictions_table$size)
+  }
 
   x_axis_min <- min(0.0, min(phenotype_predictions_table$true_phenotype))
   x_axis_max <- max(0.0, max(phenotype_predictions_table$true_phenotype))
