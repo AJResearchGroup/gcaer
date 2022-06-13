@@ -24,6 +24,8 @@ get_gcae_experiment_results_filenames <- function( # nolint indeed a long functi
       file.path(folder_name, paste0("nmse_in_time", file_extension)),
     phenotype_predictions_filename =
       file.path(folder_name, paste0("phenotype_predictions", file_extension)),
+    r_squared_in_time_filename =
+      file.path(folder_name, paste0("r_squared_in_time", file_extension)),
     scores_filename =
       file.path(folder_name, paste0("scores", file_extension)),
     score_per_pop_filename =

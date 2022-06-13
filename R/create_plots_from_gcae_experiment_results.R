@@ -82,5 +82,13 @@ create_plots_from_gcae_experiment_results <- function( # nolint indeed a long fu
   } else {
     png_filenames$nmse_in_time_filename <- NULL
   }
+  if (file.exists(csv_filenames$r_squared_in_time_filename)) {
+    gcaer::plot_r_squared_in_time_from_file(
+      r_squared_in_time_filename = csv_filenames$r_squared_in_time_filename,
+      png_filename = png_filenames$r_squared_in_time_filename
+    )
+  } else {
+    png_filenames$r_squared_in_time_filename <- NULL
+  }
   png_filenames
 }

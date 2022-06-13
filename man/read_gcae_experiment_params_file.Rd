@@ -21,7 +21,9 @@ Read a \code{gcae_experiment_params} from file
 }
 \note{
 it is possible to add character values to
-the \code{gcae_experiment_params}, for example:\if{html}{\out{<div class="sourceCode r">}}\preformatted{gcae_experiment_params <- create_test_gcae_experiment_params()
+the \code{gcae_experiment_params}, for example:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{gcae_experiment_params <- create_test_gcae_experiment_params()
 gcae_experiment_params$window_kb <- "1000"
 }\if{html}{\out{</div>}}
 

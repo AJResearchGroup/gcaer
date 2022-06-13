@@ -5,7 +5,7 @@
 #' @return a \link[ggplot2]{ggplot2}
 #' @author Richèl J.C. Bilderbeek
 #' @export
-create_losses_from_nmse_through_time_png <- function( # nolint indeed a long function name
+create_nmse_through_time_png <- function( # nolint indeed a long function name
   nmse_in_time_table,
   png_filename
 ) {
