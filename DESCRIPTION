@@ -20,6 +20,7 @@ Imports:
     gganimate,
     igraph,
     jsonlite,
+    latex2exp,
     ormr (>= 0.6.2.2),
     plinkr (>= 0.19.2),
     purrr,
