@@ -22,9 +22,11 @@ the number of neurons in the latent layer
 Get the number of neurons in the layent layer from a \code{gcae_experiment_params}
 }
 \examples{
-get_n_neurons_in_latent_layer_from_gcae_experiment_params(
-  create_test_gcae_experiment_params()
-)
+if (is_gcae_script_fixed()) {
+  get_n_neurons_in_latent_layer_from_gcae_experiment_params(
+    create_test_gcae_experiment_params()
+  )
+}
 }
 \seealso{
 use \link{get_n_neurons_in_latent_layer}

@@ -7,9 +7,11 @@
 #' to get the number of neurons in the latent layer
 #' for different input arguments
 #' @examples
-#' get_n_neurons_in_latent_layer_from_gcae_experiment_params(
-#'   create_test_gcae_experiment_params()
-#' )
+#' if (is_gcae_script_fixed()) {
+#'   get_n_neurons_in_latent_layer_from_gcae_experiment_params(
+#'     create_test_gcae_experiment_params()
+#'   )
+#' }
 #' @author Richèl J.C. Bilderbeek
 #' @export
 get_n_neurons_in_latent_layer_from_gcae_experiment_params <- function( # nolint indeed a long function name

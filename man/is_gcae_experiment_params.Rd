@@ -2,7 +2,8 @@
 % Please edit documentation in R/is_gcae_experiment_params.R
 \name{is_gcae_experiment_params}
 \alias{is_gcae_experiment_params}
-\title{Determine if the \code{gcae_experiment_params} is indeed a \code{gcae_experiment_params}}
+\title{Determine if the \code{gcae_experiment_params} is indeed
+a \code{gcae_experiment_params}}
 \usage{
 is_gcae_experiment_params(gcae_experiment_params, verbose = FALSE)
 }
@@ -17,10 +18,12 @@ Set to \link{TRUE} for more output.
 Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
-\link{TRUE} if the \code{gcae_experiment_params} is indeed a \code{gcae_experiment_params}
+\link{TRUE} if the \code{gcae_experiment_params} is indeed
+a \code{gcae_experiment_params}
 }
 \description{
-Determine if the \code{gcae_experiment_params} is indeed a \code{gcae_experiment_params}
+Determine if the \code{gcae_experiment_params} is indeed
+a \code{gcae_experiment_params}
 }
 \examples{
 # TRUE
