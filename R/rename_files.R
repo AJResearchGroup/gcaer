@@ -9,6 +9,7 @@
 #' tempfile_1 <- get_gcaer_tempfilename()
 #' tempfile_2 <- get_gcaer_tempfilename()
 #'
+#' dir.create(dirname(tempfile_1), recursive = TRUE, showWarnings = FALSE)
 #' file.create(tempfile_1)
 #'
 #' rename_files(
@@ -17,7 +18,8 @@
 #' )
 #'
 #' # Cleanup
-#' file.remove(tempfile_2)
+#' unlink(dirname(tempfile_1), recursive = TRUE)
+#' unlink(dirname(tempfile_2), recursive = TRUE)
 #'
 #' # Rename two files
 #' tempfile_1 <- get_gcaer_tempfilename()
@@ -25,6 +27,8 @@
 #' tempfile_3 <- get_gcaer_tempfilename()
 #' tempfile_4 <- get_gcaer_tempfilename()
 #'
+#' dir.create(dirname(tempfile_1), recursive = TRUE, showWarnings = FALSE)
+#' dir.create(dirname(tempfile_2), recursive = TRUE, showWarnings = FALSE)
 #' file.create(tempfile_1)
 #' file.create(tempfile_2)
 #'
@@ -34,8 +38,10 @@
 #' )
 #'
 #' # Cleanup
-#' file.remove(tempfile_3)
-#' file.remove(tempfile_4)
+#' unlink(dirname(tempfile_1), recursive = TRUE)
+#' unlink(dirname(tempfile_2), recursive = TRUE)
+#' unlink(dirname(tempfile_3), recursive = TRUE)
+#' unlink(dirname(tempfile_4), recursive = TRUE)
 #' @author Richèl J.C. Bilderbeek
 #' @export
 rename_files <- function(
