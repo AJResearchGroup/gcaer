@@ -4,15 +4,10 @@
 \alias{get_n_neurons_in_latent_layer}
 \title{Get the number of neurons in the layent layer}
 \usage{
-get_n_neurons_in_latent_layer(model)
+get_n_neurons_in_latent_layer(x)
 }
 \arguments{
-\item{model}{the \code{GCAE} architecture,
-as checked by \link{check_model}.
-Use \link{read_model_file} to read a \code{GCAE} architecture from file.
-Use \link{save_model} to save the \code{model} to a JSON file.
-Use \link{plot_model} to plot the \code{model}.
-Use \link{save_model_plot} to save a plot of the \code{model} to file.}
+\item{x}{an input of type \code{model} or \code{gcae_experiment_params}}
 }
 \value{
 the number of neurons in the latent layer
@@ -21,6 +16,8 @@ the number of neurons in the latent layer
 Get the number of neurons in the layent layer
 }
 \examples{
+
+# A model
 if (is_gcae_repo_cloned()) {
   # A real GCAE file
   model_filename <- get_gcae_model_filename("M1")

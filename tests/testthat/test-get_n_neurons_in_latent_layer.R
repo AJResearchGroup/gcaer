@@ -1,46 +1,14 @@
-test_that("M0, example file", {
+test_that("M0, from model", {
   model_filename <- get_gcaer_filename("M0.json")
   model <- read_model_file(model_filename)
   n_neurons <- get_n_neurons_in_latent_layer(model)
   expect_equal(2, n_neurons)
 })
 
-test_that("M0, GCAE file", {
-  if (!is_gcae_script_fixed()) return()
-  model_filename <- get_gcae_model_filename("M0")
-  model <- read_model_file(model_filename)
-  n_neurons <- get_n_neurons_in_latent_layer(model)
-  expect_equal(2, n_neurons)
-})
-
-test_that("M1", {
-  if (!is_gcae_script_fixed()) return()
-  model_filename <- get_gcae_model_filename("M1")
-  model <- read_model_file(model_filename)
-  n_neurons <- get_n_neurons_in_latent_layer(model)
-  expect_equal(2, n_neurons)
-})
-
-test_that("M3d", {
-  if (!is_gcae_script_fixed()) return()
-  model_filename <- get_gcae_model_filename("M3d")
-  model <- read_model_file(model_filename)
-  n_neurons <- get_n_neurons_in_latent_layer(model)
-  expect_equal(2, n_neurons)
-})
-
-test_that("M3e", {
-  if (!is_gcae_script_fixed()) return()
-  model_filename <- get_gcae_model_filename("M3e")
-  model <- read_model_file(model_filename)
-  n_neurons <- get_n_neurons_in_latent_layer(model)
-  expect_equal(2, n_neurons)
-})
-
-test_that("M3f", {
-  if (!is_gcae_script_fixed()) return()
-  model_filename <- get_gcae_model_filename("M3f")
-  model <- read_model_file(model_filename)
-  n_neurons <- get_n_neurons_in_latent_layer(model)
+test_that("M0, from gcae_experiment_params", {
+  skip("nsphs_ml_qt #55")
+  gcae_experiment_params <- create_test_gcae_experiment_params()
+  expect_equal("M0", gcae_experiment_params$gcae_setup$model_id)
+  n_neurons <- get_n_neurons_in_latent_layer(gcae_experiment_params)
   expect_equal(2, n_neurons)
 })

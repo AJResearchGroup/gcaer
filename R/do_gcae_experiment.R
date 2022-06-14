@@ -17,6 +17,10 @@ do_gcae_experiment <- function( # nolint indeed a function that is too complex
   resume_froms <- c(0, analyse_epochs[-length(analyse_epochs)])
   n_epochs <- analyse_epochs - resume_froms
 
+  n_neurons_in_latent_layer <- gcaer::get_n_neurons_in_latent_layer(
+    gcae_experiment_params
+  )
+
   # Results
   losses_from_project_table <- NA # Will be overwritten by each last project
   genotype_concordances_table <- NA # Will be overwritten by each last project
