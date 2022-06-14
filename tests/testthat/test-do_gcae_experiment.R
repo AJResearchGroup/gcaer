@@ -6,23 +6,17 @@ test_that("use, phenotypes, no labels", {
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
-      trainedmodeldir = paste0(
-        normalizePath(
-          get_gcaer_tempfilename(),
-          mustWork = FALSE
-        ),
-        "/"
-      ),
-      model_id = "M0",
-      superpops = "", # no labels
-      pheno_model_id = "p0"
+      superpops = "" # no labels
     ),
     analyse_epochs = c(1, 2),
     metrics = "" # no metrics
   )
-  gcae_experiment_results <- do_gcae_experiment(
-    gcae_experiment_params = gcae_experiment_params
+  Sys.time()
+  gcae_experiment_results <- do_gcae_experiment( # Takes approx 104 secs
+    gcae_experiment_params = gcae_experiment_params,
+    verbose = TRUE
   )
+  Sys.time()
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
   save_gcae_experiment_results(
     gcae_experiment_results = gcae_experiment_results,
@@ -41,24 +35,19 @@ test_that("use, no phenotypes, no labels, #26", {
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
-      trainedmodeldir = paste0(
-        normalizePath(
-          get_gcaer_tempfilename(),
-          "gcae_input_files_1_ae",
-          mustWork = FALSE
-        ),
-        "/"
-      ),
-      model_id = "M0",
       superpops = "", # no labels
       pheno_model_id = "" # no phenotype
     ),
     analyse_epochs = c(1, 2),
     metrics = "" # no metrics
   )
-  gcae_experiment_results <- do_gcae_experiment(
-    gcae_experiment_params = gcae_experiment_params
+
+  Sys.time()
+  gcae_experiment_results <- do_gcae_experiment( # Takes approx 108 secs
+    gcae_experiment_params = gcae_experiment_params,
+    verbose = TRUE
   )
+  Sys.time()
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
   save_gcae_experiment_results(
     gcae_experiment_results = gcae_experiment_results,
@@ -79,13 +68,6 @@ test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
   gcae_experiment_params <- create_gcae_experiment_params(
     gcae_options = create_gcae_options(),
     gcae_setup = create_test_gcae_setup(
-      trainedmodeldir = paste0(
-        normalizePath(
-          get_gcaer_tempfilename(),
-          mustWork = FALSE
-        ),
-        "/"
-      ),
       model_id = "M1_3n",
       superpops = "", # no labels
       pheno_model_id = "" # no phenotype
@@ -93,10 +75,12 @@ test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
     analyse_epochs = c(1, 2),
     metrics = "" # no metrics
   )
-  gcae_experiment_results <- do_gcae_experiment(
+  Sys.time()
+  gcae_experiment_results <- do_gcae_experiment( # Takes approx 132 secs
     gcae_experiment_params = gcae_experiment_params,
     verbose = TRUE
   )
+  Sys.time()
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
   save_gcae_experiment_results(
     gcae_experiment_results = gcae_experiment_results,
