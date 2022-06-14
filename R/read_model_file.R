@@ -19,7 +19,15 @@
 read_model_file <- function(model_filename) {
   testthat::expect_true(file.exists(model_filename))
   gcaer::check_model_filename(model_filename)
-  jsonlite::read_json(
-    normalizePath(model_filename)
+  normalized_model_filename <- normalizePath(model_filename)
+  tryCatch(
+    jsonlite::read_json(normalized_model_filename),
+    error = function(e) {
+      stop(
+        "Cannot parse JSON file with name ", normalized_model_filename, " \n",
+        "Error: ", e$msg
+      )
+    }
   )
+
 }
