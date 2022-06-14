@@ -20,6 +20,7 @@ get_n_neurons_in_latent_layer_from_gcae_experiment_params <- function( # nolint 
     model_id = gcae_experiment_params$gcae_setup$model_id,
     gcae_options = gcae_experiment_params$gcae_options
   )
+  testthat::expect_true(file.exists(model_filename))
   model <- read_model_file(model_filename = model_filename)
   gcaer::get_n_neurons_in_latent_layer_from_model(model = model)
 }
