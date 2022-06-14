@@ -58,7 +58,9 @@ Or: the GCAE options allows a user to **run** GenoCAE.
 In this tutorial, we'll be using a standard GCAE setup:
 
 ```{r gcae_setup}
-gcae_setup <- create_test_gcae_setup(superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"))
+gcae_setup <- create_test_gcae_setup(
+  superpops = get_gcaer_filename("gcae_input_files_1_labels.csv")
+)
 gcae_setup
 ```
 

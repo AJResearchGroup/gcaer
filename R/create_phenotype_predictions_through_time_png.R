@@ -30,7 +30,8 @@ create_phenotype_predictions_through_time_png <- function( # nolint indeed a lon
       phenotype_predictions_table$epoch
     )
     phenotype_predictions_table$size <- phenotype_predictions_table$epoch
-    phenotype_predictions_table$size <- 10.0 * phenotype_predictions_table$size /
+    phenotype_predictions_table$size <- 10.0 *
+      phenotype_predictions_table$size /
       max(phenotype_predictions_table$size)
   }
 
