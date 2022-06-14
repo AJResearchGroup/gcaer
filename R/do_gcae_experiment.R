@@ -48,11 +48,14 @@ do_gcae_experiment <- function( # nolint indeed a function that is too complex
     if (verbose) {
       message(paste(train_filenames, collapse = "\n"))
     }
-    project_filenames <- gcae_project(
-      gcae_setup = gcae_experiment_params$gcae_setup,
-      gcae_options = gcae_experiment_params$gcae_options,
-      verbose = verbose
-    )
+    project_filenames <- character()
+    if (n_neurons_in_latent_layer == 2) {
+      project_filenames <- gcae_project(
+        gcae_setup = gcae_experiment_params$gcae_setup,
+        gcae_options = gcae_experiment_params$gcae_options,
+        verbose = verbose
+      )
+    }
     if (verbose) {
       message(
         "Start of 'parse_project_files', for 'project_filenames': \n * ",
