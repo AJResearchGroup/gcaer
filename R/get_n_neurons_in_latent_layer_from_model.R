@@ -18,7 +18,7 @@
 #' get_n_neurons_in_latent_layer_from_model(model)
 #' @author Richèl J.C. Bilderbeek
 #' @export
-get_n_neurons_in_latent_layer_from_model <- function(model) {
+get_n_neurons_in_latent_layer_from_model <- function(model) { # nolint indeed a long function name
   gcaer::check_model(model)
   if (length(model$layers) == 1) {
     return(model$layers[[1]]$args$units)

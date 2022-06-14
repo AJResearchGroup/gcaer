@@ -1,6 +1,8 @@
-#' Determine if the `gcae_experiment_params` is indeed a `gcae_experiment_params`
+#' Determine if the `gcae_experiment_params` is indeed
+#' a `gcae_experiment_params`
 #' @inheritParams default_params_doc
-#' @return \link{TRUE} if the `gcae_experiment_params` is indeed a `gcae_experiment_params`
+#' @return \link{TRUE} if the `gcae_experiment_params` is indeed
+#' a `gcae_experiment_params`
 #' @examples
 #' # TRUE
 #' is_gcae_experiment_params(create_test_gcae_experiment_params())
