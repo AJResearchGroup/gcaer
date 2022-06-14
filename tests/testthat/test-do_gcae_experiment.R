@@ -58,7 +58,7 @@ test_that("use, no phenotypes, no labels, #26", {
 })
 
 test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
-  # https://github.com/richelbilderbeek/nsphs_ml_qt/issues/55
+  skip("https://github.com/richelbilderbeek/nsphs_ml_qt/issues/55")
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_script_fixed()) return()
