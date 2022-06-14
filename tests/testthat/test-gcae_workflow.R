@@ -1,7 +1,9 @@
-test_that("use", {
+test_that("with phenotype, with superpops", {
   expect_equal(1 + 1, 2) # Prevents testthat warning for empty test
   if (!plinkr::is_on_ci()) return()
   if (!is_gcae_script_fixed()) return()
+
+  remove_gcaer_tempfolder()
 
   # This test goes through the full workflow.
   # It is not broken up into small pieces, as each 'small piece'
@@ -15,20 +17,11 @@ test_that("use", {
   # 1. Setup
   Sys.time()
   gcae_options <- create_gcae_options()
-  gcae_setup <- create_gcae_setup(
-    datadir = get_test_datadir(),
-    data = "gcae_input_files_1",
-    superpops = get_gcaer_filename("gcae_input_files_1_labels.csv"),
-    model_id = "M1",
-    data_opts_id = "b_0_4",
-    train_opts_id = "ex3",
-    pheno_model_id = "p2",
-    trainedmodeldir = paste0(
-      normalizePath(get_gcaer_tempfilename(), mustWork = FALSE), "/"
-    )
+  gcae_setup <- create_test_gcae_setup(
+    superpops = get_gcaer_filename("gcae_input_files_1_labels.csv")
   )
 
-  # 2. Train, approx 3 mins
+  # 2. Train, approx 31 secs
   Sys.time()
   train_filenames <- gcae_train(
     gcae_setup = gcae_setup,
@@ -38,7 +31,7 @@ test_that("use", {
   )
   expect_true(all(file.exists(train_filenames)))
 
-  # 3. Project
+  # 3. Project, takes approx 22 secs
   Sys.time()
   project_filenames <- gcae_project(
     gcae_setup = gcae_setup,
@@ -54,20 +47,21 @@ test_that("use", {
   )
 
   # 4. Plot
-  if (1 == 2) {
-    plot_filenames <- gcae_plot(
-      superpops = gcae_setup$superpops,
-      gcae_setup = gcae_setup,
-      verbose = TRUE
-    )
-    plot_filenames
-    Sys.time()
-  }
-  if (1 == 2) {
-    gcae_evaluate(
-      gcae_setup = gcae_setup,
-      gcae_options = gcae_options,
-      verbose = TRUE
-    )
-  }
+  Sys.time()
+  plot_filenames <- gcae_plot( # Takes approx 18 secs
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options,
+    verbose = TRUE
+  )
+  Sys.time()
+  expect_true(all(file.exists(plot_filenames)))
+  # 5. Evaluate
+  gcae_evaluate( # Takes approx 19 secs
+    gcae_setup = gcae_setup,
+    gcae_options = gcae_options,
+    metrics = "f1_score_3",
+    epoch = 1,
+    verbose = TRUE
+  )
+  Sys.time()
 })
