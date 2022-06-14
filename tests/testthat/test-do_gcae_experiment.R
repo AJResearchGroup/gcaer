@@ -41,7 +41,6 @@ test_that("use, no phenotypes, no labels, #26", {
     analyse_epochs = c(1, 2),
     metrics = "" # no metrics
   )
-
   Sys.time()
   gcae_experiment_results <- do_gcae_experiment( # Takes approx 108 secs
     gcae_experiment_params = gcae_experiment_params,
@@ -76,9 +75,14 @@ test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
     metrics = "" # no metrics
   )
   Sys.time()
-  gcae_experiment_results <- do_gcae_experiment( # Takes approx 132 secs
-    gcae_experiment_params = gcae_experiment_params,
-    verbose = TRUE
+  expect_silent(
+    suppressMessages({
+        gcae_experiment_results <- do_gcae_experiment( # Takes approx 143 secs
+          gcae_experiment_params = gcae_experiment_params,
+          verbose = TRUE
+        )
+      }
+    )
   )
   Sys.time()
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
