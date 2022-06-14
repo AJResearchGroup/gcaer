@@ -6,7 +6,6 @@ test_that("M0, from model", {
 })
 
 test_that("M0, from gcae_experiment_params", {
-  skip("nsphs_ml_qt #55")
   gcae_experiment_params <- create_test_gcae_experiment_params()
   expect_equal("M0", gcae_experiment_params$gcae_setup$model_id)
   n_neurons <- get_n_neurons_in_latent_layer(gcae_experiment_params)

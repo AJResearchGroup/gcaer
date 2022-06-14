@@ -22,7 +22,7 @@ get_n_neurons_in_latent_layer <- function(x) {
       gcaer::get_n_neurons_in_latent_layer_from_model(model = x)
     )
   }
-  if (gcaer::is_gcae_experiment_params()) {
+  if (gcaer::is_gcae_experiment_params(x)) {
     return(
       gcaer::get_n_neurons_in_latent_layer_from_gcae_experiment_params(
         gcae_experiment_params = x
