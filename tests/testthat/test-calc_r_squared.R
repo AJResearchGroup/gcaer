@@ -11,7 +11,8 @@ test_that("worked example 1", {
 })
 
 test_that("worked example 2", {
-  # Example from https://www.delftstack.com/howto/r/calculate-the-r-squared-statistic-in-r/
+  # Example from
+  # https://www.delftstack.com/howto/r/calculate-the-r-squared-statistic-in-r/
   true_values <- c(1, 2, 3, 4, 5)
   estimated_values <- c(2, 6, 7, 10, 9)
   r_squared <- calc_r_squared(
