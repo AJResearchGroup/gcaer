@@ -32,5 +32,5 @@ calc_r_squared <- function(
   testthat::expect_true(is.numeric(true_values))
   testthat::expect_true(is.numeric(estimated_values))
   testthat::expect_equal(length(true_values), length(estimated_values))
-  suppressWarnings(summary(lm(estimated_values ~ true_values)))$r.squared
+  suppressWarnings(summary(stats::lm(estimated_values ~ true_values)))$r.squared
 }
