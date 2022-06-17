@@ -24,9 +24,11 @@ test_that("use, phenotypes, no labels", {
     gcae_experiment_results = gcae_experiment_results,
     folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
   )
-  create_plots_from_gcae_experiment_results(
+  png_filenames <- create_plots_from_gcae_experiment_results(
     folder_name = gcae_experiment_params$gcae_setup$trainedmodeldir
   )
+  expect_true("r_squared_in_time_filename" %in% names(png_filenames))
+  expect_true("nmse_in_time_filename" %in% names(png_filenames))
 })
 
 test_that("use, no phenotypes, no labels, #26", {
