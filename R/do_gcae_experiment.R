@@ -162,7 +162,7 @@ do_gcae_experiment <- function( # nolint indeed a function that is too complex
     losses_from_train_t_table = train_results$losses_from_train_t_table,
     losses_from_train_v_table = train_results$losses_from_train_v_table
   )
-  if (gcae_experiment_params$gcae_setup$pheno_model_id != "") {
+  if (gcae_experiment_params$gcae_setup$pheno_model_id == "") {
     gcae_experiment_results$phenotype_predictions_table <- NULL
     gcae_experiment_results$nmse_in_time_table <- NULL
   }
