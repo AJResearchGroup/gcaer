@@ -17,7 +17,6 @@ a table with the \code{r_squared} through time
 }
 \description{
 Calculate the \code{r_squared} through time
-(see \link{calc_r_squared_from_identity_line})
 from the phenotype predictions,
 }
 \examples{
