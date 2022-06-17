@@ -16,6 +16,8 @@ test_that("use, phenotypes, no labels", {
     gcae_experiment_params = gcae_experiment_params,
     verbose = TRUE
   )
+  expect_true("nmse_in_time_table" %in% names(gcae_experiment_results))
+  expect_true("r_squared_in_time_table" %in% names(gcae_experiment_results))
   Sys.time()
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
   save_gcae_experiment_results(
