@@ -3,6 +3,8 @@
 export(calc_mse_from_identity_line)
 export(calc_nmse_from_identity_line)
 export(calc_nmse_from_phenotype_predictions)
+export(calc_r_squared)
+export(calc_r_squared_from_phenotype_predictions)
 export(check_analyse_epochs)
 export(check_csv_filename)
 export(check_data)

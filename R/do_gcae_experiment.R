@@ -141,9 +141,13 @@ do_gcae_experiment <- function( # nolint indeed a function that is too complex
 
   phenotype_predictions_table <- NA
   nmse_in_time_table <- NA
+  r_squared_in_time_table <- NA
   if (gcae_experiment_params$gcae_setup$pheno_model_id != "") {
     phenotype_predictions_table <- dplyr::bind_rows(phenotype_predictions_list)
     nmse_in_time_table <- gcaer::calc_nmse_from_phenotype_predictions(
+      phenotype_predictions_table
+    )
+    r_squared_in_time_table <- gcaer::calc_r_squared_from_phenotype_predictions(
       phenotype_predictions_table
     )
   }
@@ -158,6 +162,7 @@ do_gcae_experiment <- function( # nolint indeed a function that is too complex
     genotype_concordances_table = genotype_concordances_table,
     phenotype_predictions_table = phenotype_predictions_table,
     nmse_in_time_table = nmse_in_time_table,
+    r_squared_in_time_table = r_squared_in_time_table,
     train_times_table = train_results$train_times_table,
     losses_from_train_t_table = train_results$losses_from_train_t_table,
     losses_from_train_v_table = train_results$losses_from_train_v_table
@@ -165,6 +170,7 @@ do_gcae_experiment <- function( # nolint indeed a function that is too complex
   if (gcae_experiment_params$gcae_setup$pheno_model_id == "") {
     gcae_experiment_results$phenotype_predictions_table <- NULL
     gcae_experiment_results$nmse_in_time_table <- NULL
+    gcae_experiment_results$r_squared_in_time_table <- NULL
   }
   if ("check" == "very much") {
     gcaer::check_gcae_experiment_results(gcae_experiment_results)
