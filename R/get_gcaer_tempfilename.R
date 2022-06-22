@@ -22,7 +22,7 @@ get_gcaer_tempfilename <- function(
 ) {
   tempfile(
     pattern = pattern,
-    tmpdir = gcaer::get_gcaer_folder(),
+    tmpdir = file.path(gcaer::get_gcaer_folder(), basename(tempdir())),
     fileext = fileext
   )
 }
