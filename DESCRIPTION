@@ -40,6 +40,9 @@ Suggests:
     profvis,
     testthat (>= 3.0.0),
     tibble
+Remotes:
+    github::richelbilderbeek/ormr
+    github::richelbilderbeek/plinkr
 URL: https://github.com/richelbilderbeek/gcaer/
 BugReports: https://github.com/richelbilderbeek/gcaer/
 Config/testthat/edition: 3
