@@ -24,6 +24,19 @@ test_that("calculated error", {
   )
 })
 
+test_that("calculated error", {
+
+  true_values <- c(0, 0)
+  estimated_values <- true_values + 2
+  expect_equal(
+    4,
+    calc_mse_from_identity_line(
+      true_values = true_values,
+      estimated_values = estimated_values
+    )
+  )
+})
+
 test_that("show that scale matters", {
   true_values_degrees <- seq(1, 360)
   estimated_values_degrees <- true_values_degrees + runif(n = 360)
