@@ -5,16 +5,14 @@
 \title{Create the parameters for a GCAE experiment}
 \usage{
 create_test_gcae_experiment_params(
-  gcae_options = create_gcae_options(),
   gcae_setup = create_test_gcae_setup(),
   analyse_epochs = c(1, 2),
-  metrics = "f1_score_3,f1_score_5"
+  metrics = "f1_score_3,f1_score_5",
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 )
 }
 \arguments{
-\item{gcae_options}{options to run GCAE,
-as created by \link{create_gcae_options}}
-
 \item{gcae_setup}{GCAE model setup,
 as created by \link{create_gcae_setup},
 read from file by \link{read_gcae_setup_file},
@@ -26,6 +24,13 @@ as checked by \link{check_analyse_epochs}}
 
 \item{metrics}{the metrics, as checked by \link{check_metrics}.
 Use \code{""} to indicate not to use a clusting metric}
+
+\item{gcae_options}{options to run GCAE,
+as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 the parameters for a GCAE experiment

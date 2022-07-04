@@ -3,12 +3,17 @@
 #' Do a full `GCAE` experiment
 #' @inheritParams default_params_doc
 #' @return a `gcae_experiment_results`
+#' @note instead of using `verbose` as a function argument,
+#' `verbose` is part of the `gcae_experiment_params`, so
+#' that `verbosity` can be turned on/off by editing a
+#' parameters file
 #' @author Richèl J.C. Bilderbeek
 #' @export
 do_gcae_experiment <- function( # nolint indeed a function that is too complex
-  gcae_experiment_params,
-  verbose = FALSE
+  gcae_experiment_params
 ) {
+  # Don't be smart yet
+  verbose <- gcae_experiment_params$verbose
   plinkr::check_verbose(verbose)
   # 'gcae_experiment_params' is checked in this function
   gcaer::check_input_files_are_present(gcae_experiment_params)

@@ -8,7 +8,8 @@ create_gcae_experiment_params(
   gcae_setup,
   analyse_epochs,
   metrics,
-  gcae_options = create_gcae_options()
+  gcae_options = create_gcae_options(),
+  verbose = FALSE
 )
 }
 \arguments{
@@ -26,6 +27,10 @@ Use \code{""} to indicate not to use a clusting metric}
 
 \item{gcae_options}{options to run GCAE,
 as created by \link{create_gcae_options}}
+
+\item{verbose}{the verbosity of a function.
+Set to \link{TRUE} for more output.
+Use \link[plinkr]{check_verbose} to detect if this argument is valid.}
 }
 \value{
 the parameters for a GCAE experiment

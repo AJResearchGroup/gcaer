@@ -65,14 +65,20 @@ read_gcae_experiment_params_file <- function(gcae_experiment_params_filename) { 
   metrics <- t$value[which("metrics" == t$parameter)]
   if (is.na(metrics)) metrics <- ""
 
+  testthat::expect_true("verbose" %in% t$parameter)
+  verbose <- as.logical(t$value[which("verbose" == t$parameter)])
+
   gcae_experiment_params <- gcaer::create_gcae_experiment_params(
-    gcae_options = gcae_options,
     gcae_setup = gcae_setup,
     analyse_epochs = analyse_epochs,
-    metrics = metrics
+    metrics = metrics,
+    gcae_options = gcae_options,
+    verbose = verbose
   )
   names_already_stored <- c(
-    names(gcae_options), names(gcae_setup), "analyse_epochs", "metrics"
+    names(gcae_options),
+    names(gcae_setup),
+    "analyse_epochs", "metrics", "verbose"
   )
   extra_indices <- which(!t$parameter %in% names_already_stored)
   for (extra_index in extra_indices) {
