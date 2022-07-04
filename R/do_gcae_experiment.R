@@ -12,6 +12,7 @@
 do_gcae_experiment <- function( # nolint indeed a function that is too complex
   gcae_experiment_params
 ) {
+  gcaer::check_gcae_experiment_params(gcae_experiment_params)
   # Don't be smart yet
   verbose <- gcae_experiment_params$verbose
   plinkr::check_verbose(verbose)
