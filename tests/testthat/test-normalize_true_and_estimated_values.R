@@ -21,13 +21,29 @@ test_that("calculated error", {
 
 test_that("random values", {
   true_values <- runif(100, min = -30, max = 50)
-  estimated_values <- sample(true_values, size = length(true_values), replace = FALSE)
+  estimated_values <- sample(
+    true_values,
+    size = length(true_values),
+    replace = FALSE
+  )
   normalized_true_and_estimated_values <- normalize_true_and_estimated_values( # nolint indeed a long variable name
     true_values = true_values,
     estimated_values = estimated_values
   )
-  expect_equal(0.0, mean(normalized_true_and_estimated_values$normalized_true_values))
-  expect_equal(1.0, sd(normalized_true_and_estimated_values$normalized_true_values))
-  expect_equal(0.0, mean(normalized_true_and_estimated_values$normalized_estimated_values))
-  expect_equal(1.0, sd(normalized_true_and_estimated_values$normalized_estimated_values))
+  expect_equal(
+    0.0,
+    mean(normalized_true_and_estimated_values$normalized_true_values)
+  )
+  expect_equal(
+    1.0,
+    sd(normalized_true_and_estimated_values$normalized_true_values)
+  )
+  expect_equal(
+    0.0,
+    mean(normalized_true_and_estimated_values$normalized_estimated_values)
+  )
+  expect_equal(
+    1.0,
+    sd(normalized_true_and_estimated_values$normalized_estimated_values)
+  )
 })

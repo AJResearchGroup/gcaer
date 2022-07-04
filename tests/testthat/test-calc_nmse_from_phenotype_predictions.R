@@ -24,7 +24,11 @@ test_that("use", {
 test_that("use", {
   phenotype_predictions_table <- create_test_phenotype_predictions_table()
 
-  phenotype_predictions_table$true_phenotype <- seq(from = -1, to = 1, length.out = nrow(phenotype_predictions_table))
+  phenotype_predictions_table$true_phenotype <- seq(
+    from = -1,
+    to = 1,
+    length.out = nrow(phenotype_predictions_table)
+  )
   phenotype_predictions_table$predicted_phenotype <-
     phenotype_predictions_table$true_phenotype + 1
 
