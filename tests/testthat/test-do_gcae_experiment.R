@@ -9,12 +9,12 @@ test_that("use, phenotypes, no labels", {
       superpops = "" # no labels
     ),
     analyse_epochs = c(1, 2),
-    metrics = "" # no metrics
+    metrics = "", # no metrics
+    verbose = TRUE
   )
   Sys.time()
   gcae_experiment_results <- do_gcae_experiment( # Takes approx 104 secs
-    gcae_experiment_params = gcae_experiment_params,
-    verbose = TRUE
+    gcae_experiment_params = gcae_experiment_params
   )
   expect_true("nmse_in_time_table" %in% names(gcae_experiment_results))
   expect_true("r_squared_in_time_table" %in% names(gcae_experiment_results))
@@ -47,8 +47,7 @@ test_that("use, no phenotypes, no labels, #26", {
   )
   Sys.time()
   gcae_experiment_results <- do_gcae_experiment( # Takes approx 108 secs
-    gcae_experiment_params = gcae_experiment_params,
-    verbose = TRUE
+    gcae_experiment_params = gcae_experiment_params
   )
   Sys.time()
   expect_silent(check_gcae_experiment_results(gcae_experiment_results))
@@ -81,8 +80,7 @@ test_that("use, no phenotypes, no labels, M1_3n, nsphs_ml_qt #55", {
   Sys.time()
   suppressMessages({
       gcae_experiment_results <- do_gcae_experiment( # Takes approx 143 secs
-        gcae_experiment_params = gcae_experiment_params,
-        verbose = TRUE
+        gcae_experiment_params = gcae_experiment_params
       )
     }
   )
